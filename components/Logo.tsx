@@ -4,43 +4,34 @@ import { cn } from '@/lib/utils';
 interface LogoProps {
   className?: string;
   imageClassName?: string;
-  showText?: boolean;
   size?: 'sm' | 'md' | 'lg';
 }
 
-const sizes = {
-  sm: { height: 36, width: 120 },
-  md: { height: 48, width: 160 },
-  lg: { height: 72, width: 240 },
+const sizeClasses = {
+  sm: 'h-10 sm:h-11 w-auto max-w-[120px]',
+  md: 'h-14 w-auto max-w-[160px]',
+  lg: 'h-32 sm:h-40 w-auto max-w-[280px]',
 };
 
 export function Logo({
   className,
   imageClassName,
-  showText = false,
   size = 'md',
 }: LogoProps) {
-  const { height, width } = sizes[size];
-
   return (
-    <div className={cn('flex items-center gap-3', className)}>
+    <div className={cn('flex items-center shrink-0', className)}>
       <Image
         src="/logo.png"
         alt="Design My Place"
-        width={width}
-        height={height}
+        width={371}
+        height={400}
         className={cn(
-          'h-auto w-auto object-contain transition-transform duration-500 hover:scale-[1.04] hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.35)]',
+          'object-contain object-left transition-transform duration-500',
+          sizeClasses[size],
           imageClassName
         )}
-        style={{ maxHeight: height }}
-        priority
+        priority={size === 'sm'}
       />
-      {showText && (
-        <span className="label-uppercase text-ivory-100 hidden sm:block tracking-[0.35em]">
-          Design My Place
-        </span>
-      )}
     </div>
   );
 }

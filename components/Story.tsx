@@ -2,14 +2,13 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import Image from 'next/image';
 import { Logo } from '@/components/Logo';
 
 const stats = [
   { value: '75+', label: 'Projects Delivered' },
   { value: '150+', label: 'Satisfied Clients' },
   { value: '12+', label: 'Cities Served' },
-  { value: '3+', label: 'Years of Excellence' },
+  { value: '5+', label: 'Years of Excellence' },
 ];
 
 export function Story() {
@@ -37,9 +36,9 @@ export function Story() {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="glass p-12 lg:p-16 flex flex-col items-center justify-center min-h-[400px]"
+            className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[400px] bg-luxury-black/40"
           >
-            <Logo size="lg" />
+            <Logo size="lg" className="justify-center" imageClassName="object-center mx-auto" />
             <p className="mt-8 text-center text-gray-400 text-sm leading-relaxed max-w-xs">
               Creating interiors that shape how people live, work, and feel.
             </p>

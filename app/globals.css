@@ -259,6 +259,74 @@
     @apply bg-white scale-105;
   }
 
+  /* Luxury header glass */
+  .header-luxury {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .header-luxury--scrolled {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Header navigation */
+  .nav-link-luxury {
+    @apply relative font-body text-xs font-medium uppercase text-white/80 transition-all duration-500 px-1 py-2;
+    letter-spacing: 0.15em;
+  }
+
+  .nav-link-luxury::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-gold-400 transition-all duration-500 ease-out;
+    box-shadow: 0 0 0 rgba(212, 175, 55, 0);
+  }
+
+  .nav-link-luxury:hover {
+    @apply text-gold-400;
+    text-shadow: 0 0 28px rgba(212, 175, 55, 0.3);
+  }
+
+  .nav-link-luxury:hover::after {
+    @apply w-full;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.45);
+  }
+
+  .nav-link-mobile {
+    @apply font-display text-3xl sm:text-4xl text-white/90 tracking-wide transition-all duration-500;
+  }
+
+  .nav-link-mobile:hover {
+    @apply text-gold-400 pl-3;
+    text-shadow: 0 0 24px rgba(212, 175, 55, 0.25);
+  }
+
+  .btn-header-cta {
+    @apply relative inline-flex items-center justify-center px-8 bg-gold-400 text-luxury-black font-body font-semibold uppercase text-[11px] transition-all duration-500 rounded-sm overflow-hidden whitespace-nowrap;
+    height: 52px;
+    letter-spacing: 0.15em;
+    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35), 0 6px 28px rgba(212, 175, 55, 0.18);
+  }
+
+  .btn-header-cta:hover {
+    background: #b8962e;
+    color: #0a0a0a;
+    box-shadow: 0 0 0 1px rgba(184, 150, 46, 0.5), 0 10px 36px rgba(212, 175, 55, 0.28);
+    transform: translateY(-2px);
+  }
+
+  .brand-mark {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .brand-mark:hover {
+    transform: translateY(-1px);
+  }
+
   .btn-luxury {
     @apply relative inline-flex items-center gap-3 px-8 py-4 border border-gold-400/50 text-ivory-100 uppercase tracking-widest text-xs font-body transition-all duration-500 bg-transparent rounded-none;
   }

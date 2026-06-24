@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 const heroStats = [
   { value: '75+', label: 'Projects Completed' },
   { value: '150+', label: 'Happy Clients' },
-  { value: '3+', label: 'Years Experience' },
+  { value: '5+', label: 'Years Experience' },
 ];
 
 export function Hero() {
@@ -41,12 +41,12 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-12 text-center pt-20">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-12 text-center -translate-y-6 sm:-translate-y-10 lg:-translate-y-14">
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="label-uppercase text-gold-400 mb-6 lg:mb-8 text-sm"
+          className="label-uppercase text-gold-400 mb-4 lg:mb-6 text-sm"
         >
           Ultra-Premium Interior Design
         </motion.p>
@@ -55,7 +55,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-6 lg:mb-8 leading-[1.05] tracking-tight"
+          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-4 lg:mb-6 leading-[1.05] tracking-tight"
         >
           Designing{' '}
           <span className="italic font-light text-gradient-gold-inline">
@@ -69,7 +69,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-gray-300 text-lg font-light max-w-2xl mx-auto mb-10 lg:mb-12 leading-relaxed"
+          className="text-gray-300 text-lg font-light max-w-2xl mx-auto mb-8 lg:mb-10 leading-relaxed"
         >
           We create interiors grounded in research, emotion, functionality, and
           timeless aesthetics — spaces that shape how you live, work, and feel.
@@ -106,7 +106,7 @@ export function Hero() {
         className="absolute bottom-0 left-0 right-0 z-10 hidden lg:block"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-10">
-          <div className="flex items-center gap-16 border-t border-white/10 pt-8">
+          <div className="flex items-center justify-center gap-16 border-t border-white/10 pt-8">
             {heroStats.map((stat) => (
               <div key={stat.label} className="border-l-2 border-gold-400 pl-6">
                 <p className="font-display text-3xl text-gold-400 mb-1">

@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
-import { Logo } from '@/components/Logo';
+import { BrandMark } from '@/components/BrandMark';
+import { STUDIO_ADDRESS } from '@/lib/site';
 
 const footerLinks = {
   explore: [
@@ -14,7 +15,7 @@ const footerLinks = {
   connect: [
     { label: 'Consultation', href: '#contact' },
     { label: 'Instagram', href: 'https://instagram.com/design_my_place', external: true },
-    { label: 'WhatsApp', href: 'https://wa.me/919876543210', external: true },
+    { label: 'WhatsApp', href: 'https://wa.me/9198543210', external: true },
   ],
 };
 
@@ -25,7 +26,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
-              <Logo size="md" />
+              <BrandMark variant="footer" />
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed mb-6 font-light">
               Creating interiors that shape how people live, work, and feel.
@@ -34,7 +35,7 @@ export function Footer() {
               {[
                 { href: 'https://instagram.com/design_my_place', icon: Instagram, label: 'Instagram' },
                 { href: 'mailto:hello@designmyplace.in', icon: Mail, label: 'Email' },
-                { href: 'https://wa.me/919876543210', icon: Phone, label: 'WhatsApp' },
+                { href: 'https://wa.me/9198543210', icon: Phone, label: 'WhatsApp' },
               ].map(({ href, icon: Icon, label }) => (
                 <a
                   key={label}
@@ -88,13 +89,20 @@ export function Footer() {
             <h4 className="font-display text-lg text-white mb-6">Studio</h4>
             <div className="flex items-start gap-3 text-gray-500 mb-4">
               <MapPin size={18} className="text-gold-400/60 flex-shrink-0 mt-0.5" />
-              <p className="text-sm leading-relaxed font-light">
+              <a
+                href={STUDIO_ADDRESS.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm leading-relaxed font-light hover:text-gold-400 transition-colors duration-300"
+              >
                 Design My Place LLP
                 <br />
-                Mumbai, Maharashtra
+                {STUDIO_ADDRESS.line1}
                 <br />
-                India
-              </p>
+                {STUDIO_ADDRESS.line2}
+                <br />
+                {STUDIO_ADDRESS.line3}
+              </a>
             </div>
             <a
               href="mailto:hello@designmyplace.in"
@@ -113,7 +121,7 @@ export function Footer() {
             © {new Date().getFullYear()} Design My Place LLP. All rights reserved.
           </p>
           <p className="text-[10px] uppercase tracking-widest text-gray-600">
-            Luxury Interior Design · Mumbai, India
+            Luxury Interior Design · Bengaluru, India
           </p>
         </div>
       </div>

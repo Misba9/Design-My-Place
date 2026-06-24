@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Send, Loader2, CheckCircle } from 'lucide-react';
+import { STUDIO_ADDRESS } from '@/lib/site';
 
 const projectTypes = [
   'Residential Interior',
@@ -113,15 +114,26 @@ export function Contact() {
                 </div>
               </a>
 
-              <div className="group flex items-center gap-4 text-ivory-400/70">
-                <div className="w-12 h-12 border border-ivory-200/10 flex items-center justify-center">
+              <a
+                href={STUDIO_ADDRESS.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-4 text-ivory-400/70 hover:text-ivory-100 transition-colors duration-300"
+              >
+                <div className="w-12 h-12 border border-ivory-200/10 flex items-center justify-center flex-shrink-0 group-hover:border-gold-500/30 transition-colors">
                   <MapPin size={18} className="text-gold-500/50" />
                 </div>
                 <div>
                   <p className="text-xs text-ivory-400/50 uppercase tracking-wider mb-1">Studio Location</p>
-                  <p className="text-ivory-300/80">Mumbai, Maharashtra, India</p>
+                  <p className="text-ivory-300/80 leading-relaxed">
+                    {STUDIO_ADDRESS.line1}
+                    <br />
+                    {STUDIO_ADDRESS.line2}
+                    <br />
+                    {STUDIO_ADDRESS.line3}
+                  </p>
                 </div>
-              </div>
+              </a>
             </motion.div>
           </div>
 
