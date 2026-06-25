@@ -91,31 +91,31 @@ function ProjectCard({
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.1 }}
-      whileHover={{ y: -10 }}
-      className="group relative bg-luxury-gray border border-white/5 overflow-hidden"
+      whileHover={{ y: -6 }}
+      className="group relative bg-luxury-gray/90 border border-white/10 overflow-hidden card-hover-lift"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative h-80 overflow-hidden">
+      <div className="relative h-80 overflow-hidden img-hover-zoom">
         <Image
           src={project.image}
           alt={project.name}
           fill
           className={`object-cover transition-transform duration-700 ${
-            isHovered ? 'scale-110' : 'scale-100'
+            isHovered ? 'scale-105' : 'scale-100'
           }`}
           sizes="(max-width: 768px) 100vw, 33vw"
         />
 
         {/* Badges */}
         <div className="absolute top-4 left-4">
-          <span className="glass px-3 py-1 text-[10px] uppercase tracking-widest text-white/90">
+          <span className="glass px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-white/90">
             {project.type}
           </span>
         </div>
         {project.featured && (
           <div className="absolute top-4 right-4">
-            <span className="bg-gold-400 text-luxury-black px-3 py-1 text-[10px] uppercase tracking-widest font-bold">
+            <span className="bg-gold-400 text-luxury-black px-3 py-1 text-[10px] uppercase tracking-[0.12em] font-semibold">
               Featured
             </span>
           </div>
@@ -134,9 +134,9 @@ function ProjectCard({
         </div>
       </div>
 
-      <div className="p-6">
-        <h3 className="font-display text-xl text-white mb-2">{project.name}</h3>
-        <p className="text-gray-500 text-sm flex items-center gap-3">
+      <div className="p-7">
+        <h3 className="font-display text-[1.35rem] text-white mb-2">{project.name}</h3>
+        <p className="text-gray-400 text-sm flex items-center gap-3">
           <span>{project.location}</span>
           <span className="w-1 h-1 rounded-full bg-gold-400/50" />
           <span>{project.year}</span>
@@ -154,24 +154,24 @@ export function Projects() {
     <section
       id="projects"
       ref={containerRef}
-      className="relative py-24 lg:py-32 bg-luxury-gray overflow-hidden"
+      className="relative py-28 lg:py-36 bg-luxury-gray overflow-hidden"
     >
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse, rgba(212,175,55,0.06) 0%, transparent 70%)',
+            'radial-gradient(ellipse, rgba(176,141,87,0.07) 0%, transparent 70%)',
         }}
       />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 lg:mb-20 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 lg:mb-24 gap-6">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="label-uppercase text-gold-400 mb-4"
+              className="label-uppercase text-gold-300 mb-4"
             >
               Featured Work
             </motion.p>
@@ -179,7 +179,7 @@ export function Projects() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-white"
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-white tracking-[-0.015em]"
             >
               Selected{' '}
               <span className="italic font-light text-gradient-gold-inline">

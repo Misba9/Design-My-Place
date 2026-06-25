@@ -9,8 +9,10 @@
     --charcoal-700: #1a1a1a;
     --ivory-100: #faf8f3;
     --ivory-200: #f5f1e8;
-    --gold-400: #D4AF37;
-    --gold-500: #D4AF37;
+    --gold-300: #ccb089;
+    --gold-400: #b08d57;
+    --gold-500: #9f7b46;
+    --gold-600: #86653b;
 
     --background: 0 0% 4%;
     --foreground: 40 33% 96%;
@@ -18,19 +20,19 @@
     --card-foreground: 40 33% 96%;
     --popover: 0 0% 7%;
     --popover-foreground: 40 33% 96%;
-    --primary: 43 74% 50%;
+    --primary: 35 35% 52%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 12%;
     --secondary-foreground: 40 33% 96%;
     --muted: 0 0% 12%;
     --muted-foreground: 30 10% 60%;
-    --accent: 43 74% 50%;
+    --accent: 35 35% 52%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 43 74% 50%;
+    --ring: 35 35% 52%;
     --radius: 0.5rem;
   }
 }
@@ -50,10 +52,11 @@
     @apply bg-luxury-black text-ivory-100 font-body;
     background: #111111;
     color: var(--ivory-100);
+    cursor: none;
   }
 
   ::selection {
-    background: rgba(184, 134, 11, 0.3);
+    background: rgba(176, 141, 87, 0.3);
     color: var(--ivory-100);
   }
 
@@ -74,12 +77,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(184, 134, 11, 0.3);
+    background: rgba(176, 141, 87, 0.3);
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(184, 134, 11, 0.5);
+    background: rgba(176, 141, 87, 0.5);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -88,7 +91,7 @@
 
   /* Focus states for accessibility */
  :focus-visible {
-    outline: 2px solid rgba(184, 134, 11, 0.6);
+    outline: 2px solid rgba(176, 141, 87, 0.65);
     outline-offset: 4px;
     border-radius: 2px;
   }
@@ -107,13 +110,13 @@
 
   /* Upper case tracked labels */
   .label-uppercase {
-    @apply uppercase tracking-[0.35em] text-xs font-body font-medium;
-    letter-spacing: 0.35em;
+    @apply uppercase tracking-[0.22em] text-xs font-body font-medium;
+    letter-spacing: 0.22em;
   }
 
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #D4AF37 0%, #F8F7F2 50%, #B8860B 100%);
+    background-image: linear-gradient(135deg, #8f6f42 0%, #b08d57 42%, #dbc8ab 100%);
   }
 
   .glass {
@@ -132,7 +135,7 @@
     background: linear-gradient(
       105deg,
       transparent 40%,
-      rgba(212, 175, 55, 0.06) 50%,
+      rgba(176, 141, 87, 0.08) 50%,
       transparent 60%
     );
     background-size: 200% 100%;
@@ -236,27 +239,42 @@
 
   /* Premium button styles */
   .btn-gold {
-    @apply relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gold-400 text-luxury-black font-bold uppercase tracking-widest text-xs transition-all duration-500 rounded-none;
+    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 text-ivory-100 font-semibold uppercase text-xs transition-all duration-500 rounded-none;
+    letter-spacing: 0.12em;
+    border: 1px solid rgba(176, 141, 87, 0.7);
+    background: linear-gradient(135deg, rgba(133, 103, 63, 0.95) 0%, rgba(176, 141, 87, 0.96) 45%, rgba(199, 170, 128, 0.94) 100%);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
   }
 
   .btn-gold:hover {
-    @apply bg-white scale-105;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.42);
+    filter: saturate(1.05) brightness(1.05);
   }
 
   .btn-outline-gold {
-    @apply relative inline-flex items-center justify-center gap-3 px-8 py-4 border border-gold-400 text-gold-400 font-bold uppercase tracking-widest text-xs transition-all duration-500 rounded-none bg-transparent;
+    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 border text-gold-400 font-semibold uppercase text-xs transition-all duration-500 rounded-none bg-transparent;
+    letter-spacing: 0.12em;
+    border-color: rgba(176, 141, 87, 0.55);
   }
 
   .btn-outline-gold:hover {
-    @apply bg-gold-400 text-luxury-black scale-105;
+    @apply text-ivory-100;
+    background: rgba(176, 141, 87, 0.14);
+    border-color: rgba(176, 141, 87, 0.8);
+    transform: translateY(-2px);
   }
 
   .btn-nav-cta {
-    @apply inline-flex items-center justify-center h-10 px-6 bg-gold-400 text-luxury-black font-bold uppercase tracking-widest text-[10px] transition-all duration-500 rounded-none;
+    @apply inline-flex items-center justify-center h-10 px-6 text-ivory-100 font-semibold uppercase text-[10px] transition-all duration-500 rounded-none;
+    letter-spacing: 0.13em;
+    border: 1px solid rgba(176, 141, 87, 0.75);
+    background: linear-gradient(130deg, #7f623c 0%, #b08d57 42%, #c8ab81 100%);
   }
 
   .btn-nav-cta:hover {
-    @apply bg-white scale-105;
+    transform: translateY(-1px);
+    filter: brightness(1.05);
   }
 
   /* Luxury header glass */
@@ -277,23 +295,24 @@
   /* Header navigation */
   .nav-link-luxury {
     @apply relative font-body text-xs font-medium uppercase text-white/80 transition-all duration-500 px-1 py-2;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.11em;
   }
 
   .nav-link-luxury::after {
     content: '';
-    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-gold-400 transition-all duration-500 ease-out;
+    @apply absolute -bottom-0.5 left-0 h-px w-0 transition-all duration-500 ease-out;
+    background: linear-gradient(90deg, transparent, rgba(176, 141, 87, 0.95), transparent);
     box-shadow: 0 0 0 rgba(212, 175, 55, 0);
   }
 
   .nav-link-luxury:hover {
     @apply text-gold-400;
-    text-shadow: 0 0 28px rgba(212, 175, 55, 0.3);
+    text-shadow: 0 0 24px rgba(176, 141, 87, 0.35);
   }
 
   .nav-link-luxury:hover::after {
     @apply w-full;
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.45);
+    box-shadow: 0 0 12px rgba(176, 141, 87, 0.45);
   }
 
   .nav-link-mobile {
@@ -306,16 +325,16 @@
   }
 
   .btn-header-cta {
-    @apply relative inline-flex items-center justify-center px-8 bg-gold-400 text-luxury-black font-body font-semibold uppercase text-[11px] transition-all duration-500 rounded-sm overflow-hidden whitespace-nowrap;
+    @apply relative inline-flex items-center justify-center px-8 text-ivory-100 font-body font-semibold uppercase text-[11px] transition-all duration-500 rounded-sm overflow-hidden whitespace-nowrap;
     height: 52px;
-    letter-spacing: 0.15em;
-    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35), 0 6px 28px rgba(212, 175, 55, 0.18);
+    letter-spacing: 0.12em;
+    background: linear-gradient(132deg, #7f633e 0%, #b08d57 46%, #c7ab80 100%);
+    box-shadow: 0 0 0 1px rgba(176, 141, 87, 0.4), 0 8px 24px rgba(176, 141, 87, 0.16);
   }
 
   .btn-header-cta:hover {
-    background: #b8962e;
-    color: #0a0a0a;
-    box-shadow: 0 0 0 1px rgba(184, 150, 46, 0.5), 0 10px 36px rgba(212, 175, 55, 0.28);
+    background: linear-gradient(132deg, #8c6f45 0%, #bd9a63 46%, #d7be96 100%);
+    box-shadow: 0 0 0 1px rgba(176, 141, 87, 0.55), 0 12px 34px rgba(176, 141, 87, 0.24);
     transform: translateY(-2px);
   }
 
@@ -328,7 +347,8 @@
   }
 
   .btn-luxury {
-    @apply relative inline-flex items-center gap-3 px-8 py-4 border border-gold-400/50 text-ivory-100 uppercase tracking-widest text-xs font-body transition-all duration-500 bg-transparent rounded-none;
+    @apply relative inline-flex items-center gap-3 px-8 py-4 border border-gold-400/50 text-ivory-100 uppercase text-xs font-body transition-all duration-500 bg-transparent rounded-none;
+    letter-spacing: 0.12em;
   }
 
   .btn-luxury:hover {
@@ -368,6 +388,21 @@
 
   .img-hover-zoom:hover img {
     @apply scale-105;
+  }
+
+  a,
+  button,
+  [data-cursor-hover] {
+    cursor: none;
+  }
+
+  @media (pointer: coarse) {
+    body,
+    a,
+    button,
+    [data-cursor-hover] {
+      cursor: auto;
+    }
   }
 }
 

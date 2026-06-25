@@ -19,24 +19,24 @@ export function Story() {
     <section
       id="studio"
       ref={containerRef}
-      className="relative py-24 lg:py-32 bg-luxury-black overflow-hidden"
+      className="relative py-28 lg:py-36 bg-luxury-black overflow-hidden"
     >
       <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none"
         style={{
           background:
-            'radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%)',
+            'radial-gradient(circle, rgba(176,141,87,0.08) 0%, transparent 70%)',
         }}
       />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
           {/* Logo glass card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[400px] bg-luxury-black/40"
+            className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[420px] bg-luxury-black/40"
           >
             <Logo size="lg" className="justify-center" imageClassName="object-center mx-auto" />
             <p className="mt-8 text-center text-gray-400 text-sm leading-relaxed max-w-xs">
@@ -50,7 +50,7 @@ export function Story() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="label-uppercase text-gold-400 mb-6"
+              className="label-uppercase text-gold-300 mb-6"
             >
               About The Studio
             </motion.p>
@@ -59,7 +59,7 @@ export function Story() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-[1.1]"
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-[1.08] tracking-[-0.015em]"
             >
               Spaces that hold{' '}
               <span className="italic font-light text-gradient-gold-inline">
@@ -72,7 +72,7 @@ export function Story() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-gray-400 text-lg font-light mb-12 leading-relaxed"
+              className="text-gray-300 text-lg font-light mb-14 leading-relaxed"
             >
               At Design My Place, we believe interiors are more than aesthetics.
               They are the backdrop to life&apos;s most meaningful moments. Every
@@ -87,12 +87,12 @@ export function Story() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                  className="border-l-2 border-gold-400 pl-4 lg:pl-6"
+                  className="border-l border-gold-400/65 pl-4 lg:pl-6"
                 >
                   <p className="font-display text-2xl lg:text-3xl text-white mb-1">
                     {stat.value}
                   </p>
-                  <p className="text-[10px] uppercase tracking-widest text-gold-400">
+                  <p className="text-[10px] uppercase tracking-[0.16em] text-gold-300">
                     {stat.label}
                   </p>
                 </motion.div>

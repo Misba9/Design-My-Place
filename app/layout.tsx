@@ -1,13 +1,14 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Montserrat, Playfair_Display } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingCTA } from '@/components/FloatingCTA';
+import { CustomCursor } from '@/components/CustomCursor';
 
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-montserrat',
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -61,8 +62,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="bg-luxury-black text-ivory-100 font-body antialiased overflow-x-hidden">
+        <CustomCursor />
         <Navigation />
         <main>{children}</main>
         <Footer />

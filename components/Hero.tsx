@@ -13,7 +13,7 @@ const heroStats = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen min-h-[600px] h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen min-h-[620px] h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with Ken Burns */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 ken-burns">
@@ -27,8 +27,8 @@ export function Hero() {
           />
         </div>
         {/* Overlay stack */}
-        <div className="absolute inset-0 bg-black/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-luxury-black" />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-luxury-black" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
         <div
           className="absolute inset-0"
@@ -41,12 +41,12 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-12 text-center -translate-y-6 sm:-translate-y-10 lg:-translate-y-14">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-12 text-center -translate-y-10 sm:-translate-y-12 lg:-translate-y-16">
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="label-uppercase text-gold-400 mb-4 lg:mb-6 text-sm"
+          className="label-uppercase text-gold-300 mb-4 lg:mb-5 text-[11px]"
         >
           Ultra-Premium Interior Design
         </motion.p>
@@ -55,7 +55,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-4 lg:mb-6 leading-[1.05] tracking-tight"
+          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.3rem] text-white mb-4 lg:mb-6 leading-[1.04] tracking-[-0.02em]"
         >
           Designing{' '}
           <span className="italic font-light text-gradient-gold-inline">
@@ -69,7 +69,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-gray-300 text-lg font-light max-w-2xl mx-auto mb-8 lg:mb-10 leading-relaxed"
+          className="text-gray-300/95 text-lg font-light max-w-2xl mx-auto mb-8 lg:mb-10 leading-relaxed"
         >
           We create interiors grounded in research, emotion, functionality, and
           timeless aesthetics — spaces that shape how you live, work, and feel.
@@ -79,7 +79,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5"
         >
           <Link href="#contact" className="btn-gold group">
             <span>Book Consultation</span>
@@ -106,13 +106,13 @@ export function Hero() {
         className="absolute bottom-0 left-0 right-0 z-10 hidden lg:block"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-10">
-          <div className="flex items-center justify-center gap-16 border-t border-white/10 pt-8">
+          <div className="flex items-center justify-center gap-12 border-t border-white/10 pt-8">
             {heroStats.map((stat) => (
-              <div key={stat.label} className="border-l-2 border-gold-400 pl-6">
-                <p className="font-display text-3xl text-gold-400 mb-1">
+              <div key={stat.label} className="border-l border-gold-400/60 pl-5">
+                <p className="font-display text-3xl text-gold-300 mb-1">
                   {stat.value}
                 </p>
-                <p className="text-[10px] uppercase tracking-widest text-gray-400">
+                <p className="text-[10px] uppercase tracking-[0.18em] text-gray-400">
                   {stat.label}
                 </p>
               </div>

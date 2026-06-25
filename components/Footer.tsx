@@ -21,14 +21,14 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-luxury-black border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-20">
+    <footer className="bg-luxury-black border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <BrandMark variant="footer" />
             </Link>
-            <p className="text-gray-500 text-sm leading-relaxed mb-6 font-light">
+            <p className="text-gray-400 text-sm leading-relaxed mb-6 font-light">
               Creating interiors that shape how people live, work, and feel.
             </p>
             <div className="flex items-center gap-3">
@@ -42,7 +42,7 @@ export function Footer() {
                   href={href}
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="glass w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gold-400 transition-colors duration-300"
+                  className="glass w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gold-300 transition-colors duration-300"
                   aria-label={label}
                 >
                   <Icon size={18} />
@@ -58,7 +58,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-500 hover:text-gold-400 transition-colors duration-300"
+                    className="text-sm text-gray-400 hover:text-gold-300 transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -76,7 +76,7 @@ export function Footer() {
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
-                    className="text-sm text-gray-500 hover:text-gold-400 transition-colors duration-300"
+                    className="text-sm text-gray-400 hover:text-gold-300 transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -87,13 +87,13 @@ export function Footer() {
 
           <div>
             <h4 className="font-display text-lg text-white mb-6">Studio</h4>
-            <div className="flex items-start gap-3 text-gray-500 mb-4">
-              <MapPin size={18} className="text-gold-400/60 flex-shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 text-gray-400 mb-4">
+              <MapPin size={18} className="text-gold-300/70 flex-shrink-0 mt-0.5" />
               <a
                 href={STUDIO_ADDRESS.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm leading-relaxed font-light hover:text-gold-400 transition-colors duration-300"
+                className="text-sm leading-relaxed font-light hover:text-gold-300 transition-colors duration-300"
               >
                 Design My Place LLP
                 <br />
@@ -106,16 +106,16 @@ export function Footer() {
             </div>
             <a
               href="mailto:hello@designmyplace.in"
-              className="text-sm text-gray-500 hover:text-gold-400 transition-colors duration-300 flex items-center gap-2"
+              className="text-sm text-gray-400 hover:text-gold-300 transition-colors duration-300 flex items-center gap-2"
             >
-              <Mail size={16} className="text-gold-400/60" />
+              <Mail size={16} className="text-gold-300/70" />
               hello@designmyplace.in
             </a>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/5">
+      <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-gray-600 text-xs">
             © {new Date().getFullYear()} Design My Place LLP. All rights reserved.

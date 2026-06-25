@@ -25,10 +25,10 @@ const config: Config = {
           400: '#ddd4c1',
         },
         gold: {
-          300: '#e8c96a',
-          400: '#D4AF37',
-          500: '#D4AF37',
-          600: '#B8860B',
+          300: '#ccb089',
+          400: '#B08D57',
+          500: '#9F7B46',
+          600: '#86653B',
         },
         luxury: {
           black: '#111111',
@@ -45,7 +45,7 @@ const config: Config = {
       },
       fontFamily: {
         display: ['var(--font-playfair)', 'serif'],
-        body: ['var(--font-montserrat)', 'sans-serif'],
+        body: ['var(--font-inter)', 'sans-serif'],
       },
       fontSize: {
         'display-xl': ['7rem', { lineHeight: '0.95', letterSpacing: '-0.02em' }],

@@ -45,15 +45,15 @@ export function Services() {
     <section
       id="services"
       ref={containerRef}
-      className="py-24 lg:py-32 bg-luxury-black"
+      className="py-28 lg:py-36 bg-luxury-black"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="mb-16 lg:mb-20">
+        <div className="mb-16 lg:mb-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="label-uppercase text-gold-400 mb-4"
+            className="label-uppercase text-gold-300 mb-4"
           >
             Our Expertise
           </motion.p>
@@ -61,7 +61,7 @@ export function Services() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl lg:text-6xl text-white"
+            className="font-display text-4xl md:text-5xl lg:text-6xl text-white tracking-[-0.015em]"
           >
             Design{' '}
             <span className="italic font-light text-gradient-gold-inline">
@@ -77,19 +77,19 @@ export function Services() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className="group glass p-8 lg:p-10 transition-all duration-500 hover:border-gold-400/30"
+              className="group glass p-8 lg:p-10 transition-all duration-500 hover:border-gold-400/30 hover:bg-white/[0.06]"
             >
               <div className="w-12 h-12 border border-white/10 flex items-center justify-center mb-6 group-hover:border-gold-400/50 transition-colors duration-500">
                 <service.icon
                   size={22}
-                  className="text-gray-400 group-hover:text-gold-400 transition-colors duration-500"
+                  className="text-gray-400 group-hover:text-gold-300 transition-colors duration-500"
                 />
               </div>
 
-              <h3 className="font-display text-xl text-white mb-3">
+              <h3 className="font-display text-[1.3rem] text-white mb-3">
                 {service.title}
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed font-light">
+              <p className="text-gray-400 text-sm leading-relaxed font-light">
                 {service.description}
               </p>
             </motion.div>
