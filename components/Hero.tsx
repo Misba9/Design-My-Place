@@ -18,7 +18,7 @@ export function Hero() {
       <div className="absolute inset-0">
         <div className="absolute inset-0 ken-burns">
           <Image
-            src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/hero-luxury.jpg"
             alt="Luxury interior design"
             fill
             className="object-cover"
@@ -27,14 +27,14 @@ export function Hero() {
           />
         </div>
         {/* Overlay stack */}
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-luxury-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/20 to-luxury-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/25" />
         <div
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)',
+              'radial-gradient(ellipse at center, rgba(0,0,0,0.04) 35%, rgba(0,0,0,0.35) 100%)',
           }}
         />
         <div className="absolute inset-0 gold-shimmer" />
