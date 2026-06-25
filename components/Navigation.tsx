@@ -5,13 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { BrandMark } from '@/components/BrandMark';
-
-const navLinks = [
-  { href: '#projects', label: 'Projects' },
-  { href: '#studio', label: 'Studio' },
-  { href: '#services', label: 'Services' },
-  { href: '#contact', label: 'Contact' },
-];
+import { navLinks } from '@/lib/navigation';
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -91,7 +85,7 @@ export function Navigation() {
               transition={{ duration: 0.7, delay: 0.55, ease }}
               className="hidden lg:flex shrink-0"
             >
-              <Link href="#contact" className="btn-header-cta">
+              <Link href="/contact" className="btn-header-cta">
                 Book a Consultation
               </Link>
             </motion.div>
@@ -163,7 +157,7 @@ export function Navigation() {
                 className="py-8 border-t border-white/[0.08]"
               >
                 <Link
-                  href="#contact"
+                  href="/contact"
                   onClick={closeMenu}
                   className="btn-header-cta w-full justify-center"
                 >

@@ -81,14 +81,14 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5"
         >
-          <Link href="#contact" className="btn-gold group">
+          <Link href="/contact" className="btn-gold group">
             <span>Book Consultation</span>
             <ArrowRight
               size={16}
               className="group-hover:translate-x-1 transition-transform duration-300"
             />
           </Link>
-          <Link href="#projects" className="btn-outline-gold group">
+          <Link href="/projects" className="btn-outline-gold group">
             <span>Explore Projects</span>
             <ArrowRight
               size={16}

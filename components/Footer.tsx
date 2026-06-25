@@ -4,20 +4,7 @@ import Link from 'next/link';
 import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import { BrandMark } from '@/components/BrandMark';
 import { STUDIO_ADDRESS } from '@/lib/site';
-
-const footerLinks = {
-  explore: [
-    { label: 'Projects', href: '#projects' },
-    { label: 'Studio', href: '#studio' },
-    { label: 'Services', href: '#services' },
-    { label: 'Process', href: '#process' },
-  ],
-  connect: [
-    { label: 'Consultation', href: '#contact' },
-    { label: 'Instagram', href: 'https://instagram.com/design_my_place', external: true },
-    { label: 'WhatsApp', href: 'https://wa.me/9198543210', external: true },
-  ],
-};
+import { footerExploreLinks, footerConnectLinks } from '@/lib/navigation';
 
 export function Footer() {
   return (
@@ -54,7 +41,7 @@ export function Footer() {
           <div>
             <h4 className="font-display text-lg text-white mb-6">Explore</h4>
             <ul className="space-y-3">
-              {footerLinks.explore.map((link) => (
+              {footerExploreLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -70,7 +57,7 @@ export function Footer() {
           <div>
             <h4 className="font-display text-lg text-white mb-6">Connect</h4>
             <ul className="space-y-3">
-              {footerLinks.connect.map((link) => (
+              {footerConnectLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

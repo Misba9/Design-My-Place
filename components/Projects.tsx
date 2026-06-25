@@ -1,150 +1,10 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import Image from 'next/image';
+import { useRef } from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-
-const projects = [
-  {
-    id: 1,
-    name: 'The Meridian Residence',
-    location: 'Mumbai',
-    type: 'Residential',
-    style: 'Contemporary Minimal',
-    year: '2024',
-    featured: true,
-    image:
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  },
-  {
-    id: 2,
-    name: 'Azure Penthouse',
-    location: 'Bangalore',
-    type: 'Luxury Apartment',
-    style: 'Japandi',
-    year: '2024',
-    featured: false,
-    image:
-      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    id: 3,
-    name: 'Verdant Villa',
-    location: 'Pune',
-    type: 'Villa',
-    style: 'Modern Tropical',
-    year: '2023',
-    featured: true,
-    image:
-      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    id: 4,
-    name: 'The Canvas Office',
-    location: 'Mumbai',
-    type: 'Commercial',
-    style: 'Industrial Chic',
-    year: '2024',
-    featured: false,
-    image:
-      'https://images.pexels.com/photos/32370580/pexels-photo-32370580.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  },
-  {
-    id: 5,
-    name: 'Serenity Spa',
-    location: 'Goa',
-    type: 'Hospitality',
-    style: 'Coastal Minimal',
-    year: '2023',
-    featured: false,
-    image:
-      'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    id: 6,
-    name: 'Heritage Revival',
-    location: 'Delhi',
-    type: 'Renovation',
-    style: 'Art Deco Modern',
-    year: '2024',
-    featured: false,
-    image:
-      'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-];
-
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: (typeof projects)[0];
-  index: number;
-}) {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(cardRef, { once: true, margin: '-50px' });
-
-  return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.1 }}
-      whileHover={{ y: -6 }}
-      className="group relative bg-luxury-gray/90 border border-white/10 overflow-hidden card-hover-lift"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="relative h-80 overflow-hidden img-hover-zoom">
-        <Image
-          src={project.image}
-          alt={project.name}
-          fill
-          className={`object-cover transition-transform duration-700 ${
-            isHovered ? 'scale-105' : 'scale-100'
-          }`}
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-
-        {/* Badges */}
-        <div className="absolute top-4 left-4">
-          <span className="glass px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-white/90">
-            {project.type}
-          </span>
-        </div>
-        {project.featured && (
-          <div className="absolute top-4 right-4">
-            <span className="bg-gold-400 text-luxury-black px-3 py-1 text-[10px] uppercase tracking-[0.12em] font-semibold">
-              Featured
-            </span>
-          </div>
-        )}
-
-        {/* Hover overlay CTA */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end justify-center pb-6 transition-opacity duration-500 ${
-            isHovered ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <span className="btn-gold text-[10px] py-3 px-6">
-            View Project
-            <ArrowRight size={14} />
-          </span>
-        </div>
-      </div>
-
-      <div className="p-7">
-        <h3 className="font-display text-[1.35rem] text-white mb-2">{project.name}</h3>
-        <p className="text-gray-400 text-sm flex items-center gap-3">
-          <span>{project.location}</span>
-          <span className="w-1 h-1 rounded-full bg-gold-400/50" />
-          <span>{project.year}</span>
-        </p>
-      </div>
-    </motion.div>
-  );
-}
+import { ProjectsGrid } from '@/components/ProjectsGrid';
 
 export function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -187,22 +47,19 @@ export function Projects() {
               </span>
             </motion.h2>
           </div>
-          <motion.button
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="btn-outline-gold hidden lg:inline-flex"
           >
-            View All Projects
-            <ArrowRight size={14} />
-          </motion.button>
+            <Link href="/projects" className="btn-outline-gold hidden lg:inline-flex">
+              View All Projects
+              <ArrowRight size={14} />
+            </Link>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
+        <ProjectsGrid limit={6} showViewAll />
       </div>
     </section>
   );

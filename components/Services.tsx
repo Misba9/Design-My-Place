@@ -2,40 +2,9 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Home, Building2, Warehouse, Briefcase, Palette, Sofa } from 'lucide-react';
-
-const services = [
-  {
-    icon: Home,
-    title: 'Residential Interiors',
-    description: 'Complete home transformations that reflect your lifestyle and aspirations.',
-  },
-  {
-    icon: Building2,
-    title: 'Luxury Apartments',
-    description: 'Sophisticated urban living spaces designed for modern life.',
-  },
-  {
-    icon: Warehouse,
-    title: 'Villa Design',
-    description: 'Expansive residences crafted with architectural sensitivity.',
-  },
-  {
-    icon: Briefcase,
-    title: 'Commercial Interiors',
-    description: 'Workspaces that inspire productivity and reflect brand identity.',
-  },
-  {
-    icon: Palette,
-    title: 'Workspace Design',
-    description: 'Offices and studios designed for creativity and collaboration.',
-  },
-  {
-    icon: Sofa,
-    title: 'Renovation & Styling',
-    description: 'Breathing new life into existing spaces with refined touches.',
-  },
-];
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { services } from '@/lib/services';
 
 export function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,26 +17,38 @@ export function Services() {
       className="py-28 lg:py-36 bg-luxury-black"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="mb-16 lg:mb-24">
-          <motion.p
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 lg:mb-24 gap-6">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="label-uppercase text-gold-300 mb-4"
+            >
+              Our Expertise
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-white tracking-[-0.015em]"
+            >
+              Design{' '}
+              <span className="italic font-light text-gradient-gold-inline">
+                Services
+              </span>
+            </motion.h2>
+          </div>
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="label-uppercase text-gold-300 mb-4"
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Our Expertise
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl lg:text-6xl text-white tracking-[-0.015em]"
-          >
-            Design{' '}
-            <span className="italic font-light text-gradient-gold-inline">
-              Services
-            </span>
-          </motion.h2>
+            <Link href="/services" className="btn-outline-gold hidden lg:inline-flex">
+              Explore All Services
+              <ArrowRight size={14} />
+            </Link>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">

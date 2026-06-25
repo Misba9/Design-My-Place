@@ -27,7 +27,7 @@ export function FloatingCTA() {
           transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
           className="fixed bottom-6 right-6 z-40 lg:bottom-10 lg:right-10"
         >
-          <Link href="#contact" className="btn-gold text-[10px] py-3 px-5 shadow-lg shadow-black/40">
+          <Link href="/contact" className="btn-gold text-[10px] py-3 px-5 shadow-lg shadow-black/40">
             Book Consultation
           </Link>
         </motion.div>
