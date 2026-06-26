@@ -110,6 +110,17 @@ export function Footer() {
           <p className="text-[10px] uppercase tracking-widest text-gray-600">
             Luxury Interior Design · Bengaluru, India
           </p>
+          <p className="text-[10px] uppercase tracking-[0.14em] text-gray-600">
+            Designed by{' '}
+            <a
+              href="https://www.houseofscalers.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-gold-300 transition-colors duration-300"
+            >
+              House of Scalers
+            </a>
+          </p>
         </div>
       </div>
     </footer>

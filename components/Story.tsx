@@ -2,6 +2,8 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/Logo';
 
 const stats = [
@@ -72,13 +74,28 @@ export function Story() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-gray-300 text-lg font-light mb-14 leading-relaxed"
+              className="text-gray-300 text-lg font-light mb-10 leading-relaxed"
             >
               At Design My Place, we believe interiors are more than aesthetics.
               They are the backdrop to life&apos;s most meaningful moments. Every
               design decision stems from research, emotion, and timeless
               craftsmanship.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="mb-14"
+            >
+              <Link href="/about" className="btn-outline-gold group">
+                <span>About Us</span>
+                <ArrowRight
+                  size={14}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
+              </Link>
+            </motion.div>
 
             <div className="grid grid-cols-2 gap-8">
               {stats.map((stat, index) => (

@@ -101,6 +101,13 @@ export default function StudioPage() {
                 spans residential, commercial, and hospitality — united by a commitment
                 to research, craft, and the stories of those we design for.
               </p>
+              <Link href="/about" className="btn-outline-gold group mr-4">
+                <span>About Us</span>
+                <ArrowRight
+                  size={14}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
+              </Link>
               <Link href="/process" className="btn-outline-gold group">
                 <span>Our Process</span>
                 <ArrowRight

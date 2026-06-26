@@ -1,12 +1,13 @@
 export const navLinks = [
   { href: '/projects', label: 'Projects' },
-  { href: '/studio', label: 'Studio' },
+  { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
 export const footerExploreLinks = [
   { label: 'Projects', href: '/projects' },
+  { label: 'About Us', href: '/about' },
   { label: 'Studio', href: '/studio' },
   { label: 'Services', href: '/services' },
   { label: 'Process', href: '/process' },
