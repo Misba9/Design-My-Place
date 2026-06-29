@@ -37,28 +37,41 @@ export const values = [
 
 export const milestones = [
   {
-    year: '2019',
+    year: '2021',
     title: 'The Beginning',
     description:
       'Design My Place LLP was founded in Bengaluru with a simple belief: interiors should serve life, not the other way around.',
   },
   {
-    year: '2021',
-    title: 'Expanding Horizons',
+    year: '2022',
+    title: 'First Residences',
     description:
-      'Our first Mumbai and Delhi projects marked the start of a pan-India practice spanning residential and commercial work.',
+      'Our early residential projects established a research-led approach — spaces shaped by the people, climate, and stories of each home.',
   },
   {
     year: '2023',
-    title: 'Hospitality & Wellness',
+    title: 'Pan-India Practice',
     description:
-      'We extended our expertise into spas, boutique hotels, and wellness spaces — environments where atmosphere is everything.',
+      'Signature work in Mumbai and Delhi — including the Art Deco-inspired 77 Life villa — marked the start of a practice spanning cities across India.',
   },
   {
     year: '2024',
-    title: '75+ Projects',
+    title: 'Homes & Experience Centres',
     description:
-      'A milestone of trust — over 75 completed projects and 150+ clients who chose us to shape their most personal spaces.',
+      'A diverse portfolio year — from premium apartments and penthouses to the ARTIUS Experience Centre, blending bespoke living with immersive brand environments.',
+  },
+  
+  {
+    year: '2025',
+    title: 'End-to-End Craft',
+    description:
+      'Deeper focus on materiality, artisan detail, and turnkey delivery — from concept and procurement through execution and final styling.',
+  },
+  {
+    year: '2026',
+    title: '6+ Projects Delivered',
+    description:
+      'A milestone of trust — six completed projects across 12+ cities, built on collaboration, timeless craft, and 100% client satisfaction.',
   },
 ] as const;
 

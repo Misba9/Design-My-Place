@@ -361,7 +361,19 @@
 
   /* Input field styling */
   .input-luxury {
-    @apply w-full bg-transparent border-b border-ivory-200/20 py-4 text-ivory-100 placeholder:text-ivory-400/40 focus:border-gold-500/50 focus:outline-none transition-colors duration-300;
+    @apply w-full min-w-0 bg-transparent border-b border-ivory-200/20 py-4 text-base text-ivory-100 placeholder:text-ivory-400/40 focus:border-gold-500/50 focus:outline-none transition-colors duration-300;
+  }
+
+  select.input-luxury {
+    @apply pr-8 cursor-pointer appearance-none;
+  }
+
+  select.input-luxury:invalid {
+    @apply text-ivory-400/40;
+  }
+
+  select.input-luxury option {
+    @apply bg-charcoal-900 text-ivory-100;
   }
 
   .input-luxury-light {

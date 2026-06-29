@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { MapPin, Phone, Mail, Send, Loader2, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Loader2, CheckCircle, ChevronDown } from 'lucide-react';
 import { STUDIO_ADDRESS } from '@/lib/site';
 
 const projectTypes = [
@@ -23,6 +23,73 @@ const budgetRanges = [
   'Above 1 Crore',
   'Not Sure Yet',
 ];
+
+function FieldLabel({
+  htmlFor,
+  children,
+}: {
+  htmlFor: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className="block text-[10px] uppercase tracking-[0.14em] text-ivory-400/50 mb-3"
+    >
+      {children}
+    </label>
+  );
+}
+
+function SelectField({
+  id,
+  name,
+  label,
+  defaultOption,
+  options,
+  required = false,
+}: {
+  id: string;
+  name: string;
+  label?: string;
+  defaultOption: string;
+  options: string[];
+  required?: boolean;
+}) {
+  const [value, setValue] = useState('');
+
+  return (
+    <div>
+      {label ? <FieldLabel htmlFor={id}>{label}</FieldLabel> : null}
+      <div className="relative min-w-0">
+        <select
+          id={id}
+          name={name}
+          required={required}
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+          className={`input-luxury bg-transparent w-full ${
+            value ? 'text-ivory-100' : 'text-ivory-400/40'
+          }`}
+        >
+          <option value="" disabled className="bg-charcoal-900">
+            {defaultOption}
+          </option>
+          {options.map((option) => (
+            <option key={option} value={option} className="bg-charcoal-900">
+              {option}
+            </option>
+          ))}
+        </select>
+        <ChevronDown
+          size={16}
+          className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-ivory-400/40"
+          aria-hidden
+        />
+      </div>
+    </div>
+  );
+}
 
 export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -194,42 +261,21 @@ export function Contact() {
                     className="input-luxury"
                   />
                 </div>
+                {/* Project Type & Budget */}
+                <SelectField
+                  id="projectType"
+                  name="projectType"
+                  defaultOption="What kind of space are we designing?"
+                  options={projectTypes}
+                  required
+                />
 
-                {/* Project Type & Budget - Side by side */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  <div>
-                    <select
-                      name="projectType"
-                      required
-                      className="input-luxury bg-transparent cursor-pointer appearance-none"
-                    >
-                      <option value="" className="bg-charcoal-900">
-                        What kind of space are we designing?
-                      </option>
-                      {projectTypes.map((type) => (
-                        <option key={type} value={type} className="bg-charcoal-900">
-                          {type}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <select
-                      name="budget"
-                      className="input-luxury bg-transparent cursor-pointer appearance-none"
-                    >
-                      <option value="" className="bg-charcoal-900">
-                        Estimated investment for your project
-                      </option>
-                      {budgetRanges.map((range) => (
-                        <option key={range} value={range} className="bg-charcoal-900">
-                          {range}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+                <SelectField
+                  id="budget"
+                  name="budget"
+                  defaultOption="Estimated investment for your project"
+                  options={budgetRanges}
+                />
 
                 {/* Location */}
                 <div>
@@ -242,14 +288,14 @@ export function Contact() {
                 </div>
 
                 {/* Message */}
-                <div>
+                {/* <div>
                   <textarea
                     name="message"
                     placeholder="Tell us about your dream space, lifestyle, inspirations, or challenges."
                     rows={4}
                     className="input-luxury resize-none"
                   />
-                </div>
+                </div> */}
 
                 {/* Submit Button */}
                 <button
