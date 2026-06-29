@@ -19,11 +19,13 @@ export function Hero() {
         <div className="absolute inset-0 ken-burns">
           <Image
             src="/hero-luxury.jpg"
-            alt="Luxury interior design"
+            alt="Luxury interior design by Design My Place — Bangalore and Delhi NCR"
             fill
             className="object-cover"
             priority
             sizes="100vw"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBRIhMQYTQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAZEQACAwEAAAAAAAAAAAAAAAABAgADESH/2gAMAwEAAhEDEEA/AJOk6hp2nWqXNjbxzQtkqwyCP0qK4u7e7t2guoFljP3lYZqKqKKKKAP//Z"
           />
         </div>
         {/* Overlay stack */}
@@ -48,7 +50,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="label-uppercase text-gold-300 mb-4 lg:mb-5 text-[11px]"
         >
-          Ultra-Premium Interior Design
+          Luxury Interior Design · Bangalore & Delhi NCR
         </motion.p>
 
         <motion.h1

@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import { BrandMark } from '@/components/BrandMark';
 import { STUDIO_ADDRESS } from '@/lib/site';
-import { footerExploreLinks, footerConnectLinks } from '@/lib/navigation';
+import { footerExploreLinks, footerConnectLinks, footerLocationLinks } from '@/lib/navigation';
 
 export function Footer() {
   return (
     <footer className="bg-luxury-black border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <BrandMark variant="footer" />
@@ -63,6 +63,22 @@ export function Footer() {
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
+                    className="text-sm text-gray-400 hover:text-gold-300 transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display text-lg text-white mb-6">Locations</h4>
+            <ul className="space-y-3">
+              {footerLocationLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
                     className="text-sm text-gray-400 hover:text-gold-300 transition-colors duration-300"
                   >
                     {link.label}

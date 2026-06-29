@@ -4,33 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
 import { Quote } from 'lucide-react';
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'Priya & Arjun Mehta',
-    project: '77 Life',
-    location: 'Mumbai',
-    quote: 'Design My Place transformed our vision into a home that feels uniquely ours. Every corner tells our story, and the attention to detail is extraordinary.',
-    image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200',
-  },
-  {
-    id: 2,
-    name: 'Vikram Singh',
-    project: 'ARTIUS Experience Centre',
-    location: 'India',
-    quote: 'They understood our brand before we did. Our workspace now communicates our values to every visitor. The design process was incredibly thorough.',
-    image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200',
-  },
-  {
-    id: 3,
-    name: 'Ananya Reddy',
-    project: 'Delhi Villa',
-    location: 'Delhi',
-    quote: 'The spa has become a destination in itself. Guests keep asking about the design. They somehow captured the exact mood we envisioned.',
-    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200',
-  },
-];
+import { testimonials, trustBadges, googleReviewsUrl } from '@/lib/testimonials';
 
 export function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -121,20 +95,20 @@ export function Testimonials() {
           className="mt-16 pt-12 border-t border-ivory-200/5"
         >
           <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
-            <div className="text-center">
-              <p className="font-display text-3xl lg:text-4xl text-gold-400">6+</p>
-              <p className="label-uppercase text-ivory-400/50 mt-1">Projects</p>
-            </div>
-            <div className="w-px h-12 bg-ivory-200/10 hidden lg:block" />
-            <div className="text-center">
-              <p className="font-display text-3xl lg:text-4xl text-gold-400">100%</p>
-              <p className="label-uppercase text-ivory-400/50 mt-1">Satisfaction</p>
-            </div>
-            <div className="w-px h-12 bg-ivory-200/10 hidden lg:block" />
-            <div className="text-center">
-              <p className="font-display text-3xl lg:text-4xl text-gold-400">5.0</p>
-              <p className="label-uppercase text-ivory-400/50 mt-1">Rating</p>
-            </div>
+            {trustBadges.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="font-display text-3xl lg:text-4xl text-gold-400">{stat.value}</p>
+                <p className="label-uppercase text-ivory-400/50 mt-1">{stat.label}</p>
+              </div>
+            ))}
+            <a
+              href={googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] uppercase tracking-widest text-ivory-400/50 hover:text-gold-300 transition-colors"
+            >
+              Google Reviews →
+            </a>
           </div>
         </motion.div>
       </div>

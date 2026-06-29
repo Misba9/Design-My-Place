@@ -9,6 +9,7 @@ type PageHeroProps = {
   titleAccent?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
 };
 
 export function PageHero({
@@ -17,17 +18,26 @@ export function PageHero({
   titleAccent,
   description,
   image = '/hero-luxury.jpg',
+  imageAlt,
 }: PageHeroProps) {
+  const altText =
+    imageAlt ||
+    (titleAccent
+      ? `${title} ${titleAccent} — Design My Place luxury interior design`
+      : `${title} — Design My Place luxury interior design`);
+
   return (
     <section className="relative min-h-[52vh] flex items-end overflow-hidden pt-28">
       <div className="absolute inset-0">
         <Image
           src={image}
-          alt=""
+          alt={altText}
           fill
           className="object-cover"
           priority
           sizes="100vw"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBRIhMQYTQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAZEQACAwEAAAAAAAAAAAAAAAABAgADESH/2gAMAwEAAhEDEEA/AJOk6hp2nWqXNjbxzQtkqwyCP0qK4u7e7t2guoFljP3lYZqKqKKKKAP//Z"
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-black/40 to-black/30" />

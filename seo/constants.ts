@@ -1,0 +1,40 @@
+export const PRIMARY_KEYWORDS = [
+  'interior designer Bangalore',
+  'interior designers Bangalore',
+  'luxury interior designer Bangalore',
+  'premium interior designer Bangalore',
+  'home interior designer Bangalore',
+  'villa interior designer Bangalore',
+  'apartment interior designer Bangalore',
+  'bespoke interior design Bangalore',
+  'interior design company Bangalore',
+  'interior decorators Bangalore',
+  'interior designer Delhi',
+  'luxury interior designer Delhi',
+  'premium interior designer Delhi',
+  'home interior designer Delhi',
+  'villa interior designer Delhi',
+  'interior design company Delhi',
+  'interior designers Delhi NCR',
+  'luxury interiors Delhi NCR',
+] as const;
+
+export const SECONDARY_KEYWORDS = [
+  'Luxury Home Interiors',
+  'Premium Interior Design',
+  'Luxury Villa Interiors',
+  'Modern Interior Design',
+  'Minimal Interior Design',
+  'Residential Interior Design',
+  'Interior Renovation',
+  'Luxury Apartment Interiors',
+  'Turnkey Interior Design',
+  'Custom Interior Design',
+  'High End Interior Design',
+  'Luxury Home Renovation',
+  'Kitchen Interior Design',
+  'Bedroom Interior Design',
+  'Living Room Interior Design',
+] as const;
+
+export const DEFAULT_KEYWORDS = [...PRIMARY_KEYWORDS, ...SECONDARY_KEYWORDS].join(', ');

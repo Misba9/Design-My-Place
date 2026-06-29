@@ -3,22 +3,43 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
+import { JsonLd } from '@/components/JsonLd';
 import { services, serviceFaqs } from '@/lib/services';
+import { servicePages } from '@/lib/service-pages';
+import {
+  breadcrumbSchema,
+  buildSchemaGraph,
+  createPageMetadata,
+  faqSchema,
+  professionalServiceSchema,
+} from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Services | Design My Place LLP',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Interior Design Services — Luxury Homes',
   description:
-    'Luxury interior design services — residential, commercial, villa, workspace, and renovation projects across India.',
-};
+    'Luxury interior design services — villas, apartments, renovation & turnkey delivery in Bangalore, Delhi NCR & India. Budgets above ₹25 Lakhs.',
+  path: '/services',
+});
 
 export default function ServicesPage() {
+  const schema = buildSchemaGraph(
+    professionalServiceSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Services', path: '/services' },
+    ]),
+    faqSchema(serviceFaqs),
+  );
+
   return (
     <>
+      <JsonLd data={schema} />
       <PageHero
         label="Our Expertise"
         title="Design"
         titleAccent="Services"
         description="From concept to completion, we offer end-to-end interior design services tailored to how you live, work, and entertain."
+        imageAlt="Luxury interior design services by Design My Place"
       />
 
       <section className="py-24 lg:py-32 bg-luxury-black">
@@ -96,16 +117,45 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
+          <div className="mt-10 text-center">
+            <Link href="/faq" className="text-sm text-gray-400 hover:text-gold-300 transition-colors">
+              View all frequently asked questions →
+            </Link>
+          </div>
         </div>
       </section>
 
       <section className="py-20 bg-luxury-black border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <p className="label-uppercase text-gold-300 mb-6">Specialisations</p>
+          <h2 className="font-display text-2xl lg:text-3xl text-white mb-8">
+            Dedicated service pages
+          </h2>
+          <div className="flex flex-wrap gap-3 mb-10">
+            {servicePages.map((sp) => (
+              <Link
+                key={sp.slug}
+                href={`/services/${sp.slug}`}
+                className="text-sm text-gray-400 hover:text-gold-300 border border-white/10 px-4 py-2 transition-colors"
+              >
+                {sp.title}
+              </Link>
+            ))}
+          </div>
+          <Link href="/process" className="btn-outline-gold group">
+            <span>Explore Our Process</span>
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="py-20 bg-luxury-gray border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
           <p className="text-gray-400 font-light mb-8">
             Want to understand how we bring projects to life?
           </p>
-          <Link href="/process" className="btn-outline-gold group">
-            <span>Explore Our Process</span>
+          <Link href="/faq" className="btn-outline-gold group">
+            <span>Read Our FAQ</span>
             <ArrowRight
               size={14}
               className="group-hover:translate-x-1 transition-transform duration-300"

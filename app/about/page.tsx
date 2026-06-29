@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { Logo } from '@/components/Logo';
+import { JsonLd } from '@/components/JsonLd';
 import {
   aboutStats,
   missionVision,
@@ -12,21 +13,32 @@ import {
   milestones,
   differentiators,
 } from '@/lib/about';
+import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'About Us | Design My Place LLP',
+export const metadata: Metadata = createPageMetadata({
+  title: 'About Us — Luxury Interior Design Studio',
   description:
-    'Learn about Design My Place — our story, mission, values, and the team behind luxury interior design projects across India.',
-};
+    'Design My Place LLP — Bengaluru luxury interior designers creating bespoke homes & villas across Bangalore, Delhi NCR & India since 2021.',
+  path: '/about',
+});
 
 export default function AboutPage() {
+  const schema = buildSchemaGraph(
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'About', path: '/about' },
+    ]),
+  );
+
   return (
     <>
+      <JsonLd data={schema} />
       <PageHero
         label="About Us"
         title="Designing spaces that"
         titleAccent="matter"
         description="We are a Bengaluru-based luxury interior design studio creating meaningful environments for homes, workplaces, and hospitality — across India."
+        imageAlt="Design My Place luxury interior design studio in Bangalore"
       />
 
       <section className="py-24 lg:py-32 bg-luxury-black">

@@ -6,13 +6,16 @@ import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { Logo } from '@/components/Logo';
 import { Testimonials } from '@/components/Testimonials';
+import { JsonLd } from '@/components/JsonLd';
 import { STUDIO_ADDRESS } from '@/lib/site';
+import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Studio | Design My Place LLP',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Our Studio — Bengaluru Interior Design',
   description:
-    'Learn about Design My Place — a Bengaluru-based luxury interior design studio creating meaningful spaces across India.',
-};
+    'Visit Design My Place studio on Church Street, Bengaluru. Luxury interior designers creating bespoke homes across Bangalore & Delhi NCR.',
+  path: '/studio',
+});
 
 const values = [
   {
@@ -63,13 +66,22 @@ const team = [
 ];
 
 export default function StudioPage() {
+  const schema = buildSchemaGraph(
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Studio', path: '/studio' },
+    ]),
+  );
+
   return (
     <>
+      <JsonLd data={schema} />
       <PageHero
         label="About The Studio"
         title="Spaces that hold"
         titleAccent="your story"
         description="At Design My Place, we believe interiors are more than aesthetics. They are the backdrop to life's most meaningful moments."
+        imageAlt="Design My Place interior design studio in Bengaluru"
       />
 
       <section className="py-24 lg:py-32 bg-luxury-black">

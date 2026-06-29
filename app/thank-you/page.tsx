@@ -1,0 +1,50 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { CheckCircle } from 'lucide-react';
+import { PageCTA } from '@/components/PageCTA';
+import { TrustBadges } from '@/components/TrustBadges';
+import { createPageMetadata } from '@/seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Thank You — Consultation Received',
+  description:
+    'Thank you for reaching out to Design My Place. We will be in touch shortly to discuss your interior design project.',
+  path: '/thank-you',
+  noIndex: true,
+});
+
+export default function ThankYouPage() {
+  return (
+    <>
+      <section className="min-h-[60vh] flex items-center justify-center bg-luxury-black px-6 pt-28">
+        <div className="text-center max-w-lg">
+          <CheckCircle size={48} className="text-gold-300 mx-auto mb-6" />
+          <p className="label-uppercase text-gold-300 mb-4">Thank You</p>
+          <h1 className="font-display text-4xl lg:text-5xl text-white mb-6">
+            We received your message
+          </h1>
+          <p className="text-gray-400 font-light mb-10 leading-relaxed">
+            Our team will review your enquiry and respond within one business day.
+            We look forward to learning about your vision.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/projects" className="btn-outline-gold">
+              Explore Projects
+            </Link>
+            <Link href="/" className="btn-gold">
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </section>
+      <TrustBadges showStats />
+      <PageCTA
+        title="While you wait,"
+        titleAccent="explore our work"
+        description="Browse our portfolio of luxury residential and commercial interiors across India."
+        buttonLabel="View Projects"
+        buttonHref="/projects"
+      />
+    </>
+  );
+}

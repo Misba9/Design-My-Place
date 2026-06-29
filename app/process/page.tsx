@@ -3,13 +3,16 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
+import { JsonLd } from '@/components/JsonLd';
 import { processSteps } from '@/lib/process';
+import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Our Process | Design My Place LLP',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Our Interior Design Process — 6 Phases',
   description:
-    'Discover our six-phase interior design process — from discovery and research to styling and handover.',
-};
+    'Our six-phase luxury interior design process — discovery, concept, design, procurement, execution & handover for Bangalore & Delhi NCR homes.',
+  path: '/process',
+});
 
 const expectations = [
   {
@@ -30,13 +33,22 @@ const expectations = [
 ];
 
 export default function ProcessPage() {
+  const schema = buildSchemaGraph(
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Process', path: '/process' },
+    ]),
+  );
+
   return (
     <>
+      <JsonLd data={schema} />
       <PageHero
         label="How We Work"
         title="Our"
         titleAccent="Process"
         description="A structured, six-phase approach that transforms your vision into a finished space — with clarity, craft, and care at every step."
+        imageAlt="Design My Place interior design process for luxury homes"
       />
 
       <section className="py-24 lg:py-32 bg-luxury-gray">
