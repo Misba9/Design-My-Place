@@ -9,7 +9,7 @@ const testimonials = [
   {
     id: 1,
     name: 'Priya & Arjun Mehta',
-    project: 'Meridian Residence',
+    project: '77 Life',
     location: 'Mumbai',
     quote: 'Design My Place transformed our vision into a home that feels uniquely ours. Every corner tells our story, and the attention to detail is extraordinary.',
     image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200',
@@ -17,16 +17,16 @@ const testimonials = [
   {
     id: 2,
     name: 'Vikram Singh',
-    project: 'Canvas Office',
-    location: 'Bangalore',
+    project: 'ARTIUS Experience Centre',
+    location: 'India',
     quote: 'They understood our brand before we did. Our workspace now communicates our values to every visitor. The design process was incredibly thorough.',
     image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200',
   },
   {
     id: 3,
     name: 'Ananya Reddy',
-    project: 'Serenity Spa',
-    location: 'Goa',
+    project: 'Delhi Villa',
+    location: 'Delhi',
     quote: 'The spa has become a destination in itself. Guests keep asking about the design. They somehow captured the exact mood we envisioned.',
     image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200',
   },
@@ -122,7 +122,7 @@ export function Testimonials() {
         >
           <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
             <div className="text-center">
-              <p className="font-display text-3xl lg:text-4xl text-gold-400">50+</p>
+              <p className="font-display text-3xl lg:text-4xl text-gold-400">6+</p>
               <p className="label-uppercase text-ivory-400/50 mt-1">Projects</p>
             </div>
             <div className="w-px h-12 bg-ivory-200/10 hidden lg:block" />

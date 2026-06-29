@@ -38,10 +38,10 @@ const values = [
 ];
 
 const stats = [
-  { value: '75+', label: 'Projects Delivered' },
-  { value: '150+', label: 'Satisfied Clients' },
-  { value: '12+', label: 'Cities Served' },
+  { value: '6+', label: 'Projects Delivered' },
   { value: '5+', label: 'Years of Excellence' },
+  { value: '12+', label: 'Cities Served' },
+  { value: '100%', label: 'Client Satisfaction' },
 ];
 
 const team = [

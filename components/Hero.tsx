@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const heroStats = [
-  { value: '75+', label: 'Projects Completed' },
-  { value: '150+', label: 'Happy Clients' },
+  { value: '6+', label: 'Projects Completed' },
+  // { value: '150+', label: 'Happy Clients' },
   { value: '5+', label: 'Years Experience' },
 ];
 
