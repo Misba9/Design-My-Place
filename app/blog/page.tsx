@@ -36,6 +36,7 @@ export default function BlogIndexPage() {
       />
 
       <PageHero
+        offsetNav={false}
         label="Insights & Guides"
         title="Interior Design"
         titleAccent="Journal"

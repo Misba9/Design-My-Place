@@ -90,6 +90,7 @@ export default function ProjectDetailPage({ params }: Props) {
       />
 
       <PageHero
+        offsetNav={false}
         label={`${project.type} · ${project.location}`}
         title={project.name}
         description={project.description}

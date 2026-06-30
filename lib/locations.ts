@@ -68,11 +68,11 @@ export const locations: Location[] = [
       'Lalbagh Botanical Garden',
     ],
     mapsEmbedUrl:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.6012!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0x2e2c8e5e5e5e5e5e5e!2sChurch%20Street%2C%20Bengaluru!5e0!3m2!1sen!2sin!4v1',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Church+Street+Bengaluru',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d801.5145595732747!2d77.60372151405022!3d12.974891063427737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17f7d6c600c7%3A0x1f745b4c2bc4d33f!2sDesign%20my%20place%20LLP!5e0!3m2!1sen!2sin!4v1782851671446!5m2!1sen!2sin',
+    mapsUrl: 'https://maps.app.goo.gl/jeugCZd34etYN9PE9',
     geo: {
-      latitude: 12.9716,
-      longitude: 77.6012,
+      latitude: 12.9748911,
+      longitude: 77.6037215,
     },
     whyChooseUs:
       'Bangalore homes often ask for a rare mix of refinement and everyday ease: spaces that can host, work hard, and still feel intimate at the end of the day. Our studio brings architectural planning, custom furniture detailing, and disciplined site coordination into one process, so the final home feels curated rather than assembled.',

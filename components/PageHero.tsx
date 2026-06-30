@@ -11,6 +11,8 @@ type PageHeroProps = {
   description?: string;
   image?: string;
   imageAlt?: string;
+  /** Set false when breadcrumbs above already clear the fixed nav */
+  offsetNav?: boolean;
 };
 
 export function PageHero({
@@ -20,6 +22,7 @@ export function PageHero({
   description,
   image = HERO_IMAGE,
   imageAlt,
+  offsetNav = true,
 }: PageHeroProps) {
   const altText =
     imageAlt ||
@@ -28,7 +31,11 @@ export function PageHero({
       : `${title} — Design My Place luxury interior design`);
 
   return (
-    <section className="relative flex min-h-[38vh] sm:min-h-[42vh] md:min-h-[48vh] lg:min-h-[52vh] items-end pt-20 sm:pt-24 lg:pt-28">
+    <section
+      className={`relative flex min-h-[38vh] sm:min-h-[42vh] md:min-h-[48vh] lg:min-h-[52vh] items-end ${
+        offsetNav ? 'nav-offset' : ''
+      }`}
+    >
       <div className="absolute inset-0 overflow-hidden">
         <ContentImage
           src={image}

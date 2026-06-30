@@ -17,8 +17,9 @@ const projectTypes = [
 
 const budgetRanges = [
   'Under 10 Lakhs',
-  '10-25 Lakhs',
-  '25-50 Lakhs',
+  '10-20 Lakhs',
+  '20-30 Lakhs',
+  '30-50 Lakhs',
   '50 Lakhs - 1 Crore',
   'Above 1 Crore',
   'Not Sure Yet',
@@ -91,7 +92,13 @@ function SelectField({
   );
 }
 
-export function Contact() {
+export function Contact({
+  className,
+  showIntro = true,
+}: {
+  className?: string;
+  showIntro?: boolean;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -112,39 +119,44 @@ export function Contact() {
     <section
       id="get-in-touch"
       ref={containerRef}
-      className="section-y bg-luxury-black"
+      className={`section-y bg-luxury-black ${className ?? ''}`}
     >
       <div className="container-site">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20">
           {/* Left Side - Contact Info */}
           <div className="flex flex-col justify-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="label-uppercase text-gold-400 mb-6"
-            >
-              Get In Touch
-            </motion.p>
+            {showIntro && (
+              <>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6 }}
+                  className="label-uppercase text-gold-400 mb-6"
+                >
+                  Get In Touch
+                </motion.p>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-fluid-h2 text-white mb-6 sm:mb-8"
-            >
-              Start Your <span className="italic font-light text-gradient-gold-inline">Journey</span>
-            </motion.h2>
+                <motion.h2
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  className="font-display text-fluid-h2 text-white mb-6 sm:mb-8"
+                >
+                  Start Your{' '}
+                  <span className="italic font-light text-gradient-gold-inline">Journey</span>
+                </motion.h2>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-gray-400 text-lg font-light leading-relaxed mb-12 max-w-md"
-            >
-              Every great design begins with a conversation. Tell us about your vision
-              and let&apos;s create something extraordinary together.
-            </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="text-gray-400 text-lg font-light leading-relaxed mb-12 max-w-md"
+                >
+                  Every great design begins with a conversation. Tell us about your vision
+                  and let&apos;s create something extraordinary together.
+                </motion.p>
+              </>
+            )}
 
             {/* Contact Details */}
             <motion.div

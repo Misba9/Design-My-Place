@@ -7,7 +7,10 @@ type BreadcrumbsProps = {
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb" className="py-3 sm:py-4 bg-luxury-black border-b border-white/5">
+    <nav
+      aria-label="Breadcrumb"
+      className="nav-offset py-3 sm:py-4 bg-luxury-black border-b border-white/5"
+    >
       <div className="container-site">
         <ol className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
           {items.map((item, index) => (

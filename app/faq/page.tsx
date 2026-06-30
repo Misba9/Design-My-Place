@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
 import {
   breadcrumbSchema,
@@ -53,7 +54,15 @@ export default function FaqPage() {
     <>
       <JsonLd data={schema} />
 
+      <Breadcrumbs
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'FAQ', path: '/faq' },
+        ]}
+      />
+
       <PageHero
+        offsetNav={false}
         label="Help & Guidance"
         title="Frequently Asked"
         titleAccent="Questions"
@@ -101,10 +110,6 @@ export default function FaqPage() {
           <div className="flex flex-wrap gap-4">
             <Link href="/services" className="btn-outline-gold group">
               <span>Our Services</span>
-              <ArrowRight size={14} />
-            </Link>
-            <Link href="/process" className="btn-outline-gold group">
-              <span>Our Process</span>
               <ArrowRight size={14} />
             </Link>
             <Link href="/contact" className="btn-outline-gold group">

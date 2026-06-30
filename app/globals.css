@@ -53,9 +53,12 @@
     @apply bg-luxury-black text-ivory-100 font-body;
     background: #111111;
     color: var(--ivory-100);
-    cursor: none;
     overflow-x: clip;
     min-width: 320px;
+  }
+
+  html.custom-cursor-active body {
+    cursor: none;
   }
 
   ::selection {
@@ -404,17 +407,17 @@
     @apply scale-105;
   }
 
-  a,
-  button,
-  [data-cursor-hover] {
+  html.custom-cursor-active a,
+  html.custom-cursor-active button,
+  html.custom-cursor-active [data-cursor-hover] {
     cursor: none;
   }
 
   @media (pointer: coarse) {
-    body,
-    a,
-    button,
-    [data-cursor-hover] {
+    html.custom-cursor-active body,
+    html.custom-cursor-active a,
+    html.custom-cursor-active button,
+    html.custom-cursor-active [data-cursor-hover] {
       cursor: auto;
     }
   }
@@ -445,6 +448,11 @@
 
   .section-y-sm {
     @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+
+  /* Clearance below fixed site header */
+  .nav-offset {
+    @apply pt-20 sm:pt-24 lg:pt-28;
   }
 
   /* Fluid typography */

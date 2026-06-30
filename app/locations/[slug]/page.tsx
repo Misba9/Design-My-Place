@@ -74,6 +74,7 @@ export default function LocationPage({ params }: Props) {
       />
 
       <PageHero
+        offsetNav={false}
         label={`${location.region} · Luxury Interiors`}
         title={location.heroTitle}
         titleAccent={location.heroAccent}
@@ -214,7 +215,11 @@ export default function LocationPage({ params }: Props) {
 
       <LocationMap
         embedUrl={location.mapsEmbedUrl}
-        title={`Design My Place — serving ${location.name}`}
+        title={
+          location.slug === 'bangalore'
+            ? 'Design My Place LLP — Bengaluru Studio'
+            : `Design My Place — serving ${location.name}`
+        }
       />
 
       <section className="py-20 bg-luxury-black border-t border-white/10">

@@ -1,3 +1,5 @@
+import { STUDIO_ADDRESS } from '@/lib/site';
+
 export const testimonials = [
   {
     id: 1,
@@ -35,5 +37,4 @@ export const trustBadges = [
   { value: '₹25L+', label: 'Minimum Budget' },
 ] as const;
 
-export const googleReviewsUrl =
-  'https://www.google.com/maps/search/?api=1&query=Design+My+Place+Church+Street+Bengaluru';
+export const googleReviewsUrl = STUDIO_ADDRESS.mapsUrl;

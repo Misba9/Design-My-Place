@@ -9,9 +9,10 @@ import { teamLead, teamMembers, teamSection } from '@/lib/team';
 
 type TeamSectionProps = {
   showStudioLink?: boolean;
+  className?: string;
 };
 
-export function TeamSection({ showStudioLink = true }: TeamSectionProps) {
+export function TeamSection({ showStudioLink = true, className }: TeamSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-80px' });
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -20,7 +21,7 @@ export function TeamSection({ showStudioLink = true }: TeamSectionProps) {
     <section
       id="meet-our-team"
       ref={containerRef}
-      className="relative section-y bg-luxury-black overflow-hidden"
+      className={`relative section-y bg-luxury-black overflow-hidden ${className ?? ''}`}
     >
       {/* Ambient glow */}
       <div
@@ -99,7 +100,7 @@ export function TeamSection({ showStudioLink = true }: TeamSectionProps) {
           {/* Gold accent bar */}
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/50 to-transparent" />
 
-          <div className="grid lg:grid-cols-12 gap-0">
+          <div className="grid lg:grid-cols-12 gap-0 lg:items-stretch">
             {/* Portrait */}
             <div className="lg:col-span-5 relative">
               <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[480px] overflow-hidden">
@@ -120,41 +121,19 @@ export function TeamSection({ showStudioLink = true }: TeamSectionProps) {
             </div>
 
             {/* Content */}
-            <div className="lg:col-span-7 flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-16 relative">
-              <span
-                aria-hidden
-                className="absolute top-6 right-6 sm:top-8 sm:right-8 font-display text-[5rem] sm:text-[6rem] leading-none text-gold-500/[0.06] select-none pointer-events-none"
-              >
-                01
-              </span>
-
+            <div className="lg:col-span-7 flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-16">
               <p className="label-uppercase text-gold-300 mb-4 sm:mb-5">
                 {teamLead.role}
               </p>
-              <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] text-white leading-[1.08] mb-6 sm:mb-8">
+              <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] text-white leading-[1.08] mb-5 sm:mb-6">
                 {teamLead.name}
               </h3>
 
               {teamLead.bio && (
-                <p className="text-gray-400 font-light leading-relaxed text-sm sm:text-base lg:text-lg max-w-xl mb-8 sm:mb-10">
+                <p className="text-gray-400 font-light leading-relaxed text-sm sm:text-base lg:text-lg max-w-xl">
                   {teamLead.bio}
                 </p>
               )}
-
-              <div className="flex items-center gap-6 pt-6 border-t border-white/10">
-                <div className="border-l border-gold-400/60 pl-4">
-                  <p className="font-display text-xl sm:text-2xl text-white">6+</p>
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-gold-300 mt-0.5">
-                    Team Members
-                  </p>
-                </div>
-                <div className="border-l border-gold-400/60 pl-4">
-                  <p className="font-display text-xl sm:text-2xl text-white">Bengaluru</p>
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-gold-300 mt-0.5">
-                    Studio HQ
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </motion.div>

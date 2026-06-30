@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { Logo } from '@/components/Logo';
 import { Testimonials } from '@/components/Testimonials';
 import { TeamSection } from '@/components/TeamSection';
@@ -59,7 +59,16 @@ export default function StudioPage() {
   return (
     <>
       <JsonLd data={schema} />
+
+      <Breadcrumbs
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Studio', path: '/studio' },
+        ]}
+      />
+
       <PageHero
+        offsetNav={false}
         label="About The Studio"
         title="Spaces that hold"
         titleAccent="your story"
@@ -103,8 +112,8 @@ export default function StudioPage() {
                   className="group-hover:translate-x-1 transition-transform duration-300"
                 />
               </Link>
-              <Link href="/process" className="btn-outline-gold group">
-                <span>Our Process</span>
+              <Link href="/contact" className="btn-outline-gold group">
+                <span>Book Consultation</span>
                 <ArrowRight
                   size={14}
                   className="group-hover:translate-x-1 transition-transform duration-300"
@@ -160,13 +169,14 @@ export default function StudioPage() {
       <section className="section-y bg-luxury-black">
         <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-[4/3] overflow-hidden border border-white/10">
-              <Image
-                src="/hero-luxury.jpg"
-                alt="Design My Place studio"
-                fill
-                className="object-cover"
-                sizes="50vw"
+            <div className="relative aspect-[4/3] border border-white/10 overflow-hidden">
+              <iframe
+                src={STUDIO_ADDRESS.mapsEmbedUrl}
+                title="Design My Place LLP — Bengaluru studio location"
+                className="absolute inset-0 w-full h-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
               />
             </div>
             <div>

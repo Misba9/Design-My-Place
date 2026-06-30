@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { PriceList } from '@/components/PriceList';
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
 import { services, serviceFaqs } from '@/lib/services';
 import { servicePages } from '@/lib/service-pages';
@@ -35,7 +36,16 @@ export default function ServicesPage() {
   return (
     <>
       <JsonLd data={schema} />
+
+      <Breadcrumbs
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+        ]}
+      />
+
       <PageHero
+        offsetNav={false}
         label="Our Expertise"
         title="Design"
         titleAccent="Services"
@@ -145,8 +155,8 @@ export default function ServicesPage() {
               </Link>
             ))}
           </div>
-          <Link href="/process" className="btn-outline-gold group">
-            <span>Explore Our Process</span>
+          <Link href="/contact" className="btn-outline-gold group">
+            <span>Book Consultation</span>
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </div>

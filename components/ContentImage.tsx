@@ -32,7 +32,7 @@ export function ContentImage({
     <Image
       src={src}
       alt={alt}
-      className={className}
+      className={cn(fill && 'absolute inset-0 h-full w-full', className)}
       fill={fill}
       {...props}
     />

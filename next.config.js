@@ -20,6 +20,16 @@ const nextConfig = {
         destination: '/locations/delhi',
         permanent: true,
       },
+      {
+        source: '/process',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/favicon.ico',
+        destination: '/logo.png',
+        permanent: false,
+      },
     ];
   },
 };

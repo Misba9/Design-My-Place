@@ -1,72 +1,102 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export function CustomCursor() {
+  const [enabled, setEnabled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [ringPosition, setRingPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const ringRef = useRef({ x: 0, y: 0 });
+  const targetRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const hasHover = window.matchMedia('(hover: hover)').matches;
-    if (!hasHover) return;
+    const hoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
+
+    const shouldEnable = () => hoverQuery.matches && desktopQuery.matches;
+
+    const enableCursor = () => {
+      if (!shouldEnable()) return;
+
+      setEnabled(true);
+      document.documentElement.classList.add('custom-cursor-active');
+    };
+
+    const disableCursor = () => {
+      setEnabled(false);
+      setIsVisible(false);
+      document.documentElement.classList.remove('custom-cursor-active');
+    };
+
+    const syncEnabled = () => {
+      if (shouldEnable()) {
+        enableCursor();
+      } else {
+        disableCursor();
+      }
+    };
+
+    syncEnabled();
+    hoverQuery.addEventListener('change', syncEnabled);
+    desktopQuery.addEventListener('change', syncEnabled);
 
     let rafId = 0;
-    let targetX = 0;
-    let targetY = 0;
-    let ringX = 0;
-    let ringY = 0;
 
     const handleMouseMove = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isInteractive = target.closest('a, button, [data-cursor-hover]');
-      const hoverElement = isInteractive as HTMLElement | null;
+      const hoverElement = target.closest('a, button, [data-cursor-hover]') as
+        | HTMLElement
+        | null;
 
       setMousePosition({ x: e.clientX, y: e.clientY });
       setIsHovering(Boolean(hoverElement));
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
 
-      // Magnetic attraction: ring drifts toward interactive element center.
       if (hoverElement) {
         const rect = hoverElement.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        targetX = e.clientX + (centerX - e.clientX) * 0.28;
-        targetY = e.clientY + (centerY - e.clientY) * 0.28;
+        targetRef.current = {
+          x: e.clientX + (centerX - e.clientX) * 0.28,
+          y: e.clientY + (centerY - e.clientY) * 0.28,
+        };
       } else {
-        targetX = e.clientX;
-        targetY = e.clientY;
+        targetRef.current = { x: e.clientX, y: e.clientY };
       }
     };
 
-    const handleMouseEnter = () => setIsVisible(true);
     const handleMouseLeave = () => setIsVisible(false);
 
     const animateRing = () => {
-      ringX += (targetX - ringX) * 0.18;
-      ringY += (targetY - ringY) * 0.18;
-      setRingPosition({ x: ringX, y: ringY });
+      const { x: targetX, y: targetY } = targetRef.current;
+      ringRef.current = {
+        x: ringRef.current.x + (targetX - ringRef.current.x) * 0.18,
+        y: ringRef.current.y + (targetY - ringRef.current.y) * 0.18,
+      };
+      setRingPosition({ x: ringRef.current.x, y: ringRef.current.y });
       rafId = window.requestAnimationFrame(animateRing);
     };
 
     rafId = window.requestAnimationFrame(animateRing);
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    document.body.addEventListener('mouseenter', handleMouseEnter, { passive: true });
-    document.body.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+    document.documentElement.addEventListener('mouseleave', handleMouseLeave, {
+      passive: true,
+    });
 
     return () => {
       window.cancelAnimationFrame(rafId);
       window.removeEventListener('mousemove', handleMouseMove);
-      document.body.removeEventListener('mouseenter', handleMouseEnter);
-      document.body.removeEventListener('mouseleave', handleMouseLeave);
+      document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
+      hoverQuery.removeEventListener('change', syncEnabled);
+      desktopQuery.removeEventListener('change', syncEnabled);
+      document.documentElement.classList.remove('custom-cursor-active');
     };
-  }, [isVisible]);
+  }, []);
 
-  if (typeof window !== 'undefined' && !window.matchMedia('(hover: hover)').matches) {
-    return null;
-  }
+  if (!enabled) return null;
 
   return (
     <>

@@ -2,8 +2,6 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import { howWeWork, processSteps } from '@/lib/process';
 
 export function Process() {
@@ -21,41 +19,26 @@ export function Process() {
       />
 
       <div className="container-site relative">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 sm:mb-16 lg:mb-20 gap-4 sm:gap-6">
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="label-uppercase text-gold-400 mb-4 sm:mb-6"
-            >
-              {howWeWork.number} — {howWeWork.label}
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-fluid-h2 text-white text-balance"
-            >
-              Our{' '}
-              <span className="italic font-light text-gradient-gold-inline">
-                Process
-              </span>
-            </motion.h2>
-          </div>
-          <motion.div
+        <div className="mb-12 sm:mb-16 lg:mb-20">
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="label-uppercase text-gold-400 mb-4 sm:mb-6"
           >
-            <Link href="/process" className="btn-outline-gold w-full sm:w-auto lg:inline-flex group">
-              <span>Full Process</span>
-              <ArrowRight
-                size={14}
-                className="group-hover:translate-x-1 transition-transform duration-300"
-              />
-            </Link>
-          </motion.div>
+            {howWeWork.number} — {howWeWork.label}
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display text-fluid-h2 text-white text-balance"
+          >
+            Our{' '}
+            <span className="italic font-light text-gradient-gold-inline">
+              Process
+            </span>
+          </motion.h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">

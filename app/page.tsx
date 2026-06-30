@@ -43,9 +43,9 @@ export default function Home() {
       <AboutQuote />
       <Projects />
       <Process />
-      <PriceList />
-      <TeamSection />
-      <Contact />
+      <PriceList className="bg-luxury-black !pb-8 sm:!pb-10 lg:!pb-12" />
+      <TeamSection className="!pt-8 sm:!pt-10 lg:!pt-12 !pb-8 sm:!pb-10 lg:!pb-12" />
+      <Contact className="!pt-8 sm:!pt-10 lg:!pt-12" />
     </>
   );
 }

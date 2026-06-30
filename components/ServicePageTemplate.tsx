@@ -104,8 +104,8 @@ export function ServicePageTemplate({ service }: Props) {
             ))}
           </div>
           <div className="mt-10 sm:mt-12">
-            <Link href="/process" className="btn-outline-gold group w-full sm:w-auto">
-              <span>Full Process Details</span>
+            <Link href="/contact" className="btn-outline-gold group w-full sm:w-auto">
+              <span>Book Consultation</span>
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>

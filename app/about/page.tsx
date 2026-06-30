@@ -4,14 +4,15 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { AboutQuote } from '@/components/AboutQuote';
+import { WhatWeDo } from '@/components/WhatWeDo';
 import { PriceList } from '@/components/PriceList';
 import { Logo } from '@/components/Logo';
 import { JsonLd } from '@/components/JsonLd';
 import {
   aboutStats,
   aboutUsIntro,
-  whatWeDo,
   missionVision,
   values,
   milestones,
@@ -37,7 +38,16 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={schema} />
+
+      <Breadcrumbs
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' },
+        ]}
+      />
+
       <PageHero
+        offsetNav={false}
         label="About Us"
         title="Designing spaces that"
         titleAccent="matter"
@@ -79,39 +89,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-y bg-luxury-gray">
-        <div className="container-site">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-start">
-            <div className="lg:col-span-4">
-              <p className="label-uppercase text-gold-300 mb-4">
-                {whatWeDo.number} — {whatWeDo.label}
-              </p>
-              <h2 className="font-display text-fluid-h2 text-white text-balance">
-                What We{' '}
-                <span className="italic font-light text-gradient-gold-inline">Do</span>
-              </h2>
-            </div>
-
-            <div className="lg:col-span-8 space-y-10 sm:space-y-12">
-              {whatWeDo.items.map((item, index) => (
-                <div
-                  key={item.title}
-                  className={`grid md:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 ${
-                    index > 0 ? 'border-t border-white/10 pt-10 sm:pt-12' : ''
-                  }`}
-                >
-                  <h3 className="font-display text-xl sm:text-2xl lg:text-3xl text-white leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-400 font-light leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <WhatWeDo />
 
       <AboutQuote />
 
@@ -254,8 +232,8 @@ export default function AboutPage() {
                 className="group-hover:translate-x-1 transition-transform duration-300"
               />
             </Link>
-            <Link href="/process" className="btn-outline-gold group">
-              <span>Our Process</span>
+            <Link href="/contact" className="btn-outline-gold group">
+              <span>Book Consultation</span>
               <ArrowRight
                 size={14}
                 className="group-hover:translate-x-1 transition-transform duration-300"

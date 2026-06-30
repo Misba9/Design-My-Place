@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { PageCTA } from '@/components/PageCTA';
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
@@ -23,7 +24,16 @@ export default function ProjectsPage() {
   return (
     <>
       <JsonLd data={schema} />
+
+      <Breadcrumbs
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Projects', path: '/projects' },
+        ]}
+      />
+
       <PageHero
+        offsetNav={false}
         label="Portfolio"
         title="Selected"
         titleAccent="Projects"

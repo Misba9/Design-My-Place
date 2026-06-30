@@ -29,7 +29,7 @@ export default function ContactPage() {
         description="Every great design begins with a conversation. Tell us about your vision and let's create something extraordinary together."
         imageAlt="Contact Design My Place for luxury interior design consultation"
       />
-      <Contact />
+      <Contact showIntro={false} className="!pt-0 sm:!pt-0" />
     </>
   );
 }
