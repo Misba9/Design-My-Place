@@ -49,6 +49,7 @@ export const metadata: Metadata = {
   creator: BUSINESS.legalName,
   publisher: BUSINESS.legalName,
   category: 'Interior Design',
+  manifest: '/manifest.webmanifest',
   icons: {
     icon: '/logo.png',
     apple: '/logo.png',
@@ -81,9 +82,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${playfair.variable}`}>
+    <html
+      lang="en-IN"
+      className={`${inter.variable} ${playfair.variable} overflow-x-clip`}
+      suppressHydrationWarning
+    >
       <head>
-        <link rel="preconnect" href="https://images.pexels.com" crossOrigin="anonymous" />
         <Analytics />
       </head>
       <body className="bg-luxury-black text-ivory-100 font-body antialiased overflow-x-hidden">

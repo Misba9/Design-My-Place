@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 
 const stats = [
-  { label: 'Projects Completed', value: 6, suffix: '+' },
+  { label: 'Projects Completed', value: 25, suffix: '+' },
   { label: 'Years of Experience', value: 5, suffix: '+' },
   { label: 'Cities Served', value: 12, suffix: '+' },
   { label: 'Client Satisfaction', value: 100, suffix: '%' },
@@ -40,7 +40,7 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
   }, [isInView, value]);
 
   return (
-    <span ref={ref} className="font-display text-5xl lg:text-6xl xl:text-7xl text-white">
+    <span ref={ref} className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white">
       {displayValue}
       <span className="text-gold-400">{suffix}</span>
     </span>
@@ -54,7 +54,7 @@ export function Statistics() {
   return (
     <section
       ref={containerRef}
-      className="py-24 lg:py-32 bg-luxury-black relative overflow-hidden"
+      className="section-y bg-luxury-black relative overflow-hidden"
     >
       {/* Subtle glow */}
       <div
@@ -65,8 +65,8 @@ export function Statistics() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div className="container-site relative">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}

@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import Image from 'next/image';
+import { ContentImage } from '@/components/ContentImage';
 import { Quote } from 'lucide-react';
 import { testimonials, trustBadges, googleReviewsUrl } from '@/lib/testimonials';
 
@@ -11,13 +11,9 @@ export function Testimonials() {
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
 
   return (
-    <section
-      ref={containerRef}
-      className="py-24 lg:py-32 bg-luxury-gray"
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Header */}
-        <div className="mb-16 lg:mb-24 text-center lg:text-left">
+    <section ref={containerRef} className="section-y bg-luxury-gray">
+      <div className="container-site">
+        <div className="mb-12 sm:mb-16 lg:mb-24 text-center lg:text-left">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -30,14 +26,13 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory-100"
+            className="font-display text-fluid-h2 text-ivory-100 text-balance"
           >
             Words from <span className="italic font-light">Clients</span>
           </motion.h2>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="card-grid">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
@@ -47,7 +42,7 @@ export function Testimonials() {
                 duration: 0.8,
                 delay: 0.2 + index * 0.15,
               }}
-              className="group relative glass p-8 lg:p-10 transition-all duration-500 hover:border-gold-400/20"
+              className="group relative glass p-6 sm:p-8 lg:p-10 transition-all duration-500 hover:border-gold-400/20"
             >
               {/* Quote Icon */}
               <Quote
@@ -63,12 +58,14 @@ export function Testimonials() {
               {/* Client Info */}
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full overflow-hidden relative border border-ivory-200/10">
-                  <Image
+                  <ContentImage
                     src={testimonial.image}
                     alt={testimonial.name}
                     fill
+                    loading="lazy"
                     className="object-cover"
                     sizes="56px"
+                    compactPlaceholder
                   />
                 </div>
                 <div>

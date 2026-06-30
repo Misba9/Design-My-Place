@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
       'luxury interior design trends 2026, premium home interiors, bespoke interior trends, modern luxury interiors India',
     publishedAt: '2026-01-08',
     readTime: '7 min read',
-    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'The strongest luxury homes in 2026 are moving away from showy finishes and toward deeply personal spaces shaped by craft, comfort, and emotional clarity.',
     keyAnswer:
@@ -84,7 +84,7 @@ export const blogPosts: BlogPost[] = [
       'luxury interior design cost India, premium interior design budget, turnkey interiors cost India, villa interiors cost',
     publishedAt: '2026-01-15',
     readTime: '8 min read',
-    image: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'Luxury interior budgets depend on scope, craftsmanship, and execution quality. Here is how to think about cost before starting a premium home project.',
     keyAnswer:
@@ -146,7 +146,7 @@ export const blogPosts: BlogPost[] = [
       'villa interior design guide, luxury villa interiors, premium villa design India, bespoke villa interiors',
     publishedAt: '2026-01-22',
     readTime: '8 min read',
-    image: 'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'Villa interiors need more than beautiful rooms. They need proportion, movement, light, privacy, and a design language that holds the entire home together.',
     keyAnswer:
@@ -208,7 +208,7 @@ export const blogPosts: BlogPost[] = [
       'premium apartment interiors, luxury apartment interior design, high-rise home interiors, bespoke apartment design',
     publishedAt: '2026-01-29',
     readTime: '6 min read',
-    image: 'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'A premium apartment should feel tailored, not templated. Smart planning and precise detailing can make even standard builder layouts feel exceptional.',
     keyAnswer:
@@ -270,7 +270,7 @@ export const blogPosts: BlogPost[] = [
       'best interior designers Bangalore, luxury interior designers Bengaluru, premium interior design studio Bangalore',
     publishedAt: '2026-02-05',
     readTime: '6 min read',
-    image: 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'The best interior designer for your Bangalore home is not the one with the loudest portfolio, but the one with the right process for your lifestyle and budget.',
     keyAnswer:
@@ -325,7 +325,7 @@ export const blogPosts: BlogPost[] = [
       'best interior designers Delhi, luxury interior designers Delhi, premium interiors New Delhi, bungalow interior designer Delhi',
     publishedAt: '2026-02-12',
     readTime: '6 min read',
-    image: 'https://images.pexels.com/photos/32370580/pexels-photo-32370580.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'Delhi homes need a designer who can handle family rituals, entertaining, privacy, heritage details, and modern convenience with equal confidence.',
     keyAnswer:
@@ -380,7 +380,7 @@ export const blogPosts: BlogPost[] = [
       'interior design budget guide, home interiors budget India, premium interiors budget, turnkey interior budget planning',
     publishedAt: '2026-02-19',
     readTime: '7 min read',
-    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'A good interior budget is not a single number. It is a structured plan that protects design quality, execution, and decision-making.',
     keyAnswer:
@@ -442,7 +442,7 @@ export const blogPosts: BlogPost[] = [
       'luxury home renovation checklist, premium home renovation India, luxury renovation planning, interior renovation guide',
     publishedAt: '2026-02-26',
     readTime: '7 min read',
-    image: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'Renovation success depends on decisions made before demolition. This checklist helps premium homeowners plan with fewer surprises.',
     keyAnswer:
@@ -504,7 +504,7 @@ export const blogPosts: BlogPost[] = [
       'modern interior design ideas, modern luxury interiors, contemporary home design India, refined modern interiors',
     publishedAt: '2026-03-04',
     readTime: '6 min read',
-    image: 'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'Modern interiors work best when clean lines are balanced with warmth, comfort, and personal details that make the home feel human.',
     keyAnswer:
@@ -566,7 +566,7 @@ export const blogPosts: BlogPost[] = [
       'how to choose interior designer, hire interior designer India, choose luxury interior designer, premium interior design studio',
     publishedAt: '2026-03-11',
     readTime: '7 min read',
-    image: 'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '',
     excerpt:
       'The right interior designer should bring clarity, taste, process, and execution discipline to one of the most personal investments you will make.',
     keyAnswer:

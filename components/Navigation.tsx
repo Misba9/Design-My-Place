@@ -39,8 +39,8 @@ export function Navigation() {
           isScrolled ? 'header-luxury--scrolled' : ''
         }`}
       >
-        <nav className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-10">
-          <div className="flex items-center justify-between py-5 gap-6 lg:gap-10">
+        <nav className="container-site">
+          <div className="flex items-center justify-between py-3.5 sm:py-4 lg:py-5 gap-3 sm:gap-6 lg:gap-10">
             {/* Brand */}
             <motion.div
               initial={{ opacity: 0, x: -28 }}
@@ -93,7 +93,7 @@ export function Navigation() {
             {/* Mobile menu toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden relative z-10 flex flex-col items-center justify-center w-11 h-11 border border-white/10 hover:border-gold-400/40 transition-colors duration-500"
+              className="lg:hidden relative z-10 touch-target flex flex-col items-center justify-center border border-white/10 hover:border-gold-400/40 transition-colors duration-500"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
             >
@@ -117,21 +117,21 @@ export function Navigation() {
             transition={{ duration: 0.45, ease }}
             className="fixed inset-0 z-[60] lg:hidden header-luxury header-luxury--scrolled"
           >
-            <div className="flex flex-col h-full max-w-[1400px] mx-auto px-6 sm:px-8">
-              <div className="flex items-center justify-between py-6 border-b border-white/[0.08]">
+            <div className="container-site flex flex-col h-full">
+              <div className="flex items-center justify-between py-4 sm:py-6 border-b border-white/[0.08]">
                 <Link href="/" onClick={closeMenu}>
                   <BrandMark variant="mobile" />
                 </Link>
                 <button
                   onClick={closeMenu}
-                  className="flex items-center justify-center w-11 h-11 border border-white/10 text-gold-400 hover:border-gold-400/40 transition-colors"
+                  className="touch-target flex items-center justify-center border border-white/10 text-gold-400 hover:border-gold-400/40 transition-colors"
                   aria-label="Close menu"
                 >
                   <X size={22} strokeWidth={1.25} />
                 </button>
               </div>
 
-              <nav className="flex-1 flex flex-col justify-center py-12 gap-1">
+              <nav className="flex-1 flex flex-col justify-center py-8 sm:py-12 gap-1 overflow-y-auto">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.href}
@@ -142,7 +142,7 @@ export function Navigation() {
                     <Link
                       href={link.href}
                       onClick={closeMenu}
-                      className="nav-link-mobile block py-5 border-b border-white/[0.06]"
+                      className="nav-link-mobile block py-4 sm:py-5 border-b border-white/[0.06]"
                     >
                       {link.label}
                     </Link>

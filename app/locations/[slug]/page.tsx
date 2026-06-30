@@ -81,8 +81,8 @@ export default function LocationPage({ params }: Props) {
         imageAlt={`Luxury interior design by Design My Place in ${location.name}`}
       />
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <div className="max-w-3xl">
             <p className="label-uppercase text-gold-300 mb-6">
               Design My Place · {location.name}
@@ -104,8 +104,8 @@ export default function LocationPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-gray">
+        <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
               <p className="label-uppercase text-gold-300 mb-6">Areas We Serve</p>
@@ -150,8 +150,8 @@ export default function LocationPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">What We Offer</p>
           <h2 className="font-display text-3xl lg:text-4xl text-white mb-12">
             Services in{' '}
@@ -192,7 +192,7 @@ export default function LocationPage({ params }: Props) {
       <TestimonialsSection />
       <TrustBadges />
 
-      <section className="py-24 lg:py-32 bg-luxury-gray">
+      <section className="section-y bg-luxury-gray">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <p className="label-uppercase text-gold-300 mb-6 text-center">Local FAQ</p>
           <h2 className="font-display text-3xl lg:text-4xl text-white text-center mb-16">
@@ -218,7 +218,7 @@ export default function LocationPage({ params }: Props) {
       />
 
       <section className="py-20 bg-luxury-black border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">Also Serving</p>
           <div className="flex flex-wrap gap-3 mb-10">
             {otherLocations.map((loc) => (

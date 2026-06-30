@@ -2,54 +2,40 @@
 
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
-import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ContentImage } from '@/components/ContentImage';
+import { NVT_IMAGES } from '@/lib/images';
 
 const highlights = [
   {
     id: 1,
     title: 'Inspiration',
-    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=300',
-    images: [
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    image: NVT_IMAGES.family,
+    images: [NVT_IMAGES.family, NVT_IMAGES.gbr, NVT_IMAGES.mbr],
   },
   {
     id: 2,
     title: 'Styling',
-    image: 'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=300',
-    images: [
-      'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    image: NVT_IMAGES.mbr,
+    images: [NVT_IMAGES.dining, NVT_IMAGES.kids],
   },
   {
     id: 3,
     title: 'On Site',
-    image: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=300',
-    images: [
-      'https://images.pexels.com/photos/32370580/pexels-photo-32370580.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    image: NVT_IMAGES.gbr,
+    images: [NVT_IMAGES.mbr2, NVT_IMAGES.family],
   },
   {
     id: 4,
     title: 'Sourcing',
-    image: 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=300',
-    images: [
-      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    image: NVT_IMAGES.dining,
+    images: [NVT_IMAGES.mbr],
   },
   {
     id: 5,
     title: 'My Place',
-    image: 'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=300',
-    images: [
-      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    image: NVT_IMAGES.kids,
+    images: [NVT_IMAGES.gbr, NVT_IMAGES.dining],
   },
 ];
 
@@ -90,16 +76,16 @@ export function InstagramHighlights() {
     <>
       <section
         ref={containerRef}
-        className="py-24 lg:py-32 bg-luxury-black"
+        className="section-y bg-luxury-black"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="container-site">
           {/* Header */}
-          <div className="mb-16 lg:mb-20 text-center lg:text-left">
+          <div className="mb-10 sm:mb-16 lg:mb-20 text-center lg:text-left">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="label-uppercase text-gold-400/70 mb-6"
+              className="label-uppercase text-gold-400/70 mb-4 sm:mb-6"
             >
               Behind The Scenes
             </motion.p>
@@ -107,14 +93,14 @@ export function InstagramHighlights() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory-100"
+              className="font-display text-fluid-h2 text-ivory-100 text-balance"
             >
               Studio <span className="italic font-light">Highlights</span>
             </motion.h2>
           </div>
 
-          {/* Highlights Grid */}
-          <div className="flex justify-center gap-8 lg:gap-12 overflow-x-auto pb-8 scrollbar-hide">
+          {/* Mobile: horizontal scroll · Desktop: grid */}
+          <div className="scroll-snap-x gap-6 pb-4 md:pb-0 md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-8 lg:gap-12 md:overflow-visible">
             {highlights.map((highlight, index) => (
               <motion.button
                 key={highlight.id}
@@ -125,22 +111,22 @@ export function InstagramHighlights() {
                   delay: 0.2 + index * 0.1,
                 }}
                 onClick={() => handleOpenHighlight(highlight)}
-                className="group flex flex-col items-center gap-4 flex-shrink-0"
+                className="group flex flex-col items-center gap-3 sm:gap-4 scroll-snap-item w-[5.5rem] sm:w-28 md:w-auto touch-target"
               >
-                {/* Circular Image */}
-                <div className="relative w-24 h-24 lg:w-32 lg:h-32">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28">
                   {/* Gold ring */}
                   <div className="absolute inset-0 rounded-full border-2 border-gold-500/50 group-hover:border-gold-400 transition-colors duration-300" />
                   {/* Inner padding ring */}
                   <div className="absolute inset-1 rounded-full border-4 border-charcoal-800" />
                   {/* Image container */}
                   <div className="absolute inset-2 rounded-full overflow-hidden">
-                    <Image
+                    <ContentImage
                       src={highlight.image}
                       alt={highlight.title}
                       fill
+                      loading="lazy"
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="120px"
+                      sizes="(max-width: 768px) 88px, 120px"
                     />
                   </div>
                 </div>
@@ -169,7 +155,7 @@ export function InstagramHighlights() {
             {/* Close button */}
             <button
               onClick={handleCloseHighlight}
-              className="absolute top-6 right-6 lg:top-10 lg:right-10 p-3 text-ivory-400/60 hover:text-ivory-100 transition-colors z-10"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 touch-target flex items-center justify-center text-ivory-400/60 hover:text-ivory-100 transition-colors z-10"
               aria-label="Close"
             >
               <X size={28} />
@@ -181,7 +167,7 @@ export function InstagramHighlights() {
             </p>
 
             {/* Image */}
-            <div className="relative w-full max-w-4xl mx-8 aspect-[4/3]" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full max-w-4xl mx-4 sm:mx-8 aspect-[4/3] sm:aspect-[16/10]" onClick={(e) => e.stopPropagation()}>
               <motion.div
                 key={currentImageIndex}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -190,13 +176,12 @@ export function InstagramHighlights() {
                 transition={{ duration: 0.3 }}
                 className="w-full h-full"
               >
-                <Image
+                <ContentImage
                   src={selectedHighlight.images[currentImageIndex]}
                   alt={`${selectedHighlight.title} ${currentImageIndex + 1}`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 80vw"
-                  priority
                 />
               </motion.div>
             </div>

@@ -5,13 +5,13 @@ type LocationMapProps = {
 
 export function LocationMap({ embedUrl, title }: LocationMapProps) {
   return (
-    <section className="py-20 lg:py-28 bg-luxury-gray">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="section-y-sm bg-luxury-gray">
+      <div className="container-site">
         <p className="label-uppercase text-gold-300 mb-6">Find Us</p>
-        <h2 className="font-display text-3xl lg:text-4xl text-white mb-8">
+        <h2 className="font-display text-fluid-h2 text-white mb-6 sm:mb-8 text-balance">
           {title}
         </h2>
-        <div className="relative aspect-[21/9] border border-white/10 overflow-hidden">
+        <div className="relative aspect-[4/3] sm:aspect-[21/9] border border-white/10 overflow-hidden">
           <iframe
             src={embedUrl}
             title={title}

@@ -1,9 +1,55 @@
+import { ABOUT_QUOTE_IMAGE } from '@/lib/images';
+
 export const aboutStats = [
-  { value: '6+', label: 'Projects Delivered' },
+  { value: '25+', label: 'Projects Delivered' },
   { value: '5+', label: 'Years of Excellence' },
   { value: '12+', label: 'Cities Served' },
   { value: '100%', label: 'Client Satisfaction' },
 ] as const;
+
+export const aboutUsIntro = {
+  label: 'About Us',
+  title: 'Design that shapes how you',
+  titleAccent: 'live and work',
+  paragraphs: [
+    'We believe in the positive impact interior design has on our well-being, creativity, and productivity. We create sustainable design solutions suited to home and office spaces, big and small. What makes us unique is our blend of Indian and Western tastes and practical experience. By working with some of India\'s best craftsmen, we\'ve been able to combine functional simplicity with more verbose aesthetics to create a truly singular approach to interior design.',
+    'Our comprehensive services include finding the perfect color palette, textiles, carpets, furniture, and lighting to suit your space. We also provide room planning, a full selection of materials, and project management to guide you through the process from start to finish. Over the years, we\'ve built great relationships with contractors and builders with whom we work together on each project, giving our clients a full-service design team to plan and design your dream home.',
+  ],
+} as const;
+
+export const whatWeDo = {
+  number: '02',
+  label: 'What We Do',
+  items: [
+    {
+      title: 'Fit-Out Consultation',
+      description:
+        'Our consultation service establishes your needs and what we will deliver to transform your space.',
+    },
+    {
+      title: 'Project Plan and Schedule',
+      description:
+        'We provide specialist expertise, including design concepts, specifications, and technical drawings.',
+    },
+    {
+      title: 'Fair Project Budgeting',
+      description:
+        'We believe that great interior design should be open to everyone, regardless of their budget.',
+    },
+    {
+      title: 'Digital Project Rendering',
+      description:
+        'We provide you with digital visualizations of your space to ensure you\'re completely happy with the design.',
+    },
+  ],
+} as const;
+
+export const aboutQuote = {
+  line1: 'As we evolve, our',
+  line2: 'homes should too.',
+  image: ABOUT_QUOTE_IMAGE,
+  imageAlt: 'Minimalist luxury home interior by Design My Place',
+} as const;
 
 export const missionVision = {
   mission:
@@ -69,7 +115,7 @@ export const milestones = [
   },
   {
     year: '2026',
-    title: '6+ Projects Delivered',
+    title: '25+ Projects Delivered',
     description:
       'A milestone of trust — six completed projects across 12+ cities, built on collaboration, timeless craft, and 100% client satisfaction.',
   },

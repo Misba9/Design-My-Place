@@ -1,3 +1,5 @@
+import { BUSINESS } from '@/lib/site';
+
 export const navLinks = [
   { href: '/projects', label: 'Projects' },
   { href: '/services', label: 'Services' },
@@ -35,5 +37,5 @@ export const footerLocationLinks = [
 export const footerConnectLinks = [
   { label: 'Consultation', href: '/contact', external: false as const },
   { label: 'Instagram', href: 'https://instagram.com/design_my_place', external: true as const },
-  { label: 'WhatsApp', href: 'https://wa.me/9198543210', external: true as const },
+  { label: 'WhatsApp', href: BUSINESS.social.whatsapp, external: true as const },
 ] as const;

@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Send, Loader2, CheckCircle, ChevronDown } from 'lucide-react';
-import { STUDIO_ADDRESS } from '@/lib/site';
+import { BUSINESS, STUDIO_ADDRESS } from '@/lib/site';
 
 const projectTypes = [
   'Residential Interior',
@@ -110,12 +110,12 @@ export function Contact() {
 
   return (
     <section
-      id="contact"
+      id="get-in-touch"
       ref={containerRef}
-      className="py-24 lg:py-32 bg-luxury-black"
+      className="section-y bg-luxury-black"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+      <div className="container-site">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20">
           {/* Left Side - Contact Info */}
           <div className="flex flex-col justify-center">
             <motion.p
@@ -131,7 +131,7 @@ export function Contact() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-8"
+              className="font-display text-fluid-h2 text-white mb-6 sm:mb-8"
             >
               Start Your <span className="italic font-light text-gradient-gold-inline">Journey</span>
             </motion.h2>
@@ -154,9 +154,7 @@ export function Contact() {
               className="space-y-6"
             >
               <a
-                href="https://instagram.com/design_my_place"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`tel:${BUSINESS.phone}`}
                 className="group flex items-center gap-4 text-ivory-400/70 hover:text-ivory-100 transition-colors duration-300"
               >
                 <div className="w-12 h-12 border border-ivory-200/10 flex items-center justify-center group-hover:border-gold-500/30 transition-colors">
@@ -164,7 +162,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-xs text-ivory-400/50 uppercase tracking-wider mb-1">Call or WhatsApp</p>
-                  <p className="text-ivory-300/80">+91 98765 43210</p>
+                  <p className="text-ivory-300/80">{BUSINESS.phoneDisplay}</p>
                 </div>
               </a>
 
@@ -209,7 +207,7 @@ export function Contact() {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="glass p-8 lg:p-12"
+            className="glass p-6 sm:p-8 lg:p-12 min-w-0"
           >
             {isSubmitted ? (
               <motion.div

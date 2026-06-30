@@ -24,7 +24,7 @@ export function PageCTA({
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-luxury-gray relative overflow-hidden">
+    <section ref={ref} className="section-y bg-luxury-gray relative overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -32,12 +32,12 @@ export function PageCTA({
             'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(176,141,87,0.08) 0%, transparent 70%)',
         }}
       />
-      <div className="relative max-w-3xl mx-auto px-6 lg:px-12 text-center">
+      <div className="relative container-site text-center">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="font-display text-4xl md:text-5xl text-white mb-6"
+          className="font-display text-fluid-h2 text-white mb-4 sm:mb-6 text-balance"
         >
           {title}{' '}
           <span className="italic font-light text-gradient-gold-inline">
@@ -48,7 +48,7 @@ export function PageCTA({
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-gray-400 font-light mb-10 leading-relaxed"
+          className="text-gray-400 font-light mb-8 sm:mb-10 leading-relaxed text-fluid-body max-w-lg mx-auto"
         >
           {description}
         </motion.p>
@@ -57,7 +57,7 @@ export function PageCTA({
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <Link href={buttonHref} className="btn-gold group">
+          <Link href={buttonHref} className="btn-gold group w-full sm:w-auto max-w-xs sm:max-w-none mx-auto">
             <span>{buttonLabel}</span>
             <ArrowRight
               size={16}

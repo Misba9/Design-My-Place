@@ -4,34 +4,38 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { processSteps } from '@/lib/process';
+import { howWeWork, processSteps } from '@/lib/process';
 
 export function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
 
   return (
-    <section
-      id="process"
-      ref={containerRef}
-      className="py-24 lg:py-32 bg-luxury-gray"
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 lg:mb-24 gap-6">
+    <section id="how-we-work" ref={containerRef} className="relative section-y bg-luxury-gray overflow-hidden">
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[900px] aspect-[2/1] pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse, rgba(176,141,87,0.08) 0%, transparent 70%)',
+        }}
+      />
+
+      <div className="container-site relative">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 sm:mb-16 lg:mb-20 gap-4 sm:gap-6">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="label-uppercase text-gold-400 mb-6"
+              className="label-uppercase text-gold-400 mb-4 sm:mb-6"
             >
-              How We Work
+              {howWeWork.number} — {howWeWork.label}
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-white"
+              className="font-display text-fluid-h2 text-white text-balance"
             >
               Our{' '}
               <span className="italic font-light text-gradient-gold-inline">
@@ -44,53 +48,42 @@ export function Process() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link href="/process" className="btn-outline-gold hidden lg:inline-flex">
-              Learn More
-              <ArrowRight size={14} />
+            <Link href="/process" className="btn-outline-gold w-full sm:w-auto lg:inline-flex group">
+              <span>Full Process</span>
+              <ArrowRight
+                size={14}
+                className="group-hover:translate-x-1 transition-transform duration-300"
+              />
             </Link>
           </motion.div>
         </div>
 
-        <div className="relative">
-          <div className="absolute left-0 lg:left-1/2 lg:-translate-x-px top-0 bottom-0 w-px bg-ivory-200/10 hidden md:block" />
-
-          <div className="space-y-16 lg:space-y-24">
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{
-                  duration: 0.8,
-                  delay: 0.2 + index * 0.15,
-                }}
-                className={`relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 ${
-                  index % 2 === 0 ? '' : 'lg:text-right'
-                }`}
-              >
-                <div
-                  className={`${
-                    index % 2 === 0 ? 'lg:pr-16' : 'lg:col-start-2 lg:pl-16'
-                  }`}
-                >
-                  <div className="mb-6 relative inline-block">
-                    <span className="text-6xl lg:text-7xl font-display text-gold-500/15">
-                      {step.number}
-                    </span>
-                    <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gold-500/60 border-4 border-charcoal-900 z-10 -translate-x-1/2 left-full ml-8" />
-                  </div>
-
-                  <h3 className="font-display text-2xl lg:text-3xl text-white mb-4">
-                    {step.title}
-                  </h3>
-
-                  <p className="text-gray-500 leading-relaxed max-w-lg font-light">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+          {processSteps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 28 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.15 + index * 0.06 }}
+              className={`group glass border border-white/10 p-6 sm:p-7 hover:border-gold-400/35 hover:bg-white/[0.05] transition-all duration-500 ${
+                index === processSteps.length - 1
+                  ? 'sm:col-span-2 lg:col-span-1 xl:col-span-1'
+                  : ''
+              }`}
+            >
+              <div className="flex items-start justify-between gap-3 mb-4">
+                <span className="font-display text-3xl text-gold-500/20 group-hover:text-gold-400/35 transition-colors duration-500">
+                  {step.number}
+                </span>
+              </div>
+              <h3 className="font-display text-xl sm:text-2xl text-white mb-2 sm:mb-3">
+                {step.title}
+              </h3>
+              <p className="text-gray-400 font-light text-sm leading-relaxed">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

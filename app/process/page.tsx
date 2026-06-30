@@ -4,13 +4,13 @@ import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { JsonLd } from '@/components/JsonLd';
-import { processSteps } from '@/lib/process';
+import { howWeWork, processSteps } from '@/lib/process';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Our Interior Design Process — 6 Phases',
+  title: 'Our Interior Design Process — 7 Phases',
   description:
-    'Our six-phase luxury interior design process — discovery, concept, design, procurement, execution & handover for Bangalore & Delhi NCR homes.',
+    'Our seven-phase interior design process — meet, research, concept, design, finalize, create & install for Bangalore & Delhi NCR homes.',
   path: '/process',
 });
 
@@ -44,15 +44,15 @@ export default function ProcessPage() {
     <>
       <JsonLd data={schema} />
       <PageHero
-        label="How We Work"
+        label={`${howWeWork.number} — ${howWeWork.label}`}
         title="Our"
         titleAccent="Process"
-        description="A structured, six-phase approach that transforms your vision into a finished space — with clarity, craft, and care at every step."
+        description="A structured, seven-phase approach — from first meeting to final installation — with clarity, craft, and care at every step."
         imageAlt="Design My Place interior design process for luxury homes"
       />
 
-      <section className="py-24 lg:py-32 bg-luxury-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-gray">
+        <div className="container-site">
           <div className="relative">
             <div className="absolute left-0 lg:left-1/2 lg:-translate-x-px top-0 bottom-0 w-px bg-ivory-200/10 hidden md:block" />
 
@@ -103,8 +103,8 @@ export default function ProcessPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6 text-center">
             What to Expect
           </p>
@@ -133,7 +133,7 @@ export default function ProcessPage() {
       </section>
 
       <section className="py-20 bg-luxury-gray border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+        <div className="container-site text-center">
           <p className="text-gray-400 font-light mb-8">
             See the results of our approach across residential and commercial projects.
           </p>

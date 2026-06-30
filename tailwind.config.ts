@@ -8,6 +8,15 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    screens: {
+      xs: '375px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+      '3xl': '1920px',
+    },
     extend: {
       colors: {
         charcoal: {
@@ -64,6 +73,12 @@ const config: Config = {
         '30': '7.5rem',
         '34': '8.5rem',
         '38': '9.5rem',
+      },
+      minHeight: {
+        '11': '2.75rem',
+      },
+      minWidth: {
+        '11': '2.75rem',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -110,7 +110,7 @@ export const serviceFaqs = [
   {
     question: 'How does pricing work?',
     answer:
-      'We offer design-only, design + project management, and turnkey packages. Fees are structured based on project scope and square footage, discussed transparently during your initial consultation.',
+      'We offer three transparent fee structures: hourly at INR 3,000 per hour, per square foot at INR 350 per sq. ft. (common for commercial and new construction), or a designer fee of 15% of the established project budget. The right model is agreed during your initial consultation.',
   },
   {
     question: 'Can you work with my existing contractor?',

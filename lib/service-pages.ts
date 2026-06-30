@@ -1,3 +1,6 @@
+import { PORTFOLIO_IMAGES } from '@/lib/images';
+import { serviceProcessSteps } from '@/lib/process';
+
 export type ServicePage = {
   slug: string;
   title: string;
@@ -14,22 +17,9 @@ export type ServicePage = {
   faqs: { question: string; answer: string }[];
 };
 
-const IMG = {
-  living: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  villa: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  kitchen: 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  bedroom: 'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  apartment: 'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  renovation: 'https://images.pexels.com/photos/32370580/pexels-photo-32370580.jpeg?auto=compress&cs=tinysrgb&w=1200',
-};
+const IMG = PORTFOLIO_IMAGES;
 
-const defaultProcess = [
-  { step: 'Discovery', description: 'We begin by understanding how you live, what you value, and the story your home should tell.' },
-  { step: 'Concept', description: 'Mood boards, spatial planning, and 3D visualisations bring the direction to life before execution.' },
-  { step: 'Design Development', description: 'Materials, joinery, lighting, and furniture are refined with meticulous attention to detail.' },
-  { step: 'Execution', description: 'Vendor coordination, site supervision, and quality checks ensure the finished space matches the vision.' },
-  { step: 'Handover', description: 'Final styling, snag resolution, and a space ready to be lived in from day one.' },
-];
+const defaultProcess = serviceProcessSteps;
 
 export const servicePages: ServicePage[] = [
   {

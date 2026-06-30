@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import { ContentImage } from '@/components/ContentImage';
 import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
@@ -43,8 +43,8 @@ export default function BlogIndexPage() {
         imageAlt="Design My Place interior design blog"
       />
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
               <Link
@@ -53,7 +53,7 @@ export default function BlogIndexPage() {
                 className="group block border border-white/10 overflow-hidden card-hover-lift"
               >
                 <div className="relative aspect-[16/10] img-hover-zoom">
-                  <Image
+                  <ContentImage
                     src={post.image}
                     alt={post.title}
                     fill

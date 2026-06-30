@@ -16,18 +16,18 @@ export const metadata: Metadata = createPageMetadata({
 export default function ThankYouPage() {
   return (
     <>
-      <section className="min-h-[60vh] flex items-center justify-center bg-luxury-black px-6 pt-28">
-        <div className="text-center max-w-lg">
+      <section className="min-h-[60vh] flex items-center justify-center bg-luxury-black px-4 sm:px-6 pt-24 sm:pt-28">
+        <div className="text-center max-w-lg w-full">
           <CheckCircle size={48} className="text-gold-300 mx-auto mb-6" />
           <p className="label-uppercase text-gold-300 mb-4">Thank You</p>
-          <h1 className="font-display text-4xl lg:text-5xl text-white mb-6">
+          <h1 className="font-display text-fluid-h1 text-white mb-4 sm:mb-6">
             We received your message
           </h1>
-          <p className="text-gray-400 font-light mb-10 leading-relaxed">
+          <p className="text-gray-400 font-light mb-8 sm:mb-10 leading-relaxed text-fluid-body">
             Our team will review your enquiry and respond within one business day.
             We look forward to learning about your vision.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="btn-group max-w-sm mx-auto">
             <Link href="/projects" className="btn-outline-gold">
               Explore Projects
             </Link>

@@ -4,10 +4,14 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
+import { AboutQuote } from '@/components/AboutQuote';
+import { PriceList } from '@/components/PriceList';
 import { Logo } from '@/components/Logo';
 import { JsonLd } from '@/components/JsonLd';
 import {
   aboutStats,
+  aboutUsIntro,
+  whatWeDo,
   missionVision,
   values,
   milestones,
@@ -41,8 +45,8 @@ export default function AboutPage() {
         imageAlt="Design My Place luxury interior design studio in Bangalore"
       />
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
             <div className="relative aspect-[4/5] lg:aspect-auto lg:min-h-[520px] overflow-hidden border border-white/10">
               <Image
@@ -55,34 +59,64 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <p className="label-uppercase text-gold-300 mb-6">Our Story</p>
+              <p className="label-uppercase text-gold-300 mb-6">{aboutUsIntro.label}</p>
               <h2 className="font-display text-3xl lg:text-5xl text-white mb-8 leading-tight">
-                Born from a belief that{' '}
+                {aboutUsIntro.title}{' '}
                 <span className="italic font-light text-gradient-gold-inline">
-                  space shapes life
+                  {aboutUsIntro.titleAccent}
                 </span>
               </h2>
-              <p className="text-gray-300 text-lg font-light mb-6 leading-relaxed">
-                Design My Place LLP began with a conviction shared by our founders: that
-                the spaces we inhabit should reflect who we are, how we live, and what we
-                aspire to become.
-              </p>
-              <p className="text-gray-400 font-light mb-6 leading-relaxed">
-                What started as a small studio in Bengaluru has grown into a practice
-                trusted by families, entrepreneurs, and hospitality brands across India.
-                We have never chased trends — we pursue understanding.
-              </p>
-              <p className="text-gray-400 font-light leading-relaxed">
-                Every project is an opportunity to listen deeply, research thoroughly,
-                and design with intention. That approach has defined us from day one.
-              </p>
+              {aboutUsIntro.paragraphs.map((paragraph) => (
+                <p
+                  key={paragraph.slice(0, 48)}
+                  className="text-gray-400 font-light mb-6 last:mb-0 leading-relaxed"
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-gray">
+        <div className="container-site">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-start">
+            <div className="lg:col-span-4">
+              <p className="label-uppercase text-gold-300 mb-4">
+                {whatWeDo.number} — {whatWeDo.label}
+              </p>
+              <h2 className="font-display text-fluid-h2 text-white text-balance">
+                What We{' '}
+                <span className="italic font-light text-gradient-gold-inline">Do</span>
+              </h2>
+            </div>
+
+            <div className="lg:col-span-8 space-y-10 sm:space-y-12">
+              {whatWeDo.items.map((item, index) => (
+                <div
+                  key={item.title}
+                  className={`grid md:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 ${
+                    index > 0 ? 'border-t border-white/10 pt-10 sm:pt-12' : ''
+                  }`}
+                >
+                  <h3 className="font-display text-xl sm:text-2xl lg:text-3xl text-white leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 font-light leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <AboutQuote />
+
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
             <div className="glass p-10 lg:p-12 border border-white/10">
               <p className="label-uppercase text-gold-300 mb-4">Mission</p>
@@ -100,8 +134,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-gray">
+        <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
             <div className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[360px]">
               <Logo size="lg" className="justify-center" imageClassName="object-center mx-auto" />
@@ -134,8 +168,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6 text-center">What We Stand For</p>
           <h2 className="font-display text-3xl lg:text-5xl text-white text-center mb-16">
             Our{' '}
@@ -157,8 +191,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-gray">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">Our Journey</p>
           <h2 className="font-display text-3xl lg:text-5xl text-white mb-16">
             Milestones{' '}
@@ -185,8 +219,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <PriceList className="bg-luxury-gray" showCta={false} />
+
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {aboutStats.map((stat) => (
               <div key={stat.label} className="border-l border-gold-400/60 pl-5 lg:pl-6">
@@ -203,7 +239,7 @@ export default function AboutPage() {
       </section>
 
       <section className="py-20 bg-luxury-black border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-8">
+        <div className="container-site flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
             <p className="label-uppercase text-gold-300 mb-3">The Studio</p>
             <p className="text-gray-400 font-light max-w-md">

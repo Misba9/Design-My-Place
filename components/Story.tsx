@@ -5,13 +5,9 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/Logo';
+import { aboutStats, aboutUsIntro } from '@/lib/about';
 
-const stats = [
-  { value: '6+', label: 'Projects Delivered' },
-  { value: '5+', label: 'Years of Excellence' },
-  { value: '12+', label: 'Cities Served' },
-  { value: '100%', label: 'Client Satisfaction' },
-];
+const stats = aboutStats;
 
 export function Story() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,26 +15,25 @@ export function Story() {
 
   return (
     <section
-      id="studio"
+      id="who-we-are"
       ref={containerRef}
-      className="relative py-28 lg:py-36 bg-luxury-black overflow-hidden"
+      className="relative section-y bg-luxury-black overflow-hidden"
     >
       <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[600px] aspect-square pointer-events-none"
         style={{
           background:
             'radial-gradient(circle, rgba(176,141,87,0.08) 0%, transparent 70%)',
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
-          {/* Logo glass card */}
+      <div className="container-site relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-24 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[420px] bg-luxury-black/40"
+            className="glass p-8 sm:p-10 lg:p-14 flex flex-col items-center justify-center min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] bg-luxury-black/40"
           >
             <Logo size="lg" className="justify-center" imageClassName="object-center mx-auto" />
             <p className="mt-8 text-center text-gray-400 text-sm leading-relaxed max-w-xs">
@@ -54,38 +49,43 @@ export function Story() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="label-uppercase text-gold-300 mb-6"
             >
-              About The Studio
+              Who We Are
             </motion.p>
 
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-[1.08] tracking-[-0.015em]"
+              className="font-display text-fluid-h2 text-white mb-6 sm:mb-8 leading-[1.08] text-balance"
             >
-              Spaces that hold{' '}
+              {aboutUsIntro.title}{' '}
               <span className="italic font-light text-gradient-gold-inline">
-                your
-              </span>{' '}
-              story
+                {aboutUsIntro.titleAccent}
+              </span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-gray-300 text-lg font-light mb-10 leading-relaxed"
+              className="text-gray-300 text-fluid-body font-light mb-6 sm:mb-8 leading-relaxed"
             >
-              At Design My Place, we believe interiors are more than aesthetics.
-              They are the backdrop to life&apos;s most meaningful moments. Every
-              design decision stems from research, emotion, and timeless
-              craftsmanship.
+              {aboutUsIntro.paragraphs[0]}
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.45 }}
+              className="text-gray-400 text-fluid-body font-light mb-8 sm:mb-10 leading-relaxed"
+            >
+              {aboutUsIntro.paragraphs[1]}
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.45 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
               className="mb-14"
             >
               <Link href="/about" className="btn-outline-gold group">
@@ -97,7 +97,7 @@ export function Story() {
               </Link>
             </motion.div>
 
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-4 sm:gap-8">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}

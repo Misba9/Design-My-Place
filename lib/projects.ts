@@ -1,3 +1,5 @@
+import { MISSING_IMAGE, NVT_IMAGES, NVT_PROJECT_GALLERY } from '@/lib/images';
+
 export type Project = {
   id: number;
   slug: string;
@@ -25,17 +27,12 @@ export const projects: Project[] = [
     style: 'Nature · Neutral · Rafters',
     year: '2024',
     featured: false,
-    image:
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    image: NVT_IMAGES.family,
     description:
       'A premium apartment designed to bring nature indoors through earthy materials, warm wooden rafters, and a calming neutral palette. The interiors balance contemporary elegance with timeless comfort, creating a peaceful home for modern family living.',
     area: '3,200 sq ft',
     duration: '12 months',
-    gallery: [
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    gallery: [...NVT_PROJECT_GALLERY],
     highlights: [
       'Earthy materials and warm wooden rafters',
       'Calming neutral palette throughout',
@@ -51,16 +48,12 @@ export const projects: Project[] = [
     style: 'Marble · Pastel · Artistic',
     year: '2024',
     featured: false,
-    image:
-      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: MISSING_IMAGE,
     description:
       'A sophisticated penthouse where soft pastel tones meet luxurious marble finishes. Thoughtfully curated artwork, clean lines, and bespoke furnishings create a refined living experience filled with warmth and personality.',
     area: '4,500 sq ft',
     duration: '14 months',
-    gallery: [
-      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    gallery: [MISSING_IMAGE],
     highlights: [
       'Soft pastel tones with luxurious marble finishes',
       'Thoughtfully curated artwork and clean lines',
@@ -76,16 +69,12 @@ export const projects: Project[] = [
     style: 'Heritage · Contemporary · Indian',
     year: '2023',
     featured: false,
-    image:
-      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: MISSING_IMAGE,
     description:
       'A contemporary Indian villa inspired by traditional heritage architecture. Rich textures, handcrafted details, and modern spatial planning blend seamlessly to celebrate India\'s timeless design language with modern luxury.',
     area: '6,800 sq ft',
     duration: '18 months',
-    gallery: [
-      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    gallery: [MISSING_IMAGE],
     highlights: [
       'Heritage-inspired contemporary architecture',
       'Rich textures and handcrafted details',
@@ -101,16 +90,12 @@ export const projects: Project[] = [
     style: 'Wood · Brand · Experiential',
     year: '2024',
     featured: false,
-    image:
-      'https://images.pexels.com/photos/32370580/pexels-photo-32370580.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    image: MISSING_IMAGE,
     description:
       'An immersive brand experience centre crafted to showcase products through engaging spatial storytelling. Warm wood finishes, innovative displays, and interactive elements create memorable customer experiences while reflecting the brand\'s identity.',
     area: '8,500 sq ft',
     duration: '9 months',
-    gallery: [
-      'https://images.pexels.com/photos/32370580/pexels-photo-32370580.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    gallery: [MISSING_IMAGE],
     highlights: [
       'Engaging spatial storytelling for product showcase',
       'Warm wood finishes and innovative displays',
@@ -126,16 +111,12 @@ export const projects: Project[] = [
     style: 'Arches · Light · Minimal',
     year: '2024',
     featured: false,
-    image:
-      'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: MISSING_IMAGE,
     description:
       'A compact residence designed with graceful arches, abundant natural light, and minimalist aesthetics. Every space is optimized for functionality while maintaining an airy atmosphere that feels both spacious and serene.',
     area: '1,800 sq ft',
     duration: '10 months',
-    gallery: [
-      'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    gallery: [MISSING_IMAGE],
     highlights: [
       'Graceful arches and abundant natural light',
       'Minimalist aesthetics with optimized functionality',
@@ -151,16 +132,12 @@ export const projects: Project[] = [
     style: 'Art Deco · Luxury · Heritage',
     year: '2023',
     featured: true,
-    image:
-      'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: MISSING_IMAGE,
     description:
       'An Art Deco-inspired home conceived for a Parisian-spirited couple, where three generations of heirloom teakwood furniture find renewed dignity amid lacquered millwork, bronze fixtures, and considered geometry.',
     area: '5,400 sq ft',
     duration: '16 months',
-    gallery: [
-      'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    ],
+    gallery: [MISSING_IMAGE],
     highlights: [
       'Heirloom teakwood furniture integrated with Art Deco geometry',
       'Lacquered millwork and bronze fixtures throughout',

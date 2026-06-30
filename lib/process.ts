@@ -5,71 +5,86 @@ export type ProcessStep = {
   details: string[];
 };
 
+export const howWeWork = {
+  number: '05',
+  label: 'How We Work',
+} as const;
+
 export const processSteps: ProcessStep[] = [
   {
     number: '01',
-    title: 'Discover',
-    description:
-      'We begin by understanding you, your lifestyle, aspirations, and how you want to feel in your space.',
+    title: 'Meet',
+    description: 'New client meeting and brief understanding of your vision, space, and goals.',
     details: [
-      'Initial consultation & site visit',
-      'Lifestyle questionnaire & inspiration mapping',
-      'Budget and timeline alignment',
+      'Initial client consultation',
+      'Brief understanding of requirements',
+      'Timeline and budget alignment',
     ],
   },
   {
     number: '02',
     title: 'Research',
-    description:
-      'Site analysis, spatial studies, material research, and understanding the context of your project.',
+    description: 'Brainstorming and preparation to shape a design direction grounded in your context.',
     details: [
-      'Measured surveys & spatial analysis',
-      'Climate, light, and acoustic studies',
-      'Material and finish research',
+      'Brainstorming and ideation',
+      'Site and spatial analysis',
+      'Material and inspiration research',
     ],
   },
   {
     number: '03',
     title: 'Concept',
-    description:
-      'Developing the design direction through mood boards, sketches, and initial spatial planning.',
+    description: 'Overall ideas and style generation — mood, narrative, and spatial direction.',
     details: [
-      'Design narrative & mood boards',
-      'Preliminary layouts & zoning',
-      'Material palette presentation',
+      'Design narrative and mood boards',
+      'Overall ideas and style generation',
+      'Preliminary layout concepts',
     ],
   },
   {
     number: '04',
-    title: 'Design Development',
-    description:
-      'Detailed drawings, 3D visualizations, material selections, and lighting design.',
+    title: 'Design',
+    description: 'Layout and style selection refined into a cohesive interior language.',
     details: [
-      'Detailed drawings & specifications',
-      'Photorealistic 3D renders',
-      'Lighting, MEP & joinery coordination',
+      'Layout planning and zoning',
+      'Style, material, and finish selection',
+      'Furniture and lighting concepts',
     ],
   },
   {
     number: '05',
-    title: 'Execution',
-    description:
-      'Coordinating with contractors, artisans, and suppliers to bring the design to life.',
+    title: 'Finalize',
+    description: 'Final design details and presentation for client review and approval.',
     details: [
-      'Vendor selection & procurement',
-      'Site supervision & quality control',
-      'Progress reviews & snag management',
+      'Detailed drawings and specifications',
+      'Final design presentation',
+      'Approvals and documentation',
     ],
   },
   {
     number: '06',
-    title: 'Styling & Handover',
-    description:
-      'Final styling, furniture placement, art curation, and the moment we hand over your keys.',
+    title: 'Create',
+    description: 'Project execution within budget — coordinating vendors, contractors, and site work.',
     details: [
-      'Furniture placement & art hanging',
-      'Soft furnishing & accessory styling',
-      'Final walkthrough & documentation',
+      'Vendor and contractor coordination',
+      'On-site execution and supervision',
+      'Budget tracking throughout the build',
+    ],
+  },
+  {
+    number: '07',
+    title: 'Install',
+    description: 'Installation and final touches — styling, placement, and handover.',
+    details: [
+      'Furniture installation and placement',
+      'Final styling and accessories',
+      'Walkthrough and project handover',
     ],
   },
 ];
+
+/** Simplified steps for service page cards */
+export const serviceProcessSteps = processSteps.map((step) => ({
+  step: step.title,
+  description: step.description,
+}));

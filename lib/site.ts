@@ -1,3 +1,5 @@
+import { HERO_IMAGE } from '@/lib/images';
+
 export const SITE_URL = 'https://designmyplace.in';
 
 export const BUSINESS = {
@@ -7,8 +9,8 @@ export const BUSINESS = {
   description:
     'Premium interior design studio creating bespoke residential interiors for new homes and renovations with budgets above ₹25 Lakhs.',
   email: 'hello@designmyplace.in',
-  phone: '+9198543210',
-  phoneDisplay: '+91 98543 210',
+  phone: '+918266020600',
+  phoneDisplay: '+91 82660 20600',
   foundingDate: '2021',
   priceRange: '₹₹₹₹',
   currenciesAccepted: 'INR',
@@ -30,7 +32,7 @@ export const BUSINESS = {
   ],
   social: {
     instagram: 'https://instagram.com/design_my_place',
-    whatsapp: 'https://wa.me/9198543210',
+    whatsapp: 'https://wa.me/918266020600',
   },
 } as const;
 
@@ -52,7 +54,7 @@ export const STUDIO_ADDRESS = {
 };
 
 export const OG_IMAGE = {
-  url: '/hero-luxury.jpg',
+  url: HERO_IMAGE,
   width: 1200,
   height: 630,
   alt: 'Design My Place — Luxury Interior Design Studio in Bangalore & Delhi NCR',

@@ -6,6 +6,7 @@ import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { Logo } from '@/components/Logo';
 import { Testimonials } from '@/components/Testimonials';
+import { TeamSection } from '@/components/TeamSection';
 import { JsonLd } from '@/components/JsonLd';
 import { STUDIO_ADDRESS } from '@/lib/site';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
@@ -41,28 +42,10 @@ const values = [
 ];
 
 const stats = [
-  { value: '6+', label: 'Projects Delivered' },
+  { value: '25+', label: 'Projects Delivered' },
   { value: '5+', label: 'Years of Excellence' },
   { value: '12+', label: 'Cities Served' },
   { value: '100%', label: 'Client Satisfaction' },
-];
-
-const team = [
-  {
-    name: 'Design Leadership',
-    role: 'Creative Direction',
-    bio: 'Guiding every project from concept to completion with a unified design vision.',
-  },
-  {
-    name: 'Project Management',
-    role: 'Execution & Coordination',
-    bio: 'Ensuring timelines, quality, and seamless communication across all stakeholders.',
-  },
-  {
-    name: 'Styling & Curation',
-    role: 'Finishing Touches',
-    bio: 'Sourcing furniture, art, and accessories that complete the narrative of each space.',
-  },
 ];
 
 export default function StudioPage() {
@@ -84,8 +67,8 @@ export default function StudioPage() {
         imageAlt="Design My Place interior design studio in Bengaluru"
       />
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
             <div className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[380px]">
               <Logo size="lg" className="justify-center" imageClassName="object-center mx-auto" />
@@ -132,8 +115,8 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-gray">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6 text-center">What We Stand For</p>
           <h2 className="font-display text-3xl lg:text-5xl text-white text-center mb-16">
             Our{' '}
@@ -155,8 +138,8 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="border-l border-gold-400/60 pl-5 lg:pl-6">
@@ -172,29 +155,10 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <p className="label-uppercase text-gold-300 mb-6">The Team</p>
-          <h2 className="font-display text-3xl lg:text-5xl text-white mb-16">
-            How we{' '}
-            <span className="italic font-light text-gradient-gold-inline">work</span>
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {team.map((member) => (
-              <div key={member.name} className="border-t border-gold-400/40 pt-8">
-                <p className="text-[10px] uppercase tracking-[0.16em] text-gold-300 mb-3">
-                  {member.role}
-                </p>
-                <h3 className="font-display text-2xl text-white mb-4">{member.name}</h3>
-                <p className="text-gray-400 font-light leading-relaxed">{member.bio}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TeamSection showStudioLink={false} />
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-[4/3] overflow-hidden border border-white/10">
               <Image

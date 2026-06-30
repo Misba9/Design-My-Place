@@ -46,6 +46,7 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
   }
 
   body {
@@ -53,6 +54,8 @@
     background: #111111;
     color: var(--ivory-100);
     cursor: none;
+    overflow-x: clip;
+    min-width: 320px;
   }
 
   ::selection {
@@ -239,7 +242,7 @@
 
   /* Premium button styles */
   .btn-gold {
-    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 text-ivory-100 font-semibold uppercase text-xs transition-all duration-500 rounded-none;
+    @apply relative inline-flex items-center justify-center gap-3 px-5 sm:px-7 py-3 sm:py-3.5 min-h-11 text-ivory-100 font-semibold uppercase text-xs transition-all duration-500 rounded-none w-full sm:w-auto;
     letter-spacing: 0.12em;
     border: 1px solid rgba(176, 141, 87, 0.7);
     background: linear-gradient(135deg, rgba(133, 103, 63, 0.95) 0%, rgba(176, 141, 87, 0.96) 45%, rgba(199, 170, 128, 0.94) 100%);
@@ -253,7 +256,7 @@
   }
 
   .btn-outline-gold {
-    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 border text-gold-400 font-semibold uppercase text-xs transition-all duration-500 rounded-none bg-transparent;
+    @apply relative inline-flex items-center justify-center gap-3 px-5 sm:px-7 py-3 sm:py-3.5 min-h-11 border text-gold-400 font-semibold uppercase text-xs transition-all duration-500 rounded-none bg-transparent w-full sm:w-auto;
     letter-spacing: 0.12em;
     border-color: rgba(176, 141, 87, 0.55);
   }
@@ -316,7 +319,7 @@
   }
 
   .nav-link-mobile {
-    @apply font-display text-3xl sm:text-4xl text-white/90 tracking-wide transition-all duration-500;
+    @apply font-display text-2xl xs:text-3xl sm:text-4xl text-white/90 tracking-wide transition-all duration-500;
   }
 
   .nav-link-mobile:hover {
@@ -325,8 +328,7 @@
   }
 
   .btn-header-cta {
-    @apply relative inline-flex items-center justify-center px-8 text-ivory-100 font-body font-semibold uppercase text-[11px] transition-all duration-500 rounded-sm overflow-hidden whitespace-nowrap;
-    height: 52px;
+    @apply relative inline-flex items-center justify-center px-6 sm:px-8 min-h-11 sm:min-h-[52px] text-ivory-100 font-body font-semibold uppercase text-[10px] sm:text-[11px] transition-all duration-500 rounded-sm overflow-hidden w-full sm:w-auto;
     letter-spacing: 0.12em;
     background: linear-gradient(132deg, #7f633e 0%, #b08d57 46%, #c7ab80 100%);
     box-shadow: 0 0 0 1px rgba(176, 141, 87, 0.4), 0 8px 24px rgba(176, 141, 87, 0.16);
@@ -420,12 +422,110 @@
 
 @layer utilities {
   .text-gradient-gold-inline {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 via-luxury-cream to-gold-600;
+    /* Solid gold — bg-clip-text clips italic overhang on last letters in WebKit */
+    @apply italic font-light text-gold-400;
+    display: inline-block;
+    padding-inline-end: 0.12em;
+    overflow: visible;
   }
 
   .backdrop-blur-luxury {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Site-wide responsive layout */
+  .container-site {
+    @apply w-full max-w-[90rem] mx-auto px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16;
+  }
+
+  .section-y {
+    @apply py-16 min-[375px]:py-18 sm:py-20 md:py-24 lg:py-28 xl:py-32;
+  }
+
+  .section-y-sm {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+
+  /* Fluid typography */
+  .text-fluid-hero {
+    font-size: clamp(2.125rem, 5.5vw + 0.5rem, 5.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    overflow: visible;
+  }
+
+  .text-fluid-h1 {
+    font-size: clamp(1.875rem, 4vw + 0.5rem, 4.5rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    overflow: visible;
+  }
+
+  .text-fluid-h2 {
+    font-size: clamp(1.625rem, 2.5vw + 0.75rem, 3.75rem);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    overflow: visible;
+  }
+
+  .text-fluid-h3 {
+    font-size: clamp(1.125rem, 1.5vw + 0.5rem, 2rem);
+    line-height: 1.2;
+  }
+
+  .text-fluid-body {
+    font-size: clamp(0.9375rem, 0.5vw + 0.85rem, 1.125rem);
+    line-height: 1.7;
+  }
+
+  /* Card grids: 1 → 2 → 3 columns */
+  .card-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+  }
+
+  /* Button groups: stack mobile, row desktop */
+  .btn-group {
+    @apply flex flex-col w-full sm:w-auto sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4;
+  }
+
+  .btn-group > .btn-gold,
+  .btn-group > .btn-outline-gold,
+  .btn-group > a {
+    @apply w-full sm:w-auto;
+  }
+
+  /* Touch-friendly targets */
+  .touch-target {
+    @apply min-h-11 min-w-11;
+  }
+
+  /* Horizontal scroll with snap (mobile carousels) */
+  .scroll-snap-x {
+    @apply flex overflow-x-auto snap-x snap-mandatory scrollbar-hide;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scroll-snap-item {
+    @apply snap-center shrink-0;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Safe area for notched devices */
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-right {
+    padding-right: max(1rem, env(safe-area-inset-right));
   }
 
   /* Fade mask for scroll effects */

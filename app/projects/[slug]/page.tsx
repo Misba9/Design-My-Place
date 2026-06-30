@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import { ContentImage } from '@/components/ContentImage';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -9,6 +9,7 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { ProjectViewTracker } from '@/components/ProjectViewTracker';
 import { projects, getProjectBySlug, getRelatedProjects } from '@/lib/projects';
+import { HERO_IMAGE, isLocalImage } from '@/lib/images';
 import { getProjectDetail } from '@/lib/project-details';
 import {
   breadcrumbSchema,
@@ -39,7 +40,7 @@ export function generateMetadata({ params }: Props): Metadata {
     title,
     description,
     path: `/projects/${project.slug}`,
-    ogImage: project.image,
+    ogImage: isLocalImage(project.image) ? project.image : HERO_IMAGE,
     ogImageAlt: `${project.name} interior design by Design My Place`,
   });
 }
@@ -60,11 +61,13 @@ export default function ProjectDetailPage({ params }: Props) {
     ]),
     faqSchema(detail.faqs),
     imageObjectSchema({
-      url: project.image,
+      url: isLocalImage(project.image) ? project.image : HERO_IMAGE,
       name: project.name,
       description: project.description,
     }),
-    ...project.gallery.map((src, index) =>
+    ...project.gallery
+      .filter(isLocalImage)
+      .map((src, index) =>
       imageObjectSchema({
         url: src,
         name: `${project.name} — image ${index + 1}`,
@@ -94,8 +97,8 @@ export default function ProjectDetailPage({ params }: Props) {
         imageAlt={`${project.name} — ${project.type} in ${project.location}`}
       />
 
-      <section className="py-16 lg:py-20 bg-luxury-black border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y-sm bg-luxury-black border-b border-white/10">
+        <div className="container-site">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gold-300 transition-colors mb-12"
@@ -121,8 +124,8 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y-sm bg-luxury-black">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">Overview</p>
           <h2 className="font-display text-3xl lg:text-4xl text-white mb-8">
             Project{' '}
@@ -134,8 +137,8 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-luxury-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16">
+      <section className="section-y-sm bg-luxury-gray">
+        <div className="container-site grid lg:grid-cols-2 gap-16">
           <div>
             <p className="label-uppercase text-gold-300 mb-6">The Brief</p>
             <h2 className="font-display text-3xl text-white mb-8">Client requirements</h2>
@@ -158,8 +161,8 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y-sm bg-luxury-black">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">Gallery</p>
           <h2 className="font-display text-3xl lg:text-4xl text-white mb-12">
             Luxury{' '}
@@ -168,12 +171,12 @@ export default function ProjectDetailPage({ params }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {project.gallery.map((src, index) => (
               <div
-                key={src}
+                key={`${project.slug}-gallery-${index}`}
                 className={`relative overflow-hidden border border-white/10 ${
                   index === 0 ? 'md:col-span-2 aspect-[21/9]' : 'aspect-[4/3]'
                 }`}
               >
-                <Image
+                <ContentImage
                   src={src}
                   alt={`${project.name} — luxury interior ${index + 1}`}
                   fill
@@ -186,8 +189,8 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-luxury-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16">
+      <section className="section-y-sm bg-luxury-gray">
+        <div className="container-site grid lg:grid-cols-2 gap-16">
           <div>
             <p className="label-uppercase text-gold-300 mb-6">Materiality</p>
             <h2 className="font-display text-3xl text-white mb-8">Materials used</h2>
@@ -220,7 +223,7 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-luxury-black">
+      <section className="section-y-sm bg-luxury-black">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <h2 className="font-display text-3xl text-white text-center mb-12">Project FAQ</h2>
           <div className="space-y-6">
@@ -235,8 +238,8 @@ export default function ProjectDetailPage({ params }: Props) {
       </section>
 
       {related.length > 0 && (
-        <section className="py-20 lg:py-28 bg-luxury-gray">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <section className="section-y-sm bg-luxury-gray">
+          <div className="container-site">
             <h2 className="font-display text-3xl lg:text-4xl text-white mb-12">
               Related <span className="italic font-light text-gradient-gold-inline">projects</span>
             </h2>
@@ -248,7 +251,7 @@ export default function ProjectDetailPage({ params }: Props) {
                   className="group block border border-white/10 overflow-hidden"
                 >
                   <div className="relative aspect-[4/3]">
-                    <Image src={item.image} alt={item.name} fill className="object-cover" sizes="33vw" />
+                    <ContentImage src={item.image} alt={item.name} fill className="object-cover" sizes="33vw" />
                   </div>
                   <div className="p-6">
                     <p className="font-display text-xl text-white group-hover:text-gold-300 transition-colors">

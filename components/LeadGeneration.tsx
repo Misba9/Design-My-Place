@@ -12,7 +12,7 @@ export function LeadGeneration() {
   return (
     <section
       ref={containerRef}
-      className="relative py-24 lg:py-32 bg-luxury-gray overflow-hidden"
+      className="relative section-y bg-luxury-gray overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -22,7 +22,7 @@ export function LeadGeneration() {
         }}
       />
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-12 text-center">
+      <div className="relative z-10 container-site text-center max-w-3xl">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -36,7 +36,7 @@ export function LeadGeneration() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.2 }}
-          className="font-display text-4xl sm:text-5xl md:text-6xl text-white mb-6 leading-[1.05]"
+          className="font-display text-fluid-h2 text-white mb-4 sm:mb-6 leading-[1.05] text-balance"
         >
           Your home is waiting to tell its{' '}
           <span className="italic font-light text-gradient-gold-inline">story</span>
@@ -56,7 +56,7 @@ export function LeadGeneration() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="btn-group max-w-md sm:max-w-none mx-auto"
         >
           <Link href="/contact" className="btn-gold group">
             <span>Book Consultation</span>

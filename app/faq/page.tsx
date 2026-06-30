@@ -61,7 +61,7 @@ export default function FaqPage() {
         imageAlt="Design My Place luxury interior design studio FAQ"
       />
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
+      <section className="section-y bg-luxury-black">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <div className="space-y-6">
             {allFaqs.map((faq) => (
@@ -82,7 +82,7 @@ export default function FaqPage() {
       </section>
 
       <section className="py-20 bg-luxury-gray border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">Service Areas</p>
           <h2 className="font-display text-2xl lg:text-3xl text-white mb-8">
             Interior design by location

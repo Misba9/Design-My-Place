@@ -30,7 +30,7 @@ export function FloatingCTA() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 lg:bottom-10 lg:right-10"
+          className="fixed z-40 flex flex-col items-end gap-2 sm:gap-3 bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-10 lg:right-10 safe-bottom safe-right max-w-[calc(100vw-2rem)]"
         >
           <AnimatePresence>
             {expanded && (
@@ -38,15 +38,15 @@ export function FloatingCTA() {
                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                className="flex flex-col gap-2"
+                className="flex flex-col gap-2 w-full min-w-[11rem] sm:min-w-[12rem]"
               >
                 <a
                   href={`tel:${BUSINESS.phone}`}
                   onClick={() => trackPhoneClick('floating_cta')}
-                  className="flex items-center gap-3 glass border border-white/10 px-4 py-3 text-sm text-white hover:border-gold-400/40 transition-colors"
+                  className="flex items-center gap-3 glass border border-white/10 px-4 py-3 min-h-11 text-sm text-white hover:border-gold-400/40 transition-colors"
                   aria-label="Call Design My Place"
                 >
-                  <Phone size={16} className="text-gold-300" />
+                  <Phone size={16} className="text-gold-300 shrink-0" />
                   Call Us
                 </a>
                 <a
@@ -54,18 +54,18 @@ export function FloatingCTA() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick('floating_cta')}
-                  className="flex items-center gap-3 glass border border-white/10 px-4 py-3 text-sm text-white hover:border-gold-400/40 transition-colors"
+                  className="flex items-center gap-3 glass border border-white/10 px-4 py-3 min-h-11 text-sm text-white hover:border-gold-400/40 transition-colors"
                   aria-label="WhatsApp Design My Place"
                 >
-                  <MessageCircle size={16} className="text-gold-300" />
+                  <MessageCircle size={16} className="text-gold-300 shrink-0" />
                   WhatsApp
                 </a>
                 <Link
                   href="/contact"
                   onClick={() => trackConsultationClick('floating_cta')}
-                  className="flex items-center gap-3 btn-gold text-[11px] py-3 px-4"
+                  className="flex items-center justify-center gap-3 btn-gold text-[11px] py-3 px-4 min-h-11"
                 >
-                  <Calendar size={16} />
+                  <Calendar size={16} className="shrink-0" />
                   Book Consultation
                 </Link>
               </motion.div>
@@ -75,7 +75,7 @@ export function FloatingCTA() {
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
-            className="btn-gold shadow-lg shadow-black/40 text-[11px] py-3 px-6"
+            className="btn-gold shadow-lg shadow-black/40 text-[11px] py-3 px-5 sm:px-6 min-h-11 whitespace-nowrap"
             aria-expanded={expanded}
             aria-label={expanded ? 'Close contact options' : 'Open contact options'}
           >

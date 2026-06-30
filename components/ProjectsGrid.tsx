@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import Image from 'next/image';
+import { ContentImage } from '@/components/ContentImage';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { projects, projectTypes, type Project } from '@/lib/projects';
@@ -30,15 +30,16 @@ function ProjectCard({
       onMouseLeave={() => setIsHovered(false)}
     >
       <Link href={`/projects/${project.slug}`} className="block">
-        <div className="relative h-80 overflow-hidden img-hover-zoom">
-          <Image
+        <div className="relative aspect-[4/3] w-full overflow-hidden img-hover-zoom">
+          <ContentImage
             src={project.image}
             alt={project.name}
             fill
+            loading="lazy"
             className={`object-cover transition-transform duration-700 ${
               isHovered ? 'scale-105' : 'scale-100'
             }`}
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
 
           <div className="absolute top-4 left-4">
@@ -66,8 +67,8 @@ function ProjectCard({
           </div>
         </div>
 
-        <div className="p-7">
-          <h3 className="font-display text-[1.35rem] text-white mb-2">
+        <div className="p-5 sm:p-7">
+          <h3 className="font-display text-fluid-h3 text-white mb-2">
             {project.name}
           </h3>
           <p className="text-gray-400 text-sm flex items-center gap-3">
@@ -110,13 +111,13 @@ export function ProjectsGrid({
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex flex-wrap gap-3 mb-12 lg:mb-16"
+          className="flex flex-wrap gap-2 sm:gap-3 mb-10 sm:mb-12 lg:mb-16"
         >
           {projectTypes.map((type) => (
             <button
               key={type}
               onClick={() => setActiveFilter(type)}
-              className={`px-5 py-2.5 text-[10px] uppercase tracking-[0.14em] font-medium transition-all duration-300 border ${
+              className={`px-4 sm:px-5 py-2.5 min-h-11 text-[10px] uppercase tracking-[0.14em] font-medium transition-all duration-300 border ${
                 activeFilter === type
                   ? 'border-gold-400/70 text-gold-300 bg-gold-400/10'
                   : 'border-white/10 text-gray-400 hover:border-gold-400/40 hover:text-gold-300'
@@ -128,7 +129,7 @@ export function ProjectsGrid({
         </motion.div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="card-grid">
         {displayed.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}

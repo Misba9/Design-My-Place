@@ -1,32 +1,21 @@
-import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Hero } from '@/components/Hero';
 import { Story } from '@/components/Story';
+import { WhatWeDo } from '@/components/WhatWeDo';
+import { AboutQuote } from '@/components/AboutQuote';
 import { Projects } from '@/components/Projects';
-import { Services } from '@/components/Services';
 import { Process } from '@/components/Process';
 import { Contact } from '@/components/Contact';
 import { JsonLd } from '@/components/JsonLd';
 import { breadcrumbSchema, buildSchemaGraph, faqSchema } from '@/lib/seo';
 import { serviceFaqs } from '@/lib/services';
 
-const Testimonials = dynamic(
-  () => import('@/components/Testimonials').then((m) => ({ default: m.Testimonials })),
+const PriceList = dynamic(
+  () => import('@/components/PriceList').then((m) => ({ default: m.PriceList })),
   { ssr: true },
 );
-const Statistics = dynamic(
-  () => import('@/components/Statistics').then((m) => ({ default: m.Statistics })),
-  { ssr: true },
-);
-const InstagramHighlights = dynamic(
-  () =>
-    import('@/components/InstagramHighlights').then((m) => ({
-      default: m.InstagramHighlights,
-    })),
-  { ssr: true },
-);
-const LeadGeneration = dynamic(
-  () => import('@/components/LeadGeneration').then((m) => ({ default: m.LeadGeneration })),
+const TeamSection = dynamic(
+  () => import('@/components/TeamSection').then((m) => ({ default: m.TeamSection })),
   { ssr: true },
 );
 
@@ -50,13 +39,12 @@ export default function Home() {
       <JsonLd data={schema} />
       <Hero />
       <Story />
+      <WhatWeDo />
+      <AboutQuote />
       <Projects />
-      <Services />
       <Process />
-      <Testimonials />
-      <Statistics />
-      <InstagramHighlights />
-      <LeadGeneration />
+      <PriceList />
+      <TeamSection />
       <Contact />
     </>
   );

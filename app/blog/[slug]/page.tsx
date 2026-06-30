@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import { ContentImage } from '@/components/ContentImage';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -14,6 +14,7 @@ import {
   faqSchema,
 } from '@/seo';
 import { getAllBlogSlugs, getBlogPostBySlug } from '@/lib/blog';
+import { HERO_IMAGE, isLocalImage } from '@/lib/images';
 
 type Props = { params: { slug: string } };
 
@@ -30,7 +31,7 @@ export function generateMetadata({ params }: Props): Metadata {
     description: post.metaDescription,
     path: `/blog/${post.slug}`,
     keywords: post.keywords,
-    ogImage: post.image,
+    ogImage: isLocalImage(post.image) ? post.image : HERO_IMAGE,
     ogImageAlt: post.title,
     publishedTime: post.publishedAt,
   });
@@ -45,7 +46,7 @@ export default function BlogPostPage({ params }: Props) {
       title: post.title,
       slug: post.slug,
       description: post.metaDescription,
-      image: post.image,
+      image: isLocalImage(post.image) ? post.image : HERO_IMAGE,
       publishedAt: post.publishedAt,
     }),
     breadcrumbSchema([
@@ -68,8 +69,8 @@ export default function BlogPostPage({ params }: Props) {
         ]}
       />
 
-      <article className="py-16 lg:py-24 bg-luxury-black">
-        <div className="max-w-3xl mx-auto px-6 lg:px-12">
+      <article className="section-y bg-luxury-black">
+        <div className="container-site max-w-3xl">
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gold-300 mb-10"
@@ -86,19 +87,19 @@ export default function BlogPostPage({ params }: Props) {
             })}
           </p>
 
-          <h1 className="font-display text-4xl lg:text-5xl text-white mb-8 leading-tight">
+          <h1 className="font-display text-fluid-h1 text-white mb-6 sm:mb-8 leading-tight text-balance">
             {post.title}
           </h1>
 
-          <div className="glass border border-gold-400/20 p-6 mb-10">
+          <div className="glass border border-gold-400/20 p-4 sm:p-6 mb-8 sm:mb-10">
             <p className="text-[10px] uppercase tracking-widest text-gold-300 mb-2">
               In brief
             </p>
             <p className="text-gray-300 font-light leading-relaxed">{post.keyAnswer}</p>
           </div>
 
-          <div className="relative aspect-[21/9] border border-white/10 overflow-hidden mb-12">
-            <Image
+          <div className="relative aspect-[16/10] sm:aspect-[21/9] border border-white/10 overflow-hidden mb-10 sm:mb-12">
+            <ContentImage
               src={post.image}
               alt={post.title}
               fill
@@ -111,7 +112,7 @@ export default function BlogPostPage({ params }: Props) {
           <div className="space-y-12">
             {post.sections.map((section) => (
               <section key={section.heading}>
-                <h2 className="font-display text-2xl lg:text-3xl text-white mb-6">
+                <h2 className="font-display text-fluid-h3 text-white mb-4 sm:mb-6">
                   {section.heading}
                 </h2>
                 {section.paragraphs.map((paragraph) => (
@@ -128,7 +129,7 @@ export default function BlogPostPage({ params }: Props) {
 
           {post.faqs.length > 0 && (
             <section className="mt-16 pt-12 border-t border-white/10">
-              <h2 className="font-display text-2xl text-white mb-8">Frequently Asked</h2>
+              <h2 className="font-display text-fluid-h3 text-white mb-6 sm:mb-8">Frequently Asked</h2>
               <div className="space-y-6">
                 {post.faqs.map((faq) => (
                   <div key={faq.question} className="border border-white/10 p-6">

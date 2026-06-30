@@ -12,20 +12,20 @@ export function Projects() {
 
   return (
     <section
-      id="projects"
+      id="project-portfolio"
       ref={containerRef}
-      className="relative py-28 lg:py-36 bg-luxury-gray overflow-hidden"
+      className="relative section-y bg-luxury-black overflow-hidden"
     >
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] aspect-[2/1] pointer-events-none"
         style={{
           background:
             'radial-gradient(ellipse, rgba(176,141,87,0.07) 0%, transparent 70%)',
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 lg:mb-24 gap-6">
+      <div className="container-site relative">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 sm:mb-16 lg:mb-24 gap-4 sm:gap-6">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -33,15 +33,15 @@ export function Projects() {
               transition={{ duration: 0.6 }}
               className="label-uppercase text-gold-300 mb-4"
             >
-              Featured Work
+              Project Portfolio
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-white tracking-[-0.015em]"
+              className="font-display text-fluid-h2 text-white text-balance"
             >
-              Selected{' '}
+              Featured{' '}
               <span className="italic font-light text-gradient-gold-inline">
                 Projects
               </span>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
+import { PriceList } from '@/components/PriceList';
 import { JsonLd } from '@/components/JsonLd';
 import { services, serviceFaqs } from '@/lib/services';
 import { servicePages } from '@/lib/service-pages';
@@ -42,8 +43,8 @@ export default function ServicesPage() {
         imageAlt="Luxury interior design services by Design My Place"
       />
 
-      <section className="py-24 lg:py-32 bg-luxury-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-y bg-luxury-black">
+        <div className="container-site">
           <div className="space-y-20">
             {services.map((service, index) => (
               <div
@@ -91,7 +92,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-luxury-gray">
+      <PriceList className="bg-luxury-gray" />
+
+      <section className="section-y bg-luxury-black">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <p className="label-uppercase text-gold-300 mb-6 text-center">
             Common Questions
@@ -126,7 +129,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="py-20 bg-luxury-black border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">Specialisations</p>
           <h2 className="font-display text-2xl lg:text-3xl text-white mb-8">
             Dedicated service pages
@@ -150,7 +153,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="py-20 bg-luxury-gray border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+        <div className="container-site text-center">
           <p className="text-gray-400 font-light mb-8">
             Want to understand how we bring projects to life?
           </p>
