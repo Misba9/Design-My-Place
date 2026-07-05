@@ -1,10 +1,10 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { TeamPortrait } from '@/components/TeamPortrait';
 import { teamLead, teamMembers, teamSection } from '@/lib/team';
 
 type TeamSectionProps = {
@@ -102,22 +102,19 @@ export function TeamSection({ showStudioLink = true, className }: TeamSectionPro
 
           <div className="grid lg:grid-cols-12 gap-0 lg:items-stretch">
             {/* Portrait */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[480px] overflow-hidden">
-                <Image
-                  src={teamLead.image}
-                  alt={teamLead.name}
-                  fill
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/80 via-luxury-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-luxury-black/40" />
+            <div className="lg:col-span-5 relative lg:h-full">
+              <TeamPortrait
+                member={teamLead}
+                variant="lead"
+                priority
+                className="h-full"
+                imageClassName="group-hover:scale-[1.01]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/80 via-luxury-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-luxury-black/40 pointer-events-none" />
 
-                {/* Corner accents */}
-                <div className="absolute top-4 left-4 w-8 h-8 border-t border-l border-gold-400/40" />
-                <div className="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-gold-400/40" />
-              </div>
+              {/* Corner accents */}
+              <div className="absolute top-4 left-4 w-8 h-8 border-t border-l border-gold-400/40 pointer-events-none" />
+              <div className="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-gold-400/40 pointer-events-none" />
             </div>
 
             {/* Content */}
@@ -165,24 +162,21 @@ export function TeamSection({ showStudioLink = true, className }: TeamSectionPro
                 />
 
                 {/* Portrait */}
-                <div className="relative aspect-[3/4] overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className={`object-cover object-top transition-all duration-700 ${
-                      isActive ? 'scale-105' : 'group-hover:scale-[1.04]'
-                    }`}
-                    sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 18vw"
-                    loading="lazy"
+                <div className="relative">
+                  <TeamPortrait
+                    member={member}
+                    variant="card"
+                    imageClassName={
+                      isActive ? 'scale-[1.02]' : 'group-hover:scale-[1.01]'
+                    }
                   />
                   <div
-                    className={`absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/30 to-transparent transition-opacity duration-500 ${
+                    className={`absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/30 to-transparent transition-opacity duration-500 pointer-events-none ${
                       isActive ? 'opacity-90' : 'opacity-70 group-hover:opacity-80'
                     }`}
                   />
 
-                  {/* Role overlay on hover */}
+                  {/* Role overlay */}
                   <div
                     className={`absolute bottom-0 left-0 right-0 p-4 sm:p-5 transition-all duration-500 ${
                       isActive ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-100'

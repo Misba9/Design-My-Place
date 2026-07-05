@@ -1,4 +1,12 @@
-import { MISSING_IMAGE, NVT_IMAGES, NVT_PROJECT_GALLERY } from '@/lib/images';
+import {
+  LAKEHOUSE_GALLERY,
+  LAKEHOUSE_IMAGES,
+  MISSING_IMAGE,
+  NVT_IMAGES,
+  NVT_PROJECT_GALLERY,
+  PASTEL_PENTHOUSE_GALLERY,
+  PASTEL_PENTHOUSE_IMAGES,
+} from '@/lib/images';
 
 export type Project = {
   id: number;
@@ -48,12 +56,12 @@ export const projects: Project[] = [
     style: 'Marble · Pastel · Artistic',
     year: '2024',
     featured: false,
-    image: MISSING_IMAGE,
+    image: PASTEL_PENTHOUSE_IMAGES.hero,
     description:
       'A sophisticated penthouse where soft pastel tones meet luxurious marble finishes. Thoughtfully curated artwork, clean lines, and bespoke furnishings create a refined living experience filled with warmth and personality.',
     area: '4,500 sq ft',
     duration: '14 months',
-    gallery: [MISSING_IMAGE],
+    gallery: [...PASTEL_PENTHOUSE_GALLERY],
     highlights: [
       'Soft pastel tones with luxurious marble finishes',
       'Thoughtfully curated artwork and clean lines',
@@ -111,12 +119,12 @@ export const projects: Project[] = [
     style: 'Arches · Light · Minimal',
     year: '2024',
     featured: false,
-    image: MISSING_IMAGE,
+    image: LAKEHOUSE_IMAGES.hero,
     description:
       'A compact residence designed with graceful arches, abundant natural light, and minimalist aesthetics. Every space is optimized for functionality while maintaining an airy atmosphere that feels both spacious and serene.',
     area: '1,800 sq ft',
     duration: '10 months',
-    gallery: [MISSING_IMAGE],
+    gallery: [...LAKEHOUSE_GALLERY],
     highlights: [
       'Graceful arches and abundant natural light',
       'Minimalist aesthetics with optimized functionality',
