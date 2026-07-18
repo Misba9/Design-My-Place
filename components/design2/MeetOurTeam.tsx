@@ -37,7 +37,7 @@ export function D2MeetOurTeam() {
         <div className="flex flex-col justify-between gap-16 px-6 pb-20 pt-14 sm:px-10 lg:col-span-8 lg:px-14 lg:py-20">
           <D2Reveal>
             <h2 className="font-body font-light leading-none tracking-[-0.01em] text-[clamp(2.5rem,5.5vw,4.75rem)]">
-              07 Meet Our Team
+              Meet Our Team
             </h2>
           </D2Reveal>
 

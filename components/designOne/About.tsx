@@ -8,7 +8,7 @@ export function D1About() {
   return (
     <section style={{ background: d1.beige, color: d1.brown }}>
       <div className="mx-auto max-w-[100rem] px-6 py-28 sm:px-10 sm:py-36 lg:px-16 lg:py-44">
-        <D1Label index="02">About Design My Place</D1Label>
+        <D1Label>About Design My Place</D1Label>
 
         <div className="mt-16 grid grid-cols-1 gap-16 lg:mt-24 lg:grid-cols-12 lg:gap-12">
           {/* Portrait image, offset editorially */}

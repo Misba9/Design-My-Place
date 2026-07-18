@@ -40,7 +40,7 @@ export function D1Statistics() {
   return (
     <section style={{ background: d1.beige, color: d1.brown }}>
       <div className="mx-auto max-w-[100rem] px-6 py-28 sm:px-10 sm:py-36 lg:px-16 lg:py-44">
-        <D1Label index="06">Why Design My Place</D1Label>
+        <D1Label>Why Design My Place</D1Label>
 
         <div className="mt-14 lg:mt-20">
           <h2 className="max-w-3xl font-display font-light leading-[1.06] text-[clamp(2.25rem,4.5vw,4.25rem)]">

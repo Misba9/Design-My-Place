@@ -54,7 +54,7 @@ export function D1Services() {
   return (
     <section style={{ background: d1.charcoal, color: '#FAF8F3' }}>
       <div className="mx-auto max-w-[100rem] px-6 py-28 sm:px-10 sm:py-36 lg:px-16 lg:py-44">
-        <D1Label index="04" light>
+        <D1Label light>
           What We Do
         </D1Label>
 

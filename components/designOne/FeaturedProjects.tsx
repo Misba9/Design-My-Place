@@ -91,7 +91,7 @@ export function D1FeaturedProjects() {
   return (
     <section style={{ background: d1.bg, color: d1.brown }}>
       <div className="mx-auto max-w-[100rem] px-6 py-28 sm:px-10 sm:py-36 lg:px-16 lg:py-44">
-        <D1Label index="03">Project Portfolio</D1Label>
+        <D1Label>Project Portfolio</D1Label>
 
         <div className="mt-14 flex flex-col gap-8 lg:mt-20 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="font-display font-light leading-[1.02] text-[clamp(3rem,7vw,7rem)]">

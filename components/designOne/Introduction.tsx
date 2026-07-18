@@ -7,7 +7,7 @@ export function D1Introduction() {
   return (
     <section className="relative" style={{ background: d1.bg, color: d1.brown }}>
       <div className="mx-auto max-w-[100rem] px-6 pb-20 pt-28 sm:px-10 sm:pt-36 lg:px-16 lg:pb-28 lg:pt-44">
-        <D1Label index="01">Introduction</D1Label>
+        <D1Label>Introduction</D1Label>
 
         <div className="mt-14 grid grid-cols-1 gap-14 lg:mt-20 lg:grid-cols-12 lg:gap-10">
           {/* Left — oversized heading */}

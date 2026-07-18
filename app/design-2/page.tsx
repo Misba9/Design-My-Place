@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import { Hero } from '@/components/Hero';
 import { Contact } from '@/components/Contact';
+import { D2Hero } from '@/components/design2/Hero';
 import { D2Introduction } from '@/components/design2/Introduction';
 import { D2TableOfContents } from '@/components/design2/TableOfContents';
 import { D2AboutUs } from '@/components/design2/AboutUs';
+import { D2Statistics } from '@/components/design2/Statistics';
 import { D2WhatWeDo } from '@/components/design2/WhatWeDo';
 import { D2Evolve } from '@/components/design2/Evolve';
 import { D2Portfolio } from '@/components/design2/Portfolio';
@@ -11,6 +12,7 @@ import { D2HowWeWork } from '@/components/design2/HowWeWork';
 import { D2PriceList } from '@/components/design2/PriceList';
 import { D2MeetOurTeam } from '@/components/design2/MeetOurTeam';
 import { D2BuiltToBelong } from '@/components/design2/BuiltToBelong';
+import { D2Instagram } from '@/components/design2/Instagram';
 
 export const metadata: Metadata = {
   title: 'Design Two — Presentation Concept',
@@ -23,16 +25,18 @@ export const metadata: Metadata = {
 export default function DesignTwoPage() {
   return (
     <>
-      {/* Current website hero — untouched */}
-      <Hero />
+      {/* Hero copied from design-1 — slideshow, letter reveal, parallax */}
+      <D2Hero />
 
       {/* Presentation sections, in deck order */}
       <D2Introduction />
       <D2TableOfContents />
       <D2AboutUs />
+      <D2Statistics />
       <D2WhatWeDo />
       <D2Evolve />
       <D2Portfolio />
+      <D2Instagram />
       <D2HowWeWork />
       <D2PriceList />
       <D2MeetOurTeam />

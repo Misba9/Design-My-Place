@@ -23,7 +23,7 @@ export function D2WhatWeDo() {
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-10">
           <D2Reveal className="lg:col-span-6">
             <h2 className="font-body font-light leading-none tracking-[-0.01em] text-[clamp(2.5rem,5.5vw,4.75rem)]">
-              02 What We Do
+              What We Do
             </h2>
           </D2Reveal>
 

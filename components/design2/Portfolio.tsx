@@ -21,7 +21,7 @@ export function D2Portfolio() {
 
         <D2Reveal className="pt-0 lg:pt-0">
           <h2 className="text-center font-body font-light leading-none tracking-[-0.01em] text-[clamp(2.5rem,5.5vw,4.75rem)]">
-            03 Project Portfolio
+            Project Portfolio
           </h2>
         </D2Reveal>
 

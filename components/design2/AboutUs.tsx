@@ -18,7 +18,7 @@ export function D2AboutUs() {
           <div className="flex flex-col justify-between lg:col-span-8 lg:min-h-[44rem]">
             <D2Reveal>
               <h2 className="font-body font-light leading-none tracking-[-0.01em] text-[clamp(2.5rem,5.5vw,4.75rem)]">
-                01 About Us
+                About Us
               </h2>
             </D2Reveal>
 

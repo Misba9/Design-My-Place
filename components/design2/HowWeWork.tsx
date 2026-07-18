@@ -66,7 +66,7 @@ export function D2HowWeWork() {
               className="font-body font-light leading-none tracking-[-0.01em] text-[clamp(2.5rem,5vw,4.25rem)]"
               style={{ color: d2.cream }}
             >
-              05 How We Work
+              How We Work
             </h2>
           </D2Reveal>
           <div className="grid grid-cols-2 gap-10 lg:col-span-6">
