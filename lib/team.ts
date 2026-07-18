@@ -1,5 +1,4 @@
 export const teamSection = {
-  number: '06',
   label: 'Meet Our Team',
   title: 'The People Behind',
   titleAccent: 'Every Space',
@@ -28,7 +27,7 @@ const teamImage = (filename: string) =>
 
 export const teamLead: TeamMember = {
   name: 'Arushi Goel',
-  role: 'Chief Designer',
+  role: 'CREATIVE DIRECTOR & FOUNDER',
   image: teamImage('Arushi Goel.png'),
   imageFit: {
     objectPosition: '50% 50%',

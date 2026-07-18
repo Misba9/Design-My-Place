@@ -31,7 +31,9 @@ export const BUSINESS = {
     'India',
   ],
   social: {
+    facebook: 'https://www.facebook.com/profile.php?id=100068908213810',
     instagram: 'https://instagram.com/design_my_place',
+    vimeo: 'https://vimeo.com/designmyplace',
     whatsapp: 'https://wa.me/918266020600',
   },
 } as const;

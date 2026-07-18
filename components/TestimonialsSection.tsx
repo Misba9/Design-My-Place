@@ -13,12 +13,17 @@ export function TestimonialsSection() {
   return (
     <section ref={containerRef} className="section-y bg-luxury-gray">
       <div className="container-site">
-        <div className="mb-10 sm:mb-16 text-center lg:text-left">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="mb-10 sm:mb-16 text-center lg:text-left"
+        >
           <p className="label-uppercase text-gold-400/70 mb-4 sm:mb-6">Client Stories</p>
           <h2 className="font-display text-fluid-h2 text-ivory-100 text-balance">
             Words from <span className="italic font-light">Clients</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="card-grid">
           {testimonials.map((testimonial, index) => (

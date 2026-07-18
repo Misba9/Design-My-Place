@@ -6,7 +6,6 @@ export type ProcessStep = {
 };
 
 export const howWeWork = {
-  number: '05',
   label: 'How We Work',
 } as const;
 

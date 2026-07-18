@@ -57,15 +57,8 @@ export function WhatWeDo() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <span
-                aria-hidden
-                className="absolute -top-6 -left-2 font-display text-[7rem] sm:text-[8rem] leading-none text-gold-500/[0.07] select-none pointer-events-none"
-              >
-                {whatWeDo.number}
-              </span>
-
               <p className="label-uppercase text-gold-300 mb-4 relative">
-                {whatWeDo.number} — {whatWeDo.label}
+                {whatWeDo.label}
               </p>
               <h2 className="font-display text-fluid-h2 text-white text-balance mb-5 sm:mb-6 relative">
                 What We{' '}

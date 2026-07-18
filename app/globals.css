@@ -283,19 +283,22 @@
     filter: brightness(1.05);
   }
 
-  /* Luxury header glass */
+  /* Luxury header — solid black */
   .header-luxury {
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: #0a0a0a;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .header-luxury--scrolled {
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  .header-social-link {
+    @apply inline-flex items-center justify-center rounded-full border text-white/70 transition-colors duration-300;
+    width: 2rem;
+    height: 2rem;
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .header-social-link:hover {
+    @apply text-gold-400;
+    border-color: rgba(176, 141, 87, 0.5);
   }
 
   /* Header navigation */
@@ -411,6 +414,20 @@
   html.custom-cursor-active button,
   html.custom-cursor-active [data-cursor-hover] {
     cursor: none;
+  }
+
+  /* Restore native cursor over third-party widgets (Elfsight Instagram popup, etc.) */
+  html.custom-cursor-active [class*='eapps-'],
+  html.custom-cursor-active [class*='eapps-'] *,
+  html.custom-cursor-active [class*='elfsight'],
+  html.custom-cursor-active [class*='elfsight'] *,
+  html.custom-cursor-active.native-cursor-active,
+  html.custom-cursor-active.native-cursor-active body,
+  html.custom-cursor-active.native-cursor-active body *,
+  html.custom-cursor-active.native-cursor-active a,
+  html.custom-cursor-active.native-cursor-active button,
+  html.custom-cursor-active.native-cursor-active [data-cursor-hover] {
+    cursor: auto !important;
   }
 
   @media (pointer: coarse) {

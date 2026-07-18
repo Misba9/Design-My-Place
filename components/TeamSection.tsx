@@ -49,7 +49,7 @@ export function TeamSection({ showStudioLink = true, className }: TeamSectionPro
               transition={{ duration: 0.6 }}
               className="label-uppercase text-gold-300 mb-4 sm:mb-6"
             >
-              {teamSection.number} — {teamSection.label}
+              {teamSection.label}
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -90,7 +90,7 @@ export function TeamSection({ showStudioLink = true, className }: TeamSectionPro
           )}
         </div>
 
-        {/* Featured — Chief Designer */}
+        {/* Featured — CREATIVE DIRECTOR & FOUNDER */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

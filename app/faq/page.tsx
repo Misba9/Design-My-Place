@@ -13,6 +13,7 @@ import {
 } from '@/lib/seo';
 import { serviceFaqs } from '@/lib/services';
 import { locations } from '@/lib/locations';
+import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'FAQ — Interior Design Questions',
@@ -72,9 +73,9 @@ export default function FaqPage() {
 
       <section className="section-y bg-luxury-black">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
-          <div className="space-y-6">
+          <Stagger className="space-y-6">
             {allFaqs.map((faq) => (
-              <div
+              <StaggerItem
                 key={faq.question}
                 className="border border-white/10 p-8 bg-luxury-gray/40"
               >
@@ -84,14 +85,14 @@ export default function FaqPage() {
                 <p className="text-gray-400 font-light leading-relaxed">
                   {faq.answer}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       <section className="py-20 bg-luxury-gray border-t border-white/10">
-        <div className="container-site">
+        <AnimatedSection className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">Service Areas</p>
           <h2 className="font-display text-2xl lg:text-3xl text-white mb-8">
             Interior design by location
@@ -117,7 +118,7 @@ export default function FaqPage() {
               <ArrowRight size={14} />
             </Link>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       <PageCTA />

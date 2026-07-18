@@ -8,6 +8,7 @@ import { ContentImage } from '@/components/ContentImage';
 import { Logo } from '@/components/Logo';
 import { aboutStats, aboutUsIntro } from '@/lib/about';
 import { NVT_IMAGES } from '@/lib/images';
+import { AnimatedCounter } from '@/components/AnimatedCounter';
 
 const stats = aboutStats;
 
@@ -167,7 +168,10 @@ export function Story() {
                   className="border-l border-gold-400/65 pl-4 lg:pl-6"
                 >
                   <p className="font-display text-2xl lg:text-3xl text-white mb-1">
-                    {stat.value}
+                    <AnimatedCounter
+                      value={stat.value}
+                      delay={0.55 + index * 0.12}
+                    />
                   </p>
                   <p className="text-[10px] uppercase tracking-[0.16em] text-gold-300">
                     {stat.label}

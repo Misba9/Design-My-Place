@@ -18,6 +18,13 @@ const TeamSection = dynamic(
   () => import('@/components/TeamSection').then((m) => ({ default: m.TeamSection })),
   { ssr: true },
 );
+const InstagramJourney = dynamic(
+  () =>
+    import('@/components/InstagramJourney').then((m) => ({
+      default: m.InstagramJourney,
+    })),
+  { ssr: true },
+);
 
 const homeFaqs = [
   {
@@ -42,6 +49,7 @@ export default function Home() {
       <WhatWeDo />
       <AboutQuote />
       <Projects />
+      <InstagramJourney />
       <Process />
       <PriceList className="bg-luxury-black !pb-8 sm:!pb-10 lg:!pb-12" />
       <TeamSection className="!pt-8 sm:!pt-10 lg:!pt-12 !pb-8 sm:!pb-10 lg:!pb-12" />

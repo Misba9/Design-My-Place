@@ -8,6 +8,7 @@ import {
   footerExploreLinks,
   footerLocationLinks,
 } from '@/lib/navigation';
+import { Stagger, StaggerItem } from '@/components/AnimatedSection';
 
 function FooterColumn({
   title,
@@ -53,9 +54,9 @@ export function Footer() {
   return (
     <footer className="bg-luxury-black border-t border-white/10 pb-20 sm:pb-24 lg:pb-28">
       <div className="container-site section-y-sm">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 lg:gap-6 xl:gap-10 items-start">
+        <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 lg:gap-6 xl:gap-10 items-start">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <StaggerItem className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block mb-5 sm:mb-6">
               <BrandMark variant="footer" />
             </Link>
@@ -80,20 +81,24 @@ export function Footer() {
                 </a>
               ))}
             </div>
-          </div>
+          </StaggerItem>
 
           {/* Explore */}
-          <FooterColumn title="Explore">
-            <FooterLinkList links={footerExploreLinks} />
-          </FooterColumn>
+          <StaggerItem>
+            <FooterColumn title="Explore">
+              <FooterLinkList links={footerExploreLinks} />
+            </FooterColumn>
+          </StaggerItem>
 
           {/* Locations */}
-          <FooterColumn title="Locations">
-            <FooterLinkList links={footerLocationLinks} />
-          </FooterColumn>
+          <StaggerItem>
+            <FooterColumn title="Locations">
+              <FooterLinkList links={footerLocationLinks} />
+            </FooterColumn>
+          </StaggerItem>
 
           {/* Studio */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <StaggerItem className="sm:col-span-2 lg:col-span-1">
             <FooterColumn title="Studio">
               <div className="flex items-start gap-3 text-gray-400 mb-4">
                 <MapPin size={18} className="text-gold-300/70 flex-shrink-0 mt-0.5" />
@@ -120,8 +125,8 @@ export function Footer() {
                 hello@designmyplace.in
               </a>
             </FooterColumn>
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
       </div>
 
       <div className="border-t border-white/10">

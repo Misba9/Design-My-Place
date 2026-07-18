@@ -6,6 +6,7 @@ import { PageCTA } from '@/components/PageCTA';
 import { PriceList } from '@/components/PriceList';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
+import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
 import { services, serviceFaqs } from '@/lib/services';
 import { servicePages } from '@/lib/service-pages';
 import {
@@ -57,7 +58,7 @@ export default function ServicesPage() {
         <div className="container-site">
           <div className="space-y-20">
             {services.map((service, index) => (
-              <div
+              <AnimatedSection
                 key={service.title}
                 className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-start ${
                   index % 2 === 1 ? 'lg:direction-rtl' : ''
@@ -96,7 +97,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -106,18 +107,20 @@ export default function ServicesPage() {
 
       <section className="section-y bg-luxury-black">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
-          <p className="label-uppercase text-gold-300 mb-6 text-center">
-            Common Questions
-          </p>
-          <h2 className="font-display text-3xl lg:text-4xl text-white text-center mb-16">
-            Frequently{' '}
-            <span className="italic font-light text-gradient-gold-inline">
-              Asked
-            </span>
-          </h2>
-          <div className="space-y-6">
+          <AnimatedSection className="text-center mb-16">
+            <p className="label-uppercase text-gold-300 mb-6">
+              Common Questions
+            </p>
+            <h2 className="font-display text-3xl lg:text-4xl text-white">
+              Frequently{' '}
+              <span className="italic font-light text-gradient-gold-inline">
+                Asked
+              </span>
+            </h2>
+          </AnimatedSection>
+          <Stagger className="space-y-6">
             {serviceFaqs.map((faq) => (
-              <div
+              <StaggerItem
                 key={faq.question}
                 className="border border-white/10 p-8 bg-luxury-black/40"
               >
@@ -127,19 +130,19 @@ export default function ServicesPage() {
                 <p className="text-gray-400 font-light leading-relaxed">
                   {faq.answer}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
-          <div className="mt-10 text-center">
+          </Stagger>
+          <AnimatedSection delay={0.15} className="mt-10 text-center">
             <Link href="/faq" className="text-sm text-gray-400 hover:text-gold-300 transition-colors">
               View all frequently asked questions →
             </Link>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       <section className="py-20 bg-luxury-black border-t border-white/10">
-        <div className="container-site">
+        <AnimatedSection className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">Specialisations</p>
           <h2 className="font-display text-2xl lg:text-3xl text-white mb-8">
             Dedicated service pages
@@ -159,11 +162,11 @@ export default function ServicesPage() {
             <span>Book Consultation</span>
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
-        </div>
+        </AnimatedSection>
       </section>
 
       <section className="py-20 bg-luxury-gray border-t border-white/10">
-        <div className="container-site text-center">
+        <AnimatedSection className="container-site text-center">
           <p className="text-gray-400 font-light mb-8">
             Want to understand how we bring projects to life?
           </p>
@@ -174,7 +177,7 @@ export default function ServicesPage() {
               className="group-hover:translate-x-1 transition-transform duration-300"
             />
           </Link>
-        </div>
+        </AnimatedSection>
       </section>
 
       <PageCTA />

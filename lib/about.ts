@@ -18,7 +18,6 @@ export const aboutUsIntro = {
 } as const;
 
 export const whatWeDo = {
-  number: '02',
   label: 'What We Do',
   items: [
     {

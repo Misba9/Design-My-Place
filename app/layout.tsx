@@ -4,6 +4,7 @@ import { Inter, Playfair_Display } from 'next/font/google';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingCTA } from '@/components/FloatingCTA';
+import { ScrollButtons } from '@/components/ScrollButtons';
 import { CustomCursor } from '@/components/CustomCursor';
 import { Analytics } from '@/components/Analytics';
 import { ScrollTracker } from '@/components/ScrollTracker';
@@ -97,6 +98,7 @@ export default function RootLayout({
         <Navigation />
         <main>{children}</main>
         <Footer />
+        <ScrollButtons />
         <FloatingCTA />
       </body>
     </html>

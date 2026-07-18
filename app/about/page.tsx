@@ -10,6 +10,8 @@ import { WhatWeDo } from '@/components/WhatWeDo';
 import { PriceList } from '@/components/PriceList';
 import { Logo } from '@/components/Logo';
 import { JsonLd } from '@/components/JsonLd';
+import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
+import { AnimatedCounter } from '@/components/AnimatedCounter';
 import {
   aboutStats,
   aboutUsIntro,
@@ -58,7 +60,7 @@ export default function AboutPage() {
       <section className="section-y bg-luxury-black">
         <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
-            <div className="relative aspect-[4/5] lg:aspect-auto lg:min-h-[520px] overflow-hidden border border-white/10">
+            <AnimatedSection variant="slideLeft" className="relative aspect-[4/5] lg:aspect-auto lg:min-h-[520px] overflow-hidden border border-white/10">
               <Image
                 src="/hero-luxury.jpg"
                 alt="Design My Place interior"
@@ -66,9 +68,9 @@ export default function AboutPage() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-            </div>
+            </AnimatedSection>
 
-            <div>
+            <AnimatedSection variant="slideRight" delay={0.12}>
               <p className="label-uppercase text-gold-300 mb-6">{aboutUsIntro.label}</p>
               <h2 className="font-display text-3xl lg:text-5xl text-white mb-8 leading-tight">
                 {aboutUsIntro.title}{' '}
@@ -84,7 +86,7 @@ export default function AboutPage() {
                   {paragraph}
                 </p>
               ))}
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -95,34 +97,34 @@ export default function AboutPage() {
 
       <section className="section-y bg-luxury-black">
         <div className="container-site">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
-            <div className="glass p-10 lg:p-12 border border-white/10">
+          <Stagger className="grid md:grid-cols-2 gap-12 lg:gap-20">
+            <StaggerItem className="glass p-10 lg:p-12 border border-white/10">
               <p className="label-uppercase text-gold-300 mb-4">Mission</p>
               <p className="font-display text-2xl lg:text-3xl text-white leading-snug">
                 {missionVision.mission}
               </p>
-            </div>
-            <div className="glass p-10 lg:p-12 border border-white/10">
+            </StaggerItem>
+            <StaggerItem className="glass p-10 lg:p-12 border border-white/10">
               <p className="label-uppercase text-gold-300 mb-4">Vision</p>
               <p className="font-display text-2xl lg:text-3xl text-white leading-snug">
                 {missionVision.vision}
               </p>
-            </div>
-          </div>
+            </StaggerItem>
+          </Stagger>
         </div>
       </section>
 
       <section className="section-y bg-luxury-gray">
         <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
-            <div className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[360px]">
+            <AnimatedSection variant="scaleIn" className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[360px]">
               <Logo size="lg" className="justify-center" imageClassName="object-center mx-auto" />
               <p className="mt-8 text-center text-gray-400 text-sm leading-relaxed max-w-sm">
                 Design My Place LLP — Luxury Interior Design Studio, Bengaluru, India
               </p>
-            </div>
+            </AnimatedSection>
 
-            <div>
+            <AnimatedSection delay={0.12}>
               <p className="label-uppercase text-gold-300 mb-6">Why We Exist</p>
               <h2 className="font-display text-3xl lg:text-4xl text-white mb-10 leading-tight">
                 Interiors are the backdrop to life&apos;s most{' '}
@@ -131,31 +133,33 @@ export default function AboutPage() {
                 </span>{' '}
                 moments
               </h2>
-              <div className="space-y-8">
+              <Stagger className="space-y-8">
                 {differentiators.map((item) => (
-                  <div key={item.title} className="border-l border-gold-400/50 pl-6">
+                  <StaggerItem key={item.title} className="border-l border-gold-400/50 pl-6">
                     <h3 className="font-display text-xl text-white mb-2">{item.title}</h3>
                     <p className="text-gray-400 font-light leading-relaxed">
                       {item.description}
                     </p>
-                  </div>
+                  </StaggerItem>
                 ))}
-              </div>
-            </div>
+              </Stagger>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       <section className="section-y bg-luxury-black">
         <div className="container-site">
-          <p className="label-uppercase text-gold-300 mb-6 text-center">What We Stand For</p>
-          <h2 className="font-display text-3xl lg:text-5xl text-white text-center mb-16">
-            Our{' '}
-            <span className="italic font-light text-gradient-gold-inline">Values</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <AnimatedSection className="text-center mb-16">
+            <p className="label-uppercase text-gold-300 mb-6">What We Stand For</p>
+            <h2 className="font-display text-3xl lg:text-5xl text-white">
+              Our{' '}
+              <span className="italic font-light text-gradient-gold-inline">Values</span>
+            </h2>
+          </AnimatedSection>
+          <Stagger className="grid md:grid-cols-2 gap-8">
             {values.map((value) => (
-              <div
+              <StaggerItem
                 key={value.title}
                 className="glass p-8 lg:p-10 border border-white/10 hover:border-gold-400/30 transition-colors duration-500"
               >
@@ -163,22 +167,24 @@ export default function AboutPage() {
                 <p className="text-gray-400 font-light leading-relaxed">
                   {value.description}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       <section className="section-y bg-luxury-gray">
         <div className="container-site">
-          <p className="label-uppercase text-gold-300 mb-6">Our Journey</p>
-          <h2 className="font-display text-3xl lg:text-5xl text-white mb-16">
-            Milestones{' '}
-            <span className="italic font-light text-gradient-gold-inline">along the way</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-10 lg:gap-12">
+          <AnimatedSection className="mb-16">
+            <p className="label-uppercase text-gold-300 mb-6">Our Journey</p>
+            <h2 className="font-display text-3xl lg:text-5xl text-white">
+              Milestones{' '}
+              <span className="italic font-light text-gradient-gold-inline">along the way</span>
+            </h2>
+          </AnimatedSection>
+          <Stagger className="grid md:grid-cols-2 gap-10 lg:gap-12">
             {milestones.map((milestone) => (
-              <div
+              <StaggerItem
                 key={milestone.year}
                 className="border-t border-gold-400/40 pt-8"
               >
@@ -191,9 +197,9 @@ export default function AboutPage() {
                 <p className="text-gray-400 font-light leading-relaxed">
                   {milestone.description}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -201,23 +207,23 @@ export default function AboutPage() {
 
       <section className="section-y bg-luxury-black">
         <div className="container-site">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {aboutStats.map((stat) => (
-              <div key={stat.label} className="border-l border-gold-400/60 pl-5 lg:pl-6">
+          <Stagger className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {aboutStats.map((stat, index) => (
+              <StaggerItem key={stat.label} className="border-l border-gold-400/60 pl-5 lg:pl-6">
                 <p className="font-display text-3xl lg:text-4xl text-white mb-2">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} delay={index * 0.1} />
                 </p>
                 <p className="text-[10px] uppercase tracking-[0.16em] text-gold-300">
                   {stat.label}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       <section className="py-20 bg-luxury-black border-t border-white/10">
-        <div className="container-site flex flex-col sm:flex-row items-center justify-between gap-8">
+        <AnimatedSection className="container-site flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
             <p className="label-uppercase text-gold-300 mb-3">The Studio</p>
             <p className="text-gray-400 font-light max-w-md">
@@ -240,7 +246,7 @@ export default function AboutPage() {
               />
             </Link>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       <PageCTA />

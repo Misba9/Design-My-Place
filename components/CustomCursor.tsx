@@ -45,7 +45,30 @@ export function CustomCursor() {
 
     let rafId = 0;
 
+    const isThirdPartyTarget = (target: EventTarget | null) => {
+      if (!(target instanceof Element)) return false;
+      if (target instanceof HTMLIFrameElement) return true;
+      return Boolean(
+        target.closest(
+          'iframe, [class*="eapps-"], [class*="elfsight"], [id*="elfsight"], [id*="eapps"]',
+        ),
+      );
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
+      const overThirdParty = isThirdPartyTarget(e.target);
+
+      document.documentElement.classList.toggle(
+        'native-cursor-active',
+        overThirdParty,
+      );
+
+      if (overThirdParty) {
+        setIsVisible(false);
+        setIsHovering(false);
+        return;
+      }
+
       const target = e.target as HTMLElement;
       const hoverElement = target.closest('a, button, [data-cursor-hover]') as
         | HTMLElement
@@ -93,6 +116,7 @@ export function CustomCursor() {
       hoverQuery.removeEventListener('change', syncEnabled);
       desktopQuery.removeEventListener('change', syncEnabled);
       document.documentElement.classList.remove('custom-cursor-active');
+      document.documentElement.classList.remove('native-cursor-active');
     };
   }, []);
 

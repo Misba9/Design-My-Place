@@ -19,7 +19,11 @@ export function organizationSchema() {
     email: BUSINESS.email,
     telephone: BUSINESS.phone,
     foundingDate: BUSINESS.foundingDate,
-    sameAs: [BUSINESS.social.instagram],
+    sameAs: [
+      BUSINESS.social.facebook,
+      BUSINESS.social.instagram,
+      BUSINESS.social.vimeo,
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: STUDIO_ADDRESS.line1,
@@ -69,7 +73,11 @@ export function localBusinessSchema() {
       '@type': 'City',
       name: area,
     })),
-    sameAs: [BUSINESS.social.instagram],
+    sameAs: [
+      BUSINESS.social.facebook,
+      BUSINESS.social.instagram,
+      BUSINESS.social.vimeo,
+    ],
     parentOrganization: { '@id': `${SITE_URL}/#organization` },
   };
 }

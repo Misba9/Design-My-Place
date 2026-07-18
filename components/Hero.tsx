@@ -6,11 +6,6 @@ import { HERO_IMAGE } from '@/lib/images';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-const heroStats = [
-  { value: '25+', label: 'Projects Completed' },
-  { value: '5+', label: 'Years Experience' },
-];
-
 export function Hero() {
   return (
     <section className="relative flex min-h-[100dvh] min-h-[28rem] flex-col justify-center">
@@ -96,27 +91,6 @@ export function Hero() {
           </Link>
         </motion.div>
       </div>
-
-      {/* Stats — visible on all screens; compact on mobile */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
-        className="relative z-10 w-full container-site pb-6 sm:pb-8 lg:pb-10 safe-bottom"
-      >
-        <div className="flex items-center justify-center gap-6 sm:gap-10 lg:gap-12 border-t border-white/10 pt-6 sm:pt-8">
-          {heroStats.map((stat) => (
-            <div key={stat.label} className="border-l border-gold-400/60 pl-4 sm:pl-5 text-left">
-              <p className="font-display text-2xl sm:text-3xl text-gold-300 mb-0.5 sm:mb-1">
-                {stat.value}
-              </p>
-              <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-gray-400">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }

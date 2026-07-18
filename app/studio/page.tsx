@@ -10,6 +10,7 @@ import { TeamSection } from '@/components/TeamSection';
 import { JsonLd } from '@/components/JsonLd';
 import { STUDIO_ADDRESS } from '@/lib/site';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
+import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Our Studio — Bengaluru Interior Design',
@@ -79,14 +80,14 @@ export default function StudioPage() {
       <section className="section-y bg-luxury-black">
         <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
-            <div className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[380px]">
+            <AnimatedSection variant="scaleIn" className="glass p-10 lg:p-14 flex flex-col items-center justify-center min-h-[380px]">
               <Logo size="lg" className="justify-center" imageClassName="object-center mx-auto" />
               <p className="mt-8 text-center text-gray-400 text-sm leading-relaxed max-w-xs">
                 Creating interiors that shape how people live, work, and feel.
               </p>
-            </div>
+            </AnimatedSection>
 
-            <div>
+            <AnimatedSection variant="slideRight" delay={0.12}>
               <p className="label-uppercase text-gold-300 mb-6">Our Philosophy</p>
               <h2 className="font-display text-3xl lg:text-5xl text-white mb-8 leading-tight">
                 Meaningful design,{' '}
@@ -119,21 +120,23 @@ export default function StudioPage() {
                   className="group-hover:translate-x-1 transition-transform duration-300"
                 />
               </Link>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       <section className="section-y bg-luxury-gray">
         <div className="container-site">
-          <p className="label-uppercase text-gold-300 mb-6 text-center">What We Stand For</p>
-          <h2 className="font-display text-3xl lg:text-5xl text-white text-center mb-16">
-            Our{' '}
-            <span className="italic font-light text-gradient-gold-inline">Values</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <AnimatedSection className="text-center mb-16">
+            <p className="label-uppercase text-gold-300 mb-6">What We Stand For</p>
+            <h2 className="font-display text-3xl lg:text-5xl text-white">
+              Our{' '}
+              <span className="italic font-light text-gradient-gold-inline">Values</span>
+            </h2>
+          </AnimatedSection>
+          <Stagger className="grid md:grid-cols-2 gap-8">
             {values.map((value) => (
-              <div
+              <StaggerItem
                 key={value.title}
                 className="glass p-8 lg:p-10 border border-white/10 hover:border-gold-400/30 transition-colors duration-500"
               >
@@ -141,26 +144,26 @@ export default function StudioPage() {
                 <p className="text-gray-400 font-light leading-relaxed">
                   {value.description}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       <section className="section-y bg-luxury-black">
         <div className="container-site">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <Stagger className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
-              <div key={stat.label} className="border-l border-gold-400/60 pl-5 lg:pl-6">
+              <StaggerItem key={stat.label} className="border-l border-gold-400/60 pl-5 lg:pl-6">
                 <p className="font-display text-3xl lg:text-4xl text-white mb-2">
                   {stat.value}
                 </p>
                 <p className="text-[10px] uppercase tracking-[0.16em] text-gold-300">
                   {stat.label}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -169,7 +172,7 @@ export default function StudioPage() {
       <section className="section-y bg-luxury-black">
         <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-[4/3] border border-white/10 overflow-hidden">
+            <AnimatedSection variant="slideLeft" className="relative aspect-[4/3] border border-white/10 overflow-hidden">
               <iframe
                 src={STUDIO_ADDRESS.mapsEmbedUrl}
                 title="Design My Place LLP — Bengaluru studio location"
@@ -178,8 +181,8 @@ export default function StudioPage() {
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
               />
-            </div>
-            <div>
+            </AnimatedSection>
+            <AnimatedSection variant="slideRight" delay={0.12}>
               <p className="label-uppercase text-gold-300 mb-6">Visit Us</p>
               <h2 className="font-display text-3xl lg:text-4xl text-white mb-6">
                 Bengaluru{' '}
@@ -208,7 +211,7 @@ export default function StudioPage() {
                   className="group-hover:translate-x-1 transition-transform duration-300"
                 />
               </Link>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>

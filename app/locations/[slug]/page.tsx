@@ -21,6 +21,7 @@ import {
   getLocationBySlug,
   locations,
 } from '@/lib/locations';
+import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
 
 type Props = { params: { slug: string } };
 
@@ -84,7 +85,7 @@ export default function LocationPage({ params }: Props) {
 
       <section className="section-y bg-luxury-black">
         <div className="container-site">
-          <div className="max-w-3xl">
+          <AnimatedSection className="max-w-3xl">
             <p className="label-uppercase text-gold-300 mb-6">
               Design My Place · {location.name}
               {location.aliases.length > 0 && ` & ${location.aliases.join(', ')}`}
@@ -101,14 +102,14 @@ export default function LocationPage({ params }: Props) {
             <p className="text-gray-400 font-light leading-relaxed border-l border-gold-400/50 pl-6">
               {location.whyChooseUs}
             </p>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       <section className="section-y bg-luxury-gray">
         <div className="container-site">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div>
+          <Stagger className="grid lg:grid-cols-2 gap-16">
+            <StaggerItem>
               <p className="label-uppercase text-gold-300 mb-6">Areas We Serve</p>
               <h2 className="font-display text-3xl text-white mb-8">
                 Neighbourhoods in{' '}
@@ -126,8 +127,8 @@ export default function LocationPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div>
+            </StaggerItem>
+            <StaggerItem>
               <p className="label-uppercase text-gold-300 mb-6">Local Context</p>
               <h2 className="font-display text-3xl text-white mb-8">
                 Landmarks &{' '}
@@ -146,32 +147,34 @@ export default function LocationPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
+            </StaggerItem>
+          </Stagger>
         </div>
       </section>
 
       <section className="section-y bg-luxury-black">
         <div className="container-site">
-          <p className="label-uppercase text-gold-300 mb-6">What We Offer</p>
-          <h2 className="font-display text-3xl lg:text-4xl text-white mb-12">
-            Services in{' '}
-            <span className="italic font-light text-gradient-gold-inline">
-              {location.name}
-            </span>
-          </h2>
-          <ul className="grid md:grid-cols-2 gap-6 mb-12">
+          <AnimatedSection className="mb-12">
+            <p className="label-uppercase text-gold-300 mb-6">What We Offer</p>
+            <h2 className="font-display text-3xl lg:text-4xl text-white">
+              Services in{' '}
+              <span className="italic font-light text-gradient-gold-inline">
+                {location.name}
+              </span>
+            </h2>
+          </AnimatedSection>
+          <Stagger className="grid md:grid-cols-2 gap-6 mb-12">
             {location.services.map((service) => (
-              <li
+              <StaggerItem
                 key={service}
                 className="flex items-start gap-4 text-gray-300 font-light border border-white/10 p-6"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-gold-400 mt-2 flex-shrink-0" />
                 {service}
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
-          <div className="flex flex-wrap gap-4">
+          </Stagger>
+          <AnimatedSection delay={0.15} className="flex flex-wrap gap-4">
             {[
               { label: 'Luxury Interiors', href: '/services/luxury-interior-design' },
               { label: 'Villa Design', href: '/services/villa-interior-design' },
@@ -186,7 +189,7 @@ export default function LocationPage({ params }: Props) {
                 <ArrowRight size={14} />
               </Link>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -195,21 +198,23 @@ export default function LocationPage({ params }: Props) {
 
       <section className="section-y bg-luxury-gray">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
-          <p className="label-uppercase text-gold-300 mb-6 text-center">Local FAQ</p>
-          <h2 className="font-display text-3xl lg:text-4xl text-white text-center mb-16">
-            Questions about design in{' '}
-            <span className="italic font-light text-gradient-gold-inline">
-              {location.name}
-            </span>
-          </h2>
-          <div className="space-y-6">
+          <AnimatedSection className="text-center mb-16">
+            <p className="label-uppercase text-gold-300 mb-6">Local FAQ</p>
+            <h2 className="font-display text-3xl lg:text-4xl text-white">
+              Questions about design in{' '}
+              <span className="italic font-light text-gradient-gold-inline">
+                {location.name}
+              </span>
+            </h2>
+          </AnimatedSection>
+          <Stagger className="space-y-6">
             {location.faqs.map((faq) => (
-              <div key={faq.question} className="border border-white/10 p-8 bg-luxury-black/40">
+              <StaggerItem key={faq.question} className="border border-white/10 p-8 bg-luxury-black/40">
                 <h3 className="font-display text-xl text-white mb-4">{faq.question}</h3>
                 <p className="text-gray-400 font-light leading-relaxed">{faq.answer}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -223,7 +228,7 @@ export default function LocationPage({ params }: Props) {
       />
 
       <section className="py-20 bg-luxury-black border-t border-white/10">
-        <div className="container-site">
+        <AnimatedSection className="container-site">
           <p className="label-uppercase text-gold-300 mb-6">Also Serving</p>
           <div className="flex flex-wrap gap-3 mb-10">
             {otherLocations.map((loc) => (
@@ -245,7 +250,7 @@ export default function LocationPage({ params }: Props) {
             <MapPin size={14} />
             Open in Google Maps
           </a>
-        </div>
+        </AnimatedSection>
       </section>
 
       <PageCTA

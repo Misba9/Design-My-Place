@@ -26,7 +26,7 @@ export function Process() {
             transition={{ duration: 0.6 }}
             className="label-uppercase text-gold-400 mb-4 sm:mb-6"
           >
-            {howWeWork.number} — {howWeWork.label}
+            {howWeWork.label}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
