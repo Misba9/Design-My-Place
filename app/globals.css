@@ -469,7 +469,7 @@
 
   /* Clearance below fixed site header */
   .nav-offset {
-    @apply pt-20 sm:pt-24 lg:pt-28;
+    @apply pt-20 sm:pt-24 lg:pt-32;
   }
 
   /* Fluid typography */

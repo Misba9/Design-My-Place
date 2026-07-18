@@ -39,16 +39,17 @@ const klassicLandmark = (filename: string) =>
 
 /** Pastel Penthouse — Klassic Landmark project imagery */
 export const PASTEL_PENTHOUSE_IMAGES = {
-  hero: klassicLandmark('1.jpg'),
-  living: klassicLandmark('6.jpg'),
-  dining: klassicLandmark('12.jpg'),
-  bedroom: klassicLandmark('13.jpg'),
-  detail: klassicLandmark('21.jpg'),
-  lounge: klassicLandmark('22.jpg'),
-  bath: klassicLandmark('24.jpg'),
-  kitchen: klassicLandmark('26.jpg'),
-  study: klassicLandmark('35.jpg'),
-  terrace: klassicLandmark('36.jpg'),
+  hero: klassicLandmark('image-00.jpg'),
+  living: klassicLandmark('image-01.jpg'),
+  dining: klassicLandmark('image-02.jpg'),
+  bedroom: klassicLandmark('image-03.jpg'),
+  detail: klassicLandmark('image-04.jpg'),
+  lounge: klassicLandmark('image-05.jpg'),
+  bath: klassicLandmark('image-06.jpg'),
+  kitchen: klassicLandmark('image-07.jpg'),
+  study: klassicLandmark('image-08.jpg'),
+  terrace: klassicLandmark('image-09.jpg'),
+  view: klassicLandmark('image-10.jpg'),
 } as const;
 
 export const PASTEL_PENTHOUSE_GALLERY = [
@@ -62,22 +63,20 @@ export const PASTEL_PENTHOUSE_GALLERY = [
   PASTEL_PENTHOUSE_IMAGES.kitchen,
   PASTEL_PENTHOUSE_IMAGES.study,
   PASTEL_PENTHOUSE_IMAGES.terrace,
+  PASTEL_PENTHOUSE_IMAGES.view,
 ] as const;
 
 const flowingTree = (filename: string) => publicImage('Flowing tree', filename);
 
 /** Lakehouse in the Sky — Flowing Tree project imagery */
 export const LAKEHOUSE_IMAGES = {
-  hero: flowingTree('43539541-0EF3-47DD-87B1-74CB7A8C729D.JPG'),
-  living: flowingTree('IMG_0352.jpg'),
-  arch: flowingTree('IMG_1178.jpg'),
-  bedroom: flowingTree('IMG_6662.jpg'),
-  dining: flowingTree('IMG_1165.jpg'),
-  detail: flowingTree('IMG_2257.jpg'),
-  light: flowingTree('IMG_1166.jpg'),
-  view: flowingTree('013167AC-ABFB-4A5A-A20B-D1F41988B592.JPG'),
-  lounge: flowingTree('IMG_1176.jpg'),
-  kitchen: flowingTree('IMG_9319.jpg'),
+  hero: flowingTree('image-01.jpeg'),
+  living: flowingTree('image-02.jpeg'),
+  arch: flowingTree('image-03.jpeg'),
+  bedroom: flowingTree('image-04.png'),
+  dining: flowingTree('image-05.jpeg'),
+  detail: flowingTree('image-06.jpeg'),
+  view: flowingTree('image-07.jpeg'),
 } as const;
 
 export const LAKEHOUSE_GALLERY = [
@@ -87,10 +86,59 @@ export const LAKEHOUSE_GALLERY = [
   LAKEHOUSE_IMAGES.bedroom,
   LAKEHOUSE_IMAGES.dining,
   LAKEHOUSE_IMAGES.detail,
-  LAKEHOUSE_IMAGES.light,
   LAKEHOUSE_IMAGES.view,
-  LAKEHOUSE_IMAGES.lounge,
-  LAKEHOUSE_IMAGES.kitchen,
+] as const;
+
+const life77 = (filename: string) => publicImage('77 life', filename);
+
+/** 77 Life project imagery */
+export const LIFE_77_IMAGES = {
+  hero: life77('image-01.png'),
+  living: life77('image-02.png'),
+  dining: life77('image-03.png'),
+  bedroom: life77('image-04.png'),
+  detail: life77('image-05.png'),
+} as const;
+
+export const LIFE_77_GALLERY = [
+  LIFE_77_IMAGES.hero,
+  LIFE_77_IMAGES.living,
+  LIFE_77_IMAGES.dining,
+  LIFE_77_IMAGES.bedroom,
+  LIFE_77_IMAGES.detail,
+] as const;
+
+const svasa = (filename: string) => publicImage('Svasa', filename);
+
+/** Svasa Homes project imagery */
+export const SVASA_IMAGES = {
+  hero: svasa('images-01.png'),
+  image02: svasa('images-02.png'),
+  image03: svasa('images-03.png'),
+  image04: svasa('images-04.png'),
+  image05: svasa('images-05.png'),
+  image06: svasa('images-06.png'),
+  image07: svasa('images-07.png'),
+  image08: svasa('images-08.png'),
+  image09: svasa('images-09.png'),
+  image10: svasa('images-10.png'),
+  image11: svasa('images-11.png'),
+  image12: svasa('images-12.png'),
+} as const;
+
+export const SVASA_GALLERY = [
+  SVASA_IMAGES.hero,
+  SVASA_IMAGES.image02,
+  SVASA_IMAGES.image03,
+  SVASA_IMAGES.image04,
+  SVASA_IMAGES.image05,
+  SVASA_IMAGES.image06,
+  SVASA_IMAGES.image07,
+  SVASA_IMAGES.image08,
+  SVASA_IMAGES.image09,
+  SVASA_IMAGES.image10,
+  SVASA_IMAGES.image11,
+  SVASA_IMAGES.image12,
 ] as const;
 
 /** Portfolio imagery for service pages and highlights (local NVT project photos). */

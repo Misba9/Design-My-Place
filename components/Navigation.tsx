@@ -57,6 +57,29 @@ function SocialLinks({ className = '' }: { className?: string }) {
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+
+    // If the page loads already scrolled (e.g. reload restores position),
+    // start hidden so the header doesn't cover content.
+    if (lastY > 60) setIsHidden(true);
+
+    const handleScroll = () => {
+      const y = window.scrollY;
+      // Hide as soon as content would slide under the header; reveal on scroll up
+      if (y > lastY && y > 60) {
+        setIsHidden(true);
+      } else if (y < lastY || y <= 60) {
+        setIsHidden(false);
+      }
+      lastY = y;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
@@ -71,8 +94,8 @@ export function Navigation() {
     <>
       <motion.header
         initial={{ y: -24, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease }}
+        animate={{ y: isHidden && !isMobileMenuOpen ? '-100%' : 0, opacity: 1 }}
+        transition={{ duration: 0.45, ease }}
         className="header-luxury fixed top-0 left-0 right-0 z-50"
       >
         <nav className="container-site">

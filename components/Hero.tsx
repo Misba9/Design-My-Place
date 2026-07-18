@@ -40,9 +40,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="label-uppercase text-gold-300 mb-3 sm:mb-4 lg:mb-5 text-[10px] xs:text-[11px] max-w-md mx-auto"
+          className="label-uppercase text-gold-300 mb-3 sm:mb-4 lg:mb-5 text-[10px] xs:text-[11px] mx-auto whitespace-nowrap"
         >
-          Luxury Interior Design · Bangalore & Delhi NCR
+          Luxury Interior Design · Bangalore & Delhi NCR & Hyderabad
         </motion.p>
 
         <motion.h1

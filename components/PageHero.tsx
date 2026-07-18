@@ -51,7 +51,7 @@ export function PageHero({
         <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-black/40 to-black/30" />
       </div>
 
-      <div className="relative z-10 w-full container-site pb-10 sm:pb-14 md:pb-16 lg:pb-20">
+      <div className="relative z-10 w-full container-site pt-24 sm:pt-28 lg:pt-32 pb-10 sm:pb-14 md:pb-16 lg:pb-20">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -12,6 +12,40 @@ export type ProjectDetail = Project & {
 };
 
 const extensions: Record<string, Omit<ProjectDetail, keyof Project>> = {
+  'svasa-homes': {
+    overview:
+      'A spacious 6 BHK residence in Bangalore designed as a calm, contemporary family home. Warm timber, layered neutrals, sculptural lighting, and carefully detailed joinery bring continuity across private rooms and shared spaces.',
+    clientRequirements: [
+      'Create a cohesive identity across a large six-bedroom home',
+      'Balance elegant entertaining spaces with comfortable everyday living',
+      'Provide generous, discreet storage throughout the residence',
+      'Complete the home for handover in December 2025',
+    ],
+    designPhilosophy:
+      'Quiet luxury through warmth and restraint — neutral foundations allow natural wood, tailored furniture, artwork, and expressive lighting to give every room its own character without losing visual continuity.',
+    materials: [
+      'Natural wood veneer and fluted timber detailing',
+      'Soft neutral upholstery and textured wall finishes',
+      'Stone surfaces with dark metal accents',
+      'Bespoke joinery and layered architectural lighting',
+    ],
+    timeline: 'Completed December 2025',
+    challenges: [
+      'Maintaining a consistent design language across six bedrooms and multiple shared spaces',
+      'Integrating extensive storage without making rooms feel visually heavy',
+    ],
+    solutions: [
+      'Used a consistent warm-neutral palette while varying details and textures by room',
+      'Integrated full-height storage into architectural wall compositions and custom joinery',
+    ],
+    faqs: [
+      {
+        question: 'What is the design style of Svasa Homes?',
+        answer:
+          'Svasa Homes uses a warm contemporary language with natural wood, layered neutrals, refined detailing, and tailored spaces for family living.',
+      },
+    ],
+  },
   'nvt-symphony-of-orchards': {
     overview:
       'A premium apartment where nature-informed materiality meets urban refinement — designed for a young family seeking calm without sacrificing contemporary elegance.',

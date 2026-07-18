@@ -1,11 +1,15 @@
 import {
   LAKEHOUSE_GALLERY,
   LAKEHOUSE_IMAGES,
+  LIFE_77_GALLERY,
+  LIFE_77_IMAGES,
   MISSING_IMAGE,
   NVT_IMAGES,
   NVT_PROJECT_GALLERY,
   PASTEL_PENTHOUSE_GALLERY,
   PASTEL_PENTHOUSE_IMAGES,
+  SVASA_GALLERY,
+  SVASA_IMAGES,
 } from '@/lib/images';
 
 export type Project = {
@@ -26,6 +30,27 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: 7,
+    slug: 'svasa-homes',
+    name: 'Svasa Homes',
+    location: 'Bangalore',
+    type: '6 BHK Residence',
+    style: 'Contemporary · Warm · Refined',
+    year: 'Dec 2025',
+    featured: true,
+    image: SVASA_IMAGES.hero,
+    description:
+      'A refined 6 BHK home in Bangalore shaped by warm timber, soft neutral tones, expressive details, and thoughtfully planned spaces for family living, entertaining, and retreat.',
+    area: '6 BHK',
+    duration: 'Completed December 2025',
+    gallery: [...SVASA_GALLERY],
+    highlights: [
+      'Warm contemporary interiors designed for a large family',
+      'Bespoke storage, layered lighting, and expressive material details',
+      'Dedicated spaces for entertaining, relaxation, and home cinema',
+    ],
+  },
   {
     id: 1,
     slug: 'nvt-symphony-of-orchards',
@@ -140,12 +165,12 @@ export const projects: Project[] = [
     style: 'Art Deco · Luxury · Heritage',
     year: '2023',
     featured: true,
-    image: MISSING_IMAGE,
+    image: LIFE_77_IMAGES.hero,
     description:
       'An Art Deco-inspired home conceived for a Parisian-spirited couple, where three generations of heirloom teakwood furniture find renewed dignity amid lacquered millwork, bronze fixtures, and considered geometry.',
     area: '5,400 sq ft',
     duration: '16 months',
-    gallery: [MISSING_IMAGE],
+    gallery: [...LIFE_77_GALLERY],
     highlights: [
       'Heirloom teakwood furniture integrated with Art Deco geometry',
       'Lacquered millwork and bronze fixtures throughout',
@@ -162,6 +187,7 @@ export const projectTypes = [
   'Experience Centre',
   'Compact Living',
   'Luxury Villa',
+  '6 BHK Residence',
 ] as const;
 
 export function getProjectBySlug(slug: string): Project | undefined {
