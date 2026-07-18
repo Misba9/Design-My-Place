@@ -23,12 +23,12 @@ export type TeamMember = {
 };
 
 const teamImage = (filename: string) =>
-  `/teams/${encodeURIComponent(filename)}`;
+  `/Teams/${encodeURIComponent(filename)}`;
 
 export const teamLead: TeamMember = {
   name: 'Arushi Goel',
   role: 'CREATIVE DIRECTOR & FOUNDER',
-  image: teamImage('Arushi Goel.png'),
+  image: teamImage('Arush.png'),
   imageFit: {
     objectPosition: '50% 50%',
     width: 267,
