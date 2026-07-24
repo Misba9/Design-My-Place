@@ -47,7 +47,7 @@ const deckExt: Record<string, string> = {
   'what-2': 'jpg.png',
   'what-3': 'jpg.png',
   'what-4': 'jpg.png',
-  Meet: 'jpg',
+  Meet: 'jpeg',
   Research: 'jpg',
   Concept: 'png',
   Design: 'png',

@@ -22,8 +22,8 @@ export type TeamMember = {
   featured?: boolean;
 };
 
-const teamImage = (filename: string) =>
-  `/Teams/${encodeURIComponent(filename)}`;
+/** Public team portraits — lowercase path, no spaces (Vercel/Linux case-sensitive). */
+const teamImage = (filename: string) => `/teams/${filename}`;
 
 export const teamLead: TeamMember = {
   name: 'Arushi Goel',
@@ -42,7 +42,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Shikha Singh',
     role: 'Project Collaborator',
-    image: teamImage('Shikha Singh.png'),
+    image: teamImage('shikha-singh.png'),
     imageFit: {
       objectPosition: '50% 50%',
       width: 286,
@@ -52,7 +52,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Tushar Shukla',
     role: 'Project Manager',
-    image: teamImage('Tushar Shukla.png'),
+    image: teamImage('tushar-shukla.png'),
     imageFit: {
       objectPosition: '50% 50%',
       width: 352,
@@ -62,7 +62,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Mamta Rathod',
     role: 'Designer',
-    image: teamImage('Mamta Rathod.png'),
+    image: teamImage('mamta-rathod.png'),
     imageFit: {
       objectPosition: '50% 50%',
       width: 312,
@@ -72,7 +72,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Priyanka Peswani',
     role: '3D Visualizer',
-    image: teamImage('Priyanka Peswani.png'),
+    image: teamImage('priyanka-peswani.png'),
     imageFit: {
       objectPosition: '50% 50%',
       width: 270,
@@ -82,7 +82,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Ishan Vaidwan',
     role: 'Business Development',
-    image: teamImage('Ishan Vaidwan.png'),
+    image: teamImage('ishan-vaidwan.png'),
     imageFit: {
       objectPosition: '50% 50%',
       width: 318,
