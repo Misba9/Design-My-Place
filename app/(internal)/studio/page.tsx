@@ -6,15 +6,14 @@ import { PageCTA } from '@/components/PageCTA';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
 import { D2MeetOurTeam } from '@/components/design2/MeetOurTeam';
+import { D2ImageReveal, D2Reveal } from '@/components/design2/shared';
 import {
-  D2ImageReveal,
-  D2Reveal,
   d2BandBg,
   d2PageBg,
   d2Section,
   d2SectionWide,
   slideAsset,
-} from '@/components/design2/shared';
+} from '@/components/design2/tokens';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { STUDIO_ADDRESS } from '@/lib/site';
 import { values } from '@/lib/about';
@@ -33,9 +32,9 @@ const galleryImages: { src: string; alt: string; span?: string }[] = [
   { src: slideAsset('intro'), alt: 'Warm, textural interior moment from the studio archive' },
   { src: teamLead.image, alt: 'Arushi Goel at work in the Design My Place studio', span: 'row-span-2' },
   { src: slideAsset('belong-house'), alt: 'Facade study — a Design My Place residence' },
-  { src: slideAsset('how-1'), alt: 'Material and lighting study on the studio desk' },
+  { src: slideAsset('Meet'), alt: 'Studio team meeting and collaboration' },
   { src: slideAsset('toc'), alt: 'Layout and concept boards pinned in the studio', span: 'row-span-2' },
-  { src: slideAsset('how-2'), alt: 'Textiles and finishes curated for a current project' },
+  { src: slideAsset('Concept'), alt: 'Concept vignette from the studio process' },
 ];
 
 export default function StudioPage() {
