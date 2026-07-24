@@ -2,9 +2,8 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import { priceList, priceListSection } from '@/lib/pricing';
+import { PrimaryButton } from '@/components/PrimaryButton';
 
 type PriceListProps = {
   className?: string;
@@ -88,13 +87,7 @@ export function PriceList({ className = 'bg-luxury-black', showCta = true }: Pri
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-10 sm:mt-12 text-center"
           >
-            <Link href="/contact" className="btn-gold group">
-              <span>Request a Quote</span>
-              <ArrowRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform duration-300"
-              />
-            </Link>
+            <PrimaryButton href="/contact">Request a Quote</PrimaryButton>
           </motion.div>
         )}
       </div>

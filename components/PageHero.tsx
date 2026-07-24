@@ -1,8 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ContentImage } from '@/components/ContentImage';
 import { HERO_IMAGE } from '@/lib/images';
+import { d2Ease } from '@/components/design2/shared';
 
 type PageHeroProps = {
   label: string;
@@ -11,10 +12,12 @@ type PageHeroProps = {
   description?: string;
   image?: string;
   imageAlt?: string;
-  /** Set false when breadcrumbs above already clear the fixed nav */
-  offsetNav?: boolean;
 };
 
+/**
+ * Inner-page hero — starts below the solid navbar (via InternalPageLayout).
+ * Never sits underneath the navigation.
+ */
 export function PageHero({
   label,
   title,
@@ -22,8 +25,8 @@ export function PageHero({
   description,
   image = HERO_IMAGE,
   imageAlt,
-  offsetNav = true,
 }: PageHeroProps) {
+  const reduceMotion = useReducedMotion();
   const altText =
     imageAlt ||
     (titleAccent
@@ -31,12 +34,8 @@ export function PageHero({
       : `${title} — Design My Place luxury interior design`);
 
   return (
-    <section
-      className={`relative flex min-h-[38vh] sm:min-h-[42vh] md:min-h-[48vh] lg:min-h-[52vh] items-end ${
-        offsetNav ? 'nav-offset' : ''
-      }`}
-    >
-      <div className="absolute inset-0 overflow-hidden">
+    <section className="relative flex min-h-[52vh] items-end overflow-hidden sm:min-h-[56vh] lg:min-h-[62vh]">
+      <div className="absolute inset-0">
         <ContentImage
           src={image}
           alt={altText}
@@ -44,50 +43,62 @@ export function PageHero({
           className="object-cover object-center"
           priority
           sizes="100vw"
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBRIhMQYTQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAZEQACAwEAAAAAAAAAAAAAAAABAgADESH/2gAMAwEAAhEDEEA/AJOk6hp2nWqXNjbxzQtkqwyCP0qK4u7e7t2guoFljP3lYZqKqKKKKAP//Z"
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-black/40 to-black/30" />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1612] via-black/35 to-black/25" />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 50% 45% at 15% 80%, rgba(156,111,78,0.18) 0%, transparent 60%)',
+          }}
+        />
       </div>
 
-      <div className="relative z-10 w-full container-site pt-24 sm:pt-28 lg:pt-32 pb-10 sm:pb-14 md:pb-16 lg:pb-20">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-14 pt-10 sm:px-10 sm:pb-16 sm:pt-12 lg:px-20 lg:pb-20 lg:pt-14">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="label-uppercase text-gold-300 mb-3 sm:mb-4 text-[10px] xs:text-xs"
+          transition={{ duration: 0.7, ease: d2Ease }}
+          className="mb-5 flex items-center gap-4 sm:mb-6"
         >
-          {label}
-        </motion.p>
+          <span
+            aria-hidden
+            className="h-px w-8 shrink-0 bg-[#9C6F4E] sm:w-10"
+          />
+          <p className="font-body text-[10px] font-medium uppercase tracking-[0.35em] text-white/85 sm:text-[11px] sm:tracking-[0.4em]">
+            {label}
+          </p>
+        </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display text-fluid-h1 text-white max-w-4xl text-balance"
+          transition={{ duration: 0.85, delay: reduceMotion ? 0 : 0.08, ease: d2Ease }}
+          className="max-w-4xl font-body text-[clamp(2.5rem,7vw,4.75rem)] font-light leading-[1.02] tracking-[-0.02em] text-white text-balance"
         >
           {title}
-          {titleAccent && (
+          {titleAccent ? (
             <>
               {' '}
-              <span className="italic font-light text-gradient-gold-inline">
+              <span className="font-display italic font-normal text-[#C4A07A]">
                 {titleAccent}
               </span>
             </>
-          )}
+          ) : null}
         </motion.h1>
 
-        {description && (
+        {description ? (
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-gray-300/90 text-fluid-body font-light max-w-2xl mt-4 sm:mt-6 text-balance"
+            transition={{ duration: 0.75, delay: reduceMotion ? 0 : 0.18, ease: d2Ease }}
+            className="mt-5 max-w-2xl font-body text-[15px] font-normal leading-[1.85] text-white/80 sm:mt-6 sm:text-[15.5px]"
           >
             {description}
           </motion.p>
-        )}
+        ) : null}
       </div>
     </section>
   );

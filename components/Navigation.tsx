@@ -55,19 +55,30 @@ function SocialLinks({ className = '' }: { className?: string }) {
   );
 }
 
-export function Navigation() {
+export function Navigation({
+  variant = 'overlay',
+}: {
+  /** overlay = homepage (transparent until scroll); solid = internal pages */
+  variant?: 'overlay' | 'solid';
+}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isSolid = variant === 'solid';
 
   useEffect(() => {
     let lastY = window.scrollY;
 
     // If the page loads already scrolled (e.g. reload restores position),
     // start hidden so the header doesn't cover content.
-    if (lastY > 60) setIsHidden(true);
+    if (lastY > 60) {
+      setIsHidden(true);
+      setIsScrolled(true);
+    }
 
     const handleScroll = () => {
       const y = window.scrollY;
+      setIsScrolled(y > 24);
       // Hide as soon as content would slide under the header; reveal on scroll up
       if (y > lastY && y > 60) {
         setIsHidden(true);
@@ -90,13 +101,19 @@ export function Navigation() {
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
+  const headerSurface = isSolid
+    ? 'is-solid'
+    : isScrolled || isMobileMenuOpen
+      ? 'is-scrolled'
+      : '';
+
   return (
     <>
       <motion.header
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: isHidden && !isMobileMenuOpen ? '-100%' : 0, opacity: 1 }}
         transition={{ duration: 0.45, ease }}
-        className="header-luxury fixed top-0 left-0 right-0 z-50"
+        className={`header-luxury fixed top-0 left-0 right-0 z-50 ${headerSurface}`}
       >
         <nav className="container-site">
           <div className="flex items-center justify-between py-3.5 sm:py-4 lg:py-5 gap-3 sm:gap-6 lg:gap-10">
@@ -178,7 +195,9 @@ export function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.45, ease }}
-            className="fixed inset-0 z-[60] lg:hidden header-luxury"
+            className={`fixed inset-0 z-[60] lg:hidden header-luxury ${
+              isSolid ? 'is-solid' : 'is-scrolled'
+            }`}
           >
             <div className="container-site flex flex-col h-full">
               <div className="flex items-center justify-between py-4 sm:py-6 border-b border-white/[0.08]">

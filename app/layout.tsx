@@ -1,11 +1,8 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
-import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingCTA } from '@/components/FloatingCTA';
-import { ScrollButtons } from '@/components/ScrollButtons';
-import { ChromeGate } from '@/components/ChromeGate';
 import { CustomCursor } from '@/components/CustomCursor';
 import { Analytics } from '@/components/Analytics';
 import { ScrollTracker } from '@/components/ScrollTracker';
@@ -96,15 +93,9 @@ export default function RootLayout({
         <JsonLd data={globalSchemas()} />
         <ScrollTracker />
         <CustomCursor />
-        <ChromeGate>
-          <Navigation />
-        </ChromeGate>
         <main>{children}</main>
-        <ChromeGate>
-          <Footer />
-          <ScrollButtons />
-          <FloatingCTA />
-        </ChromeGate>
+        <Footer />
+        <FloatingCTA />
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { PrimaryButton } from '@/components/PrimaryButton';
 
 export function LeadGeneration() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,10 +59,7 @@ export function LeadGeneration() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="btn-group max-w-md sm:max-w-none mx-auto"
         >
-          <Link href="/contact" className="btn-gold group">
-            <span>Book Consultation</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          <PrimaryButton href="/contact">Book Consultation</PrimaryButton>
           <Link href="/projects" className="btn-outline-gold group">
             <span>View Projects</span>
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

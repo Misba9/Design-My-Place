@@ -28,11 +28,11 @@ const teamImage = (filename: string) =>
 export const teamLead: TeamMember = {
   name: 'Arushi Goel',
   role: 'CREATIVE DIRECTOR & FOUNDER',
-  image: teamImage('Arush.png'),
+  image: teamImage('founder.png'),
   imageFit: {
-    objectPosition: '50% 50%',
-    width: 267,
-    height: 356,
+    objectPosition: '50% 18%',
+    width: 1023,
+    height: 1537,
   },
   featured: true,
   bio: 'An avid admirer of Indian material and design objects. Arushi is forever curious — she informs here work by observation and research while tapping into the potential of form and function. Her design moves beyond the conventional relationship between fashion, art, and design. With a passionate interest in the old and the modern, the traditional and the contemporary, she finds innovative solutions for any little or large spaces. ',

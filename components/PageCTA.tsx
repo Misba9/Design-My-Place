@@ -1,9 +1,13 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { PrimaryButton } from '@/components/PrimaryButton';
+import {
+  d2Ease,
+  d2PageBg,
+  d2Section,
+  d2Viewport,
+} from '@/components/design2/shared';
 
 type PageCTAProps = {
   title?: string;
@@ -13,6 +17,9 @@ type PageCTAProps = {
   buttonHref?: string;
 };
 
+/**
+ * Page closer CTA — cream deck language matching homepage Contact intro.
+ */
 export function PageCTA({
   title = 'Ready to begin',
   titleAccent = 'your project?',
@@ -20,50 +27,45 @@ export function PageCTA({
   buttonLabel = 'Book Consultation',
   buttonHref = '/contact',
 }: PageCTAProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section ref={ref} className="section-y bg-luxury-gray relative overflow-hidden">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(176,141,87,0.08) 0%, transparent 70%)',
-        }}
-      />
-      <div className="relative container-site text-center">
+    <section
+      className="relative overflow-hidden text-[#3F3930]"
+      style={{ background: d2PageBg }}
+    >
+      <div className={`${d2Section} text-center`}>
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="font-display text-fluid-h2 text-white mb-4 sm:mb-6 text-balance"
+          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={d2Viewport}
+          transition={{ duration: 0.8, ease: d2Ease }}
+          className="mx-auto max-w-3xl font-body text-[clamp(2.25rem,4.5vw,3.75rem)] font-light leading-[1.05] tracking-[-0.02em] text-[#3F3930] text-balance"
         >
           {title}{' '}
-          <span className="italic font-light text-gradient-gold-inline">
+          <span className="font-display italic font-normal text-[#9C6F4E]">
             {titleAccent}
           </span>
         </motion.h2>
+
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-gray-400 font-light mb-8 sm:mb-10 leading-relaxed text-fluid-body max-w-lg mx-auto"
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={d2Viewport}
+          transition={{ duration: 0.7, delay: reduceMotion ? 0 : 0.1, ease: d2Ease }}
+          className="mx-auto mt-5 max-w-lg font-body text-[15px] leading-[1.85] text-[#55503F] sm:mt-6"
         >
           {description}
         </motion.p>
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={d2Viewport}
+          transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.18, ease: d2Ease }}
+          className="mt-10 flex justify-center sm:mt-12"
         >
-          <Link href={buttonHref} className="btn-gold group w-full sm:w-auto max-w-xs sm:max-w-none mx-auto">
-            <span>{buttonLabel}</span>
-            <ArrowRight
-              size={16}
-              className="group-hover:translate-x-1 transition-transform duration-300"
-            />
-          </Link>
+          <PrimaryButton href={buttonHref}>{buttonLabel}</PrimaryButton>
         </motion.div>
       </div>
     </section>

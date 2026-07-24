@@ -1,15 +1,19 @@
-import { ContentImage } from '@/components/ContentImage';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
-import { TestimonialsSection } from '@/components/TestimonialsSection';
-import { TrustBadges } from '@/components/TrustBadges';
-import { PriceList } from '@/components/PriceList';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
 import type { ServicePage } from '@/lib/service-pages';
 import { howWeWork, serviceProcessSteps } from '@/lib/process';
+import {
+  d2BandBg,
+  d2BtnOutline,
+  d2PageBg,
+  d2Section,
+  d2SectionWide,
+} from '@/components/design2/shared';
+import { PrimaryButton } from '@/components/PrimaryButton';
 
 type Props = {
   service: ServicePage;
@@ -34,161 +38,174 @@ export function ServicePageTemplate({ service }: Props) {
         imageAlt={`${service.title} by Design My Place`}
       />
 
-      <section className="section-y bg-luxury-black">
-        <div className="container-site">
-          <AnimatedSection className="max-w-3xl">
-            <p className="label-uppercase text-gold-300 mb-4 sm:mb-6">Overview</p>
-            <h2 className="font-display text-fluid-h2 text-white mb-6 sm:mb-8 leading-tight text-balance">
-              {service.title} by{' '}
-              <span className="italic font-light text-gradient-gold-inline">
-                Design My Place
-              </span>
-            </h2>
-            <p className="text-gray-300 text-fluid-body font-light leading-relaxed">
-              {service.summary}
+      <section className="text-[#3F3930]" style={{ background: d2PageBg }}>
+        <div className={d2Section}>
+          <div className="mb-6 flex items-center gap-4">
+            <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
+            <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
+              Overview
             </p>
-          </AnimatedSection>
+          </div>
+          <h2 className="max-w-3xl font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
+            {service.title} by{' '}
+            <span className="font-display italic font-normal text-[#9C6F4E]">
+              Design My Place
+            </span>
+          </h2>
+          <p className="mt-8 max-w-3xl font-body text-[15.5px] leading-[1.9] text-[#55503F]">
+            {service.summary}
+          </p>
         </div>
       </section>
 
-      <section className="section-y bg-luxury-gray">
-        <div className="container-site">
-          <AnimatedSection className="mb-10 sm:mb-16">
-            <p className="label-uppercase text-gold-300 mb-4 sm:mb-6">Why Choose Us</p>
-            <h2 className="font-display text-fluid-h2 text-white text-balance">
-              Benefits of our{' '}
-              <span className="italic font-light text-gradient-gold-inline">
-                approach
-              </span>
-            </h2>
-          </AnimatedSection>
-          <Stagger className="card-grid">
+      <section className="bg-[#FAF8F5] text-[#3F3930]">
+        <div className={d2Section}>
+          <div className="mb-6 flex items-center gap-4">
+            <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
+            <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
+              Why Choose Us
+            </p>
+          </div>
+          <h2 className="mb-12 font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
+            Benefits of our{' '}
+            <span className="font-display italic font-normal text-[#9C6F4E]">
+              approach
+            </span>
+          </h2>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {service.benefits.map((benefit) => (
-              <StaggerItem
+              <div
                 key={benefit.title}
-                className="glass p-6 sm:p-8 border border-white/10"
+                className="rounded-[20px] border border-[rgba(63,57,48,0.1)] bg-white/50 p-6 sm:p-8 md:rounded-3xl"
               >
-                <h3 className="font-display text-fluid-h3 text-white mb-3 sm:mb-4">
+                <h3 className="mb-3 font-display text-[20px] font-medium text-[#3F3930]">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-400 font-light leading-relaxed text-sm sm:text-base">
+                <p className="font-body text-[14.5px] leading-[1.8] text-[#55503F]">
                   {benefit.description}
                 </p>
-              </StaggerItem>
+              </div>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
 
-      <section className="section-y bg-luxury-black">
-        <div className="container-site">
-          <AnimatedSection className="mb-10 sm:mb-16">
-            <p className="label-uppercase text-gold-300 mb-4 sm:mb-6">
+      <section className="text-[#EDE9E0]" style={{ background: d2BandBg }}>
+        <div className={d2Section}>
+          <div className="mb-6 flex items-center gap-4">
+            <span aria-hidden className="h-px w-8 bg-[#C4A07A] sm:w-10" />
+            <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#C4A07A] sm:text-[15px]">
               {howWeWork.label}
             </p>
-            <h2 className="font-display text-fluid-h2 text-white text-balance">
-              Our{' '}
-              <span className="italic font-light text-gradient-gold-inline">
-                process
-              </span>
-            </h2>
-          </AnimatedSection>
-          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          </div>
+          <h2 className="mb-12 font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em] text-[#EDE9E0]">
+            Our{' '}
+            <span className="font-display italic font-normal text-[#C4A07A]">
+              process
+            </span>
+          </h2>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {serviceProcessSteps.map((step, index) => (
-              <StaggerItem key={step.step} className="glass border border-white/10 p-6 sm:p-8 border-t-gold-400/40 border-t-2">
-                <p className="text-[10px] uppercase tracking-[0.16em] text-gold-300 mb-3">
+              <div
+                key={step.step}
+                className="rounded-[20px] border border-white/10 bg-black/15 p-6 backdrop-blur-sm md:rounded-3xl"
+              >
+                <p className="mb-3 font-body text-[10px] uppercase tracking-[0.2em] text-[#C4A07A]">
                   {String(index + 1).padStart(2, '0')}
                 </p>
-                <h3 className="font-display text-fluid-h3 text-white mb-3">
+                <h3 className="mb-3 font-display text-[18px] font-medium text-[#EDE9E0]">
                   {step.step}
                 </h3>
-                <p className="text-gray-400 font-light text-sm leading-relaxed">
+                <p className="font-body text-[13.5px] leading-[1.75] text-[rgba(237,233,224,0.88)]">
                   {step.description}
                 </p>
-              </StaggerItem>
+              </div>
             ))}
-          </Stagger>
-          <AnimatedSection delay={0.2} className="mt-10 sm:mt-12">
-            <Link href="/contact" className="btn-outline-gold group w-full sm:w-auto">
-              <span>Book Consultation</span>
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </AnimatedSection>
+          </div>
+          <div className="mt-12">
+            <PrimaryButton href="/contact">Book Consultation</PrimaryButton>
+          </div>
         </div>
       </section>
 
-      <PriceList className="bg-luxury-gray" showCta={false} />
-
-      <section className="section-y bg-luxury-gray">
-        <div className="container-site">
-          <AnimatedSection className="mb-8 sm:mb-12">
-            <p className="label-uppercase text-gold-300 mb-4 sm:mb-6">Portfolio</p>
-            <h2 className="font-display text-fluid-h2 text-white text-balance">
-              Project{' '}
-              <span className="italic font-light text-gradient-gold-inline">
-                gallery
-              </span>
-            </h2>
-          </AnimatedSection>
-          <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <section className="text-[#3F3930]" style={{ background: d2PageBg }}>
+        <div className={d2SectionWide}>
+          <div className="mb-6 flex items-center gap-4">
+            <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
+            <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
+              Portfolio
+            </p>
+          </div>
+          <h2 className="mb-12 font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
+            Project{' '}
+            <span className="font-display italic font-normal text-[#9C6F4E]">
+              gallery
+            </span>
+          </h2>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 md:gap-6">
             {service.gallery.map((src, index) => (
-              <StaggerItem
+              <div
                 key={`${service.slug}-gallery-${index}`}
-                className={`relative overflow-hidden border border-white/10 aspect-[4/3] ${
-                  index === 0 ? 'md:col-span-2 lg:col-span-2 md:aspect-[21/9]' : ''
+                className={`relative overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.08)] shadow-[0_18px_40px_-24px_rgba(63,57,48,0.28)] md:rounded-3xl ${
+                  index === 0
+                    ? 'aspect-[21/10] md:col-span-2 lg:col-span-2'
+                    : 'aspect-[4/3]'
                 }`}
               >
-                <ContentImage
+                <Image
                   src={src}
                   alt={`${service.title} — gallery image ${index + 1}`}
                   fill
                   loading="lazy"
                   className="object-cover"
-                  sizes={index === 0 ? '(max-width: 768px) 100vw, 66vw' : '(max-width: 768px) 100vw, 33vw'}
+                  sizes={
+                    index === 0
+                      ? '(max-width: 768px) 100vw, 66vw'
+                      : '(max-width: 768px) 100vw, 33vw'
+                  }
+                  quality={90}
                 />
-              </StaggerItem>
+              </div>
             ))}
-          </Stagger>
-          <AnimatedSection delay={0.15} className="mt-8 sm:mt-10">
-            <Link href="/projects" className="btn-outline-gold group w-full sm:w-auto">
+          </div>
+          <div className="mt-10">
+            <Link href="/projects" className={`group ${d2BtnOutline}`}>
               <span>View All Projects</span>
-              <ArrowRight size={14} />
+              <ArrowRight size={14} strokeWidth={1.75} aria-hidden />
             </Link>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
-      <TestimonialsSection />
-      <TrustBadges showStats />
-
-      <section className="section-y bg-luxury-black">
-        <div className="container-site max-w-3xl">
-          <AnimatedSection className="text-center mb-10 sm:mb-16">
-            <p className="label-uppercase text-gold-300 mb-4 sm:mb-6">
+      <section className="bg-[#FAF8F5] text-[#3F3930]">
+        <div className={`${d2Section} max-w-3xl`}>
+          <div className="mb-6 flex items-center justify-center gap-4">
+            <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
+            <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
               Common Questions
             </p>
-            <h2 className="font-display text-fluid-h2 text-white text-balance">
-              Frequently{' '}
-              <span className="italic font-light text-gradient-gold-inline">
-                asked
-              </span>
-            </h2>
-          </AnimatedSection>
-          <Stagger className="space-y-4 sm:space-y-6">
+          </div>
+          <h2 className="mb-12 text-center font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
+            Frequently{' '}
+            <span className="font-display italic font-normal text-[#9C6F4E]">
+              asked
+            </span>
+          </h2>
+          <div className="space-y-5">
             {service.faqs.map((faq) => (
-              <StaggerItem
+              <div
                 key={faq.question}
-                className="border border-white/10 p-6 sm:p-8 bg-luxury-gray/40"
+                className="rounded-[18px] border border-[rgba(63,57,48,0.1)] bg-white/50 p-6 sm:p-8"
               >
-                <h3 className="font-display text-fluid-h3 text-white mb-3 sm:mb-4">
+                <h3 className="mb-3 font-display text-[18px] font-medium text-[#3F3930] sm:text-[20px]">
                   {faq.question}
                 </h3>
-                <p className="text-gray-400 font-light leading-relaxed text-sm sm:text-base">
+                <p className="font-body text-[14.5px] leading-[1.8] text-[#55503F]">
                   {faq.answer}
                 </p>
-              </StaggerItem>
+              </div>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
 

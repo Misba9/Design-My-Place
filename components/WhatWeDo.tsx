@@ -12,6 +12,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { whatWeDo } from '@/lib/about';
+import { PrimaryButton } from '@/components/PrimaryButton';
 
 const serviceIcons: LucideIcon[] = [
   MessageSquare,
@@ -186,13 +187,7 @@ export function WhatWeDo() {
                   className="group-hover:translate-x-1 transition-transform duration-300"
                 />
               </Link>
-              <Link href="/contact" className="btn-gold group w-full sm:w-auto justify-center">
-                <span>Book Consultation</span>
-                <ArrowRight
-                  size={14}
-                  className="group-hover:translate-x-1 transition-transform duration-300"
-                />
-              </Link>
+              <PrimaryButton href="/contact">Book Consultation</PrimaryButton>
             </motion.div>
           </div>
         </div>

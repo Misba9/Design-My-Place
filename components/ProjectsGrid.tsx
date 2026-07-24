@@ -1,84 +1,123 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { ContentImage } from '@/components/ContentImage';
+import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { projects, projectTypes, type Project } from '@/lib/projects';
+import {
+  d2BtnOutline,
+  d2Ease,
+  d2Viewport,
+} from '@/components/design2/shared';
 
 function ProjectCard({
   project,
   index,
+  tall = false,
 }: {
   project: Project;
   index: number;
+  tall?: boolean;
 }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(cardRef, { once: true, margin: '-50px' });
+  const reduceMotion = useReducedMotion();
+  const [active, setActive] = useState(false);
 
   return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.08 }}
-      whileHover={{ y: -6 }}
-      className="group relative bg-luxury-gray/90 border border-white/10 overflow-hidden card-hover-lift"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <motion.article
+      initial={reduceMotion ? false : { opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={d2Viewport}
+      transition={{
+        duration: reduceMotion ? 0 : 0.75,
+        delay: reduceMotion ? 0 : (index % 6) * 0.06,
+        ease: d2Ease,
+      }}
+      className={tall ? 'md:row-span-2' : undefined}
     >
-      <Link href={`/projects/${project.slug}`} className="block">
-        <div className="relative aspect-[4/3] w-full overflow-hidden img-hover-zoom">
-          <ContentImage
+      <Link
+        href={`/projects/${project.slug}`}
+        className="
+          group relative block h-full overflow-hidden
+          rounded-[20px] md:rounded-3xl
+          border border-[rgba(63,57,48,0.08)]
+          bg-[#111]
+          shadow-[0_18px_40px_-24px_rgba(63,57,48,0.28)]
+          transition-all duration-500 ease-out
+          hover:-translate-y-1
+          hover:shadow-[0_28px_50px_-22px_rgba(63,57,48,0.38)]
+          focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9C6F4E]
+          motion-reduce:transform-none
+        "
+        onClick={(e) => {
+          if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) {
+            if (!active) {
+              e.preventDefault();
+              setActive(true);
+            }
+          }
+        }}
+      >
+        <div
+          className={`relative w-full overflow-hidden ${
+            tall
+              ? 'aspect-[3/4] min-h-[320px] md:aspect-auto md:h-full md:min-h-[540px]'
+              : 'aspect-[4/5] sm:aspect-[5/4]'
+          }`}
+        >
+          <Image
             src={project.image}
-            alt={project.name}
+            alt={`${project.name} — ${project.type}, ${project.location}`}
             fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            quality={90}
             loading="lazy"
-            className={`object-cover transition-transform duration-700 ${
-              isHovered ? 'scale-105' : 'scale-100'
-            }`}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transform-none"
           />
 
-          <div className="absolute top-4 left-4">
-            <span className="glass px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-white/90">
+          <div
+            className={`
+              absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent
+              transition-opacity duration-500
+              ${active ? 'opacity-100' : 'opacity-100 md:opacity-0 md:group-hover:opacity-100'}
+            `}
+          />
+
+          <div className="absolute left-4 top-4 flex flex-wrap gap-2">
+            <span className="rounded-sm border border-white/20 bg-black/30 px-3 py-1 font-body text-[9px] uppercase tracking-[0.18em] text-white/90 backdrop-blur-sm">
               {project.type}
             </span>
-          </div>
-          {project.featured && (
-            <div className="absolute top-4 right-4">
-              <span className="bg-gold-400 text-luxury-black px-3 py-1 text-[10px] uppercase tracking-[0.12em] font-semibold">
+            {project.featured ? (
+              <span className="rounded-sm bg-[#9C6F4E] px-3 py-1 font-body text-[9px] font-semibold uppercase tracking-[0.16em] text-[#FAF8F5]">
                 Featured
               </span>
-            </div>
-          )}
+            ) : null}
+          </div>
 
-          <div
-            className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end justify-center pb-6 transition-opacity duration-500 ${
-              isHovered ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <span className="btn-gold text-[10px] py-3 px-6">
+          <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
+            <h3 className="font-display text-[20px] font-medium leading-snug text-white sm:text-[22px]">
+              {project.name}
+            </h3>
+            <p className="mt-2 font-body text-[12px] tracking-[0.04em] text-white/70">
+              {project.location}
+              <span className="mx-2 inline-block h-1 w-1 rounded-full bg-[#9C6F4E]/80 align-middle" />
+              {project.year}
+            </p>
+            <span
+              className={`
+                mt-4 inline-flex items-center gap-2 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-white
+                transition-all duration-300
+                ${active ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0'}
+              `}
+            >
               View Project
-              <ArrowRight size={14} />
+              <ArrowRight size={13} strokeWidth={1.75} aria-hidden />
             </span>
           </div>
         </div>
-
-        <div className="p-5 sm:p-7">
-          <h3 className="font-display text-fluid-h3 text-white mb-2">
-            {project.name}
-          </h3>
-          <p className="text-gray-400 text-sm flex items-center gap-3">
-            <span>{project.location}</span>
-            <span className="w-1 h-1 rounded-full bg-gold-400/50" />
-            <span>{project.year}</span>
-          </p>
-        </div>
       </Link>
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -93,8 +132,7 @@ export function ProjectsGrid({
   limit,
   showViewAll = false,
 }: ProjectsGridProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: '-100px' });
+  const reduceMotion = useReducedMotion();
   const [activeFilter, setActiveFilter] = useState<string>('All');
 
   const filtered =
@@ -105,49 +143,62 @@ export function ProjectsGrid({
   const displayed = limit ? filtered.slice(0, limit) : filtered;
 
   return (
-    <div ref={containerRef}>
-      {showFilters && (
+    <div>
+      {showFilters ? (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="flex flex-wrap gap-2 sm:gap-3 mb-10 sm:mb-12 lg:mb-16"
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={d2Viewport}
+          transition={{ duration: 0.6, ease: d2Ease }}
+          className="mb-10 flex flex-wrap gap-2 sm:mb-12 sm:gap-3 lg:mb-14"
+          role="tablist"
+          aria-label="Filter projects by type"
         >
-          {projectTypes.map((type) => (
-            <button
-              key={type}
-              onClick={() => setActiveFilter(type)}
-              className={`px-4 sm:px-5 py-2.5 min-h-11 text-[10px] uppercase tracking-[0.14em] font-medium transition-all duration-300 border ${
-                activeFilter === type
-                  ? 'border-gold-400/70 text-gold-300 bg-gold-400/10'
-                  : 'border-white/10 text-gray-400 hover:border-gold-400/40 hover:text-gold-300'
-              }`}
-            >
-              {type}
-            </button>
-          ))}
+          {projectTypes.map((type) => {
+            const isActive = activeFilter === type;
+            return (
+              <button
+                key={type}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveFilter(type)}
+                className={`
+                  min-h-11 rounded-sm border px-4 py-2.5 font-body text-[10px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 sm:px-5
+                  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9C6F4E]
+                  ${
+                    isActive
+                      ? 'border-[#9C6F4E] bg-[#9C6F4E] text-[#FAF8F5]'
+                      : 'border-[rgba(63,57,48,0.18)] bg-transparent text-[#3F3930] hover:border-[#9C6F4E]/50'
+                  }
+                `}
+              >
+                {type}
+              </button>
+            );
+          })}
         </motion.div>
-      )}
+      ) : null}
 
-      <div className="card-grid">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
         {displayed.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={index}
+            tall={index % 5 === 0}
+          />
         ))}
       </div>
 
-      {showViewAll && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 text-center lg:hidden"
-        >
-          <Link href="/projects" className="btn-outline-gold">
-            View All Projects
-            <ArrowRight size={14} />
+      {showViewAll ? (
+        <div className="mt-12 text-center lg:hidden">
+          <Link href="/projects" className={`group ${d2BtnOutline}`}>
+            <span>View All Projects</span>
+            <ArrowRight size={14} strokeWidth={1.75} aria-hidden />
           </Link>
-        </motion.div>
-      )}
+        </div>
+      ) : null}
     </div>
   );
 }

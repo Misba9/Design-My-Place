@@ -285,8 +285,27 @@
 
   /* Luxury header — solid black */
   .header-luxury {
-    background: #0a0a0a;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid transparent;
+    background: transparent;
+    transition:
+      background-color 0.45s cubic-bezier(0.25, 0.1, 0.25, 1),
+      border-color 0.45s cubic-bezier(0.25, 0.1, 0.25, 1),
+      backdrop-filter 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .header-luxury.is-scrolled {
+    background: rgba(10, 10, 10, 0.92);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Internal pages — always solid black, never transparent over hero */
+  .header-luxury.is-solid {
+    background: #111111;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .header-social-link {
