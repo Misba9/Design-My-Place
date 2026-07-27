@@ -1,9 +1,12 @@
 import {
+  ARTIUS_GALLERY,
+  ARTIUS_IMAGES,
+  DELHI_VILLA_GALLERY,
+  DELHI_VILLA_IMAGES,
   LAKEHOUSE_GALLERY,
   LAKEHOUSE_IMAGES,
   LIFE_77_GALLERY,
   LIFE_77_IMAGES,
-  MISSING_IMAGE,
   NVT_IMAGES,
   NVT_PROJECT_GALLERY,
   PASTEL_PENTHOUSE_GALLERY,
@@ -102,12 +105,12 @@ export const projects: Project[] = [
     style: 'Heritage · Contemporary · Indian',
     year: '2023',
     featured: false,
-    image: MISSING_IMAGE,
+    image: DELHI_VILLA_IMAGES.hero,
     description:
       'A contemporary Indian villa inspired by traditional heritage architecture. Rich textures, handcrafted details, and modern spatial planning blend seamlessly to celebrate India\'s timeless design language with modern luxury.',
     area: '6,800 sq ft',
     duration: '18 months',
-    gallery: [MISSING_IMAGE],
+    gallery: [...DELHI_VILLA_GALLERY],
     highlights: [
       'Heritage-inspired contemporary architecture',
       'Rich textures and handcrafted details',
@@ -123,12 +126,12 @@ export const projects: Project[] = [
     style: 'Wood · Brand · Experiential',
     year: '2024',
     featured: false,
-    image: MISSING_IMAGE,
+    image: ARTIUS_IMAGES.hero,
     description:
       'An immersive brand experience centre crafted to showcase products through engaging spatial storytelling. Warm wood finishes, innovative displays, and interactive elements create memorable customer experiences while reflecting the brand\'s identity.',
     area: '8,500 sq ft',
     duration: '9 months',
-    gallery: [MISSING_IMAGE],
+    gallery: [...ARTIUS_GALLERY],
     highlights: [
       'Engaging spatial storytelling for product showcase',
       'Warm wood finishes and innovative displays',

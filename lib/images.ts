@@ -141,6 +141,113 @@ export const SVASA_GALLERY = [
   SVASA_IMAGES.image12,
 ] as const;
 
+const delhiVilla = (filename: string) => publicImage('Delhi_Villa', filename);
+
+/** Delhi Villa project imagery */
+export const DELHI_VILLA_IMAGES = {
+  hero: delhiVilla('1.png'),
+  image02: delhiVilla('2.png'),
+  image03: delhiVilla('3.png'),
+  image04: delhiVilla('4.png'),
+  image05: delhiVilla('5.png'),
+  image06: delhiVilla('6.png'),
+  image07: delhiVilla('7.png'),
+  image08: delhiVilla('8.png'),
+  image09: delhiVilla('9.png'),
+  image10: delhiVilla('10.png'),
+  image11: delhiVilla('11.png'),
+  image12: delhiVilla('12.png'),
+  image13: delhiVilla('13.png'),
+  image14: delhiVilla('14.png'),
+  image15: delhiVilla('15.png'),
+  image16: delhiVilla('16.png'),
+  image20: delhiVilla('20.png'),
+  image21: delhiVilla('21.png'),
+  image22: delhiVilla('22.png'),
+  image23: delhiVilla('23.png'),
+  image24: delhiVilla('24.png'),
+} as const;
+
+export const DELHI_VILLA_GALLERY = [
+  DELHI_VILLA_IMAGES.hero,
+  DELHI_VILLA_IMAGES.image02,
+  DELHI_VILLA_IMAGES.image03,
+  DELHI_VILLA_IMAGES.image04,
+  DELHI_VILLA_IMAGES.image05,
+  DELHI_VILLA_IMAGES.image06,
+  DELHI_VILLA_IMAGES.image07,
+  DELHI_VILLA_IMAGES.image08,
+  DELHI_VILLA_IMAGES.image09,
+  DELHI_VILLA_IMAGES.image10,
+  DELHI_VILLA_IMAGES.image11,
+  DELHI_VILLA_IMAGES.image12,
+  DELHI_VILLA_IMAGES.image13,
+  DELHI_VILLA_IMAGES.image14,
+  DELHI_VILLA_IMAGES.image15,
+  DELHI_VILLA_IMAGES.image16,
+  DELHI_VILLA_IMAGES.image20,
+  DELHI_VILLA_IMAGES.image21,
+  DELHI_VILLA_IMAGES.image22,
+  DELHI_VILLA_IMAGES.image23,
+  DELHI_VILLA_IMAGES.image24,
+] as const;
+
+const artius = (filename: string) =>
+  publicImage('Artius experience centre.pptx', filename);
+
+/** ARTIUS Experience Centre project imagery */
+export const ARTIUS_IMAGES = {
+  hero: artius('1.png'),
+  image10: artius('10.png'),
+  image11: artius('11.png'),
+  image12: artius('12.png'),
+  image14: artius('14.png'),
+  image15: artius('15.png'),
+  image16: artius('16.png'),
+  image17: artius('17.png'),
+  image18: artius('18.png'),
+  image19: artius('19.png'),
+  image20: artius('20.png'),
+  image21: artius('21.png'),
+  image22: artius('22.png'),
+  image24: artius('24.png'),
+  image25: artius('25.png'),
+  image26: artius('26.png'),
+  image27: artius('27.png'),
+  image28: artius('28.png'),
+  image29: artius('29.png'),
+  image30: artius('30.png'),
+  image31: artius('31.png'),
+  image32: artius('32.png'),
+  image33: artius('33.png'),
+} as const;
+
+export const ARTIUS_GALLERY = [
+  ARTIUS_IMAGES.hero,
+  ARTIUS_IMAGES.image10,
+  ARTIUS_IMAGES.image11,
+  ARTIUS_IMAGES.image12,
+  ARTIUS_IMAGES.image14,
+  ARTIUS_IMAGES.image15,
+  ARTIUS_IMAGES.image16,
+  ARTIUS_IMAGES.image17,
+  ARTIUS_IMAGES.image18,
+  ARTIUS_IMAGES.image19,
+  ARTIUS_IMAGES.image20,
+  ARTIUS_IMAGES.image21,
+  ARTIUS_IMAGES.image22,
+  ARTIUS_IMAGES.image24,
+  ARTIUS_IMAGES.image25,
+  ARTIUS_IMAGES.image26,
+  ARTIUS_IMAGES.image27,
+  ARTIUS_IMAGES.image28,
+  ARTIUS_IMAGES.image29,
+  ARTIUS_IMAGES.image30,
+  ARTIUS_IMAGES.image31,
+  ARTIUS_IMAGES.image32,
+  ARTIUS_IMAGES.image33,
+] as const;
+
 /** Portfolio imagery for service pages and highlights (local NVT project photos). */
 export const PORTFOLIO_IMAGES = {
   living: NVT_IMAGES.family,
