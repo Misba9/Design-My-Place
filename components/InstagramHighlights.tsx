@@ -16,8 +16,8 @@ const highlights = [
   {
     id: 2,
     title: 'Styling',
-    image: DELHI_VILLA_IMAGES.image40,
-    images: [DELHI_VILLA_IMAGES.image40, DELHI_VILLA_IMAGES.image45, ARTIUS_IMAGES.image26],
+    image: DELHI_VILLA_IMAGES.image10,
+    images: [DELHI_VILLA_IMAGES.image10, DELHI_VILLA_IMAGES.image15, ARTIUS_IMAGES.image26],
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const highlights = [
     id: 4,
     title: 'Sourcing',
     image: NVT_IMAGES.dining,
-    images: [NVT_IMAGES.dining, DELHI_VILLA_IMAGES.image37],
+    images: [NVT_IMAGES.dining, DELHI_VILLA_IMAGES.image07],
   },
   {
     id: 5,
