@@ -35,7 +35,6 @@ export const trustBadges = [
   { value: '25+', label: 'Projects Delivered' },
   { value: '100%', label: 'Client Satisfaction' },
   { value: '5.0', label: 'Client Rating' },
-  { value: '₹25L+', label: 'Minimum Budget' },
 ] as const;
 
 export const googleReviewsUrl = STUDIO_ADDRESS.mapsUrl;
