@@ -12,6 +12,55 @@ export type ProjectDetail = Project & {
 };
 
 const extensions: Record<string, Omit<ProjectDetail, keyof Project>> = {
+  'adarsh-palm-meadows': {
+    overview: [
+      'Adarsh Palm Meadows Villa',
+      '',
+      'A 6 BHK villa spanning 5,400 sq ft in Adarsh Palm Meadows, Whitefield, Bangalore — thoughtfully transformed for a four-member family from a twenty-year-old bungalow.',
+      '',
+      'Civil modifications brought in larger windows and Vastu compliance, while accessibility was designed in from the start: ramps, lifts, and an ADA-compliant bathroom for visiting parents.',
+      '',
+      'The home includes a master bedroom suite with walk-in closet, steam room, bathtub, dual vanities, and an art room; two terraces with backyard and front lawn; a dog bath in the utility; and wet and dry kitchens separated by a pocket sliding door.',
+    ].join('\n'),
+    clientRequirements: [
+      'Transform a 20-year-old bungalow for a four-member family',
+      'Increase natural light with larger windows and ensure Vastu compliance',
+      'Provide wheelchair accessibility for visiting parents',
+      'Create a generous master suite with spa-like bathroom and art room',
+      'Separate wet and dry kitchens with flexible connection',
+    ],
+    designPhilosophy:
+      'Renovation as renewal — honour the footprint of a lived-in bungalow while opening it to light, accessibility, and the rhythms of a young family.',
+    materials: [
+      'Expanded window openings with Vastu-aligned planning',
+      'Accessible circulation with ramps and residential lift',
+      'ADA-compliant bathroom fittings and clearances',
+      'Pocket sliding door between wet and dry kitchens',
+    ],
+    timeline: 'Full villa renovation — Adarsh Palm Meadows, Whitefield',
+    challenges: [
+      'Civil modifications within an existing twenty-year-old structure',
+      'Integrating lifts, ramps, and ADA bathrooms without compromising aesthetics',
+      'Balancing open outdoor living with privacy in a villa community',
+    ],
+    solutions: [
+      'Structural openings enlarged for larger windows while maintaining integrity',
+      'Accessibility designed as part of the architecture, not an afterthought',
+      'Outdoor rooms — terraces, lawn, and utility dog bath — planned for daily use',
+    ],
+    faqs: [
+      {
+        question: 'Where is Adarsh Palm Meadows Villa located?',
+        answer:
+          'In Adarsh Palm Meadows, Whitefield, Bangalore — a 5,400 sq ft 6 BHK villa renovated by Design My Place.',
+      },
+      {
+        question: 'Is the home wheelchair accessible?',
+        answer:
+          'Yes. The design includes ramps, a lift, and an ADA-compliant bathroom for visiting parents and multi-generational comfort.',
+      },
+    ],
+  },
   'svasa-homes': {
     overview:
       'A spacious 6 BHK residence in Bangalore designed as a calm, contemporary family home. Warm timber, layered neutrals, sculptural lighting, and carefully detailed joinery bring continuity across private rooms and shared spaces.',
@@ -160,7 +209,7 @@ const extensions: Record<string, Omit<ProjectDetail, keyof Project>> = {
       'Corian interactive counter surfaces',
       'Programmable LED accent lighting',
     ],
-    timeline: '9 months from brief to launch',
+    timeline: 'Ongoing- Artius exeprience centre',
     challenges: [
       'Tight launch deadline with custom display fabrication lead times',
       'High-traffic durability requirements for all touch surfaces',
@@ -177,12 +226,22 @@ const extensions: Record<string, Omit<ProjectDetail, keyof Project>> = {
     ],
   },
   'lakehouse-in-the-sky': {
-    overview:
-      'A compact residence that proves scale is not luxury — graceful arches, abundant light, and minimalist restraint create a home that feels expansive and serene.',
+    overview: [
+      'A Light-Filled Urban Retreat for a Creative Couple',
+      '',
+      'Designed as a serene retreat above the city, this compact apartment was envisioned as a “lakehouse in the sky” — calm, layered, and deeply personal. Created for a creative couple living with their dog and cat, the home needed to balance warmth, functionality, and durability without compromising on design.',
+      '',
+      'Softness became a central theme. Arched details were introduced to gently shape spaces and visually soften the layout, while hidden cabinetry ensured ample storage without overwhelming the apartment. All fabrics and finishes were carefully selected to be pet-friendly, allowing the home to be lived in freely and comfortably.',
+      '',
+      'To enhance natural light and spatial flow, one bedroom wall was opened up, transforming the area into a flexible office-cum-guest room. This intervention not only brought in more daylight but also created a sense of openness, making the home feel larger and more breathable.',
+      '',
+      'The result is a cozy, thoughtful residence — a space that supports creativity, accommodates everyday life with pets, and offers a sense of calm that feels removed from the city below.',
+    ].join('\n'),
     clientRequirements: [
-      'Maximise perceived space within 1,800 sq ft',
-      'Create a sense of calm in a high-density urban setting',
-      'Incorporate arches as a recurring architectural motif',
+      'Create a calm retreat for a creative couple living with a dog and cat',
+      'Balance warmth, functionality, and durability without compromising design',
+      'Maximise natural light and make the compact apartment feel more open',
+      'Incorporate arches and hidden storage as a soft, layered spatial language',
     ],
     designPhilosophy:
       'Minimalism with soul — every element earns its place. Arches frame views, light defines rooms, and emptiness is treated as a material.',
@@ -192,7 +251,7 @@ const extensions: Record<string, Omit<ProjectDetail, keyof Project>> = {
       'Natural linen and wool textiles',
       'Hand-blown glass pendant lighting',
     ],
-    timeline: '10 months including structural modifications',
+    timeline: '05 months',
     challenges: [
       'Structural constraints limited wall removal options',
       'Compact footprint required multi-functional furniture solutions',
@@ -209,11 +268,18 @@ const extensions: Record<string, Omit<ProjectDetail, keyof Project>> = {
     ],
   },
   '77-life': {
-    overview:
-      'An Art Deco-inspired residence where three generations of heirloom teakwood find renewed dignity amid lacquered millwork, bronze fixtures, and considered geometry.',
+    overview: [
+      'Art Deco Residence for a Parsi Couple',
+      '',
+      'This home was conceived as a quiet tribute to legacy, memory, and timeless elegance. Designed for a Parsi couple, the brief centred around honouring their heirloom teakwood furniture while translating their appreciation for classic Art Deco into a contemporary living environment.',
+      '',
+      'The design language draws from strong geometric lines, subtle symmetry, and warm materiality. Existing teakwood pieces were carefully curated into the spatial narrative, allowing them to anchor the home emotionally while new finishes and lighting brought balance and modernity.',
+      '',
+      'Muted tones, brass accents, and layered lighting create a refined yet lived-in atmosphere — a home where history is preserved, not displayed, and where every space feels personal, meaningful, and enduring.',
+    ].join('\n'),
     clientRequirements: [
       'Integrate family heirloom furniture without aesthetic compromise',
-      'Express a Parisian Art Deco sensibility with Indian craft sensibility',
+      'Express a classic Art Deco sensibility with Indian craft sensibility',
       'Create formal entertaining spaces alongside intimate family zones',
     ],
     designPhilosophy:

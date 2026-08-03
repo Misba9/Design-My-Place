@@ -10,7 +10,7 @@ import { D2Instagram } from '@/components/design2/Instagram';
 import { D2HowWeWork } from '@/components/design2/HowWeWork';
 import { D2PriceList } from '@/components/design2/PriceList';
 import { D2MeetOurTeam } from '@/components/design2/MeetOurTeam';
-import { D2BuiltToBelong } from '@/components/design2/BuiltToBelong';
+import { D2Testimonials } from '@/components/design2/Testimonials';
 import { breadcrumbSchema, buildSchemaGraph, faqSchema } from '@/lib/seo';
 import { serviceFaqs } from '@/lib/services';
 
@@ -42,11 +42,11 @@ export default function Home() {
       <D2HowWeWork />
       <D2PriceList />
       <D2MeetOurTeam />
-      <D2BuiltToBelong />
 
       <div id="contact" className="scroll-mt-20">
         <Contact theme="deck" />
       </div>
+      <D2Testimonials />
     </>
   );
 }

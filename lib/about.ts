@@ -3,17 +3,17 @@ import { ABOUT_QUOTE_IMAGE } from '@/lib/images';
 export const aboutStats = [
   { value: '25+', label: 'Projects Delivered' },
   { value: '5+', label: 'Years of Excellence' },
-  { value: '12+', label: 'Cities Served' },
   { value: '100%', label: 'Client Satisfaction' },
 ] as const;
 
 export const aboutUsIntro = {
   label: 'About Us',
-  title: 'Design that shapes how you',
-  titleAccent: 'live and work',
+  title: 'At My Place,',
+  titleAccent: 'design begins with listening.',
   paragraphs: [
-    'We believe in the positive impact interior design has on our well-being, creativity, and productivity. We create sustainable design solutions suited to home and office spaces, big and small. What makes us unique is our blend of Indian and Western tastes and practical experience. By working with some of India\'s best craftsmen, we\'ve been able to combine functional simplicity with more verbose aesthetics to create a truly singular approach to interior design.',
-    'Our comprehensive services include finding the perfect color palette, textiles, carpets, furniture, and lighting to suit your space. We also provide room planning, a full selection of materials, and project management to guide you through the process from start to finish. Over the years, we\'ve built great relationships with contractors and builders with whom we work together on each project, giving our clients a full-service design team to plan and design your dream home.',
+    'Every home we create is rooted in our client’s personal experiences, aspirations, and idea of a dream home.',
+    'Established in 2022, the studio was founded with a clear resolution — to design spaces that feel timeless yet deeply personal, emotionally resonant yet highly functional. Through a lifestyle-based consultation process, we translate how our clients live, host, rest and evolve into thoughtfully planned interiors that stand the test of time.',
+    'Luxury, to us, is not excess — it is clarity, intention, and meaning.',
   ],
 } as const;
 

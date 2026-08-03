@@ -7,7 +7,6 @@ import { d2, d2Ease, d2Viewport } from './shared';
 const statistics = [
   { value: 25, suffix: '+', label: 'Projects Delivered' },
   { value: 5, suffix: '+', label: 'Years of Excellence' },
-  { value: 12, suffix: '+', label: 'Cities Served' },
   { value: 100, suffix: '%', label: 'Client Satisfaction' },
 ] as const;
 
@@ -91,10 +90,11 @@ export function D2Statistics() {
         <ul
           role="list"
           className="
-            m-0 grid list-none grid-cols-2 gap-4 p-0
-            sm:gap-5
+            m-0 mx-auto grid w-full max-w-[960px] list-none
+            grid-cols-1 gap-4 p-0
+            sm:grid-cols-3 sm:gap-5
             md:gap-6
-            lg:grid-cols-4 lg:gap-6 xl:gap-8
+            lg:gap-7
           "
         >
           {statistics.map((stat, index) => (

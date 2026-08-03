@@ -37,7 +37,7 @@ const nextConfig = {
       },
       {
         source: '/favicon.ico',
-        destination: '/logo.png',
+        destination: '/favicon.png',
         permanent: false,
       },
     ];

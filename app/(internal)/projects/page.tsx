@@ -38,7 +38,7 @@ export default function ProjectsPage() {
         title="Selected"
         titleAccent="Projects"
         description="A curated collection of residences, workspaces, and hospitality environments — each shaped by research, craft, and the stories of those who inhabit them."
-        imageAlt="Luxury interior design project portfolio by Design My Place"
+        imageAlt="Luxury interior design Selected Works by Design My Place"
       />
 
       <section

@@ -1,3 +1,4 @@
+import { ARTIUS_IMAGES, DELHI_VILLA_IMAGES, LIFE_77_IMAGES } from '@/lib/images';
 import { STUDIO_ADDRESS } from '@/lib/site';
 
 export const testimonials = [
@@ -8,7 +9,7 @@ export const testimonials = [
     location: 'Mumbai',
     quote:
       'Design My Place transformed our vision into a home that feels uniquely ours. Every corner tells our story, and the attention to detail is extraordinary.',
-    image: '',
+    image: LIFE_77_IMAGES.hero,
   },
   {
     id: 2,
@@ -17,7 +18,7 @@ export const testimonials = [
     location: 'India',
     quote:
       'They understood our brand before we did. Our workspace now communicates our values to every visitor. The design process was incredibly thorough.',
-    image: '',
+    image: ARTIUS_IMAGES.hero,
   },
   {
     id: 3,
@@ -26,7 +27,7 @@ export const testimonials = [
     location: 'Delhi',
     quote:
       'The villa has become a destination in itself. Guests keep asking about the design. They somehow captured the exact mood we envisioned.',
-    image: '',
+    image: DELHI_VILLA_IMAGES.hero,
   },
 ] as const;
 

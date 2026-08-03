@@ -89,6 +89,55 @@ export const LAKEHOUSE_GALLERY = [
   LAKEHOUSE_IMAGES.view,
 ] as const;
 
+const adarshPalm = (filename: string) => publicImage('Adarsh palm', filename);
+
+/** Adarsh Palm Meadows Villa project imagery */
+export const ADARSH_PALM_IMAGES = {
+  /** Night exterior — full facade with ramp & terraces */
+  hero: adarshPalm('52.png'),
+  /** Day entrance porch */
+  entrance: adarshPalm('53.png'),
+  /** Foyer with home lift & staircase */
+  foyerLift: adarshPalm('55.png'),
+  /** Entry hallway with feature wall & mirror */
+  hallway: adarshPalm('54.png'),
+  /** Formal living with bar */
+  livingFormal: adarshPalm('57.png'),
+  /** Living with mural & media wall */
+  livingLounge: adarshPalm('60.png'),
+  /** Navy sitting room */
+  sittingRoom: adarshPalm('63.png'),
+  /** Kitchen & dining */
+  kitchenDining: adarshPalm('58.png'),
+  /** Master bedroom suite */
+  masterBedroom: adarshPalm('62.png'),
+  /** Master walk-in closet */
+  walkInCloset: adarshPalm('59.png'),
+  /** Secondary bedroom with study */
+  bedroomStudy: adarshPalm('61.png'),
+  /** Outdoor patio seating */
+  patio: adarshPalm('56.png'),
+  /** Terrace / sunroom lounge */
+  terrace: adarshPalm('64.png'),
+} as const;
+
+/** Narrative gallery order: exterior → arrival → living → kitchen → private → outdoor */
+export const ADARSH_PALM_GALLERY = [
+  ADARSH_PALM_IMAGES.hero,
+  ADARSH_PALM_IMAGES.entrance,
+  ADARSH_PALM_IMAGES.foyerLift,
+  ADARSH_PALM_IMAGES.hallway,
+  ADARSH_PALM_IMAGES.livingFormal,
+  ADARSH_PALM_IMAGES.livingLounge,
+  ADARSH_PALM_IMAGES.sittingRoom,
+  ADARSH_PALM_IMAGES.kitchenDining,
+  ADARSH_PALM_IMAGES.masterBedroom,
+  ADARSH_PALM_IMAGES.walkInCloset,
+  ADARSH_PALM_IMAGES.bedroomStudy,
+  ADARSH_PALM_IMAGES.patio,
+  ADARSH_PALM_IMAGES.terrace,
+] as const;
+
 const life77 = (filename: string) => publicImage('77 life', filename);
 
 /** 77 Life project imagery */
@@ -248,14 +297,14 @@ export const ARTIUS_GALLERY = [
   ARTIUS_IMAGES.image33,
 ] as const;
 
-/** Portfolio imagery for service pages and highlights (local NVT project photos). */
+/** Portfolio imagery for service pages and highlights. */
 export const PORTFOLIO_IMAGES = {
   living: NVT_IMAGES.family,
-  villa: NVT_IMAGES.gbr,
+  villa: DELHI_VILLA_IMAGES.hero,
   kitchen: NVT_IMAGES.dining,
   bedroom: NVT_IMAGES.mbr,
   apartment: NVT_IMAGES.kids,
-  renovation: NVT_IMAGES.mbr2,
+  renovation: ARTIUS_IMAGES.hero,
 } as const;
 
 /** Sentinel for missing local images — components render a placeholder instead. */

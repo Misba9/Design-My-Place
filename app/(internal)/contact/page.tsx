@@ -5,7 +5,8 @@ import { PageCTA } from '@/components/PageCTA';
 import { Contact } from '@/components/Contact';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
-import { D2Reveal, d2PageBg, d2Section } from '@/components/design2/shared';
+import { D2Reveal } from '@/components/design2/shared';
+import { d2PageBg, d2Section } from '@/components/design2/tokens';
 import { BUSINESS, STUDIO_ADDRESS } from '@/lib/site';
 import { serviceFaqs } from '@/lib/services';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
@@ -54,7 +55,7 @@ export default function ContactPage() {
         label="Get In Touch"
         title="Start Your"
         titleAccent="Journey"
-        description="Whether you're redesigning a single room or developing a complete space from the ground up, we'd love to hear from you. At Design My Place, we specialize in thoughtful, functional, and timeless interiors tailored to your vision. Based in Bangalore, we work with clients locally and pan India to bring spaces to life showcasing your way of living with an enhanced and functional design point with aesthetic sensibilities."
+        description="We work on a limited number of projects annually to ensure design integrity, detail and focus."
         imageAlt="Contact Design My Place for luxury interior design consultation"
       />
 

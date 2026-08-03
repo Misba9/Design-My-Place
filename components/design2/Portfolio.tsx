@@ -72,7 +72,7 @@ function ProjectCard({
             relative w-full overflow-hidden
             ${
               isFeatured
-                ? 'aspect-[4/5] sm:aspect-[16/11] lg:aspect-[4/5] lg:min-h-[32rem] xl:min-h-[36rem]'
+                ? 'aspect-[4/5] min-h-[22rem] sm:min-h-[28rem] lg:aspect-auto lg:h-full lg:min-h-[36rem]'
                 : 'aspect-[4/5] h-[280px] sm:h-auto sm:min-h-0 md:aspect-[4/5]'
             }
           `}
@@ -151,7 +151,7 @@ function ProjectCard({
 }
 
 /**
- * Project Portfolio — luxury editorial showcase.
+ * SELECTED WORKS — luxury editorial showcase.
  * Images, titles, meta, and links are preserved.
  */
 export function D2Portfolio() {
@@ -197,13 +197,13 @@ export function D2Portfolio() {
             transition={{ duration: 0.7, ease }}
             className="font-body font-light leading-[1.05] tracking-[-0.02em] text-[clamp(2.25rem,4.5vw,3.75rem)]"
           >
-            Project Portfolio
+            SELECTED WORKS
           </motion.h2>
         </div>
 
         {/* Featured + side stack */}
-        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:gap-7 lg:mt-20 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-7">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:gap-7 lg:mt-20 lg:grid-cols-12 lg:items-stretch lg:gap-8">
+          <div className="relative lg:col-span-7">
             <ProjectCard
               project={featured}
               index={0}

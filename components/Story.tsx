@@ -125,23 +125,21 @@ export function Story() {
               </span>
             </motion.h2>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-gray-300 text-fluid-body font-light mb-6 sm:mb-8 leading-relaxed"
-            >
-              {aboutUsIntro.paragraphs[0]}
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.45 }}
-              className="text-gray-400 text-fluid-body font-light mb-8 sm:mb-10 leading-relaxed"
-            >
-              {aboutUsIntro.paragraphs[1]}
-            </motion.p>
+            {aboutUsIntro.paragraphs.map((paragraph, i) => (
+              <motion.p
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 + i * 0.05 }}
+                className={`text-fluid-body font-light leading-relaxed ${
+                  i === aboutUsIntro.paragraphs.length - 1
+                    ? 'text-gray-400 mb-8 sm:mb-10'
+                    : 'text-gray-300 mb-6 sm:mb-8'
+                }`}
+              >
+                {paragraph}
+              </motion.p>
+            ))}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

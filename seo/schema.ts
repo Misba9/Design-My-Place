@@ -198,7 +198,7 @@ export function projectSchema(project: {
     '@type': 'CreativeWork',
     '@id': absoluteUrl(`/projects/${project.slug}`),
     name: project.name,
-    description: project.description,
+    description: project.description.replace(/\s+/g, ' ').trim(),
     url: absoluteUrl(`/projects/${project.slug}`),
     image: project.image,
     creator: { '@id': `${SITE_URL}/#organization` },

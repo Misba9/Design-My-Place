@@ -33,7 +33,7 @@ export function Projects() {
               transition={{ duration: 0.6 }}
               className="label-uppercase text-gold-300 mb-4"
             >
-              Project Portfolio
+              SELECTED WORKS
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}

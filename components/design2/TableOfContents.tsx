@@ -6,7 +6,7 @@ import { d2, d2Ease, D2ImageReveal, D2Reveal, d2Viewport, slideAsset } from './s
 const contents = [
   { label: 'Who we are', index: '01', href: '#about' },
   { label: 'What we do', index: '02', href: '#what-we-do' },
-  { label: 'Project portfolio', index: '03', href: '#portfolio' },
+  { label: 'Selected Works', index: '03', href: '#portfolio' },
   { label: 'How we work', index: '04', href: '#how-we-work' },
   { label: 'Price list', index: '05', href: '#price-list' },
   { label: 'Meet our team', index: '06', href: '#team' },

@@ -4,38 +4,38 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ContentImage } from '@/components/ContentImage';
-import { NVT_IMAGES } from '@/lib/images';
+import { ARTIUS_IMAGES, DELHI_VILLA_IMAGES, NVT_IMAGES } from '@/lib/images';
 
 const highlights = [
   {
     id: 1,
     title: 'Inspiration',
     image: NVT_IMAGES.family,
-    images: [NVT_IMAGES.family, NVT_IMAGES.gbr, NVT_IMAGES.mbr],
+    images: [NVT_IMAGES.family, DELHI_VILLA_IMAGES.hero, NVT_IMAGES.mbr],
   },
   {
     id: 2,
     title: 'Styling',
-    image: NVT_IMAGES.mbr,
-    images: [NVT_IMAGES.dining, NVT_IMAGES.kids],
+    image: DELHI_VILLA_IMAGES.image40,
+    images: [DELHI_VILLA_IMAGES.image40, DELHI_VILLA_IMAGES.image45, ARTIUS_IMAGES.image26],
   },
   {
     id: 3,
     title: 'On Site',
-    image: NVT_IMAGES.gbr,
-    images: [NVT_IMAGES.mbr2, NVT_IMAGES.family],
+    image: ARTIUS_IMAGES.hero,
+    images: [ARTIUS_IMAGES.hero, ARTIUS_IMAGES.image30, NVT_IMAGES.family],
   },
   {
     id: 4,
     title: 'Sourcing',
     image: NVT_IMAGES.dining,
-    images: [NVT_IMAGES.mbr],
+    images: [NVT_IMAGES.dining, DELHI_VILLA_IMAGES.image37],
   },
   {
     id: 5,
     title: 'My Place',
-    image: NVT_IMAGES.kids,
-    images: [NVT_IMAGES.gbr, NVT_IMAGES.dining],
+    image: DELHI_VILLA_IMAGES.hero,
+    images: [DELHI_VILLA_IMAGES.hero, ARTIUS_IMAGES.image24, NVT_IMAGES.gbr],
   },
 ];
 

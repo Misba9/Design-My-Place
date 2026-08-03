@@ -14,11 +14,11 @@ import {
 } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import {
+  ARTIUS_IMAGES,
+  DELHI_VILLA_IMAGES,
   HERO_IMAGE,
   LIFE_77_IMAGES,
-  NVT_IMAGES,
   PASTEL_PENTHOUSE_IMAGES,
-  SVASA_IMAGES,
 } from '@/lib/images';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { d2, d2Ease, LetterReveal } from './shared';
@@ -28,7 +28,6 @@ const SLIDE_DURATION_MS = 6000;
 const trustStats = [
   { value: 25, suffix: '+', label: 'Projects Delivered' },
   { value: 5, suffix: '+', label: 'Years of Excellence' },
-  { value: 12, suffix: '+', label: 'Cities Served' },
   { value: 100, suffix: '%', label: 'Client Satisfaction' },
 ] as const;
 
@@ -43,16 +42,6 @@ const slides = [
     caption: 'Bespoke Residential Interiors',
   },
   {
-    src: SVASA_IMAGES.hero,
-    alt: 'Svasa Homes — warm contemporary 6 BHK residence in Bangalore',
-    caption: 'Svasa Homes — Bangalore',
-  },
-  {
-    src: NVT_IMAGES.family,
-    alt: 'NVT Symphony of Orchards — nature-inspired family living space',
-    caption: 'NVT Symphony of Orchards',
-  },
-  {
     src: LIFE_77_IMAGES.hero,
     alt: '77 Life — Art Deco-inspired luxury villa in Mumbai',
     caption: '77 Life — Mumbai',
@@ -61,6 +50,16 @@ const slides = [
     src: PASTEL_PENTHOUSE_IMAGES.hero,
     alt: 'Pastel Penthouse — marble and pastel-toned penthouse interior',
     caption: 'Pastel Penthouse',
+  },
+  {
+    src: DELHI_VILLA_IMAGES.hero,
+    alt: 'Delhi Villa — heritage-contemporary luxury villa in Delhi',
+    caption: 'Delhi Villa',
+  },
+  {
+    src: ARTIUS_IMAGES.hero,
+    alt: 'ARTIUS Experience Centre — immersive brand experience in Bangalore',
+    caption: 'ARTIUS Experience Centre',
   },
 ];
 
@@ -199,15 +198,7 @@ export function D2Hero() {
       >
         <div className="grid w-full grid-cols-1 lg:grid-cols-12 lg:gap-10">
           <div className="flex flex-col items-center text-center lg:col-span-6 lg:items-start lg:text-left xl:col-span-5">
-            <motion.p
-              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.35, ease: d2Ease }}
-              className="mb-5 font-body text-[10px] font-medium uppercase tracking-[0.35em] text-white/85 sm:mb-6 sm:text-[11px] sm:tracking-[0.4em]"
-            >
-              Minimal Interior Design Studio — Bangalore
-            </motion.p>
-
+        
             <h1 className="font-display font-light leading-[0.94] tracking-[0.02em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.45)]">
               <span className="block text-[clamp(2.75rem,11vw,5.5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
                 <LetterReveal text="DESIGN" delay={0.55} />

@@ -11,8 +11,6 @@ import { ProjectViewTracker } from '@/components/ProjectViewTracker';
 import { projects, getProjectBySlug, getRelatedProjects } from '@/lib/projects';
 import { HERO_IMAGE, isLocalImage } from '@/lib/images';
 import { getProjectDetail } from '@/lib/project-details';
-import { processSteps } from '@/lib/process';
-import { testimonials } from '@/lib/testimonials';
 import {
   breadcrumbSchema,
   buildSchemaGraph,
@@ -22,12 +20,15 @@ import {
   projectSchema,
 } from '@/seo';
 import {
-  d2BandBg,
   d2BtnOutline,
   d2PageBg,
-  d2Section,
-  d2SectionWide,
-} from '@/components/design2/shared';
+} from '@/components/design2/tokens';
+
+/** Tighter section padding for project detail pages */
+const projectSection =
+  'relative mx-auto w-full max-w-[1440px] px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-20';
+const projectSectionWide =
+  'relative mx-auto w-full max-w-[1600px] px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-20';
 
 type Props = { params: { slug: string } };
 
@@ -40,10 +41,11 @@ export function generateMetadata({ params }: Props): Metadata {
   if (!project) return { title: 'Project Not Found' };
 
   const title = `${project.name} — ${project.type}`;
+  const plainDescription = project.description.replace(/\s+/g, ' ').trim();
   const description =
-    project.description.length > 155
-      ? `${project.description.slice(0, 152)}...`
-      : project.description;
+    plainDescription.length > 155
+      ? `${plainDescription.slice(0, 152)}...`
+      : plainDescription;
 
   return createPageMetadata({
     title,
@@ -61,9 +63,18 @@ export default function ProjectDetailPage({ params }: Props) {
   const detail = getProjectDetail(project.slug, project);
   const related = getRelatedProjects(project.slug);
   const gallery = project.gallery.filter(isLocalImage);
-  const beforeSrc = gallery[0] ?? project.image;
-  const afterSrc = gallery[Math.min(2, gallery.length - 1)] ?? project.image;
-  const quote = testimonials[0];
+  const overviewBlocks = detail.overview
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const overviewHasTitle =
+    overviewBlocks.length > 1 && !/[.!?]$/.test(overviewBlocks[0]);
+  const overviewTitle = overviewHasTitle ? overviewBlocks[0] : null;
+  const overviewParagraphs = overviewHasTitle
+    ? overviewBlocks.slice(1)
+    : overviewBlocks;
+  const featuredOverviewImage = gallery[0] ?? (isLocalImage(project.image) ? project.image : null);
+  const overviewGallery = gallery.slice(featuredOverviewImage ? 1 : 0);
 
   const schema = buildSchemaGraph(
     projectSchema(project),
@@ -76,7 +87,7 @@ export default function ProjectDetailPage({ params }: Props) {
     imageObjectSchema({
       url: isLocalImage(project.image) ? project.image : HERO_IMAGE,
       name: project.name,
-      description: project.description,
+      description: project.description.replace(/\s+/g, ' ').trim(),
     }),
     ...gallery.map((src, index) =>
       imageObjectSchema({
@@ -103,17 +114,22 @@ export default function ProjectDetailPage({ params }: Props) {
       <PageHero
         label={`${project.type} · ${project.location}`}
         title={project.name}
-        description={project.description}
+        description={
+          project.description
+            .split(/\n+/)
+            .map((line) => line.trim())
+            .filter(Boolean)[1] ?? project.description.replace(/\s+/g, ' ').trim()
+        }
         image={project.image}
         imageAlt={`${project.name} — ${project.type} in ${project.location}`}
       />
 
       {/* Project information */}
       <section className="border-b border-[rgba(63,57,48,0.08)] bg-[#FAF8F5] text-[#3F3930]">
-        <div className="mx-auto w-full max-w-[1440px] px-6 py-10 md:px-12 md:py-14 lg:px-20">
+        <div className="mx-auto w-full max-w-[1440px] px-6 py-8 md:px-12 md:py-10 lg:px-20">
           <Link
             href="/projects"
-            className="mb-10 inline-flex items-center gap-2 font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-[#55503F] transition-colors hover:text-[#9C6F4E]"
+            className="mb-6 inline-flex items-center gap-2 font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-[#55503F] transition-colors hover:text-[#9C6F4E]"
           >
             <ArrowLeft size={14} strokeWidth={1.75} aria-hidden />
             Back to Projects
@@ -143,291 +159,122 @@ export default function ProjectDetailPage({ params }: Props) {
 
       {/* Overview */}
       <section className="text-[#3F3930]" style={{ background: d2PageBg }}>
-        <div className={d2Section}>
-          <div className="mb-6 flex items-center gap-4">
+        <div className={projectSectionWide}>
+          <div className="mb-4 flex items-center gap-4">
             <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
             <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
               Overview
             </p>
           </div>
-          <h2 className="max-w-3xl font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
+          <h2 className="font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
             Project{' '}
             <span className="font-display italic font-normal text-[#9C6F4E]">
               overview
             </span>
           </h2>
-          <p className="mt-8 max-w-3xl font-body text-[15.5px] leading-[1.9] text-[#55503F]">
-            {detail.overview}
-          </p>
-          {project.highlights.length > 0 ? (
-            <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {project.highlights.map((h) => (
-                <li
-                  key={h}
-                  className="rounded-[18px] border border-[rgba(63,57,48,0.1)] bg-white/40 px-6 py-5 font-body text-[14.5px] leading-[1.7] text-[#55503F]"
-                >
-                  {h}
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
-      </section>
 
-      {/* Challenge */}
-      <section className="text-[#EDE9E0]" style={{ background: d2BandBg }}>
-        <div className={d2Section}>
-          <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
-            <div>
-              <div className="mb-6 flex items-center gap-4">
-                <span aria-hidden className="h-px w-8 bg-[#C4A07A] sm:w-10" />
-                <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#C4A07A] sm:text-[15px]">
-                  Challenge
-                </p>
-              </div>
-              <h2 className="font-body text-[clamp(2rem,4vw,3rem)] font-light leading-[1.08] tracking-[-0.02em] text-[#EDE9E0]">
-                What we needed to{' '}
-                <span className="font-display italic font-normal text-[#C4A07A]">
-                  solve
-                </span>
-              </h2>
-              <ul className="mt-8 space-y-4">
-                {detail.challenges.map((c) => (
-                  <li
-                    key={c}
-                    className="border-l border-[#C4A07A]/40 pl-5 font-body text-[15px] leading-[1.8] text-[rgba(237,233,224,0.9)]"
-                  >
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <div className="mb-6 flex items-center gap-4">
-                <span aria-hidden className="h-px w-8 bg-[#C4A07A] sm:w-10" />
-                <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#C4A07A] sm:text-[15px]">
-                  Response
-                </p>
-              </div>
-              <h2 className="font-body text-[clamp(2rem,4vw,3rem)] font-light leading-[1.08] tracking-[-0.02em] text-[#EDE9E0]">
-                How we{' '}
-                <span className="font-display italic font-normal text-[#C4A07A]">
-                  responded
-                </span>
-              </h2>
-              <ul className="mt-8 space-y-4">
-                {detail.solutions.map((s) => (
-                  <li
-                    key={s}
-                    className="flex items-start gap-3 font-body text-[15px] leading-[1.8] text-[rgba(237,233,224,0.9)]"
-                  >
-                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C4A07A]" />
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Design process */}
-      <section className="text-[#3F3930]" style={{ background: d2PageBg }}>
-        <div className={d2Section}>
-          <div className="mb-6 flex items-center gap-4">
-            <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
-            <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
-              Design Process
-            </p>
-          </div>
-          <h2 className="max-w-2xl font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
-            From brief to{' '}
-            <span className="font-display italic font-normal text-[#9C6F4E]">
-              belonging
-            </span>
-          </h2>
-          <p className="mt-6 max-w-2xl font-body text-[15px] leading-[1.85] text-[#55503F]">
-            {detail.designPhilosophy}
-          </p>
-
-          <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {detail.clientRequirements.map((req, i) => (
-              <div
-                key={req}
-                className="border-t border-[rgba(63,57,48,0.14)] pt-6"
-              >
-                <p className="mb-3 font-body text-[10px] uppercase tracking-[0.22em] text-[#9C6F4E]">
-                  0{i + 1}
-                </p>
-                <p className="font-body text-[15px] leading-[1.75] text-[#55503F]">
-                  {req}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <ol className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {processSteps.slice(0, 4).map((step, i) => (
-              <li
-                key={step.title}
-                className="rounded-[20px] border border-[rgba(63,57,48,0.1)] bg-white/50 p-6 md:p-7"
-              >
-                <p className="mb-4 font-body text-[10px] uppercase tracking-[0.22em] text-[#9C6F4E]">
-                  Step 0{i + 1}
-                </p>
-                <h3 className="font-display text-[18px] font-medium text-[#3F3930]">
-                  {step.title}
+          <div className="mt-10 grid items-start gap-10 lg:mt-12 lg:grid-cols-12 lg:gap-14 xl:gap-16">
+            <div className="lg:col-span-5">
+              {overviewTitle ? (
+                <h3 className="max-w-xl font-display text-[clamp(1.5rem,2.4vw,2rem)] font-medium leading-[1.25] tracking-[-0.01em] text-[#3F3930]">
+                  {overviewTitle}
                 </h3>
-                <p className="mt-3 font-body text-[13.5px] leading-[1.75] text-[#55503F]">
-                  {step.description}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section className="bg-[#FAF8F5] text-[#3F3930]">
-        <div className={d2SectionWide}>
-          <div className="mb-6 flex items-center gap-4">
-            <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
-            <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
-              Gallery
-            </p>
-          </div>
-          <h2 className="mb-12 font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
-            Spaces,{' '}
-            <span className="font-display italic font-normal text-[#9C6F4E]">
-              closely seen
-            </span>
-          </h2>
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
-            {gallery.map((src, index) => (
+              ) : null}
               <div
-                key={`${project.slug}-gallery-${index}`}
-                className={`relative overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.08)] shadow-[0_18px_40px_-24px_rgba(63,57,48,0.28)] md:rounded-3xl ${
-                  index === 0 ? 'aspect-[21/10] md:col-span-2' : 'aspect-[4/3]'
-                }`}
+                className={`max-w-xl space-y-5 ${overviewTitle ? 'mt-6' : ''}`}
               >
-                <Image
-                  src={src}
-                  alt={`${project.name} — luxury interior ${index + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes={index === 0 ? '100vw' : '50vw'}
-                  quality={90}
-                />
+                {overviewParagraphs.map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 48)}
+                    className="font-body text-[15.5px] leading-[1.9] text-[#55503F]"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Materials */}
-      <section className="text-[#3F3930]" style={{ background: d2PageBg }}>
-        <div className={d2Section}>
-          <div className="mb-6 flex items-center gap-4">
-            <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
-            <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
-              Materials
-            </p>
-          </div>
-          <h2 className="max-w-2xl font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
-            A tactile{' '}
-            <span className="font-display italic font-normal text-[#9C6F4E]">
-              palette
-            </span>
-          </h2>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-            {detail.materials.map((material) => (
-              <li
-                key={material}
-                className="border-l border-[#9C6F4E]/45 pl-5 font-body text-[15.5px] leading-[1.8] text-[#55503F]"
-              >
-                {material}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+              {project.highlights.length > 0 ? (
+                <ul className="mt-10 space-y-4 border-t border-[rgba(63,57,48,0.12)] pt-8">
+                  {project.highlights.map((h) => (
+                    <li
+                      key={h}
+                      className="flex items-start gap-3 font-body text-[14.5px] leading-[1.7] text-[#55503F]"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#9C6F4E]"
+                      />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
 
-      {/* Before & After */}
-      <section className="bg-[#FAF8F5] text-[#3F3930]">
-        <div className={d2SectionWide}>
-          <div className="mb-6 flex items-center gap-4">
-            <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
-            <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
-              Before & After
-            </p>
-          </div>
-          <h2 className="mb-4 max-w-2xl font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
-            Intention to{' '}
-            <span className="font-display italic font-normal text-[#9C6F4E]">
-              atmosphere
-            </span>
-          </h2>
-          <p className="mb-12 max-w-xl font-body text-[15px] leading-[1.85] text-[#55503F]">
-            From early spatial direction to the finished rooms — a quiet
-            transformation shaped by material, light, and daily ritual.
-          </p>
-          <div className="grid gap-6 lg:grid-cols-2">
-            {[
-              { src: beforeSrc, label: 'Concept Direction' },
-              { src: afterSrc, label: 'Realised Interior' },
-            ].map((item) => (
-              <figure key={item.label} className="group">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.08)] shadow-[0_18px_40px_-24px_rgba(63,57,48,0.28)] md:rounded-3xl">
+            {featuredOverviewImage ? (
+              <div className="lg:col-span-7">
+                <div className="relative w-full overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.08)] shadow-[0_18px_40px_-24px_rgba(63,57,48,0.28)] aspect-[4/3] md:rounded-3xl lg:sticky lg:top-28 lg:aspect-auto lg:h-[min(72vh,720px)]">
                   <Image
-                    src={item.src}
-                    alt={`${project.name} — ${item.label}`}
+                    src={featuredOverviewImage}
+                    alt={`${project.name} — project overview`}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 55vw, 100vw"
+                    quality={90}
+                    priority
+                  />
+                </div>
+              </div>
+            ) : null}
+          </div>
+
+          {overviewGallery.length > 0 ? (
+            <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
+              {overviewGallery.map((src, index) => (
+                <div
+                  key={`${project.slug}-overview-${index}`}
+                  className={`relative overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.08)] shadow-[0_18px_40px_-24px_rgba(63,57,48,0.28)] md:rounded-3xl ${
+                    index === 0 && overviewGallery.length % 2 === 1
+                      ? 'aspect-[21/10] md:col-span-2'
+                      : 'aspect-[4/3]'
+                  }`}
+                >
+                  <Image
+                    src={src}
+                    alt={`${project.name} — luxury interior ${index + 2}`}
+                    fill
+                    className="object-cover"
+                    sizes={
+                      index === 0 && overviewGallery.length % 2 === 1
+                        ? '100vw'
+                        : '50vw'
+                    }
                     quality={90}
                   />
                 </div>
-                <figcaption className="mt-4 font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9C6F4E]">
-                  {item.label}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="text-[#EDE9E0]" style={{ background: d2BandBg }}>
-        <div className={`${d2Section} max-w-4xl text-center`}>
-          <p className="mb-8 font-display text-[13px] font-medium tracking-[0.04em] text-[#C4A07A] sm:text-[15px]">
-            Client Voice
-          </p>
-          <blockquote className="font-display text-[clamp(1.5rem,3.5vw,2.35rem)] font-normal italic leading-[1.35] text-[#EDE9E0]">
-            “{quote.quote}”
-          </blockquote>
-          <p className="mt-8 font-body text-[12px] uppercase tracking-[0.2em] text-[rgba(237,233,224,0.75)]">
-            {quote.name} — {quote.project}, {quote.location}
-          </p>
+              ))}
+            </div>
+          ) : null}
         </div>
       </section>
 
       {/* Related */}
       {related.length > 0 ? (
         <section className="text-[#3F3930]" style={{ background: d2PageBg }}>
-          <div className={d2SectionWide}>
-            <div className="mb-6 flex items-center gap-4">
+          <div className={projectSectionWide}>
+            <div className="mb-4 flex items-center gap-4">
               <span aria-hidden className="h-px w-8 bg-[#9C6F4E] sm:w-10" />
               <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
                 Continue Exploring
               </p>
             </div>
-            <h2 className="mb-12 font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
+            <h2 className="mb-8 font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
               Related{' '}
               <span className="font-display italic font-normal text-[#9C6F4E]">
                 projects
               </span>
             </h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
               {related.map((item) => (
                 <Link
                   key={item.slug}
@@ -453,7 +300,7 @@ export default function ProjectDetailPage({ params }: Props) {
                 </Link>
               ))}
             </div>
-            <div className="mt-12">
+            <div className="mt-8">
               <Link href="/projects" className={`group ${d2BtnOutline}`}>
                 <span>View All Projects</span>
                 <ArrowRight size={14} strokeWidth={1.75} aria-hidden />

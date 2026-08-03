@@ -15,7 +15,7 @@ import {
 } from '@/lib/seo';
 import { getAllBlogSlugs, getBlogPostBySlug } from '@/lib/blog';
 import { HERO_IMAGE, isLocalImage } from '@/lib/images';
-import { d2PageBg, d2Section } from '@/components/design2/shared';
+import { d2PageBg, d2Section } from '@/components/design2/tokens';
 
 type Props = { params: { slug: string } };
 
