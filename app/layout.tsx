@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   ...createPageMetadata({
     title: 'Luxury Interior Designer Bangalore',
     description:
-      'Bespoke luxury interior design for homes & villas above ₹25L in Bangalore, Delhi NCR & India. Premium residential interiors. Book a consultation.',
+      'Bespoke luxury interior design for homes & villas in Bangalore, Delhi NCR & India. Premium residential interiors. Book a consultation.',
     path: '/',
     keywords: DEFAULT_KEYWORDS,
   }),
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     url: 'https://designmyplace.in',
     title: 'Luxury Interior Designer Bangalore | Design My Place',
     description:
-      'Bespoke luxury interior design for homes & villas above ₹25L in Bangalore, Delhi NCR & India.',
+      'Bespoke luxury interior design for homes & villas in Bangalore, Delhi NCR & India.',
     siteName: BUSINESS.name,
     images: [
       {
