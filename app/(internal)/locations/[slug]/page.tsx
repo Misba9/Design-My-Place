@@ -5,10 +5,17 @@ import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { LocationMap } from '@/components/LocationMap';
-import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { TrustBadges } from '@/components/TrustBadges';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { D2Reveal } from '@/components/design2/shared';
+import {
+  d2BandBg,
+  d2BtnOutline,
+  d2PageBg,
+  d2Section,
+} from '@/components/design2/tokens';
+import { D2Testimonials } from '@/components/design2/Testimonials';
 import {
   buildSchemaGraph,
   breadcrumbSchema,
@@ -21,7 +28,6 @@ import {
   getLocationBySlug,
   locations,
 } from '@/lib/locations';
-import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
 
 type Props = { params: { slug: string } };
 
@@ -82,37 +88,47 @@ export default function LocationPage({ params }: Props) {
         imageAlt={`Luxury interior design by Design My Place in ${location.name}`}
       />
 
-      <section className="section-y bg-luxury-black">
-        <div className="container-site">
-          <AnimatedSection className="max-w-3xl">
-            <p className="label-uppercase text-gold-300 mb-6">
-              Design My Place · {location.name}
-              {location.aliases.length > 0 && ` & ${location.aliases.join(', ')}`}
-            </p>
-            <h2 className="font-display text-3xl lg:text-5xl text-white mb-8 leading-tight">
+      {/* Intro */}
+      <section className="relative overflow-hidden text-[#3F3930]" style={{ background: d2PageBg }}>
+        <div className={d2Section}>
+          <D2Reveal className="max-w-3xl">
+            <div className="mb-5 flex items-center gap-4 sm:mb-6">
+              <span aria-hidden className="h-px w-8 shrink-0 bg-[#9C6F4E] sm:w-10" />
+              <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
+                Design My Place · {location.name}
+                {location.aliases.length > 0 && ` & ${location.aliases.join(', ')}`}
+              </p>
+            </div>
+            <h2 className="mb-8 font-body font-light leading-[1.05] tracking-[-0.02em] text-[clamp(2.25rem,4.5vw,3.5rem)]">
               Premium interiors in{' '}
-              <span className="italic font-light text-gradient-gold-inline">
+              <span className="font-display italic font-normal text-[#9C6F4E]">
                 {location.name}
               </span>
             </h2>
-            <p className="text-gray-300 text-lg font-light leading-relaxed mb-8">
+            <p className="mb-8 font-body text-[15.5px] leading-[1.9] text-[#55503F]">
               {location.intro}
             </p>
-            <p className="text-gray-400 font-light leading-relaxed border-l border-gold-400/50 pl-6">
+            <p className="border-l-2 border-[#9C6F4E]/45 pl-6 font-body text-[15px] leading-[1.85] text-[#55503F]">
               {location.whyChooseUs}
             </p>
-          </AnimatedSection>
+          </D2Reveal>
         </div>
       </section>
 
-      <section className="section-y bg-luxury-gray">
-        <div className="container-site">
-          <Stagger className="grid lg:grid-cols-2 gap-16">
-            <StaggerItem>
-              <p className="label-uppercase text-gold-300 mb-6">Areas We Serve</p>
-              <h2 className="font-display text-3xl text-white mb-8">
+      {/* Areas + landmarks */}
+      <section className="relative overflow-hidden text-[#3F3930]" style={{ background: d2PageBg }}>
+        <div className={d2Section}>
+          <div className="grid gap-14 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+            <D2Reveal>
+              <div className="mb-5 flex items-center gap-4 sm:mb-6">
+                <span aria-hidden className="h-px w-8 shrink-0 bg-[#9C6F4E] sm:w-10" />
+                <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
+                  Areas We Serve
+                </p>
+              </div>
+              <h2 className="mb-8 font-body font-light leading-[1.08] tracking-[-0.02em] text-[clamp(1.85rem,3.2vw,2.75rem)]">
                 Neighbourhoods in{' '}
-                <span className="italic font-light text-gradient-gold-inline">
+                <span className="font-display italic font-normal text-[#9C6F4E]">
                   {location.name}
                 </span>
               </h2>
@@ -120,18 +136,24 @@ export default function LocationPage({ params }: Props) {
                 {location.areasServed.map((area) => (
                   <li
                     key={area}
-                    className="text-sm text-gray-400 font-light border border-white/10 px-4 py-3"
+                    className="rounded-[14px] border border-[rgba(63,57,48,0.1)] bg-white/45 px-4 py-3 font-body text-[14px] text-[#55503F]"
                   >
                     {area}
                   </li>
                 ))}
               </ul>
-            </StaggerItem>
-            <StaggerItem>
-              <p className="label-uppercase text-gold-300 mb-6">Local Context</p>
-              <h2 className="font-display text-3xl text-white mb-8">
+            </D2Reveal>
+
+            <D2Reveal delay={0.1}>
+              <div className="mb-5 flex items-center gap-4 sm:mb-6">
+                <span aria-hidden className="h-px w-8 shrink-0 bg-[#9C6F4E] sm:w-10" />
+                <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
+                  Local Context
+                </p>
+              </div>
+              <h2 className="mb-8 font-body font-light leading-[1.08] tracking-[-0.02em] text-[clamp(1.85rem,3.2vw,2.75rem)]">
                 Landmarks &{' '}
-                <span className="italic font-light text-gradient-gold-inline">
+                <span className="font-display italic font-normal text-[#9C6F4E]">
                   surroundings
                 </span>
               </h2>
@@ -139,41 +161,50 @@ export default function LocationPage({ params }: Props) {
                 {location.landmarks.map((landmark) => (
                   <li
                     key={landmark}
-                    className="flex items-start gap-3 text-gray-400 font-light"
+                    className="flex items-start gap-3 font-body text-[15px] leading-relaxed text-[#55503F]"
                   >
-                    <MapPin size={16} className="text-gold-300/70 mt-0.5 flex-shrink-0" />
+                    <MapPin size={16} className="mt-1 shrink-0 text-[#9C6F4E]" />
                     {landmark}
                   </li>
                 ))}
               </ul>
-            </StaggerItem>
-          </Stagger>
+            </D2Reveal>
+          </div>
         </div>
       </section>
 
-      <section className="section-y bg-luxury-black">
-        <div className="container-site">
-          <AnimatedSection className="mb-12">
-            <p className="label-uppercase text-gold-300 mb-6">What We Offer</p>
-            <h2 className="font-display text-3xl lg:text-4xl text-white">
+      {/* Services */}
+      <section className="relative overflow-hidden text-[#3F3930]" style={{ background: d2PageBg }}>
+        <div className={d2Section}>
+          <D2Reveal className="mb-12 max-w-2xl md:mb-14">
+            <div className="mb-5 flex items-center gap-4 sm:mb-6">
+              <span aria-hidden className="h-px w-8 shrink-0 bg-[#9C6F4E] sm:w-10" />
+              <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
+                What We Offer
+              </p>
+            </div>
+            <h2 className="font-body font-light leading-[1.05] tracking-[-0.02em] text-[clamp(2.25rem,4.5vw,3.5rem)]">
               Services in{' '}
-              <span className="italic font-light text-gradient-gold-inline">
+              <span className="font-display italic font-normal text-[#9C6F4E]">
                 {location.name}
               </span>
             </h2>
-          </AnimatedSection>
-          <Stagger className="grid md:grid-cols-2 gap-6 mb-12">
-            {location.services.map((service) => (
-              <StaggerItem
+          </D2Reveal>
+
+          <div className="mb-12 grid gap-4 md:grid-cols-2 md:gap-5">
+            {location.services.map((service, i) => (
+              <D2Reveal
                 key={service}
-                className="flex items-start gap-4 text-gray-300 font-light border border-white/10 p-6"
+                delay={i * 0.05}
+                className="flex items-start gap-4 rounded-[18px] border border-[rgba(63,57,48,0.1)] bg-white/45 p-6"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-gold-400 mt-2 flex-shrink-0" />
-                {service}
-              </StaggerItem>
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#9C6F4E]" />
+                <p className="font-body text-[15px] leading-[1.75] text-[#55503F]">{service}</p>
+              </D2Reveal>
             ))}
-          </Stagger>
-          <AnimatedSection delay={0.15} className="flex flex-wrap gap-4">
+          </div>
+
+          <D2Reveal delay={0.12} className="flex flex-wrap gap-3">
             {[
               { label: 'Luxury Interiors', href: '/services/luxury-interior-design' },
               { label: 'Villa Design', href: '/services/villa-interior-design' },
@@ -182,38 +213,57 @@ export default function LocationPage({ params }: Props) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="btn-outline-gold group text-[10px]"
+                className={`group ${d2BtnOutline}`}
               >
                 <span>{link.label}</span>
-                <ArrowRight size={14} />
+                <ArrowRight
+                  size={14}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5"
+                />
               </Link>
             ))}
-          </AnimatedSection>
+          </D2Reveal>
         </div>
       </section>
 
-      <TestimonialsSection />
+      <D2Testimonials />
       <TrustBadges />
 
-      <section className="section-y bg-luxury-gray">
-        <div className="max-w-3xl mx-auto px-6 lg:px-12">
-          <AnimatedSection className="text-center mb-16">
-            <p className="label-uppercase text-gold-300 mb-6">Local FAQ</p>
-            <h2 className="font-display text-3xl lg:text-4xl text-white">
+      {/* FAQ */}
+      <section className="relative overflow-hidden text-[#3F3930]" style={{ background: d2PageBg }}>
+        <div className={`${d2Section} max-w-3xl`}>
+          <D2Reveal className="mb-12 text-center md:mb-14">
+            <div className="mb-5 flex items-center justify-center gap-4 sm:mb-6">
+              <span aria-hidden className="h-px w-8 shrink-0 bg-[#9C6F4E] sm:w-10" />
+              <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
+                Local FAQ
+              </p>
+              <span aria-hidden className="h-px w-8 shrink-0 bg-[#9C6F4E] sm:w-10" />
+            </div>
+            <h2 className="font-body font-light leading-[1.05] tracking-[-0.02em] text-[clamp(2.25rem,4.5vw,3.5rem)]">
               Questions about design in{' '}
-              <span className="italic font-light text-gradient-gold-inline">
+              <span className="font-display italic font-normal text-[#9C6F4E]">
                 {location.name}
               </span>
             </h2>
-          </AnimatedSection>
-          <Stagger className="space-y-6">
-            {location.faqs.map((faq) => (
-              <StaggerItem key={faq.question} className="border border-white/10 p-8 bg-luxury-black/40">
-                <h3 className="font-display text-xl text-white mb-4">{faq.question}</h3>
-                <p className="text-gray-400 font-light leading-relaxed">{faq.answer}</p>
-              </StaggerItem>
+          </D2Reveal>
+
+          <div className="space-y-5">
+            {location.faqs.map((faq, i) => (
+              <D2Reveal
+                key={faq.question}
+                delay={i * 0.05}
+                className="rounded-[20px] border border-[rgba(63,57,48,0.1)] bg-white/50 p-7 sm:p-8"
+              >
+                <h3 className="mb-3 font-display text-[18px] font-medium text-[#3F3930]">
+                  {faq.question}
+                </h3>
+                <p className="font-body text-[15px] leading-[1.8] text-[#55503F]">
+                  {faq.answer}
+                </p>
+              </D2Reveal>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
 
@@ -226,30 +276,38 @@ export default function LocationPage({ params }: Props) {
         }
       />
 
-      <section className="py-20 bg-luxury-black border-t border-white/10">
-        <AnimatedSection className="container-site">
-          <p className="label-uppercase text-gold-300 mb-6">Also Serving</p>
-          <div className="flex flex-wrap gap-3 mb-10">
-            {otherLocations.map((loc) => (
-              <Link
-                key={loc.slug}
-                href={`/locations/${loc.slug}`}
-                className="text-sm text-gray-400 hover:text-gold-300 border border-white/10 px-4 py-2 transition-colors"
-              >
-                {loc.name}
-              </Link>
-            ))}
-          </div>
-          <a
-            href={location.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-gold-300 hover:text-gold-200 inline-flex items-center gap-2"
-          >
-            <MapPin size={14} />
-            Open in Google Maps
-          </a>
-        </AnimatedSection>
+      {/* Also serving */}
+      <section className="relative overflow-hidden" style={{ background: d2BandBg }}>
+        <div className={`${d2Section} text-[#EDE9E0]`}>
+          <D2Reveal>
+            <div className="mb-5 flex items-center gap-4 sm:mb-6">
+              <span aria-hidden className="h-px w-8 shrink-0 bg-[#C4A07A] sm:w-10" />
+              <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#C4A07A] sm:text-[15px]">
+                Also Serving
+              </p>
+            </div>
+            <div className="mb-10 flex flex-wrap gap-3">
+              {otherLocations.map((loc) => (
+                <Link
+                  key={loc.slug}
+                  href={`/locations/${loc.slug}`}
+                  className="rounded-full border border-white/20 px-5 py-2.5 font-body text-[13px] text-[rgba(237,233,224,0.88)] transition-colors hover:border-[#C4A07A]/55 hover:text-[#EDE9E0]"
+                >
+                  {loc.name}
+                </Link>
+              ))}
+            </div>
+            <a
+              href={location.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.04em] text-[#C4A07A] transition-colors hover:text-[#EDE9E0]"
+            >
+              <MapPin size={14} />
+              Open in Google Maps
+            </a>
+          </D2Reveal>
+        </div>
       </section>
 
       <PageCTA
