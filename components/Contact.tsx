@@ -298,7 +298,7 @@ export function Contact({
               </a>
 
               <a
-                href="mailto:hello@designmyplace.in"
+                href={`mailto:${BUSINESS.email}`}
                 className={
                   isDeck
                     ? 'group flex items-center gap-4 text-[#55503F] transition-colors duration-300 hover:text-[#3F3930]'
@@ -328,7 +328,7 @@ export function Contact({
                     Email Us
                   </p>
                   <p className={isDeck ? 'font-body text-[#3F3930]' : 'text-ivory-300/80'}>
-                    hello@designmyplace.in
+                    {BUSINESS.email}
                   </p>
                 </div>
               </a>

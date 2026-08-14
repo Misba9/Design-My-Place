@@ -3,13 +3,12 @@
 import { Navigation } from '@/components/Navigation';
 
 /**
- * Homepage shell — transparent overlay navbar over the hero.
- * Do not use on internal routes.
+ * Homepage shell — solid black sticky navbar over the hero.
  */
 export function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Navigation variant="overlay" />
+      <Navigation variant="solid" />
       {children}
     </>
   );

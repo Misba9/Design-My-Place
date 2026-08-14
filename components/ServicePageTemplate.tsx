@@ -49,7 +49,7 @@ export function ServicePageTemplate({ service }: Props) {
           <h2 className="max-w-3xl font-body text-[clamp(2.25rem,4.5vw,3.5rem)] font-light leading-[1.05] tracking-[-0.02em]">
             {service.title} by{' '}
             <span className="font-display italic font-normal text-[#9C6F4E]">
-              Design My Place
+              Design My Place 
             </span>
           </h2>
           <p className="mt-8 max-w-3xl font-body text-[15.5px] leading-[1.9] text-[#55503F]">

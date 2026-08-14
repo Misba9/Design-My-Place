@@ -97,7 +97,7 @@ export const milestones = [
     year: '2023',
     title: 'Pan-India Practice',
     description:
-      'Signature work in Mumbai and Delhi — including the Art Deco-inspired 77 Life villa — marked the start of a practice spanning cities across India.',
+      'Signature work in Bangalore and Delhi — including the Art Deco-inspired 77 Life villa — marked the start of a practice spanning cities across India.',
   },
   {
     year: '2024',

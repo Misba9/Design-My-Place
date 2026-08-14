@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { TeamAvatar } from '@/components/TeamAvatar';
 import { teamLead, teamMembers } from '@/lib/team';
 import { d2Ease, d2Viewport } from './shared';
 
@@ -11,7 +12,7 @@ const ease = d2Ease;
 
 /**
  * Meet Our Team — editorial luxury layout.
- * All names, roles, bios, and images are preserved.
+ * Team cards use gender-specific profile icons (no member photographs).
  */
 export function D2MeetOurTeam() {
   const reduceMotion = useReducedMotion();
@@ -174,15 +175,11 @@ export function D2MeetOurTeam() {
                 "
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={`${member.name} — ${member.role} at Design My Place`}
-                    fill
-                    sizes="(min-width: 1024px) 18vw, (min-width: 640px) 45vw, 100vw"
-                    quality={90}
-                    loading="lazy"
-                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transform-none"
-                    style={{ objectPosition: member.imageFit.objectPosition }}
+                  <TeamAvatar
+                    gender={member.gender}
+                    name={member.name}
+                    variant="card"
+                    className="transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transform-none"
                   />
                 </div>
                 <div className="flex flex-1 flex-col px-4 py-5 sm:px-5 sm:py-6">

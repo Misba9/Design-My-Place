@@ -8,7 +8,7 @@ export const BUSINESS = {
   tagline: 'Interiors That Define You',
   description:
     'Premium interior design studio creating bespoke residential interiors for new homes and renovations with budgets above ₹25 Lakhs.',
-  email: 'hello@designmyplace.in',
+  email: 'connect@designmyplace.in',
   phone: '+918266020600',
   phoneDisplay: '+91 82660 20600',
   foundingDate: '2021',

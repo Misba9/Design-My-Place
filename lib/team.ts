@@ -6,6 +6,8 @@ export const teamSection = {
     'A multidisciplinary studio of designers, visualizers, and project leads — united by a shared commitment to craft, clarity, and client care.',
 } as const;
 
+export type TeamGender = 'male' | 'female';
+
 export type TeamImageFit = {
   /** CSS object-position tuned per portrait after trimming letterboxing */
   objectPosition: string;
@@ -16,8 +18,11 @@ export type TeamImageFit = {
 export type TeamMember = {
   name: string;
   role: string;
-  image: string;
-  imageFit: TeamImageFit;
+  /** Profile silhouette gender — used for avatar icons (no photographs) */
+  gender: TeamGender;
+  /** Optional photo — founder/lead only; team cards use avatar icons */
+  image?: string;
+  imageFit?: TeamImageFit;
   bio?: string;
   featured?: boolean;
 };
@@ -25,9 +30,14 @@ export type TeamMember = {
 /** Public team portraits — lowercase path, no spaces (Vercel/Linux case-sensitive). */
 const teamImage = (filename: string) => `/teams/${filename}`;
 
-export const teamLead: TeamMember = {
+export const teamLead: TeamMember & {
+  image: string;
+  imageFit: TeamImageFit;
+  gender: TeamGender;
+} = {
   name: 'Arushi Goel',
   role: 'CREATIVE DIRECTOR & FOUNDER',
+  gender: 'female',
   image: teamImage('founder.png'),
   imageFit: {
     objectPosition: '50% 18%',
@@ -42,52 +52,27 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Shikha Singh',
     role: 'Project Collaborator',
-    image: teamImage('shikha-singh.png'),
-    imageFit: {
-      objectPosition: '50% 50%',
-      width: 286,
-      height: 460,
-    },
+    gender: 'female',
   },
   {
     name: 'Tushar Shukla',
     role: 'Project Manager',
-    image: teamImage('tushar-shukla.png'),
-    imageFit: {
-      objectPosition: '50% 50%',
-      width: 352,
-      height: 384,
-    },
+    gender: 'male',
   },
   {
     name: 'Mamta Rathod',
     role: 'Designer',
-    image: teamImage('mamta-rathod.png'),
-    imageFit: {
-      objectPosition: '50% 50%',
-      width: 312,
-      height: 500,
-    },
+    gender: 'female',
   },
   {
     name: 'Priyanka Peswani',
     role: '3D Visualizer',
-    image: teamImage('priyanka-peswani.png'),
-    imageFit: {
-      objectPosition: '50% 50%',
-      width: 270,
-      height: 500,
-    },
+    gender: 'female',
   },
   {
     name: 'Ishan Vaidwan',
     role: 'Business Development',
-    image: teamImage('ishan-vaidwan.png'),
-    imageFit: {
-      objectPosition: '50% 50%',
-      width: 318,
-      height: 388,
-    },
+    gender: 'male',
   },
 ];
 

@@ -8,6 +8,7 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
 import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
 import { aboutUsIntro, missionVision, values, milestones } from '@/lib/about';
+import { TeamAvatar } from '@/components/TeamAvatar';
 import { teamLead, teamMembers } from '@/lib/team';
 import { d2BtnOutline, d2PageBg } from '@/components/design2/shared';
 import { PrimaryButton } from '@/components/PrimaryButton';
@@ -254,7 +255,7 @@ export default function AboutPage() {
                 {teamLead.bio}
               </p>
 
-              {/* Compact team strip */}
+              {/* Compact team strip — profile icons only */}
               <div className="mt-8 flex items-center gap-3 sm:mt-10">
                 <div className="flex -space-x-3">
                   {teamMembers.slice(0, 5).map((member) => (
@@ -263,14 +264,10 @@ export default function AboutPage() {
                       title={`${member.name} — ${member.role}`}
                       className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-[#FAF8F5] shadow-[0_4px_10px_rgba(63,57,48,0.18)] sm:h-14 sm:w-14"
                     >
-                      <Image
-                        src={member.image}
-                        alt={`${member.name} — ${member.role} at Design My Place`}
-                        fill
-                        sizes="56px"
-                        quality={85}
-                        className="object-cover"
-                        style={{ objectPosition: member.imageFit.objectPosition }}
+                      <TeamAvatar
+                        gender={member.gender}
+                        name={member.name}
+                        variant="compact"
                       />
                     </div>
                   ))}

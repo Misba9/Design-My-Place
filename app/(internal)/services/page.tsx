@@ -241,7 +241,7 @@ export default function ServicesPage() {
         <div className="mx-auto w-full max-w-[1440px] px-6 py-[70px] md:px-12 md:py-[100px] lg:px-20 lg:py-[140px]">
           <AnimatedSection className="max-w-2xl">
             <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#9C6F4E] sm:text-[15px]">
-              Why Design My Place
+              Why Design My Place 
             </p>
             <h2 className="mt-3 font-body font-light text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.02em]">
               What sets our{' '}

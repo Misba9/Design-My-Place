@@ -57,7 +57,8 @@
     min-width: 320px;
   }
 
-  html.custom-cursor-active body {
+  html.custom-cursor-active body,
+  html.torch-cursor-active body {
     cursor: none;
   }
 
@@ -232,6 +233,12 @@
     }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .torch-cursor-root {
+      display: none !important;
+    }
+  }
+
   /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -283,10 +290,10 @@
     filter: brightness(1.05);
   }
 
-  /* Luxury header — solid black */
+  /* Luxury header — always solid black */
   .header-luxury {
-    border-bottom: 1px solid transparent;
-    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #111111;
     transition:
       background-color 0.45s cubic-bezier(0.25, 0.1, 0.25, 1),
       border-color 0.45s cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -294,13 +301,13 @@
   }
 
   .header-luxury.is-scrolled {
-    background: rgba(10, 10, 10, 0.92);
+    background: #111111;
     border-bottom-color: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
-  /* Internal pages — always solid black, never transparent over hero */
+  /* Always solid black — never transparent over hero */
   .header-luxury.is-solid {
     background: #111111;
     border-bottom-color: rgba(255, 255, 255, 0.08);
@@ -431,7 +438,10 @@
 
   html.custom-cursor-active a,
   html.custom-cursor-active button,
-  html.custom-cursor-active [data-cursor-hover] {
+  html.custom-cursor-active [data-cursor-hover],
+  html.torch-cursor-active a,
+  html.torch-cursor-active button,
+  html.torch-cursor-active [data-cursor-hover] {
     cursor: none;
   }
 
@@ -445,7 +455,17 @@
   html.custom-cursor-active.native-cursor-active body *,
   html.custom-cursor-active.native-cursor-active a,
   html.custom-cursor-active.native-cursor-active button,
-  html.custom-cursor-active.native-cursor-active [data-cursor-hover] {
+  html.custom-cursor-active.native-cursor-active [data-cursor-hover],
+  html.torch-cursor-active [class*='eapps-'],
+  html.torch-cursor-active [class*='eapps-'] *,
+  html.torch-cursor-active [class*='elfsight'],
+  html.torch-cursor-active [class*='elfsight'] *,
+  html.torch-cursor-active.native-cursor-active,
+  html.torch-cursor-active.native-cursor-active body,
+  html.torch-cursor-active.native-cursor-active body *,
+  html.torch-cursor-active.native-cursor-active a,
+  html.torch-cursor-active.native-cursor-active button,
+  html.torch-cursor-active.native-cursor-active [data-cursor-hover] {
     cursor: auto !important;
   }
 
@@ -453,7 +473,11 @@
     html.custom-cursor-active body,
     html.custom-cursor-active a,
     html.custom-cursor-active button,
-    html.custom-cursor-active [data-cursor-hover] {
+    html.custom-cursor-active [data-cursor-hover],
+    html.torch-cursor-active body,
+    html.torch-cursor-active a,
+    html.torch-cursor-active button,
+    html.torch-cursor-active [data-cursor-hover] {
       cursor: auto;
     }
   }

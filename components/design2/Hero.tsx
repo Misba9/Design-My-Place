@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   AnimatePresence,
   animate,
@@ -12,7 +11,6 @@ import {
   useScroll,
   useTransform,
 } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import {
   ARTIUS_IMAGES,
   DELHI_VILLA_IMAGES,
@@ -43,8 +41,8 @@ const slides = [
   },
   {
     src: LIFE_77_IMAGES.hero,
-    alt: '77 Life — Art Deco-inspired luxury villa in Mumbai',
-    caption: '77 Life — Mumbai',
+    alt: '77 Life — Art Deco-inspired luxury villa in Bangalore',
+    caption: '77 Life — Bangalore',
   },
   {
     src: PASTEL_PENTHOUSE_IMAGES.hero,
@@ -199,14 +197,14 @@ export function D2Hero() {
         <div className="grid w-full grid-cols-1 lg:grid-cols-12 lg:gap-10">
           <div className="flex flex-col items-center text-center lg:col-span-6 lg:items-start lg:text-left xl:col-span-5">
         
-            <h1 className="font-display font-light leading-[0.94] tracking-[0.02em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.45)]">
+            <h1 className="font-display font-normal leading-[0.94] tracking-[0.02em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.45)]">
               <span className="block text-[clamp(2.75rem,11vw,5.5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
                 <LetterReveal text="DESIGN" delay={0.55} />
               </span>
               <span className="block text-[clamp(2.75rem,11vw,5.5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
                 <LetterReveal text="MY" delay={0.85} />
                 <span className="inline-block w-[0.35em]" aria-hidden />
-                <LetterReveal text="PLACE" delay={1.0} className="italic" />
+                <LetterReveal text="PLACE" delay={1.0} />
               </span>
             </h1>
 
@@ -214,10 +212,9 @@ export function D2Hero() {
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 1.45, ease: d2Ease }}
-              className="mt-7 max-w-md font-body text-[15px] font-light leading-[1.8] text-white/90 sm:mt-8 sm:text-base"
+              className="mt-7 max-w-md font-display text-[15px] font-normal leading-[1.8] text-white/90 sm:mt-8 sm:text-base"
             >
-              Luxury residential interiors — grounded in research, emotion, and
-              timeless aesthetics.
+              We create timeless, personalised interiors shaped by your experiences - translated through our experties into highly functional, refined homes.
             </motion.p>
 
             <motion.div
@@ -227,18 +224,7 @@ export function D2Hero() {
               className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 lg:justify-start"
             >
               <PrimaryButton href="/contact">Start Your Project</PrimaryButton>
-              <Link
-                href="/projects"
-                className="group inline-flex h-14 w-full max-w-[420px] shrink-0 items-center justify-center gap-2.5 box-border rounded-[12px] border border-white/60 bg-black/20 px-12 font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-[#FAF8F3] hover:text-[#2B2620] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-[320px] sm:min-w-[280px] sm:max-w-[340px]"
-              >
-                View Portfolio
-                <ArrowRight
-                  size={16}
-                  strokeWidth={1.75}
-                  className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-                  aria-hidden
-                />
-              </Link>
+              <PrimaryButton href="/projects">View Portfolio</PrimaryButton>
             </motion.div>
 
             {/* Trust indicators */}
@@ -257,14 +243,14 @@ export function D2Hero() {
                     }`}
                   >
                     <dt className="sr-only">{stat.label}</dt>
-                    <dd className="font-body text-[1.65rem] font-light leading-none tracking-[-0.03em] text-white sm:text-[1.85rem]">
+                    <dd className="font-display text-[1.65rem] font-normal leading-none tracking-[-0.03em] text-white sm:text-[1.85rem]">
                       <HeroCountUp
                         value={stat.value}
                         suffix={stat.suffix}
                         delay={reduceMotion ? 0 : 2 + i * 0.08}
                       />
                     </dd>
-                    <p className="mt-2 font-body text-[9px] font-medium uppercase tracking-[0.22em] text-white/55">
+                    <p className="mt-2 font-display text-[9px] font-medium uppercase tracking-[0.22em] text-white/55">
                       {stat.label}
                     </p>
                   </div>
@@ -286,7 +272,7 @@ export function D2Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.55, ease: d2Ease }}
-                  className="font-body text-[10px] uppercase tracking-[0.28em] text-white/70"
+                  className="font-display text-[10px] uppercase tracking-[0.28em] text-white/70"
                 >
                   {slides[slide].caption}
                 </motion.span>
@@ -335,7 +321,7 @@ export function D2Hero() {
         className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-white/55 transition-colors duration-300 hover:text-white/85 sm:bottom-8"
         aria-label="Scroll to explore"
       >
-        <span className="font-body text-[9px] uppercase tracking-[0.35em]">
+        <span className="font-display text-[9px] uppercase tracking-[0.35em]">
           Scroll to Explore
         </span>
         <span className="relative flex h-10 w-5 items-start justify-center rounded-full border border-white/30 pt-1.5">

@@ -6,7 +6,7 @@ export const testimonials = [
     id: 1,
     name: 'Priya & Arjun Mehta',
     project: '77 Life',
-    location: 'Mumbai',
+    location: 'Bangalore',
     quote:
       'Design My Place transformed our vision into a home that feels uniquely ours. Every corner tells our story, and the attention to detail is extraordinary.',
     image: LIFE_77_IMAGES.hero,
