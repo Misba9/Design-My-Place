@@ -10,7 +10,7 @@ export function organizationSchema() {
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
-      url: absoluteUrl('/logo.png'),
+      url: absoluteUrl('/icon-512.png'),
       width: 512,
       height: 512,
     },
@@ -47,7 +47,7 @@ export function localBusinessSchema() {
     alternateName: BUSINESS.name,
     url: SITE_URL,
     image: absoluteUrl(OG_IMAGE.url),
-    logo: absoluteUrl('/logo.png'),
+    logo: absoluteUrl('/icon-512.png'),
     description: BUSINESS.description,
     email: BUSINESS.email,
     telephone: BUSINESS.phone,

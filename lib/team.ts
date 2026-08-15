@@ -48,33 +48,7 @@ export const teamLead: TeamMember & {
   bio: 'An avid admirer of Indian material and design objects. Arushi is forever curious — she informs here work by observation and research while tapping into the potential of form and function. Her design moves beyond the conventional relationship between fashion, art, and design. With a passionate interest in the old and the modern, the traditional and the contemporary, she finds innovative solutions for any little or large spaces. ',
 };
 
-export const teamMembers: TeamMember[] = [
-  {
-    name: 'Shikha Singh',
-    role: 'Project Collaborator',
-    gender: 'female',
-  },
-  {
-    name: 'Tushar Shukla',
-    role: 'Project Manager',
-    gender: 'male',
-  },
-  {
-    name: 'Mamta Rathod',
-    role: 'Designer',
-    gender: 'female',
-  },
-  {
-    name: 'Priyanka Peswani',
-    role: '3D Visualizer',
-    gender: 'female',
-  },
-  {
-    name: 'Ishan Vaidwan',
-    role: 'Business Development',
-    gender: 'male',
-  },
-];
+export const teamMembers: TeamMember[] = [];
 
 /** @deprecated Use teamLead + teamMembers — kept for any legacy imports */
 export const team = [
@@ -83,9 +57,4 @@ export const team = [
     role: teamLead.role,
     bio: teamLead.bio ?? '',
   },
-  ...teamMembers.map((m) => ({
-    name: m.name,
-    role: m.role,
-    bio: '',
-  })),
 ];

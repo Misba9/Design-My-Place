@@ -4,8 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { TeamAvatar } from '@/components/TeamAvatar';
-import { teamLead, teamMembers } from '@/lib/team';
+import { teamLead } from '@/lib/team';
 import { d2Ease, d2Viewport } from './shared';
 
 const ease = d2Ease;
@@ -134,66 +133,6 @@ export function D2MeetOurTeam() {
             </motion.div>
           </div>
         </div>
-
-        {/* Team grid */}
-        <ul
-          role="list"
-          className="
-            mt-14 grid list-none grid-cols-1 gap-6 p-0
-            sm:mt-16 sm:grid-cols-2 sm:gap-7
-            md:mt-20 md:gap-8
-            lg:mt-24 lg:grid-cols-5 lg:gap-6
-          "
-        >
-          {teamMembers.map((member, i) => (
-            <motion.li
-              key={member.name}
-              initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={d2Viewport}
-              transition={{
-                duration: reduceMotion ? 0 : 0.6,
-                delay: reduceMotion ? 0 : 0.06 + i * 0.07,
-                ease,
-              }}
-              className="h-full"
-            >
-              <Link
-                href="/studio"
-                className="
-                  group flex h-full flex-col overflow-hidden
-                  rounded-[20px]
-                  border border-[rgba(63,57,48,0.1)]
-                  bg-[#FAF8F5]
-                  shadow-[0_1px_0_rgba(63,57,48,0.04)]
-                  transition-all duration-500 ease-out
-                  hover:-translate-y-1
-                  hover:border-[rgba(63,57,48,0.16)]
-                  hover:shadow-[0_18px_40px_-20px_rgba(63,57,48,0.28)]
-                  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9C6F4E]
-                  motion-reduce:transform-none
-                "
-              >
-                <div className="relative aspect-[4/5] w-full overflow-hidden">
-                  <TeamAvatar
-                    gender={member.gender}
-                    name={member.name}
-                    variant="card"
-                    className="transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transform-none"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col px-4 py-5 sm:px-5 sm:py-6">
-                  <p className="font-body text-[17px] font-light leading-snug text-[#3F3930] transition-colors duration-300 group-hover:text-[#9C6F4E] sm:text-[18px]">
-                    {member.name}
-                  </p>
-                  <p className="mt-1.5 font-display text-[13px] font-medium text-[#9C6F4E] sm:text-[14px]">
-                    {member.role}
-                  </p>
-                </div>
-              </Link>
-            </motion.li>
-          ))}
-        </ul>
       </div>
     </section>
   );

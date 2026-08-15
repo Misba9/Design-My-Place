@@ -22,10 +22,10 @@ export function Logo({
   return (
     <div className={cn('flex items-center shrink-0', className)}>
       <Image
-        src="/logo.png"
+        src="/icon-512.png"
         alt="Design My Place"
-        width={371}
-        height={400}
+        width={512}
+        height={512}
         className={cn(
           'object-contain object-left transition-transform duration-500',
           sizeClasses[size],

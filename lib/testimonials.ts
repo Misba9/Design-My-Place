@@ -4,9 +4,9 @@ import { STUDIO_ADDRESS } from '@/lib/site';
 export const testimonials = [
   {
     id: 1,
-    name: 'Priya & Arjun Mehta',
+    name: 'Jassawalas',
     project: '77 Life',
-    location: 'Bangalore',
+    location: 'bangalore',
     quote:
       'Design My Place transformed our vision into a home that feels uniquely ours. Every corner tells our story, and the attention to detail is extraordinary.',
     image: LIFE_77_IMAGES.hero,
@@ -14,7 +14,7 @@ export const testimonials = [
   {
     id: 2,
     name: 'Vikram Singh',
-    project: 'ARTIUS Experience Centre',
+    project: 'NDA Experience Centre',
     location: 'India',
     quote:
       'They understood our brand before we did. Our workspace now communicates our values to every visitor. The design process was incredibly thorough.',
@@ -22,7 +22,7 @@ export const testimonials = [
   },
   {
     id: 3,
-    name: 'Ananya Reddy',
+    name: 'Neeta Goel',
     project: 'Delhi Villa',
     location: 'Delhi',
     quote:

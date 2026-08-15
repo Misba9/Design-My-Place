@@ -8,8 +8,7 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
 import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
 import { aboutUsIntro, missionVision, values, milestones } from '@/lib/about';
-import { TeamAvatar } from '@/components/TeamAvatar';
-import { teamLead, teamMembers } from '@/lib/team';
+import { teamLead } from '@/lib/team';
 import { d2BtnOutline, d2PageBg } from '@/components/design2/shared';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
@@ -255,32 +254,9 @@ export default function AboutPage() {
                 {teamLead.bio}
               </p>
 
-              {/* Compact team strip — profile icons only */}
-              <div className="mt-8 flex items-center gap-3 sm:mt-10">
-                <div className="flex -space-x-3">
-                  {teamMembers.slice(0, 5).map((member) => (
-                    <div
-                      key={member.name}
-                      title={`${member.name} — ${member.role}`}
-                      className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-[#FAF8F5] shadow-[0_4px_10px_rgba(63,57,48,0.18)] sm:h-14 sm:w-14"
-                    >
-                      <TeamAvatar
-                        gender={member.gender}
-                        name={member.name}
-                        variant="compact"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <p className="font-body text-[13px] leading-tight text-[#55503F]">
-                  A multidisciplinary studio of designers,
-                  <br className="hidden sm:block" /> visualizers &amp; project leads
-                </p>
-              </div>
-
               <div className="mt-8 sm:mt-10">
                 <Link href="/studio" className={`group w-full sm:w-auto sm:min-w-[12.5rem] ${d2BtnOutline}`}>
-                  <span>Meet The Full Team</span>
+                  <span>Our Studio</span>
                   <ArrowRight
                     size={14}
                     strokeWidth={1.75}

@@ -1,54 +1,37 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Image from 'next/image';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { d2, d2Ease, d2Viewport } from './shared';
 
-/** Step copy exactly as it appears in the presentation.
- *  Imagery from /public/Deck-images, matched by step name. */
 const steps = [
   {
     title: 'Meet',
     description: 'New client meeting\nBrief understanding',
-    image: '/Deck-images/Meet.jpeg',
-    imageAlt: 'Design team collaborating around a conference table',
   },
   {
     title: 'Research',
     description: 'Brainstorming and\npreparation',
-    image: '/Deck-images/Research.jpg',
-    imageAlt: 'Designers reviewing wood samples and floor plans together',
   },
   {
     title: 'Concept',
     description: 'Overall ideas and style\ngeneration',
-    image: '/Deck-images/Concept.png',
-    imageAlt: 'Concept vignette with timber armchair and stone lantern',
   },
   {
     title: 'Design',
     description: 'Layout and\nstyle selection',
-    image: '/Deck-images/Design.png',
-    imageAlt: 'Curated textures, woven basket, and classical bust study',
   },
   {
     title: 'Finalize',
     description: 'Final design details and\npresentation',
-    image: '/Deck-images/Finalize.avif',
-    imageAlt: 'Furniture plan with floor layout and curated pieces',
   },
   {
     title: 'Create',
     description: 'Project execution\nwithin budget',
-    image: '/Deck-images/Create.jpeg',
-    imageAlt: 'On-site construction and installation of a luxury interior',
   },
   {
     title: 'Install',
     description: 'Installation and\nfinal touches',
-    image: '/Deck-images/Install.jpg',
-    imageAlt: 'Finished open-plan living space with kitchen and staircase',
   },
 ] as const;
 
@@ -196,48 +179,6 @@ export function D2HowWeWork() {
             </div>
           </motion.nav>
         </div>
-
-        {/* Immersive image */}
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={d2Viewport}
-          transition={{ duration: 0.85, delay: reduceMotion ? 0 : 0.12, ease }}
-          className="
-            relative mt-10 overflow-hidden
-            rounded-[20px] md:mt-12 md:rounded-3xl
-            border border-white/10
-            shadow-[0_28px_60px_-20px_rgba(0,0,0,0.55)]
-            lg:mt-14
-          "
-        >
-          <div className="relative aspect-[16/10] w-full sm:aspect-[21/10] lg:aspect-[2.4/1]">
-            <AnimatePresence mode="sync" initial={false}>
-              <motion.div
-                key={current.image + current.title}
-                className="absolute inset-0"
-                initial={reduceMotion ? false : { opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={reduceMotion ? undefined : { opacity: 0 }}
-                transition={{ duration: reduceMotion ? 0 : 0.55, ease: 'easeOut' }}
-              >
-                <Image
-                  src={current.image}
-                  alt={current.imageAlt}
-                  fill
-                  quality={92}
-                  sizes="100vw"
-                  className="object-cover"
-                  priority={active === 0}
-                />
-              </motion.div>
-            </AnimatePresence>
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"
-            />
-          </div>
-        </motion.div>
 
         {/* Process cards / timeline */}
         <ol

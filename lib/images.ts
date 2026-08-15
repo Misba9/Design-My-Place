@@ -4,7 +4,7 @@ export function publicImage(...segments: string[]): string {
 }
 
 export const HERO_IMAGE = '/hero-luxury.jpg';
-export const LOGO_IMAGE = '/logo.png';
+export const LOGO_IMAGE = '/icon-512.png';
 export const ABOUT_QUOTE_IMAGE = publicImage('As we evolve.png');
 
 const nvt = (filename: string) => publicImage('NVT', filename);

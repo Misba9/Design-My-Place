@@ -1,11 +1,11 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { TeamPortrait } from '@/components/TeamPortrait';
-import { teamLead, teamMembers, teamSection } from '@/lib/team';
+import { teamLead, teamSection } from '@/lib/team';
 
 type TeamSectionProps = {
   showStudioLink?: boolean;
@@ -15,7 +15,6 @@ type TeamSectionProps = {
 export function TeamSection({ showStudioLink = true, className }: TeamSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-80px' });
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <section
@@ -134,81 +133,6 @@ export function TeamSection({ showStudioLink = true, className }: TeamSectionPro
             </div>
           </div>
         </motion.div>
-
-        {/* Team grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 lg:gap-6">
-          {teamMembers.map((member, index) => {
-            const isActive = activeIndex === index;
-
-            return (
-              <motion.article
-                key={member.name}
-                initial={{ opacity: 0, y: 28 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.65, delay: 0.35 + index * 0.07 }}
-                onMouseEnter={() => setActiveIndex(index)}
-                onMouseLeave={() => setActiveIndex(null)}
-                className={`group relative glass border transition-all duration-500 overflow-hidden cursor-default ${
-                  isActive
-                    ? 'border-gold-400/40 bg-white/[0.06] shadow-[0_8px_40px_rgba(176,141,87,0.1)]'
-                    : 'border-white/10 hover:border-white/20'
-                }`}
-              >
-                {/* Left gold sweep */}
-                <div
-                  className={`absolute inset-y-0 left-0 w-0.5 bg-gradient-to-b from-gold-400/0 via-gold-400 to-gold-400/0 transition-opacity duration-500 ${
-                    isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'
-                  }`}
-                />
-
-                {/* Portrait */}
-                <div className="relative">
-                  <TeamPortrait
-                    member={member}
-                    variant="card"
-                    imageClassName={
-                      isActive ? 'scale-[1.02]' : 'group-hover:scale-[1.01]'
-                    }
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/30 to-transparent transition-opacity duration-500 pointer-events-none ${
-                      isActive ? 'opacity-90' : 'opacity-70 group-hover:opacity-80'
-                    }`}
-                  />
-
-                  {/* Role overlay */}
-                  <div
-                    className={`absolute bottom-0 left-0 right-0 p-4 sm:p-5 transition-all duration-500 ${
-                      isActive ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-100'
-                    }`}
-                  >
-                    <p
-                      className={`label-uppercase text-[9px] sm:text-[10px] mb-1.5 transition-colors duration-500 ${
-                        isActive ? 'text-gold-300' : 'text-gold-300/70'
-                      }`}
-                    >
-                      {member.role}
-                    </p>
-                    <h4 className="font-display text-base sm:text-lg lg:text-xl text-white leading-tight">
-                      {member.name}
-                    </h4>
-                  </div>
-                </div>
-
-                {/* Index watermark */}
-                <span
-                  aria-hidden
-                  className={`absolute top-3 right-3 font-display text-lg sm:text-xl leading-none transition-colors duration-500 ${
-                    isActive ? 'text-gold-400/40' : 'text-white/[0.08] group-hover:text-gold-400/20'
-                  }`}
-                >
-                  {String(index + 2).padStart(2, '0')}
-                </span>
-              </motion.article>
-            );
-          })}
-        </div>
-
       </div>
     </section>
   );
