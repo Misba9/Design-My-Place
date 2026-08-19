@@ -12,9 +12,9 @@ import { serviceFaqs } from '@/lib/services';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Contact — Book Interior Design Consultation',
+  title: 'Contact Luxury Interior Designers in Bangalore',
   description:
-    'Book a luxury interior design consultation with Design My Place. Share your vision for your Bangalore or Delhi NCR home. Start your journey today.',
+    'Book a luxury interior design consultation with Design My Place LLP. Share your vision for your Bangalore or Delhi NCR home. Start your journey today.',
   path: '/contact',
 });
 

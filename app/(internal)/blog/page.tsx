@@ -14,8 +14,7 @@ import {
   d2SectionWide,
 } from '@/components/design2/shared';
 import { PrimaryButton } from '@/components/PrimaryButton';
-import { blogPosts, type BlogPost } from '@/lib/blog';
-import { HERO_IMAGE } from '@/lib/images';
+import { blogPosts, getBlogPostImage, type BlogPost } from '@/lib/blog';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
@@ -24,8 +23,6 @@ export const metadata: Metadata = createPageMetadata({
     'Expert guides on luxury interior design, budgets, villa design, and choosing the right designer in Bangalore & Delhi NCR.',
   path: '/blog',
 });
-
-const postImage = (post: BlogPost) => post.image || HERO_IMAGE;
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-IN', {
@@ -104,14 +101,20 @@ export default function BlogIndexPage() {
               className="group grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16 xl:gap-20"
             >
               <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.08)] shadow-[0_28px_60px_-20px_rgba(63,57,48,0.32)] md:rounded-3xl">
-                <Image
-                  src={postImage(featured)}
-                  alt={featured.title}
-                  fill
-                  quality={92}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
+                {(() => {
+                  const img = getBlogPostImage(featured);
+                  return (
+                    <Image
+                      src={img.url}
+                      alt={img.alt}
+                      fill
+                      quality={92}
+                      priority
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                  );
+                })()}
               </div>
 
               <div>
@@ -164,14 +167,20 @@ export default function BlogIndexPage() {
                   className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.1)] bg-white/40 shadow-[0_1px_0_rgba(63,57,48,0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-[rgba(63,57,48,0.18)] hover:shadow-[0_18px_40px_-20px_rgba(63,57,48,0.28)]"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden">
-                    <Image
-                      src={postImage(post)}
-                      alt={post.title}
-                      fill
-                      quality={90}
-                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
+                    {(() => {
+                      const img = getBlogPostImage(post);
+                      return (
+                        <Image
+                          src={img.url}
+                          alt={img.alt}
+                          fill
+                          quality={90}
+                          loading="lazy"
+                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        />
+                      );
+                    })()}
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <div className="mb-3 flex items-center gap-2 font-body text-[11px] uppercase tracking-[0.12em] text-[#55503F]/60">

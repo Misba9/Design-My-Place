@@ -14,9 +14,9 @@ import { PrimaryButton } from '@/components/PrimaryButton';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'About Us — Luxury Interior Design Studio',
+  title: 'About Design My Place | Luxury Interior Design Studio',
   description:
-    'Design My Place LLP — Bengaluru luxury interior designers creating bespoke homes & villas across Bangalore, Delhi NCR & India since 2021.',
+    'Design My Place LLP — Bengaluru luxury interior design studio creating bespoke homes & villas across Bangalore, Delhi NCR & India since 2021.',
   path: '/about',
 });
 

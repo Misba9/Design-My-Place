@@ -15,8 +15,7 @@ import {
   createArticleMetadata,
   faqSchema,
 } from '@/lib/seo';
-import { getAllBlogSlugs, getBlogPostBySlug } from '@/lib/blog';
-import { HERO_IMAGE, isLocalImage } from '@/lib/images';
+import { getAllBlogSlugs, getBlogPostBySlug, getBlogPostImage } from '@/lib/blog';
 
 type Props = { params: { slug: string } };
 
@@ -28,13 +27,17 @@ export function generateMetadata({ params }: Props): Metadata {
   const post = getBlogPostBySlug(params.slug);
   if (!post) return { title: 'Article Not Found' };
 
+  const imgInfo = getBlogPostImage(post);
+
   return createArticleMetadata({
     title: post.title,
     description: post.metaDescription,
     path: `/blog/${post.slug}`,
     keywords: post.keywords,
-    ogImage: isLocalImage(post.image) ? post.image : HERO_IMAGE,
-    ogImageAlt: post.title,
+    ogImage: imgInfo.url,
+    ogImageAlt: imgInfo.alt,
+    ogImageWidth: imgInfo.width,
+    ogImageHeight: imgInfo.height,
     publishedTime: post.publishedAt,
   });
 }
@@ -43,14 +46,14 @@ export default function BlogPostPage({ params }: Props) {
   const post = getBlogPostBySlug(params.slug);
   if (!post) notFound();
 
-  const cover = isLocalImage(post.image) ? post.image : HERO_IMAGE;
+  const imgInfo = getBlogPostImage(post);
 
   const schema = buildSchemaGraph(
     articleSchema({
       title: post.title,
       slug: post.slug,
       description: post.metaDescription,
-      image: cover,
+      image: imgInfo.url,
       publishedAt: post.publishedAt,
     }),
     breadcrumbSchema([
@@ -115,11 +118,11 @@ export default function BlogPostPage({ params }: Props) {
           <D2Reveal delay={0.12}>
             <div className="relative mb-12 aspect-[16/10] overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.08)] shadow-[0_18px_40px_-24px_rgba(63,57,48,0.28)] sm:mb-14 sm:aspect-[21/9] md:rounded-3xl">
               <Image
-                src={cover}
-                alt={post.title}
+                src={imgInfo.url}
+                alt={imgInfo.alt}
                 fill
                 className="object-cover"
-                sizes="800px"
+                sizes="(min-width: 1024px) 800px, 100vw"
                 priority
                 quality={90}
               />

@@ -8,9 +8,9 @@ import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/se
 import { d2PageBg, d2SectionWide } from '@/components/design2/shared';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Interior Design Projects Portfolio',
+  title: 'Luxury Interior Design Projects',
   description:
-    'Explore luxury interior design projects — villas, apartments & commercial spaces in Bangalore, Delhi, Mumbai & across India by Design My Place.',
+    'Explore luxury interior design projects — bespoke villas, penthouses & residences in Bangalore, Delhi NCR & India by Design My Place.',
   path: '/projects',
 });
 

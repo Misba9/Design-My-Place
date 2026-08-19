@@ -35,7 +35,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: 'Luxury Interior Designer Bangalore',
+    title: 'Luxury Interior Designers in Bangalore | Design My Place',
     description:
       'Bespoke luxury interior design for homes & villas in Bangalore, Delhi NCR & India. Premium residential interiors. Book a consultation.',
     path: '/',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   }),
   metadataBase: new URL('https://designmyplace.in'),
   title: {
-    default: 'Luxury Interior Designer Bangalore',
+    default: 'Luxury Interior Designers in Bangalore | Design My Place',
     template: '%s | Design My Place',
   },
   authors: [{ name: BUSINESS.legalName }],

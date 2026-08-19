@@ -1,3 +1,4 @@
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -6,11 +7,33 @@ export type BlogPost = {
   publishedAt: string;
   readTime: string;
   image: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
   excerpt: string;
   keyAnswer: string;
   sections: { heading: string; paragraphs: string[] }[];
   faqs: { question: string; answer: string }[];
 };
+
+export const DEFAULT_BLOG_IMAGE = {
+  url: '/blog/luxury-interior-design-trends-bangalore-2026.webp',
+  alt: 'Design My Place luxury interior design studio in Bangalore',
+  width: 1600,
+  height: 1067,
+} as const;
+
+export function getBlogPostImage(post?: Partial<BlogPost>) {
+  if (post?.image && post.image.trim() !== '') {
+    return {
+      url: post.image,
+      alt: post.imageAlt || post.title || DEFAULT_BLOG_IMAGE.alt,
+      width: post.imageWidth || DEFAULT_BLOG_IMAGE.width,
+      height: post.imageHeight || DEFAULT_BLOG_IMAGE.height,
+    };
+  }
+  return DEFAULT_BLOG_IMAGE;
+}
 
 export const blogPosts: BlogPost[] = [
   {
@@ -22,7 +45,11 @@ export const blogPosts: BlogPost[] = [
       'luxury interior design trends 2026, premium home interiors, bespoke interior trends, modern luxury interiors India',
     publishedAt: '2026-01-08',
     readTime: '7 min read',
-    image: '',
+    image: '/blog/luxury-interior-design-trends-bangalore-2026.webp',
+    imageAlt:
+      'Luxury interior design trends in Bangalore 2026 — quiet materials, warm textures, and bespoke joinery',
+    imageWidth: 1600,
+    imageHeight: 1067,
     excerpt:
       'The strongest luxury homes in 2026 are moving away from showy finishes and toward deeply personal spaces shaped by craft, comfort, and emotional clarity.',
     keyAnswer:
@@ -84,7 +111,11 @@ export const blogPosts: BlogPost[] = [
       'luxury interior design cost India, premium interior design budget, turnkey interiors cost India, villa interiors cost',
     publishedAt: '2026-01-15',
     readTime: '8 min read',
-    image: '',
+    image: '/blog/luxury-interior-design-cost-india-2026.webp',
+    imageAlt:
+      'Luxury home interior design cost in India — family living room fit-out by Design My Place',
+    imageWidth: 512,
+    imageHeight: 427,
     excerpt:
       'Luxury interior budgets depend on scope, craftsmanship, and execution quality. Here is how to think about cost before starting a premium home project.',
     keyAnswer:
@@ -146,7 +177,11 @@ export const blogPosts: BlogPost[] = [
       'villa interior design guide, luxury villa interiors, premium villa design India, bespoke villa interiors',
     publishedAt: '2026-01-22',
     readTime: '8 min read',
-    image: '',
+    image: '/blog/villa-interior-design-guide-bangalore.webp',
+    imageAlt:
+      'Luxury villa interior design in Bangalore — double height living room and indoor outdoor flow',
+    imageWidth: 1600,
+    imageHeight: 993,
     excerpt:
       'Villa interiors need more than beautiful rooms. They need proportion, movement, light, privacy, and a design language that holds the entire home together.',
     keyAnswer:
@@ -208,7 +243,11 @@ export const blogPosts: BlogPost[] = [
       'premium apartment interiors, luxury apartment interior design, high-rise home interiors, bespoke apartment design',
     publishedAt: '2026-01-29',
     readTime: '6 min read',
-    image: '',
+    image: '/blog/premium-apartment-interiors-high-rise.webp',
+    imageAlt:
+      'Premium high-rise apartment interior design — living area with custom joinery and marble',
+    imageWidth: 960,
+    imageHeight: 1200,
     excerpt:
       'A premium apartment should feel tailored, not templated. Smart planning and precise detailing can make even standard builder layouts feel exceptional.',
     keyAnswer:
@@ -270,7 +309,11 @@ export const blogPosts: BlogPost[] = [
       'best interior designers Bangalore, luxury interior designers Bengaluru, premium interior design studio Bangalore',
     publishedAt: '2026-02-05',
     readTime: '6 min read',
-    image: '',
+    image: '/blog/best-interior-designers-bangalore-guide.webp',
+    imageAlt:
+      'Luxury villa exterior and architectural lighting in Whitefield Bangalore by Design My Place',
+    imageWidth: 1600,
+    imageHeight: 890,
     excerpt:
       'The best interior designer for your Bangalore home is not the one with the loudest portfolio, but the one with the right process for your lifestyle and budget.',
     keyAnswer:
@@ -325,7 +368,11 @@ export const blogPosts: BlogPost[] = [
       'best interior designers Delhi, luxury interior designers Delhi, premium interiors New Delhi, bungalow interior designer Delhi',
     publishedAt: '2026-02-12',
     readTime: '6 min read',
-    image: '',
+    image: '/blog/best-interior-designers-delhi-ncr-guide.webp',
+    imageAlt:
+      'Luxury bungalow living room interior in Delhi NCR with custom woodwork and warm lighting',
+    imageWidth: 1539,
+    imageHeight: 851,
     excerpt:
       'Delhi homes need a designer who can handle family rituals, entertaining, privacy, heritage details, and modern convenience with equal confidence.',
     keyAnswer:
@@ -380,7 +427,11 @@ export const blogPosts: BlogPost[] = [
       'interior design budget guide, home interiors budget India, premium interiors budget, turnkey interior budget planning',
     publishedAt: '2026-02-19',
     readTime: '7 min read',
-    image: '',
+    image: '/blog/interior-design-budget-guide-india.webp',
+    imageAlt:
+      'Turnkey interior design budget planning for 6 BHK luxury residence by Design My Place',
+    imageWidth: 1052,
+    imageHeight: 700,
     excerpt:
       'A good interior budget is not a single number. It is a structured plan that protects design quality, execution, and decision-making.',
     keyAnswer:
@@ -442,7 +493,11 @@ export const blogPosts: BlogPost[] = [
       'luxury home renovation checklist, premium home renovation India, luxury renovation planning, interior renovation guide',
     publishedAt: '2026-02-26',
     readTime: '7 min read',
-    image: '',
+    image: '/blog/luxury-home-renovation-checklist.webp',
+    imageAlt:
+      'Luxury interior renovation and custom wood joinery detail by Design My Place',
+    imageWidth: 1600,
+    imageHeight: 900,
     excerpt:
       'Renovation success depends on decisions made before demolition. This checklist helps premium homeowners plan with fewer surprises.',
     keyAnswer:
@@ -504,7 +559,11 @@ export const blogPosts: BlogPost[] = [
       'modern interior design ideas, modern luxury interiors, contemporary home design India, refined modern interiors',
     publishedAt: '2026-03-04',
     readTime: '6 min read',
-    image: '',
+    image: '/blog/modern-interior-design-ideas-warm-minimalism.webp',
+    imageAlt:
+      'Modern luxury interior design with warm minimalism and Art Deco teakwood details',
+    imageWidth: 1527,
+    imageHeight: 819,
     excerpt:
       'Modern interiors work best when clean lines are balanced with warmth, comfort, and personal details that make the home feel human.',
     keyAnswer:
@@ -566,7 +625,11 @@ export const blogPosts: BlogPost[] = [
       'how to choose interior designer, hire interior designer India, choose luxury interior designer, premium interior design studio',
     publishedAt: '2026-03-11',
     readTime: '7 min read',
-    image: '',
+    image: '/blog/how-to-choose-interior-designer-luxury.webp',
+    imageAlt:
+      'Choosing a luxury interior design studio — bespoke dining room interior in Bangalore',
+    imageWidth: 304,
+    imageHeight: 512,
     excerpt:
       'The right interior designer should bring clarity, taste, process, and execution discipline to one of the most personal investments you will make.',
     keyAnswer:

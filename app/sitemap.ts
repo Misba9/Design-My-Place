@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { projects } from '@/lib/projects';
 import { locations } from '@/lib/locations';
 import { servicePages } from '@/lib/service-pages';
-import { blogPosts } from '@/lib/blog';
+import { blogPosts, getBlogPostImage } from '@/lib/blog';
 import { absoluteUrl } from '@/seo';
 
 const staticRoutes = [
@@ -14,7 +14,7 @@ const staticRoutes = [
   '/contact',
   '/faq',
   '/blog',
-  '/thank-you',
+  // /thank-you is noindex — omitted from sitemap intentionally
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: path === '' || path === '/blog' ? 'weekly' : 'monthly',
     priority: path === '' ? 1 : path === '/blog' ? 0.85 : 0.8,
-    ...(path === '' && { images: [absoluteUrl('/hero-luxury.jpg')] }),
+    ...(path === '' && { images: [absoluteUrl('/blog/luxury-interior-design-trends-bangalore-2026.webp')] }),
   }));
 
   const serviceEntries: MetadataRoute.Sitemap = servicePages.map((service) => ({
@@ -36,20 +36,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: service.gallery,
   }));
 
-  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: absoluteUrl(`/blog/${post.slug}`),
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: 'monthly',
-    priority: 0.75,
-    images: [post.image],
-  }));
+  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => {
+    const img = getBlogPostImage(post);
+    return {
+      url: absoluteUrl(`/blog/${post.slug}`),
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: 'monthly',
+      priority: 0.75,
+      images: [absoluteUrl(img.url)],
+    };
+  });
 
   const locationEntries: MetadataRoute.Sitemap = locations.map((location) => ({
     url: absoluteUrl(`/locations/${location.slug}`),
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.9,
-    images: [absoluteUrl('/hero-luxury.jpg')],
+    images: [absoluteUrl('/blog/luxury-interior-design-trends-bangalore-2026.webp')],
   }));
 
   const projectEntries: MetadataRoute.Sitemap = projects.map((project) => ({

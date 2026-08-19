@@ -21,9 +21,9 @@ import {
 } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Interior Design Services — Luxury Homes',
+  title: 'Luxury Interior Design Services in Bangalore',
   description:
-    'Luxury interior design services — villas, apartments, renovation & turnkey delivery in Bangalore, Delhi NCR & India. Budgets above ₹25 Lakhs.',
+    'Comprehensive luxury interior design services from concept to handover. Custom residential, villa, penthouse, workspace & renovation interiors in Bangalore & India.',
   path: '/services',
 });
 

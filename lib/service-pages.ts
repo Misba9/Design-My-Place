@@ -24,7 +24,7 @@ const defaultProcess = serviceProcessSteps;
 export const servicePages: ServicePage[] = [
   {
     slug: 'luxury-interior-design',
-    title: 'Luxury Interior Design',
+    title: 'Luxury Interior Design Services in Bangalore',
     metaDescription:
       'Bespoke luxury interior design for homes above ₹25L in Bangalore & Delhi NCR. Research-led, emotionally grounded spaces by Design My Place.',
     keywords: 'luxury interior design, luxury home interiors, bespoke interior design Bangalore, high end interior design',
@@ -50,7 +50,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'premium-interior-design',
-    title: 'Premium Interior Design',
+    title: 'Premium Interior Design Studio',
     metaDescription:
       'Premium interior design for villas & apartments above ₹25L. Sophisticated residential interiors in Bangalore, Delhi NCR & across India.',
     keywords: 'premium interior design, premium interior designer Bangalore, sophisticated home interiors',
@@ -76,7 +76,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'villa-interior-design',
-    title: 'Villa Interior Design',
+    title: 'Bespoke Villa Interior Design in Bangalore',
     metaDescription:
       'Bespoke villa interior design in Bangalore & Delhi NCR. Luxury villa interiors with turnkey delivery for projects above ₹25 Lakhs.',
     keywords: 'villa interior design, villa interior designer Bangalore, luxury villa interiors, villa interior designer Delhi',
@@ -102,7 +102,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'apartment-interior-design',
-    title: 'Apartment Interior Design',
+    title: 'Luxury Apartment Interior Design',
     metaDescription:
       'Luxury apartment interior design in Bangalore & Delhi NCR. Premium penthouse & high-rise interiors above ₹25 Lakhs.',
     keywords: 'apartment interior design, apartment interior designer Bangalore, luxury apartment interiors, penthouse interior design',

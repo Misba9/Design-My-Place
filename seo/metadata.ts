@@ -9,6 +9,8 @@ type PageMetadataOptions = {
   keywords?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
   noIndex?: boolean;
   type?: 'website' | 'article';
 };
@@ -25,6 +27,8 @@ export function createPageMetadata({
   keywords = DEFAULT_KEYWORDS,
   ogImage = OG_IMAGE.url,
   ogImageAlt = OG_IMAGE.alt,
+  ogImageWidth = OG_IMAGE.width,
+  ogImageHeight = OG_IMAGE.height,
   noIndex = false,
   type = 'website',
 }: PageMetadataOptions): Metadata {
@@ -45,9 +49,9 @@ export function createPageMetadata({
       siteName: BUSINESS.name,
       images: [
         {
-          url: ogImage,
-          width: OG_IMAGE.width,
-          height: OG_IMAGE.height,
+          url: absoluteUrl(ogImage),
+          width: ogImageWidth,
+          height: ogImageHeight,
           alt: ogImageAlt,
         },
       ],

@@ -240,6 +240,17 @@ export function Footer() {
           <p className="text-[10px] uppercase tracking-[0.18em] text-white/35">
             Luxury Interior Design • Bengaluru, India
           </p>
+          <p className="text-[10px] text-white/30 tracking-[0.06em]">
+            Created by{' '}
+            <a
+              href="https://www.houseofscalers.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 transition-colors duration-300 hover:text-[#C7AB80]"
+            >
+              House of Scalers
+            </a>
+          </p>
           <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.14em] text-white/40 sm:gap-5">
             <Link
               href="/privacy"
