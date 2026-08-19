@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 /** Signature primary CTA — shared across the site */
 export const primaryButtonClassName =
-  'group box-border inline-flex min-h-[58px] h-14 w-[min(88%,340px)] items-center justify-between gap-4 rounded-[16px] border border-transparent bg-[#9C6F4E] px-6 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-[#FAF8F5] shadow-[0_12px_28px_-12px_rgba(63,57,48,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#8A6144] hover:shadow-[0_18px_36px_-14px_rgba(63,57,48,0.42)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9C6F4E] disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:w-[320px] sm:min-w-[280px] sm:max-w-[340px] sm:px-8 sm:text-xs';
+  'group box-border inline-flex min-h-[50px] sm:min-h-[58px] h-12 sm:h-14 w-full max-w-[320px] sm:max-w-[340px] items-center justify-between gap-3 sm:gap-4 rounded-[14px] sm:rounded-[16px] border border-transparent bg-[#9C6F4E] px-5 sm:px-8 font-body text-[11px] xs:text-[12px] font-semibold uppercase tracking-[0.14em] sm:tracking-[0.18em] text-[#FAF8F5] shadow-[0_10px_24px_-10px_rgba(63,57,48,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#8A6144] hover:shadow-[0_18px_36px_-14px_rgba(63,57,48,0.42)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9C6F4E] disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:w-[320px] sm:min-w-[280px]';
 
 type BaseProps = {
   children: React.ReactNode;
@@ -39,7 +39,7 @@ function cn(...parts: Array<string | false | undefined>) {
 
 /**
  * Brand primary CTA — identical height, width, type, hover, and arrow
- * treatment on every page.
+ * treatment on every page. Compact and touch-friendly on mobile.
  */
 export function PrimaryButton(props: PrimaryButtonProps) {
   const {
@@ -57,7 +57,7 @@ export function PrimaryButton(props: PrimaryButtonProps) {
 
   const content = (
     <>
-      <span className="min-w-0 text-left">{children}</span>
+      <span className="min-w-0 text-left truncate">{children}</span>
       {showArrow ? (
         <ArrowRight
           size={16}

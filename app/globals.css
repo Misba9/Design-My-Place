@@ -512,7 +512,7 @@
 
   /* Clearance below fixed site header */
   .nav-offset {
-    @apply pt-20 sm:pt-24 lg:pt-32;
+    @apply pt-[68px] min-[375px]:pt-[72px] sm:pt-[80px] lg:pt-[96px];
   }
 
   /* Fluid typography */

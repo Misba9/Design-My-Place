@@ -192,16 +192,16 @@ export function D2Hero() {
       {/* Content — left editorial column, vertically centered */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 mx-auto flex h-full min-h-[100svh] w-full max-w-[1440px] items-center px-4 pb-20 pt-24 xs:px-6 xs:pb-24 xs:pt-28 sm:px-10 sm:pb-28 sm:pt-32 lg:min-h-screen lg:px-20 lg:pb-20 lg:pt-28"
+        className="relative z-10 mx-auto flex h-full min-h-[100svh] w-full max-w-[1440px] items-center px-4 pt-20 pb-10 xs:px-5 xs:pt-22 xs:pb-12 sm:px-10 sm:pt-28 sm:pb-20 lg:min-h-screen lg:px-20 lg:pt-28 lg:pb-20"
       >
         <div className="grid w-full grid-cols-1 lg:grid-cols-12 lg:gap-10">
           <div className="flex flex-col items-center text-center lg:col-span-6 lg:items-start lg:text-left xl:col-span-5">
-        
+
             <h1 className="font-display font-normal leading-[0.95] tracking-[0.02em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.45)]">
-              <span className="block text-[clamp(2.35rem,10.5vw,3.75rem)] sm:text-[clamp(3.25rem,9vw,5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
+              <span className="block text-[clamp(2.15rem,9.5vw,3.75rem)] sm:text-[clamp(3.25rem,9vw,5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
                 <LetterReveal text="DESIGN" delay={0.55} />
               </span>
-              <span className="block text-[clamp(2.35rem,10.5vw,3.75rem)] sm:text-[clamp(3.25rem,9vw,5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
+              <span className="block text-[clamp(2.15rem,9.5vw,3.75rem)] sm:text-[clamp(3.25rem,9vw,5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
                 <LetterReveal text="MY" delay={0.85} />
                 <span className="inline-block w-[0.35em]" aria-hidden />
                 <LetterReveal text="PLACE" delay={1.0} />
@@ -212,7 +212,7 @@ export function D2Hero() {
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 1.45, ease: d2Ease }}
-              className="mt-4 max-w-[330px] font-display text-[clamp(14px,4vw,16px)] font-normal leading-[1.45] text-white/90 sm:mt-8 sm:max-w-md sm:text-base sm:leading-[1.8]"
+              className="mt-3.5 max-w-[320px] font-display text-[clamp(13px,3.8vw,15px)] font-normal leading-[1.5] text-white/90 sm:mt-8 sm:max-w-md sm:text-base sm:leading-[1.8]"
             >
               We create timeless, personalised interiors shaped by your experiences — translated through our expertise into highly functional, refined homes.
             </motion.p>
@@ -221,7 +221,7 @@ export function D2Hero() {
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.65, ease: d2Ease }}
-              className="mt-6 flex w-full flex-col items-center gap-3.5 sm:mt-10 sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 lg:justify-start"
+              className="mt-5 flex w-full max-w-[320px] flex-col items-center gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 lg:justify-start"
             >
               <PrimaryButton href="/contact">Start Your Project</PrimaryButton>
               <PrimaryButton href="/projects">View Portfolio</PrimaryButton>
@@ -232,29 +232,25 @@ export function D2Hero() {
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 1.9, ease: d2Ease }}
-              className="mt-7 w-full max-w-[340px] border-t border-white/20 pt-5 sm:mt-12 sm:max-w-lg sm:pt-8 lg:max-w-none"
+              className="mt-6 w-full max-w-[320px] border-t border-white/20 pt-4 sm:mt-12 sm:max-w-lg sm:pt-8 lg:max-w-none"
             >
-              <dl className="grid grid-cols-2 gap-y-4 gap-x-2 sm:grid-cols-3 sm:gap-0">
+              <dl className="grid grid-cols-3 gap-0">
                 {trustStats.map((stat, i) => (
                   <div
                     key={stat.label}
-                    className={`flex flex-col items-center text-center px-2 sm:items-start sm:text-left sm:px-4 lg:px-5 ${
-                      i === 2
-                        ? 'col-span-2 pt-2 sm:col-span-1 sm:pt-0 sm:border-l sm:border-white/15'
-                        : i === 1
-                        ? 'border-l border-white/15'
-                        : ''
+                    className={`flex flex-col items-center text-center px-1 xs:px-2 sm:items-start sm:text-left sm:px-4 lg:px-5 ${
+                      i > 0 ? 'border-l border-white/15' : ''
                     }`}
                   >
                     <dt className="sr-only">{stat.label}</dt>
-                    <dd className="font-display text-[1.45rem] xs:text-[1.65rem] font-normal leading-none tracking-[-0.03em] text-white sm:text-[1.85rem]">
+                    <dd className="font-display text-[1.35rem] xs:text-[1.55rem] font-normal leading-none tracking-[-0.03em] text-white sm:text-[1.85rem]">
                       <HeroCountUp
                         value={stat.value}
                         suffix={stat.suffix}
                         delay={reduceMotion ? 0 : 2 + i * 0.08}
                       />
                     </dd>
-                    <p className="mt-1.5 font-display text-[8.5px] xs:text-[9px] font-medium uppercase tracking-[0.16em] sm:tracking-[0.22em] text-white/60">
+                    <p className="mt-1.5 font-display text-[8px] xs:text-[9px] font-medium uppercase tracking-[0.12em] sm:tracking-[0.22em] text-white/60">
                       {stat.label}
                     </p>
                   </div>
