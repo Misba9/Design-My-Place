@@ -19,26 +19,23 @@ export const aboutUsIntro = {
 
 export const whatWeDo = {
   label: 'What We Do',
+  intro: 'We offer a full range of services from concept to completion.',
   items: [
     {
-      title: 'Fit-Out Consultation',
-      description:
-        'Our consultation service establishes your needs and what we will deliver to transform your space.',
+      title: 'Residential Interiors',
+      description: 'Timeless aesthetics for everyday comfort.',
     },
     {
-      title: 'Project Plan and Schedule',
-      description:
-        'We provide specialist expertise, including design concepts, specifications, and technical drawings.',
+      title: 'Commercial Spaces',
+      description: 'Workspaces that inspire creativity.',
     },
     {
-      title: 'Fair Project Budgeting',
-      description:
-        'We believe that great interior design should be open to everyone, regardless of their budget.',
+      title: 'Renovations & Makeovers',
+      description: 'From small refreshes to full-scale transformations.',
     },
     {
-      title: 'Digital Project Rendering',
-      description:
-        'We provide you with digital visualizations of your space to ensure you\'re completely happy with the design.',
+      title: 'Custom Furniture & Styling',
+      description: 'Unique, handpicked pieces that complete your vision.',
     },
   ],
 } as const;

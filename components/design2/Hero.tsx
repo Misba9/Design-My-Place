@@ -137,7 +137,7 @@ export function D2Hero() {
     <section
       ref={ref}
       aria-label="Design My Place — hero"
-      className="relative min-h-[90svh] overflow-hidden bg-[#0a0a0a] lg:min-h-screen lg:h-svh"
+      className="relative min-h-[100svh] overflow-hidden bg-[#0a0a0a] lg:min-h-screen lg:h-svh"
     >
       {/* Full-bleed cinematic backdrop */}
       <motion.div
@@ -176,8 +176,8 @@ export function D2Hero() {
         </AnimatePresence>
 
         {/* Warm dark overlay — stronger on mobile for readability */}
-        <div className="absolute inset-0 bg-black/45 sm:bg-black/35" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80" />
+        <div className="absolute inset-0 bg-black/55 sm:bg-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/85" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
         <div
           aria-hidden
@@ -192,16 +192,16 @@ export function D2Hero() {
       {/* Content — left editorial column, vertically centered */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 mx-auto flex h-full min-h-[90svh] w-full max-w-[1440px] items-center px-6 pb-24 pt-28 sm:px-10 sm:pb-28 sm:pt-32 lg:min-h-screen lg:px-20 lg:pb-20 lg:pt-28"
+        className="relative z-10 mx-auto flex h-full min-h-[100svh] w-full max-w-[1440px] items-center px-4 pb-20 pt-24 xs:px-6 xs:pb-24 xs:pt-28 sm:px-10 sm:pb-28 sm:pt-32 lg:min-h-screen lg:px-20 lg:pb-20 lg:pt-28"
       >
         <div className="grid w-full grid-cols-1 lg:grid-cols-12 lg:gap-10">
           <div className="flex flex-col items-center text-center lg:col-span-6 lg:items-start lg:text-left xl:col-span-5">
         
-            <h1 className="font-display font-normal leading-[0.94] tracking-[0.02em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.45)]">
-              <span className="block text-[clamp(2.75rem,11vw,5.5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
+            <h1 className="font-display font-normal leading-[0.95] tracking-[0.02em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.45)]">
+              <span className="block text-[clamp(2.35rem,10.5vw,3.75rem)] sm:text-[clamp(3.25rem,9vw,5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
                 <LetterReveal text="DESIGN" delay={0.55} />
               </span>
-              <span className="block text-[clamp(2.75rem,11vw,5.5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
+              <span className="block text-[clamp(2.35rem,10.5vw,3.75rem)] sm:text-[clamp(3.25rem,9vw,5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
                 <LetterReveal text="MY" delay={0.85} />
                 <span className="inline-block w-[0.35em]" aria-hidden />
                 <LetterReveal text="PLACE" delay={1.0} />
@@ -212,16 +212,16 @@ export function D2Hero() {
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 1.45, ease: d2Ease }}
-              className="mt-7 max-w-md font-display text-[15px] font-normal leading-[1.8] text-white/90 sm:mt-8 sm:text-base"
+              className="mt-4 max-w-[330px] font-display text-[clamp(14px,4vw,16px)] font-normal leading-[1.45] text-white/90 sm:mt-8 sm:max-w-md sm:text-base sm:leading-[1.8]"
             >
-              We create timeless, personalised interiors shaped by your experiences - translated through our experties into highly functional, refined homes.
+              We create timeless, personalised interiors shaped by your experiences — translated through our expertise into highly functional, refined homes.
             </motion.p>
 
             <motion.div
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.65, ease: d2Ease }}
-              className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 lg:justify-start"
+              className="mt-6 flex w-full flex-col items-center gap-3.5 sm:mt-10 sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 lg:justify-start"
             >
               <PrimaryButton href="/contact">Start Your Project</PrimaryButton>
               <PrimaryButton href="/projects">View Portfolio</PrimaryButton>
@@ -232,25 +232,29 @@ export function D2Hero() {
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 1.9, ease: d2Ease }}
-              className="mt-10 w-full max-w-lg border-t border-white/20 pt-7 sm:mt-12 sm:pt-8 lg:max-w-none"
+              className="mt-7 w-full max-w-[340px] border-t border-white/20 pt-5 sm:mt-12 sm:max-w-lg sm:pt-8 lg:max-w-none"
             >
-              <dl className="grid grid-cols-2 gap-y-6 sm:grid-cols-4 sm:gap-0">
+              <dl className="grid grid-cols-2 gap-y-4 gap-x-2 sm:grid-cols-3 sm:gap-0">
                 {trustStats.map((stat, i) => (
                   <div
                     key={stat.label}
-                    className={`flex flex-col items-center px-2 sm:items-start sm:px-4 lg:px-5 ${
-                      i > 0 ? 'sm:border-l sm:border-white/15' : ''
+                    className={`flex flex-col items-center text-center px-2 sm:items-start sm:text-left sm:px-4 lg:px-5 ${
+                      i === 2
+                        ? 'col-span-2 pt-2 sm:col-span-1 sm:pt-0 sm:border-l sm:border-white/15'
+                        : i === 1
+                        ? 'border-l border-white/15'
+                        : ''
                     }`}
                   >
                     <dt className="sr-only">{stat.label}</dt>
-                    <dd className="font-display text-[1.65rem] font-normal leading-none tracking-[-0.03em] text-white sm:text-[1.85rem]">
+                    <dd className="font-display text-[1.45rem] xs:text-[1.65rem] font-normal leading-none tracking-[-0.03em] text-white sm:text-[1.85rem]">
                       <HeroCountUp
                         value={stat.value}
                         suffix={stat.suffix}
                         delay={reduceMotion ? 0 : 2 + i * 0.08}
                       />
                     </dd>
-                    <p className="mt-2 font-display text-[9px] font-medium uppercase tracking-[0.22em] text-white/55">
+                    <p className="mt-1.5 font-display text-[8.5px] xs:text-[9px] font-medium uppercase tracking-[0.16em] sm:tracking-[0.22em] text-white/60">
                       {stat.label}
                     </p>
                   </div>
@@ -263,7 +267,7 @@ export function D2Hero() {
               initial={reduceMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 2.15 }}
-              className="mt-8 flex w-full max-w-lg flex-col items-center gap-4 sm:mt-10 sm:flex-row sm:items-center sm:justify-between lg:max-w-none"
+              className="mt-6 flex w-full max-w-[340px] flex-col items-center gap-3 sm:mt-10 sm:max-w-lg sm:flex-row sm:items-center sm:justify-between lg:max-w-none"
             >
               <AnimatePresence mode="wait">
                 <motion.span
@@ -318,19 +322,19 @@ export function D2Hero() {
         initial={reduceMotion ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 2.3 }}
-        className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-white/55 transition-colors duration-300 hover:text-white/85 sm:bottom-8"
+        className="absolute bottom-4 left-1/2 z-10 hidden xs:flex -translate-x-1/2 flex-col items-center gap-2 text-white/55 transition-colors duration-300 hover:text-white/85 sm:bottom-8"
         aria-label="Scroll to explore"
       >
         <span className="font-display text-[9px] uppercase tracking-[0.35em]">
           Scroll to Explore
         </span>
-        <span className="relative flex h-10 w-5 items-start justify-center rounded-full border border-white/30 pt-1.5">
+        <span className="relative flex h-9 w-4.5 items-start justify-center rounded-full border border-white/30 pt-1">
           <motion.span
             className="block h-1.5 w-1 rounded-full bg-white/80"
             animate={
               reduceMotion
                 ? undefined
-                : { y: [0, 10, 0], opacity: [1, 0.35, 1] }
+                : { y: [0, 8, 0], opacity: [1, 0.35, 1] }
             }
             transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
           />
