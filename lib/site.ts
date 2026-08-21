@@ -9,8 +9,8 @@ export const BUSINESS = {
   description:
     'Premium interior design studio creating bespoke residential interiors for new homes and renovations with budgets above ₹25 Lakhs.',
   email: 'connect@designmyplace.in',
-  phone: '+918266020600',
-  phoneDisplay: '+91 82660 20600',
+  phone: '+91 80508 21401',
+  phoneDisplay: '+91 80508 21401',
   foundingDate: '2021',
   priceRange: '₹₹₹₹',
   currenciesAccepted: 'INR',
@@ -34,7 +34,7 @@ export const BUSINESS = {
     facebook: 'https://www.facebook.com/profile.php?id=100068908213810',
     instagram: 'https://instagram.com/design_my_place',
     vimeo: 'https://vimeo.com/designmyplace',
-    whatsapp: 'https://wa.me/918266020600',
+    whatsapp: 'https://wa.me/918050821401',
   },
 } as const;
 
