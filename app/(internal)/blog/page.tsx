@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Clock, Mail } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
@@ -13,7 +13,7 @@ import {
   d2Section,
   d2SectionWide,
 } from '@/components/design2/shared';
-import { PrimaryButton } from '@/components/PrimaryButton';
+import { NewsletterForm } from '@/components/NewsletterForm';
 import { blogPosts, getBlogPostImage, type BlogPost } from '@/lib/blog';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
@@ -224,32 +224,7 @@ export default function BlogIndexPage() {
               New guides on luxury interiors, delivered occasionally — no spam, just
               considered perspectives.
             </p>
-            <form
-              aria-label="Subscribe to the Design My Place journal"
-              className="mx-auto flex max-w-md flex-col gap-4 sm:flex-row"
-            >
-              <label htmlFor="newsletter-email" className="sr-only">
-                Email address
-              </label>
-              <div className="relative flex-1">
-                <Mail
-                  size={16}
-                  aria-hidden
-                  className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-white/40"
-                />
-                <input
-                  id="newsletter-email"
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Your email address"
-                  className="w-full border-b border-white/25 bg-transparent py-3 pl-7 font-body text-[15px] text-white placeholder:text-white/40 focus:border-[#9C6F4E]/70 focus:outline-none"
-                />
-              </div>
-              <PrimaryButton type="submit" className="shrink-0">
-                Subscribe
-              </PrimaryButton>
-            </form>
+            <NewsletterForm />
           </D2Reveal>
         </div>
       </section>

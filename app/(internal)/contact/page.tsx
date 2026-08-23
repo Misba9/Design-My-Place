@@ -51,15 +51,15 @@ export default function ContactPage() {
         ]}
       />
 
-      <PageHero
+      {/* <PageHero
         label="Get In Touch"
         title="Start Your"
         titleAccent="Journey"
         description="We work on a limited number of projects annually to ensure design integrity, detail and focus."
         imageAlt="Contact Design My Place for luxury interior design consultation"
-      />
+      /> */}
 
-      <Contact theme="deck" showIntro={false} />
+      <Contact theme="deck" showIntro={true} />
 
       {/* Studio information + map */}
       <section className="relative overflow-hidden text-[#3F3930]" style={{ background: d2PageBg }}>
