@@ -3,24 +3,24 @@ export function publicImage(...segments: string[]): string {
   return `/${segments.map((segment) => encodeURIComponent(segment)).join('/')}`;
 }
 
-export const HERO_IMAGE = '/hero-luxury.jpg';
+export const HERO_IMAGE = '/hero-luxury.webp';
 export const LOGO_IMAGE = '/icon-512.png';
-export const ABOUT_QUOTE_IMAGE = publicImage('As we evolve.png');
+export const ABOUT_QUOTE_IMAGE = publicImage('As we evolve.webp');
 
-const nvt = (filename: string) => publicImage('NVT', filename);
+const nvt = (filename: string) => publicImage('nvt', filename);
 
 export const NVT_IMAGES = {
-  family: nvt('NVT Family.png'),
-  dining: nvt('NVT Dining.png'),
-  gbr: nvt('NVT GBR1.png'),
-  mbr: nvt('NVT MBR.png'),
-  mbr2: nvt('NVT MBR 2.png'),
-  kids: nvt('NVT Kids.png'),
-  kids2: nvt('NVT Kids 2.png'),
-  kids3: nvt('NVT Kids 3.png'),
-  photo1: nvt('PHOTO-2026-01-23-19-41-35.jpg'),
-  photo2: nvt('32c1087a-2599-43d8-8e19-cc0eba754dc6.jpg'),
-  photo3: nvt('c4e9e3d2-28bc-42f7-b2e8-80ad23ce186a.jpg'),
+  family: nvt('NVT Family.webp'),
+  dining: nvt('NVT Dining.webp'),
+  gbr: nvt('NVT GBR1.webp'),
+  mbr: nvt('NVT MBR.webp'),
+  mbr2: nvt('NVT MBR 2.webp'),
+  kids: nvt('NVT Kids.webp'),
+  kids2: nvt('NVT Kids 2.webp'),
+  kids3: nvt('NVT Kids 3.webp'),
+  photo1: nvt('PHOTO-2026-01-23-19-41-35.webp'),
+  photo2: nvt('32c1087a-2599-43d8-8e19-cc0eba754dc6.webp'),
+  photo3: nvt('c4e9e3d2-28bc-42f7-b2e8-80ad23ce186a.webp'),
 } as const;
 
 export const NVT_PROJECT_GALLERY = [
@@ -35,21 +35,21 @@ export const NVT_PROJECT_GALLERY = [
 ] as const;
 
 const klassicLandmark = (filename: string) =>
-  publicImage('Klassic landmark Tarun', filename);
+  publicImage('klassic-landmark-tarun', filename);
 
 /** Pastel Penthouse — Klassic Landmark project imagery */
 export const PASTEL_PENTHOUSE_IMAGES = {
-  hero: klassicLandmark('image-00.jpg'),
-  living: klassicLandmark('image-01.jpg'),
-  dining: klassicLandmark('image-02.jpg'),
-  bedroom: klassicLandmark('image-03.jpg'),
-  detail: klassicLandmark('image-04.jpg'),
-  lounge: klassicLandmark('image-05.jpg'),
-  bath: klassicLandmark('image-06.jpg'),
-  kitchen: klassicLandmark('image-07.jpg'),
-  study: klassicLandmark('image-08.jpg'),
-  terrace: klassicLandmark('image-09.jpg'),
-  view: klassicLandmark('image-10.jpg'),
+  hero: klassicLandmark('image-00.webp'),
+  living: klassicLandmark('image-01.webp'),
+  dining: klassicLandmark('image-02.webp'),
+  bedroom: klassicLandmark('image-03.webp'),
+  detail: klassicLandmark('image-04.webp'),
+  lounge: klassicLandmark('image-05.webp'),
+  bath: klassicLandmark('image-06.webp'),
+  kitchen: klassicLandmark('image-07.webp'),
+  study: klassicLandmark('image-08.webp'),
+  terrace: klassicLandmark('image-09.webp'),
+  view: klassicLandmark('image-10.webp'),
 } as const;
 
 export const PASTEL_PENTHOUSE_GALLERY = [
@@ -66,17 +66,17 @@ export const PASTEL_PENTHOUSE_GALLERY = [
   PASTEL_PENTHOUSE_IMAGES.view,
 ] as const;
 
-const flowingTree = (filename: string) => publicImage('Flowing tree', filename);
+const flowingTree = (filename: string) => publicImage('flowing-tree', filename);
 
 /** Lakehouse in the Sky — Flowing Tree project imagery */
 export const LAKEHOUSE_IMAGES = {
-  hero: flowingTree('image-01.jpeg'),
-  living: flowingTree('image-02.jpeg'),
-  arch: flowingTree('image-03.jpeg'),
-  bedroom: flowingTree('image-04.png'),
-  dining: flowingTree('image-05.jpeg'),
-  detail: flowingTree('image-06.jpeg'),
-  view: flowingTree('image-07.jpeg'),
+  hero: flowingTree('image-01.webp'),
+  living: flowingTree('image-02.webp'),
+  arch: flowingTree('image-03.webp'),
+  bedroom: flowingTree('image-04.webp'),
+  dining: flowingTree('image-05.webp'),
+  detail: flowingTree('image-06.webp'),
+  view: flowingTree('image-07.webp'),
 } as const;
 
 export const LAKEHOUSE_GALLERY = [
@@ -89,36 +89,36 @@ export const LAKEHOUSE_GALLERY = [
   LAKEHOUSE_IMAGES.view,
 ] as const;
 
-const adarshPalm = (filename: string) => publicImage('Adarsh palm', filename);
+const adarshPalm = (filename: string) => publicImage('adarsh-palm', filename);
 
 /** Adarsh Palm Meadows Villa project imagery */
 export const ADARSH_PALM_IMAGES = {
   /** Night exterior — full facade with ramp & terraces */
-  hero: adarshPalm('52.png'),
+  hero: adarshPalm('52.webp'),
   /** Day entrance porch */
-  entrance: adarshPalm('53.png'),
+  entrance: adarshPalm('53.webp'),
   /** Foyer with home lift & staircase */
-  foyerLift: adarshPalm('55.png'),
+  foyerLift: adarshPalm('55.webp'),
   /** Entry hallway with feature wall & mirror */
-  hallway: adarshPalm('54.png'),
+  hallway: adarshPalm('54.webp'),
   /** Formal living with bar */
-  livingFormal: adarshPalm('57.png'),
+  livingFormal: adarshPalm('57.webp'),
   /** Living with mural & media wall */
-  livingLounge: adarshPalm('60.png'),
+  livingLounge: adarshPalm('60.webp'),
   /** Navy sitting room */
-  sittingRoom: adarshPalm('63.png'),
+  sittingRoom: adarshPalm('63.webp'),
   /** Kitchen & dining */
-  kitchenDining: adarshPalm('58.png'),
+  kitchenDining: adarshPalm('58.webp'),
   /** Master bedroom suite */
-  masterBedroom: adarshPalm('62.png'),
+  masterBedroom: adarshPalm('62.webp'),
   /** Master walk-in closet */
-  walkInCloset: adarshPalm('59.png'),
+  walkInCloset: adarshPalm('59.webp'),
   /** Secondary bedroom with study */
-  bedroomStudy: adarshPalm('61.png'),
+  bedroomStudy: adarshPalm('61.webp'),
   /** Outdoor patio seating */
-  patio: adarshPalm('56.png'),
+  patio: adarshPalm('56.webp'),
   /** Terrace / sunroom lounge */
-  terrace: adarshPalm('64.png'),
+  terrace: adarshPalm('64.webp'),
 } as const;
 
 /** Narrative gallery order: exterior → arrival → living → kitchen → private → outdoor */
@@ -138,15 +138,15 @@ export const ADARSH_PALM_GALLERY = [
   ADARSH_PALM_IMAGES.terrace,
 ] as const;
 
-const life77 = (filename: string) => publicImage('77 life', filename);
+const life77 = (filename: string) => publicImage('77-life', filename);
 
 /** 77 Life project imagery */
 export const LIFE_77_IMAGES = {
-  hero: life77('image-01.png'),
-  living: life77('image-02.png'),
-  dining: life77('image-03.png'),
-  bedroom: life77('image-04.png'),
-  detail: life77('image-05.png'),
+  hero: life77('image-01.webp'),
+  living: life77('image-02.webp'),
+  dining: life77('image-03.webp'),
+  bedroom: life77('image-04.webp'),
+  detail: life77('image-05.webp'),
 } as const;
 
 export const LIFE_77_GALLERY = [
@@ -157,22 +157,22 @@ export const LIFE_77_GALLERY = [
   LIFE_77_IMAGES.detail,
 ] as const;
 
-const svasa = (filename: string) => publicImage('Svasa', filename);
+const svasa = (filename: string) => publicImage('svasa', filename);
 
 /** Svasa Homes project imagery */
 export const SVASA_IMAGES = {
-  hero: svasa('images-01.png'),
-  image02: svasa('images-02.png'),
-  image03: svasa('images-03.png'),
-  image04: svasa('images-04.png'),
-  image05: svasa('images-05.png'),
-  image06: svasa('images-06.png'),
-  image07: svasa('images-07.png'),
-  image08: svasa('images-08.png'),
-  image09: svasa('images-09.png'),
-  image10: svasa('images-10.png'),
-  image11: svasa('images-11.png'),
-  image12: svasa('images-12.png'),
+  hero: svasa('images-01.webp'),
+  image02: svasa('images-02.webp'),
+  image03: svasa('images-03.webp'),
+  image04: svasa('images-04.webp'),
+  image05: svasa('images-05.webp'),
+  image06: svasa('images-06.webp'),
+  image07: svasa('images-07.webp'),
+  image08: svasa('images-08.webp'),
+  image09: svasa('images-09.webp'),
+  image10: svasa('images-10.webp'),
+  image11: svasa('images-11.webp'),
+  image12: svasa('images-12.webp'),
 } as const;
 
 export const SVASA_GALLERY = [
@@ -190,31 +190,31 @@ export const SVASA_GALLERY = [
   SVASA_IMAGES.image12,
 ] as const;
 
-const delhiVilla = (filename: string) => publicImage('Delhi villa', filename);
+const delhiVilla = (filename: string) => publicImage('delhi-villa', filename);
 
 /** Delhi Villa project imagery */
 export const DELHI_VILLA_IMAGES = {
-  hero: delhiVilla('34.png'),
-  image35: delhiVilla('35.png'),
-  image36: delhiVilla('36.png'),
-  image37: delhiVilla('37.png'),
-  image38: delhiVilla('38.png'),
-  image39: delhiVilla('39.png'),
-  image40: delhiVilla('40.png'),
-  image41: delhiVilla('41.png'),
-  image42: delhiVilla('42.png'),
-  image43: delhiVilla('43.png'),
-  image44: delhiVilla('44.png'),
-  image45: delhiVilla('45.png'),
-  image46: delhiVilla('46.png'),
-  image47: delhiVilla('47.png'),
-  image48: delhiVilla('48.png'),
-  image49: delhiVilla('49.png'),
-  image50: delhiVilla('50.png'),
+  hero: delhiVilla('34.webp'),
+  image35: delhiVilla('35.webp'),
+  image36: delhiVilla('36.webp'),
+  image37: delhiVilla('37.webp'),
+  image38: delhiVilla('38.webp'),
+  image39: delhiVilla('39.webp'),
+  image40: delhiVilla('40.webp'),
+  image41: delhiVilla('41.webp'),
+  image42: delhiVilla('42.webp'),
+  image43: delhiVilla('43.webp'),
+  image44: delhiVilla('44.webp'),
+  image45: delhiVilla('45.webp'),
+  image46: delhiVilla('46.webp'),
+  image47: delhiVilla('47.webp'),
+  image48: delhiVilla('48.webp'),
+  image49: delhiVilla('49.webp'),
+  image50: delhiVilla('50.webp'),
   // Aliases for compatibility
-  image07: delhiVilla('37.png'),
-  image10: delhiVilla('40.png'),
-  image15: delhiVilla('45.png'),
+  image07: delhiVilla('37.webp'),
+  image10: delhiVilla('40.webp'),
+  image15: delhiVilla('45.webp'),
 } as const;
 
 export const DELHI_VILLA_GALLERY = [
@@ -237,21 +237,21 @@ export const DELHI_VILLA_GALLERY = [
   DELHI_VILLA_IMAGES.image50,
 ] as const;
 
-const artius = (filename: string) => publicImage('Artius', filename);
+const artius = (filename: string) => publicImage('artius', filename);
 
 /** ARTIUS Experience Centre project imagery */
 export const ARTIUS_IMAGES = {
-  hero: artius('23.png'),
-  image23: artius('23.png'),
-  image24: artius('24.png'),
-  image25: artius('25.png'),
-  image26: artius('26.png'),
-  image27: artius('27.png'),
-  image28: artius('28.png'),
-  image29: artius('29.png'),
-  image30: artius('30.png'),
-  image31: artius('31.png'),
-  image32: artius('32.png'),
+  hero: artius('23.webp'),
+  image23: artius('23.webp'),
+  image24: artius('24.webp'),
+  image25: artius('25.webp'),
+  image26: artius('26.webp'),
+  image27: artius('27.webp'),
+  image28: artius('28.webp'),
+  image29: artius('29.webp'),
+  image30: artius('30.webp'),
+  image31: artius('31.webp'),
+  image32: artius('32.webp'),
 } as const;
 
 export const ARTIUS_GALLERY = [

@@ -38,7 +38,7 @@ export const teamLead: TeamMember & {
   name: 'Arushi Goel',
   role: 'CREATIVE DIRECTOR & FOUNDER',
   gender: 'female',
-  image: teamImage('founder.png'),
+  image: teamImage('founder.webp'),
   imageFit: {
     objectPosition: '50% 18%',
     width: 1023,

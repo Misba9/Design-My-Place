@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -36,11 +37,6 @@ const nextConfig = {
         source: '/process',
         destination: '/services',
         permanent: true,
-      },
-      {
-        source: '/favicon.ico',
-        destination: '/favicon.png',
-        permanent: false,
       },
     ];
   },

@@ -1,0 +1,99 @@
+# =========================================================
+#  Design My Place — Production .htaccess
+#  Target: GoDaddy Shared Hosting (Apache + mod_rewrite)
+#  Build: Next.js static export (trailingSlash: true)
+# =========================================================
+
+# ── 1. Security ──────────────────────────────────────────
+Options -Indexes
+ServerSignature Off
+
+# Block access to hidden files (e.g. .env, .git)
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# ── 2. Security Headers ───────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self)"
+</IfModule>
+
+# ── 3. MIME Types ─────────────────────────────────────────
+<IfModule mod_mime.c>
+  AddType image/webp                   .webp
+  AddType image/avif                   .avif
+  AddType font/woff2                   .woff2
+  AddType font/woff                    .woff
+  AddType application/manifest+json    .webmanifest
+  AddType text/javascript              .js .mjs
+</IfModule>
+
+# ── 4. Browser Caching ────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Hashed static assets (_next/static) — 1 year immutable
+  <FilesMatch "\.(js|css|woff2?|ttf|eot|svg)$">
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+
+  # Images — 3 months
+  <FilesMatch "\.(webp|avif|png|jpg|jpeg|gif|ico)$">
+    ExpiresDefault "access plus 3 months"
+  </FilesMatch>
+
+  # HTML — no cache (so route updates deploy immediately)
+  <FilesMatch "\.html$">
+    ExpiresDefault "access plus 0 seconds"
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Manifests & data files — 1 day
+  <FilesMatch "\.(webmanifest|json|xml|txt)$">
+    ExpiresDefault "access plus 1 day"
+  </FilesMatch>
+</IfModule>
+
+# ── 5. Compression ────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE application/manifest+json
+  AddOutputFilterByType DEFLATE font/woff2 font/woff
+</IfModule>
+
+# ── 6. Routing (Next.js trailingSlash static export) ─────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Serve index.html as directory index
+  DirectoryIndex index.html
+
+  # Redirect bare .html requests to clean URLs (SEO)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(.+)\.html(\ |\?)
+  RewriteRule ^ /%1/ [R=301,L]
+
+  # If the exact file exists, serve it (JS, CSS, images, fonts, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # If the exact directory exists and already has a trailing slash, serve it
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} /$
+  RewriteRule ^ - [L]
+
+  # If directory exists but lacks trailing slash, redirect to add it
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.+)$ /$1/ [R=301,L]
+
+  # trailingSlash=true: serve <route>/index.html for any clean URL
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.+?)/?$ /$1/index.html [L]
+</IfModule>

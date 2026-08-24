@@ -41,24 +41,24 @@ export const d2PageBg =
 export const d2BandBg =
   'radial-gradient(ellipse 70% 60% at 20% 20%, rgba(156,111,78,0.12) 0%, transparent 55%), linear-gradient(165deg, #554839 0%, #4A4133 42%, #3A3328 100%)';
 
-/** Deck slide assets live in /public/Deck-images (some keep a .jpg.png suffix). */
+/** Deck slide assets live in /public/deck-images (some keep a .webp.webp suffix). */
 const deckExt: Record<string, string> = {
-  'belong-interior': 'jpg.png',
-  'what-2': 'jpg.png',
-  'what-3': 'jpg.png',
-  'what-4': 'jpg.png',
-  Meet: 'jpeg',
-  Research: 'jpg',
-  Concept: 'png',
-  Design: 'png',
+  'belong-interior': 'webp',
+  'what-2': 'webp',
+  'what-3': 'webp',
+  'what-4': 'webp',
+  Meet: 'webp',
+  Research: 'webp',
+  Concept: 'webp',
+  Design: 'webp',
   Finalize: 'avif',
-  Create: 'jpeg',
-  Install: 'jpg',
+  Create: 'webp',
+  Install: 'webp',
 };
 
 /** Encoded path to an asset extracted from the presentation. */
 export const slideAsset = (name: string) =>
-  `/Deck-images/${encodeURIComponent(`${name}.${deckExt[name] ?? 'png'}`)}`;
+  `/deck-images/${encodeURIComponent(`${name}.${deckExt[name] ?? 'webp'}`)}`;
 
 const d2BtnBase =
   'inline-flex items-center justify-center gap-2.5 min-h-12 px-8 font-body text-[11px] font-semibold uppercase tracking-[0.18em] rounded-sm transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';

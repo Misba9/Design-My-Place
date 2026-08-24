@@ -20,9 +20,9 @@
       "purpose": "any"
     },
     {
-      "src": "/logo.png",
+      "src": "/logo.webp",
       "sizes": "371x400",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any"
     }
   ]
