@@ -8,7 +8,7 @@ import {
   d2BtnOutline,
   d2PageBg,
   d2Section,
-} from '@/components/design2/shared';
+} from '@/components/design2/tokens';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Page Not Found',

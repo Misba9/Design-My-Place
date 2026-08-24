@@ -7,7 +7,7 @@ import {
   d2BtnOutline,
   d2PageBg,
   d2Section,
-} from '@/components/design2/shared';
+} from '@/components/design2/tokens';
 import Link from 'next/link';
 
 export const metadata: Metadata = createPageMetadata({

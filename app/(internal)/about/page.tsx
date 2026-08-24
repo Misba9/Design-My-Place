@@ -9,7 +9,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { AnimatedSection, Stagger, StaggerItem } from '@/components/AnimatedSection';
 import { aboutUsIntro, missionVision, values, milestones } from '@/lib/about';
 import { teamLead } from '@/lib/team';
-import { d2BtnOutline, d2PageBg } from '@/components/design2/shared';
+import { d2BtnOutline, d2PageBg } from '@/components/design2/tokens';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
 
@@ -72,7 +72,7 @@ export default function AboutPage() {
                   className="pointer-events-none absolute inset-3 z-10 rounded-[14px] border border-white/25 md:inset-4 md:rounded-[16px]"
                 />
                 <Image
-                  src="/hero-luxury.jpg"
+                  src="/hero-luxury.webp"
                   alt="Design My Place interior — a warm, research-led living space"
                   fill
                   quality={95}

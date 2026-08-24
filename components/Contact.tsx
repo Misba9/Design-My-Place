@@ -4,7 +4,7 @@ import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Send, Loader2, CheckCircle, ChevronDown, AlertCircle } from 'lucide-react';
 import { BUSINESS, STUDIO_ADDRESS } from '@/lib/site';
-import { d2Ease, d2Viewport } from '@/components/design2/shared';
+import { d2Ease, d2Viewport } from '@/components/design2/tokens';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { useWeb3Form } from '@/hooks/useWeb3Form';
 

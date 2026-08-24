@@ -12,7 +12,7 @@ import {
   d2PageBg,
   d2Section,
   d2SectionWide,
-} from '@/components/design2/shared';
+} from '@/components/design2/tokens';
 import { PrimaryButton } from '@/components/PrimaryButton';
 
 type Props = {

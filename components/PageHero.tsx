@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { ContentImage } from '@/components/ContentImage';
 import { HERO_IMAGE } from '@/lib/images';
-import { d2Ease } from '@/components/design2/shared';
+import { d2Ease } from '@/components/design2/tokens';
 
 type PageHeroProps = {
   label: string;

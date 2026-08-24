@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 import { BUSINESS } from '@/lib/site';
-import { d2PageBg, d2Section } from '@/components/design2/shared';
+import { d2PageBg, d2Section } from '@/components/design2/tokens';
 import { PrimaryButton } from '@/components/PrimaryButton';
 
 export const metadata: Metadata = createPageMetadata({

@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { projects, type Project } from '@/lib/projects';
 import { isLocalImage } from '@/lib/images';
-import { d2Ease, d2Viewport } from './shared';
+import { d2Ease, d2Viewport } from './tokens';
 
 const shown = projects.filter((p) => isLocalImage(p.image));
 const featured = shown.find((p) => p.featured) ?? shown[0];
@@ -57,13 +57,10 @@ function ProjectCard({
           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9C6F4E]
           motion-reduce:transform-none
         "
-        onClick={(e) => {
-          // Mobile: first tap reveals overlay; second tap follows link
+        onClick={() => {
+          // On touch devices, ensure the overlay is visible
           if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) {
-            if (!isActive) {
-              e.preventDefault();
-              onToggle(project.slug);
-            }
+            onToggle(project.slug);
           }
         }}
       >

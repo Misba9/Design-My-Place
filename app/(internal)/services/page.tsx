@@ -10,7 +10,7 @@ import { ServiceFaqAccordion } from '@/components/ServiceFaqAccordion';
 import { services, serviceFaqs } from '@/lib/services';
 import { processSteps } from '@/lib/process';
 import { servicePages } from '@/lib/service-pages';
-import { d2PageBg, d2BandBg } from '@/components/design2/shared';
+import { d2PageBg, d2BandBg } from '@/components/design2/tokens';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import {
   breadcrumbSchema,

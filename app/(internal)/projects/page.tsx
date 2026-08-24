@@ -5,7 +5,7 @@ import { PageCTA } from '@/components/PageCTA';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';
-import { d2PageBg, d2SectionWide } from '@/components/design2/shared';
+import { d2PageBg, d2SectionWide } from '@/components/design2/tokens';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Luxury Interior Design Projects',

@@ -10,7 +10,7 @@ import {
   d2BtnOutline,
   d2Ease,
   d2Viewport,
-} from '@/components/design2/shared';
+} from '@/components/design2/tokens';
 
 function ProjectCard({
   project,
@@ -50,12 +50,9 @@ function ProjectCard({
           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9C6F4E]
           motion-reduce:transform-none
         "
-        onClick={(e) => {
+        onClick={() => {
           if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) {
-            if (!active) {
-              e.preventDefault();
-              setActive(true);
-            }
+            setActive(true);
           }
         }}
       >

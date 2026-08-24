@@ -5,7 +5,7 @@ import {
   d2BtnOutline,
   d2PageBg,
   d2Section,
-} from '@/components/design2/shared';
+} from '@/components/design2/tokens';
 
 /** Uses parent InternalPageLayout (solid nav + offset) — do not wrap again. */
 export default function InternalNotFound() {

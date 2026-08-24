@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Plus } from 'lucide-react';
-import { d2Ease, d2Viewport } from '@/components/design2/shared';
+import { d2Ease, d2Viewport } from '@/components/design2/tokens';
 
 type Faq = { question: string; answer: string };
 

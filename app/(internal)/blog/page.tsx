@@ -6,13 +6,13 @@ import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
+import { D2Reveal } from '@/components/design2/shared';
 import {
-  D2Reveal,
   d2BandBg,
   d2PageBg,
   d2Section,
   d2SectionWide,
-} from '@/components/design2/shared';
+} from '@/components/design2/tokens';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { blogPosts, getBlogPostImage, type BlogPost } from '@/lib/blog';
 import { breadcrumbSchema, buildSchemaGraph, createPageMetadata } from '@/lib/seo';

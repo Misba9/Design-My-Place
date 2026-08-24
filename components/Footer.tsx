@@ -6,7 +6,7 @@ import { Facebook, Instagram, Mail, MapPin, Phone, Clock } from 'lucide-react';
 import { BrandMark } from '@/components/BrandMark';
 import { BUSINESS, STUDIO_ADDRESS } from '@/lib/site';
 import { footerNavLinks, footerServiceLinks } from '@/lib/navigation';
-import { d2Ease, d2Viewport } from '@/components/design2/shared';
+import { d2Ease, d2Viewport } from '@/components/design2/tokens';
 
 const ease = d2Ease;
 
