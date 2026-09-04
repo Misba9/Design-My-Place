@@ -24,7 +24,7 @@ export const metadata: Metadata = createPageMetadata({
   title: 'FAQ — Interior Design Questions',
   description:
     'Answers about luxury interior design timelines, budgets, turnkey delivery, and service areas in Bangalore, Delhi NCR & across India.',
-  path: '/faq',
+  path: '/faq/',
 });
 
 const generalFaqs = [
@@ -51,7 +51,7 @@ export default function FaqPage() {
   const schema = buildSchemaGraph(
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: 'FAQ', path: '/faq' },
+      { name: 'FAQ', path: '/faq/' },
     ]),
     faqSchema(allFaqs),
   );
@@ -63,7 +63,7 @@ export default function FaqPage() {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'FAQ', path: '/faq' },
+          { name: 'FAQ', path: '/faq/' },
         ]}
       />
 
@@ -113,7 +113,7 @@ export default function FaqPage() {
             {locations.map((loc) => (
               <Link
                 key={loc.slug}
-                href={`/locations/${loc.slug}`}
+                href={`/locations/${loc.slug}/`}
                 className="rounded-sm border border-[rgba(63,57,48,0.18)] px-4 py-2.5 font-body text-[11px] tracking-[0.06em] text-[#55503F] transition-colors hover:border-[#9C6F4E]/50 hover:text-[#9C6F4E]"
               >
                 {loc.name}
@@ -121,11 +121,11 @@ export default function FaqPage() {
             ))}
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <Link href="/services" className={`group ${d2BtnOutline}`}>
+            <Link href="/services/" className={`group ${d2BtnOutline}`}>
               <span>Our Services</span>
               <ArrowRight size={14} strokeWidth={1.75} aria-hidden />
             </Link>
-            <PrimaryButton href="/contact">Book Consultation</PrimaryButton>
+            <PrimaryButton href="/contact/">Book Consultation</PrimaryButton>
           </div>
         </div>
       </section>

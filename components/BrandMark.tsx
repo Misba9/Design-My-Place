@@ -52,8 +52,9 @@ export function BrandMark({ className, variant = 'header' }: BrandMarkProps) {
         <Image
           src="/icon-512.png"
           alt="Design My Place"
-          width={512}
-          height={512}
+          width={56}
+          height={56}
+          sizes="(max-width: 640px) 44px, 56px"
           className={cn(
             'w-full h-full object-contain',
             'transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_16px_rgba(212,175,55,0.4)]'

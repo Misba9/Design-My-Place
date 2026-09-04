@@ -7,6 +7,7 @@ import { BUSINESS, STUDIO_ADDRESS } from '@/lib/site';
 import { d2Ease, d2Viewport } from '@/components/design2/tokens';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { useWeb3Form } from '@/hooks/useWeb3Form';
+import { trackContactFormSubmit, trackPhoneClick, trackEvent } from '@/lib/analytics';
 
 const projectTypes = [
   'Residential Interior',
@@ -79,11 +80,16 @@ function SelectField({
         <FieldLabel htmlFor={id} theme={theme}>
           {label}
         </FieldLabel>
-      ) : null}
+      ) : (
+        <label htmlFor={id} className="sr-only">
+          {defaultOption}
+        </label>
+      )}
       <div className="relative min-w-0">
         <select
           id={id}
           name={name}
+          aria-label={label || defaultOption}
           required={required}
           value={value}
           onChange={(event) => setValue(event.target.value)}
@@ -155,6 +161,7 @@ export function Contact({
     setIsSubmitting(false);
     if (result.success) {
       setIsSubmitted(true);
+      trackContactFormSubmit('contact_section');
     } else {
       setErrorMessage(result.message);
     }
@@ -271,6 +278,7 @@ export function Contact({
             >
               <a
                 href={`tel:${BUSINESS.phone}`}
+                onClick={() => trackPhoneClick('contact_section')}
                 className={
                   isDeck
                     ? 'group flex items-center gap-4 text-[#55503F] transition-colors duration-300 hover:text-[#3F3930]'
@@ -307,6 +315,7 @@ export function Contact({
 
               <a
                 href={`mailto:${BUSINESS.email}`}
+                onClick={() => trackEvent('cta_click', { target: 'email', source: 'contact_section' })}
                 className={
                   isDeck
                     ? 'group flex items-center gap-4 text-[#55503F] transition-colors duration-300 hover:text-[#3F3930]'
@@ -443,9 +452,12 @@ export function Contact({
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div>
+                  <label htmlFor="contact-name" className="sr-only">Your Name</label>
                   <input
+                    id="contact-name"
                     type="text"
                     name="name"
+                    aria-label="Your Name"
                     placeholder="How should we address you?"
                     required
                     className={inputClass}
@@ -453,9 +465,12 @@ export function Contact({
                 </div>
 
                 <div>
+                  <label htmlFor="contact-email" className="sr-only">Your Email Address</label>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
+                    aria-label="Your Email Address"
                     placeholder="Where can we send your design proposal?"
                     required
                     className={inputClass}
@@ -463,9 +478,12 @@ export function Contact({
                 </div>
 
                 <div>
+                  <label htmlFor="contact-phone" className="sr-only">Phone Number</label>
                   <input
+                    id="contact-phone"
                     type="tel"
                     name="phone"
+                    aria-label="Phone Number"
                     placeholder="Your preferred contact number"
                     className={inputClass}
                   />
@@ -489,9 +507,12 @@ export function Contact({
                 />
 
                 <div>
+                  <label htmlFor="contact-location" className="sr-only">Project Location</label>
                   <input
+                    id="contact-location"
                     type="text"
                     name="location"
+                    aria-label="Project Location"
                     placeholder="Where is your project located?"
                     className={inputClass}
                   />

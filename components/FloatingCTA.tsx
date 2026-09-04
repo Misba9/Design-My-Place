@@ -3,17 +3,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Phone, MessageCircle, Calendar } from 'lucide-react';
-import { BUSINESS } from '@/lib/site';
-import {
-  trackConsultationClick,
-  trackPhoneClick,
-  trackWhatsAppClick,
-} from '@/lib/analytics';
+import { ArrowRight } from 'lucide-react';
+import { trackGetInTouchClick } from '@/lib/analytics';
 
 export function FloatingCTA() {
   const [isVisible, setIsVisible] = useState(false);
-  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,57 +24,22 @@ export function FloatingCTA() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="fixed z-40 flex flex-col items-end gap-2 sm:gap-3 bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-10 lg:right-10 safe-bottom safe-right max-w-[calc(100vw-2rem)]"
+          className="fixed z-40 bottom-6 right-6 lg:bottom-8 lg:right-8 safe-bottom safe-right"
         >
-          <AnimatePresence>
-            {expanded && (
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                className="flex flex-col gap-2 w-full min-w-[11rem] sm:min-w-[12rem]"
-              >
-                <a
-                  href={`tel:${BUSINESS.phone}`}
-                  onClick={() => trackPhoneClick('floating_cta')}
-                  className="flex items-center gap-3 glass border border-white/10 px-4 py-3 min-h-11 text-sm text-white hover:border-gold-400/40 transition-colors"
-                  aria-label="Call Design My Place"
-                >
-                  <Phone size={16} className="text-gold-300 shrink-0" />
-                  Call Us
-                </a>
-                <a
-                  href={BUSINESS.social.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackWhatsAppClick('floating_cta')}
-                  className="flex items-center gap-3 glass border border-white/10 px-4 py-3 min-h-11 text-sm text-white hover:border-gold-400/40 transition-colors"
-                  aria-label="WhatsApp Design My Place"
-                >
-                  <MessageCircle size={16} className="text-gold-300 shrink-0" />
-                  WhatsApp
-                </a>
-                <Link
-                  href="/contact"
-                  onClick={() => trackConsultationClick('floating_cta')}
-                  className="flex items-center justify-center gap-3 btn-gold text-[11px] py-3 px-4 min-h-11"
-                >
-                  <Calendar size={16} className="shrink-0" />
-                  Book Consultation
-                </Link>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="btn-gold shadow-lg shadow-black/40 text-[11px] py-3 px-5 sm:px-6 min-h-11 whitespace-nowrap"
-            aria-expanded={expanded}
-            aria-label={expanded ? 'Close contact options' : 'Open contact options'}
+          <Link
+            href="/contact/"
+            onClick={() => trackGetInTouchClick('floating_cta')}
+            className="group inline-flex items-center gap-2.5 rounded-full border border-[#9C6F4E]/40 bg-[#9C6F4E] px-6 py-3.5 font-body text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-[#FAF8F5] shadow-[0_12px_32px_rgba(0,0,0,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#8A6144] hover:shadow-[0_16px_40px_rgba(0,0,0,0.65)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9C6F4E] whitespace-nowrap"
+            aria-label="Get in Touch with Design My Place"
           >
-            {expanded ? 'Close' : 'Get in Touch'}
-          </button>
+            <span>Get in Touch</span>
+            <ArrowRight
+              size={15}
+              strokeWidth={2}
+              className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </Link>
         </motion.div>
       )}
     </AnimatePresence>

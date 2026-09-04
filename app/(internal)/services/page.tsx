@@ -24,7 +24,7 @@ export const metadata: Metadata = createPageMetadata({
   title: 'Luxury Interior Design Services in Bangalore',
   description:
     'Comprehensive luxury interior design services from concept to handover. Custom residential, villa, penthouse, workspace & renovation interiors in Bangalore & India.',
-  path: '/services',
+  path: '/services/',
 });
 
 const benefits = [
@@ -59,7 +59,7 @@ export default function ServicesPage() {
     professionalServiceSchema(),
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: 'Services', path: '/services' },
+      { name: 'Services', path: '/services/' },
     ]),
     faqSchema(serviceFaqs),
   );
@@ -71,7 +71,7 @@ export default function ServicesPage() {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Services', path: '/services' },
+          { name: 'Services', path: '/services/' },
         ]}
       />
 
@@ -178,7 +178,7 @@ export default function ServicesPage() {
               {servicePages.map((sp) => (
                 <Link
                   key={sp.slug}
-                  href={`/services/${sp.slug}`}
+                  href={`/services/${sp.slug}/`}
                   className="
                     rounded-sm border border-[rgba(63,57,48,0.18)] px-4 py-2.5
                     font-body text-[13px] text-[#55503F]
@@ -272,7 +272,7 @@ export default function ServicesPage() {
               Three transparent fee structures — hourly, per sq. ft., or a designer fee on
               budget. The right model is agreed during your consultation.
             </p>
-            <PrimaryButton href="/contact">Discuss Pricing</PrimaryButton>
+            <PrimaryButton href="/contact/">Discuss Pricing</PrimaryButton>
           </AnimatedSection>
         </div>
       </section>
@@ -296,7 +296,7 @@ export default function ServicesPage() {
 
           <AnimatedSection delay={0.1} className="mt-10 text-center sm:mt-12">
             <Link
-              href="/faq"
+              href="/faq/"
               className="font-body text-[13px] text-[#55503F] transition-colors hover:text-[#9C6F4E]"
             >
               View all frequently asked questions →

@@ -24,7 +24,7 @@ export const metadata: Metadata = createPageMetadata({
   title: 'Our Studio — Bengaluru Interior Design',
   description:
     'Visit Design My Place studio on Church Street, Bengaluru. Luxury interior designers creating bespoke homes across Bangalore & Delhi NCR.',
-  path: '/studio',
+  path: '/studio/',
 });
 
 const galleryImages: { src: string; alt: string; span?: string }[] = [
@@ -41,7 +41,7 @@ export default function StudioPage() {
   const schema = buildSchemaGraph(
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: 'Studio', path: '/studio' },
+      { name: 'Studio', path: '/studio/' },
     ]),
   );
 
@@ -52,7 +52,7 @@ export default function StudioPage() {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Studio', path: '/studio' },
+          { name: 'Studio', path: '/studio/' },
         ]}
       />
 
@@ -229,7 +229,7 @@ export default function StudioPage() {
                   {STUDIO_ADDRESS.line3}
                 </span>
               </a>
-              <PrimaryButton href="/contact">Book a Visit</PrimaryButton>
+              <PrimaryButton href="/contact/">Book a Visit</PrimaryButton>
             </D2Reveal>
 
             <D2Reveal

@@ -50,7 +50,7 @@ export function generateMetadata({ params }: Props): Metadata {
   return createPageMetadata({
     title,
     description,
-    path: `/projects/${project.slug}`,
+    path: `/projects/${project.slug}/`,
     ogImage: isLocalImage(project.image) ? project.image : HERO_IMAGE,
     ogImageAlt: `${project.name} interior design by Design My Place`,
   });
@@ -80,8 +80,8 @@ export default function ProjectDetailPage({ params }: Props) {
     projectSchema(project),
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: 'Projects', path: '/projects' },
-      { name: project.name, path: `/projects/${project.slug}` },
+      { name: 'Projects', path: '/projects/' },
+      { name: project.name, path: `/projects/${project.slug}/` },
     ]),
     faqSchema(detail.faqs),
     imageObjectSchema({
@@ -106,8 +106,8 @@ export default function ProjectDetailPage({ params }: Props) {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Projects', path: '/projects' },
-          { name: project.name, path: `/projects/${project.slug}` },
+          { name: 'Projects', path: '/projects/' },
+          { name: project.name, path: `/projects/${project.slug}/` },
         ]}
       />
 
@@ -278,7 +278,7 @@ export default function ProjectDetailPage({ params }: Props) {
               {related.map((item) => (
                 <Link
                   key={item.slug}
-                  href={`/projects/${item.slug}`}
+                  href={`/projects/${item.slug}/`}
                   className="group block overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.08)] bg-[#111] shadow-[0_18px_40px_-24px_rgba(63,57,48,0.28)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_50px_-22px_rgba(63,57,48,0.38)] md:rounded-3xl motion-reduce:transform-none"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -301,7 +301,7 @@ export default function ProjectDetailPage({ params }: Props) {
               ))}
             </div>
             <div className="mt-8">
-              <Link href="/projects" className={`group ${d2BtnOutline}`}>
+              <Link href="/projects/" className={`group ${d2BtnOutline}`}>
                 <span>View All Projects</span>
                 <ArrowRight size={14} strokeWidth={1.75} aria-hidden />
               </Link>
@@ -315,7 +315,7 @@ export default function ProjectDetailPage({ params }: Props) {
         titleAccent="project?"
         description="Let's discuss how we can create a space that reflects your story with the same care and attention to detail."
         buttonLabel="Start a Conversation"
-        buttonHref="/contact"
+        buttonHref="/contact/"
       />
     </>
   );

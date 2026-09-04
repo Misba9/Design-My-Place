@@ -25,7 +25,7 @@ export function PageCTA({
   titleAccent = 'your project?',
   description = 'Every great design starts with a conversation. Book a consultation and let us bring your vision to life.',
   buttonLabel = 'Book Consultation',
-  buttonHref = '/contact',
+  buttonHref = '/contact/',
 }: PageCTAProps) {
   const reduceMotion = useReducedMotion();
 

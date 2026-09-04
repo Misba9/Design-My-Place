@@ -75,7 +75,16 @@ ServerSignature Off
   # Serve index.html as directory index
   DirectoryIndex index.html
 
-  # Redirect bare .html requests to clean URLs (SEO)
+  # ── Canonical 301 Redirects for Unwanted URL Variations ──
+  # Homepage variations (home, index, default, etc.) -> /
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(home|index|default)(\.html)?/?(\ |\?) [NC]
+  RewriteRule ^ / [R=301,L]
+
+  # Legacy & alternate redirects
+  RewriteRule ^locations/delhi-ncr/?$ /locations/delhi/ [R=301,L]
+  RewriteRule ^process/?$ /services/ [R=301,L]
+
+  # Redirect bare .html requests to clean URLs with trailing slash (SEO)
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(.+)\.html(\ |\?)
   RewriteRule ^ /%1/ [R=301,L]
 

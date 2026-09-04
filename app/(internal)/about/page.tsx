@@ -17,14 +17,14 @@ export const metadata: Metadata = createPageMetadata({
   title: 'About Design My Place | Luxury Interior Design Studio',
   description:
     'Design My Place LLP — Bengaluru luxury interior design studio creating bespoke homes & villas across Bangalore, Delhi NCR & India since 2021.',
-  path: '/about',
+  path: '/about/',
 });
 
 export default function AboutPage() {
   const schema = buildSchemaGraph(
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: 'About', path: '/about' },
+      { name: 'About', path: '/about/' },
     ]),
   );
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'About', path: '/about' },
+          { name: 'About', path: '/about/' },
         ]}
       />
 

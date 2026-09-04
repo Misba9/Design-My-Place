@@ -11,6 +11,27 @@ const emptySourceMap = JSON.stringify({
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // 301 Redirects for URL variations and legacy paths
+  const lowerPath = pathname.toLowerCase();
+  if (
+    lowerPath === '/home' ||
+    lowerPath === '/home/' ||
+    lowerPath === '/index' ||
+    lowerPath === '/index/' ||
+    lowerPath === '/index.html' ||
+    lowerPath === '/default.html'
+  ) {
+    return NextResponse.redirect(new URL('/', request.url), 301);
+  }
+
+  if (lowerPath === '/locations/delhi-ncr' || lowerPath === '/locations/delhi-ncr/') {
+    return NextResponse.redirect(new URL('/locations/delhi/', request.url), 301);
+  }
+
+  if (lowerPath === '/process' || lowerPath === '/process/') {
+    return NextResponse.redirect(new URL('/services/', request.url), 301);
+  }
+
   if (pathname === '/.well-known/appspecific/com.chrome.devtools.json') {
     return NextResponse.json({});
   }
@@ -26,8 +47,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/.well-known/appspecific/com.chrome.devtools.json',
-    '/_next/static/chunks/app/LayoutGroupContext.mjs.map',
-    '/_next/static/chunks/app/:path*/LayoutGroupContext.mjs.map',
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|webmanifest|xml|txt)).*)',
   ],
 };

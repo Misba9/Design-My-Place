@@ -22,6 +22,7 @@ export function organizationSchema() {
     sameAs: [
       BUSINESS.social.facebook,
       BUSINESS.social.instagram,
+      BUSINESS.social.linkedin,
       BUSINESS.social.vimeo,
     ],
     address: {
@@ -76,6 +77,7 @@ export function localBusinessSchema() {
     sameAs: [
       BUSINESS.social.facebook,
       BUSINESS.social.instagram,
+      BUSINESS.social.linkedin,
       BUSINESS.social.vimeo,
     ],
     parentOrganization: { '@id': `${SITE_URL}/#organization` },

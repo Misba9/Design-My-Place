@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Compass, Sparkles, BookOpen } from 'lucide-react';
 import { PageCTA } from '@/components/PageCTA';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
@@ -15,7 +15,7 @@ import {
   createArticleMetadata,
   faqSchema,
 } from '@/lib/seo';
-import { getAllBlogSlugs, getBlogPostBySlug, getBlogPostImage } from '@/lib/blog';
+import { getAllBlogSlugs, getBlogPostBySlug, getBlogPostImage, blogPosts, type BlogPost } from '@/lib/blog';
 
 type Props = { params: { slug: string } };
 
@@ -32,7 +32,7 @@ export function generateMetadata({ params }: Props): Metadata {
   return createArticleMetadata({
     title: post.title,
     description: post.metaDescription,
-    path: `/blog/${post.slug}`,
+    path: `/blog/${post.slug}/`,
     keywords: post.keywords,
     ogImage: imgInfo.url,
     ogImageAlt: imgInfo.alt,
@@ -42,11 +42,49 @@ export function generateMetadata({ params }: Props): Metadata {
   });
 }
 
+function getContextualLinks(post: BlogPost) {
+  const text = `${post.slug} ${post.title} ${post.keywords}`.toLowerCase();
+
+  const services = [];
+  if (text.includes('villa')) {
+    services.push({ label: 'Villa Interior Design', href: '/services/villa-interior-design/' });
+    services.push({ label: 'Turnkey Interior Design', href: '/services/turnkey-interior-design/' });
+  } else if (text.includes('apartment') || text.includes('penthouse')) {
+    services.push({ label: 'Apartment Interior Design', href: '/services/apartment-interior-design/' });
+    services.push({ label: 'Luxury Interior Design', href: '/services/luxury-interior-design/' });
+  } else if (text.includes('renovation') || text.includes('checklist')) {
+    services.push({ label: 'Renovation & Styling', href: '/services/renovation/' });
+    services.push({ label: 'Turnkey Interior Design', href: '/services/turnkey-interior-design/' });
+  } else {
+    services.push({ label: 'Luxury Interior Design', href: '/services/luxury-interior-design/' });
+    services.push({ label: 'Premium Interior Design', href: '/services/premium-interior-design/' });
+  }
+
+  const locations = [];
+  if (text.includes('delhi')) {
+    locations.push({ label: 'Interior Designers in Delhi', href: '/locations/delhi/' });
+    locations.push({ label: 'Interior Designers in Gurgaon', href: '/locations/gurgaon/' });
+  } else if (text.includes('bangalore') || text.includes('bengaluru')) {
+    locations.push({ label: 'Interior Designers in Bangalore', href: '/locations/bangalore/' });
+  } else {
+    locations.push({ label: 'Interior Designers in Bangalore', href: '/locations/bangalore/' });
+    locations.push({ label: 'Interior Designers in Delhi NCR', href: '/locations/delhi/' });
+  }
+
+  const relatedPosts = blogPosts
+    .filter((p) => p.slug !== post.slug)
+    .slice(0, 2)
+    .map((p) => ({ label: p.title, href: `/blog/${p.slug}/` }));
+
+  return { services, locations, relatedPosts };
+}
+
 export default function BlogPostPage({ params }: Props) {
   const post = getBlogPostBySlug(params.slug);
   if (!post) notFound();
 
   const imgInfo = getBlogPostImage(post);
+  const contextual = getContextualLinks(post);
 
   const schema = buildSchemaGraph(
     articleSchema({
@@ -58,8 +96,8 @@ export default function BlogPostPage({ params }: Props) {
     }),
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: 'Blog', path: '/blog' },
-      { name: post.title, path: `/blog/${post.slug}` },
+      { name: 'Blog', path: '/blog/' },
+      { name: post.title, path: `/blog/${post.slug}/` },
     ]),
     faqSchema(post.faqs),
   );
@@ -71,8 +109,8 @@ export default function BlogPostPage({ params }: Props) {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Blog', path: '/blog' },
-          { name: post.title, path: `/blog/${post.slug}` },
+          { name: 'Blog', path: '/blog/' },
+          { name: post.title, path: `/blog/${post.slug}/` },
         ]}
       />
 
@@ -80,7 +118,7 @@ export default function BlogPostPage({ params }: Props) {
         <div className={`${d2Section} max-w-3xl`}>
           <D2Reveal>
             <Link
-              href="/blog"
+              href="/blog/"
               className="mb-10 inline-flex items-center gap-2 font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-[#55503F] transition-colors hover:text-[#9C6F4E]"
             >
               <ArrowLeft size={14} strokeWidth={1.75} aria-hidden />
@@ -178,28 +216,77 @@ export default function BlogPostPage({ params }: Props) {
             </section>
           ) : null}
 
-          <D2Reveal>
-            <div className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-[rgba(63,57,48,0.12)] pt-8">
-              <Link
-                href="/locations/bangalore"
-                className="font-body text-[12px] tracking-[0.04em] text-[#55503F] transition-colors hover:text-[#9C6F4E]"
-              >
-                Interior Designer Bangalore →
-              </Link>
-              <Link
-                href="/locations/delhi"
-                className="font-body text-[12px] tracking-[0.04em] text-[#55503F] transition-colors hover:text-[#9C6F4E]"
-              >
-                Interior Designer Delhi →
-              </Link>
-              <Link
-                href="/contact"
-                className="font-body text-[12px] tracking-[0.04em] text-[#55503F] transition-colors hover:text-[#9C6F4E]"
-              >
-                Book Consultation →
-              </Link>
-            </div>
-          </D2Reveal>
+          {/* Contextual internal linking section */}
+          <div className="mt-14 border-t border-[rgba(63,57,48,0.12)] pt-10 space-y-6">
+            <D2Reveal>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {/* Related Services */}
+                <div className="rounded-2xl border border-[rgba(63,57,48,0.1)] bg-white/40 p-5">
+                  <p className="flex items-center gap-2 font-display text-xs uppercase tracking-[0.14em] text-[#9C6F4E] mb-3">
+                    <Sparkles size={13} />
+                    <span>Relevant Services</span>
+                  </p>
+                  <ul className="space-y-2 text-sm">
+                    {contextual.services.map((srv) => (
+                      <li key={srv.href}>
+                        <Link
+                          href={srv.href}
+                          className="font-body text-xs text-[#3F3930] hover:text-[#9C6F4E] transition-colors inline-flex items-center gap-1.5"
+                        >
+                          <span>{srv.label}</span>
+                          <ArrowRight size={11} className="text-[#9C6F4E]" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Related Locations */}
+                <div className="rounded-2xl border border-[rgba(63,57,48,0.1)] bg-white/40 p-5">
+                  <p className="flex items-center gap-2 font-display text-xs uppercase tracking-[0.14em] text-[#9C6F4E] mb-3">
+                    <Compass size={13} />
+                    <span>Design Studios</span>
+                  </p>
+                  <ul className="space-y-2 text-sm">
+                    {contextual.locations.map((loc) => (
+                      <li key={loc.href}>
+                        <Link
+                          href={loc.href}
+                          className="font-body text-xs text-[#3F3930] hover:text-[#9C6F4E] transition-colors inline-flex items-center gap-1.5"
+                        >
+                          <span>{loc.label}</span>
+                          <ArrowRight size={11} className="text-[#9C6F4E]" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </D2Reveal>
+
+            {/* Related Articles */}
+            {contextual.relatedPosts.length > 0 && (
+              <D2Reveal delay={0.08}>
+                <div className="rounded-2xl border border-[rgba(63,57,48,0.1)] bg-white/40 p-5">
+                  <p className="flex items-center gap-2 font-display text-xs uppercase tracking-[0.14em] text-[#9C6F4E] mb-3">
+                    <BookOpen size={13} />
+                    <span>Related Journal Articles</span>
+                  </p>
+                  <div className="space-y-2">
+                    {contextual.relatedPosts.map((rel) => (
+                      <Link
+                        key={rel.href}
+                        href={rel.href}
+                        className="block font-body text-xs text-[#55503F] hover:text-[#9C6F4E] transition-colors"
+                      >
+                        • {rel.label} →
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </D2Reveal>
+            )}
+          </div>
         </div>
       </article>
 

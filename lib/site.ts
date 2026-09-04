@@ -33,6 +33,7 @@ export const BUSINESS = {
   social: {
     facebook: 'https://www.facebook.com/profile.php?id=100068908213810',
     instagram: 'https://instagram.com/design_my_place',
+    linkedin: 'https://www.linkedin.com/company/designmyplace/',
     vimeo: 'https://vimeo.com/designmyplace',
     whatsapp: 'https://wa.me/918050821401',
   },

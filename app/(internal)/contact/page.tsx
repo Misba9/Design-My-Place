@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Clock, Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, Video } from 'lucide-react';
+import { Clock, Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Video } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { Contact } from '@/components/Contact';
@@ -15,7 +15,7 @@ export const metadata: Metadata = createPageMetadata({
   title: 'Contact Luxury Interior Designers in Bangalore',
   description:
     'Book a luxury interior design consultation with Design My Place LLP. Share your vision for your Bangalore or Delhi NCR home. Start your journey today.',
-  path: '/contact',
+  path: '/contact/',
 });
 
 const workingHours = [
@@ -26,6 +26,7 @@ const workingHours = [
 const socialLinks = [
   { name: 'Instagram', href: BUSINESS.social.instagram, icon: Instagram },
   { name: 'Facebook', href: BUSINESS.social.facebook, icon: Facebook },
+  { name: 'LinkedIn', href: BUSINESS.social.linkedin, icon: Linkedin },
   { name: 'WhatsApp', href: BUSINESS.social.whatsapp, icon: MessageCircle },
   { name: 'Vimeo', href: BUSINESS.social.vimeo, icon: Video },
 ];
@@ -36,7 +37,7 @@ export default function ContactPage() {
   const schema = buildSchemaGraph(
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: 'Contact', path: '/contact' },
+      { name: 'Contact', path: '/contact/' },
     ]),
   );
 
@@ -47,7 +48,7 @@ export default function ContactPage() {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Contact', path: '/contact' },
+          { name: 'Contact', path: '/contact/' },
         ]}
       />
 

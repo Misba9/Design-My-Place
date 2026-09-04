@@ -17,25 +17,32 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
     >
       <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-20">
         <ol className="flex flex-wrap items-center gap-2 font-body text-[11px] tracking-[0.04em] text-[#55503F]/70">
-          {items.map((item, index) => (
-            <li key={item.path} className="flex items-center gap-2">
-              {index > 0 && (
-                <span aria-hidden="true" className="text-[#9C6F4E]/50">
-                  /
-                </span>
-              )}
-              {index === items.length - 1 ? (
-                <span className="text-[#9C6F4E]">{item.name}</span>
-              ) : (
-                <Link
-                  href={item.path}
-                  className="transition-colors hover:text-[#9C6F4E]"
-                >
-                  {item.name}
-                </Link>
-              )}
-            </li>
-          ))}
+          {items.map((item, index) => {
+            const isLast = index === items.length - 1;
+            const href = item.path.endsWith('/') || item.path.includes('#') ? item.path : `${item.path}/`;
+
+            return (
+              <li key={item.path + item.name} className="flex items-center gap-2">
+                {index > 0 && (
+                  <span aria-hidden="true" className="text-[#9C6F4E]/50">
+                    /
+                  </span>
+                )}
+                {isLast ? (
+                  <span aria-current="page" className="text-[#9C6F4E] font-medium">
+                    {item.name}
+                  </span>
+                ) : (
+                  <Link
+                    href={href}
+                    className="transition-colors hover:text-[#9C6F4E]"
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ol>
       </div>
     </nav>

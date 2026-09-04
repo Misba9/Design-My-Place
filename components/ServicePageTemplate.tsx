@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles, MapPin, BookOpen } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import type { ServicePage } from '@/lib/service-pages';
+import { servicePages, type ServicePage } from '@/lib/service-pages';
+import { locations } from '@/lib/locations';
+import { blogPosts } from '@/lib/blog';
 import { howWeWork, serviceProcessSteps } from '@/lib/process';
 import {
   d2BandBg,
@@ -20,13 +22,21 @@ type Props = {
 };
 
 export function ServicePageTemplate({ service }: Props) {
+  // Get 3 other complementary services
+  const otherServices = servicePages
+    .filter((s) => s.slug !== service.slug)
+    .slice(0, 3);
+
+  // Get 2 related blog posts
+  const relatedPosts = blogPosts.slice(0, 2);
+
   return (
     <>
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Services', path: '/services' },
-          { name: service.title, path: `/services/${service.slug}` },
+          { name: 'Services', path: '/services/' },
+          { name: service.title, path: `/services/${service.slug}/` },
         ]}
       />
 
@@ -123,7 +133,7 @@ export function ServicePageTemplate({ service }: Props) {
             ))}
           </div>
           <div className="mt-12">
-            <PrimaryButton href="/contact">Book Consultation</PrimaryButton>
+            <PrimaryButton href="/contact/">Book Consultation</PrimaryButton>
           </div>
         </div>
       </section>
@@ -169,7 +179,7 @@ export function ServicePageTemplate({ service }: Props) {
             ))}
           </div>
           <div className="mt-10">
-            <Link href="/projects" className={`group ${d2BtnOutline}`}>
+            <Link href="/projects/" className={`group ${d2BtnOutline}`}>
               <span>View All Projects</span>
               <ArrowRight size={14} strokeWidth={1.75} aria-hidden />
             </Link>
@@ -205,6 +215,75 @@ export function ServicePageTemplate({ service }: Props) {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contextual cross-links */}
+      <section className="text-[#3F3930] border-t border-[rgba(63,57,48,0.1)]" style={{ background: d2PageBg }}>
+        <div className={d2Section}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Other Services */}
+            <div>
+              <p className="flex items-center gap-2 font-display text-xs uppercase tracking-[0.14em] text-[#9C6F4E] mb-4">
+                <Sparkles size={14} />
+                <span>Related Services</span>
+              </p>
+              <ul className="space-y-2.5">
+                {otherServices.map((s) => (
+                  <li key={s.slug}>
+                    <Link
+                      href={`/services/${s.slug}/`}
+                      className="font-body text-sm text-[#3F3930] hover:text-[#9C6F4E] transition-colors inline-flex items-center gap-1.5"
+                    >
+                      <span>{s.title}</span>
+                      <ArrowRight size={12} className="text-[#9C6F4E]" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Available Locations */}
+            <div>
+              <p className="flex items-center gap-2 font-display text-xs uppercase tracking-[0.14em] text-[#9C6F4E] mb-4">
+                <MapPin size={14} />
+                <span>Available In</span>
+              </p>
+              <ul className="space-y-2.5">
+                {locations.map((loc) => (
+                  <li key={loc.slug}>
+                    <Link
+                      href={`/locations/${loc.slug}/`}
+                      className="font-body text-sm text-[#3F3930] hover:text-[#9C6F4E] transition-colors inline-flex items-center gap-1.5"
+                    >
+                      <span>Interior Designers in {loc.name}</span>
+                      <ArrowRight size={12} className="text-[#9C6F4E]" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Design Guides */}
+            <div>
+              <p className="flex items-center gap-2 font-display text-xs uppercase tracking-[0.14em] text-[#9C6F4E] mb-4">
+                <BookOpen size={14} />
+                <span>Design Guides</span>
+              </p>
+              <ul className="space-y-2.5">
+                {relatedPosts.map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/blog/${p.slug}/`}
+                      className="font-body text-xs text-[#55503F] hover:text-[#9C6F4E] transition-colors block leading-relaxed"
+                    >
+                      • {p.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, BookOpen } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/PageHero';
 import { PageCTA } from '@/components/PageCTA';
@@ -28,6 +28,7 @@ import {
   getLocationBySlug,
   locations,
 } from '@/lib/locations';
+import { blogPosts } from '@/lib/blog';
 
 type Props = { params: { slug: string } };
 
@@ -42,7 +43,7 @@ export function generateMetadata({ params }: Props): Metadata {
   return createPageMetadata({
     title: location.title,
     description: location.metaDescription,
-    path: `/locations/${location.slug}`,
+    path: `/locations/${location.slug}/`,
     keywords: location.keywords,
   });
 }
@@ -52,6 +53,7 @@ export default function LocationPage({ params }: Props) {
   if (!location) notFound();
 
   const otherLocations = locations.filter((l) => l.slug !== location.slug);
+  const localGuides = blogPosts.slice(0, 3);
 
   const schema = buildSchemaGraph(
     locationSchema({
@@ -64,7 +66,7 @@ export default function LocationPage({ params }: Props) {
     }),
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: location.name, path: `/locations/${location.slug}` },
+      { name: location.name, path: `/locations/${location.slug}/` },
     ]),
     faqSchema(location.faqs),
   );
@@ -76,7 +78,7 @@ export default function LocationPage({ params }: Props) {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: location.name, path: `/locations/${location.slug}` },
+          { name: location.name, path: `/locations/${location.slug}/` },
         ]}
       />
 
@@ -206,9 +208,11 @@ export default function LocationPage({ params }: Props) {
 
           <D2Reveal delay={0.12} className="flex flex-wrap gap-3">
             {[
-              { label: 'Luxury Interiors', href: '/services/luxury-interior-design' },
-              { label: 'Villa Design', href: '/services/villa-interior-design' },
-              { label: 'Turnkey Delivery', href: '/services/turnkey-interior-design' },
+              { label: 'Luxury Interiors', href: '/services/luxury-interior-design/' },
+              { label: 'Villa Design', href: '/services/villa-interior-design/' },
+              { label: 'Turnkey Delivery', href: '/services/turnkey-interior-design/' },
+              { label: 'Apartment Interiors', href: '/services/apartment-interior-design/' },
+              { label: 'Renovation & Styling', href: '/services/renovation/' },
             ].map((link) => (
               <Link
                 key={link.href}
@@ -276,37 +280,61 @@ export default function LocationPage({ params }: Props) {
         }
       />
 
-      {/* Also serving */}
+      {/* Design Guides & Other Locations */}
       <section className="relative overflow-hidden" style={{ background: d2BandBg }}>
         <div className={`${d2Section} text-[#EDE9E0]`}>
-          <D2Reveal>
-            <div className="mb-5 flex items-center gap-4 sm:mb-6">
-              <span aria-hidden className="h-px w-8 shrink-0 bg-[#C4A07A] sm:w-10" />
-              <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#C4A07A] sm:text-[15px]">
-                Also Serving
-              </p>
-            </div>
-            <div className="mb-10 flex flex-wrap gap-3">
-              {otherLocations.map((loc) => (
-                <Link
-                  key={loc.slug}
-                  href={`/locations/${loc.slug}`}
-                  className="rounded-full border border-white/20 px-5 py-2.5 font-body text-[13px] text-[rgba(237,233,224,0.88)] transition-colors hover:border-[#C4A07A]/55 hover:text-[#EDE9E0]"
-                >
-                  {loc.name}
-                </Link>
-              ))}
-            </div>
-            <a
-              href={location.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.04em] text-[#C4A07A] transition-colors hover:text-[#EDE9E0]"
-            >
-              <MapPin size={14} />
-              Open in Google Maps
-            </a>
-          </D2Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            {/* Also serving */}
+            <D2Reveal>
+              <div className="mb-5 flex items-center gap-4 sm:mb-6">
+                <span aria-hidden className="h-px w-8 shrink-0 bg-[#C4A07A] sm:w-10" />
+                <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#C4A07A] sm:text-[15px]">
+                  Other Locations
+                </p>
+              </div>
+              <div className="mb-6 flex flex-wrap gap-2.5">
+                {otherLocations.map((loc) => (
+                  <Link
+                    key={loc.slug}
+                    href={`/locations/${loc.slug}/`}
+                    className="rounded-full border border-white/20 px-4 py-2 font-body text-xs text-[rgba(237,233,224,0.88)] transition-colors hover:border-[#C4A07A]/55 hover:text-[#EDE9E0]"
+                  >
+                    {loc.name}
+                  </Link>
+                ))}
+              </div>
+              <a
+                href={location.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-body text-xs tracking-[0.04em] text-[#C4A07A] transition-colors hover:text-[#EDE9E0]"
+              >
+                <MapPin size={14} />
+                Open Studio in Google Maps
+              </a>
+            </D2Reveal>
+
+            {/* Design Guides */}
+            <D2Reveal delay={0.1}>
+              <div className="mb-5 flex items-center gap-4 sm:mb-6">
+                <span aria-hidden className="h-px w-8 shrink-0 bg-[#C4A07A] sm:w-10" />
+                <p className="font-display text-[13px] font-medium tracking-[0.04em] text-[#C4A07A] sm:text-[15px]">
+                  Helpful Guides
+                </p>
+              </div>
+              <div className="space-y-3">
+                {localGuides.map((guide) => (
+                  <Link
+                    key={guide.slug}
+                    href={`/blog/${guide.slug}/`}
+                    className="block font-body text-xs text-[rgba(237,233,224,0.85)] hover:text-[#C4A07A] transition-colors"
+                  >
+                    • {guide.title} →
+                  </Link>
+                ))}
+              </div>
+            </D2Reveal>
+          </div>
         </div>
       </section>
 

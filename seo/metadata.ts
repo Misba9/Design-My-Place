@@ -16,8 +16,15 @@ type PageMetadataOptions = {
 };
 
 export function absoluteUrl(path = ''): string {
-  const normalized = path.startsWith('/') ? path : `/${path}`;
-  return path === '' || path === '/' ? SITE_URL : `${SITE_URL}${normalized}`;
+  if (!path || path === '/') {
+    return `${SITE_URL}/`;
+  }
+  let normalized = path.startsWith('/') ? path : `/${path}`;
+  const isFile = /\.[a-zA-Z0-9]+$/.test(normalized.split('?')[0].split('#')[0]);
+  if (!isFile && !normalized.endsWith('/')) {
+    normalized = `${normalized}/`;
+  }
+  return `${SITE_URL}${normalized}`;
 }
 
 export function createPageMetadata({

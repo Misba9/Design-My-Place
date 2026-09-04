@@ -7,19 +7,17 @@ import { PrimaryButton } from '@/components/PrimaryButton';
 import { d2Ease, d2Viewport } from './shared';
 
 const serviceIcons = [Home, Building2, Sparkles, Armchair];
-
 const ease = d2Ease;
 
 /**
- * What We Do — clean, responsive, editorial luxury service list.
- * Features centered intro, line icons, serif service titles, and a centered PrimaryButton CTA.
+ * What We Do — clean, elegant luxury service overview matching the original aesthetic.
  */
 export function D2WhatWeDo() {
   const reduceMotion = useReducedMotion();
 
   return (
     <section
-      id="what-we-do"
+      id="services"
       aria-labelledby="what-we-do-heading"
       className="relative scroll-mt-20 overflow-hidden text-[#3F3930]"
       style={{
@@ -32,10 +30,10 @@ export function D2WhatWeDo() {
       <div
         className="
           mx-auto w-full max-w-[1280px]
-          px-5 py-12
-          sm:px-8 sm:py-16
-          md:px-12 md:py-20
-          lg:px-16 lg:py-24
+          px-5 py-14
+          sm:px-8 sm:py-18
+          md:px-12 md:py-24
+          lg:px-16 lg:py-28
         "
       >
         {/* Centered Heading / Intro */}
@@ -63,8 +61,8 @@ export function D2WhatWeDo() {
         </div>
 
         {/* Vertical Service List */}
-        <div className="mx-auto mt-10 sm:mt-12 md:mt-16 lg:mt-20 max-w-2xl md:max-w-3xl">
-          <ul className="m-0 list-none p-0 space-y-7 sm:space-y-9 md:space-y-12 lg:space-y-14" role="list">
+        <div className="mx-auto mt-12 sm:mt-16 md:mt-20 max-w-2xl md:max-w-3xl">
+          <ul className="m-0 list-none p-0 space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-14" role="list">
             {whatWeDo.items.map((item, i) => {
               const Icon = serviceIcons[i] ?? Home;
 
@@ -75,7 +73,7 @@ export function D2WhatWeDo() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={d2Viewport}
                   transition={{
-                    duration: reduceMotion ? 0 : 0.55,
+                    duration: 0.55,
                     delay: reduceMotion ? 0 : i * 0.08,
                     ease,
                   }}
@@ -90,17 +88,17 @@ export function D2WhatWeDo() {
                   >
                     <Icon
                       strokeWidth={1.35}
-                      className="h-6 w-6 sm:h-8 sm:w-8 md:h-9 md:w-9 lg:h-10 lg:w-10"
+                      className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 lg:h-10 lg:w-10"
                       aria-hidden="true"
                     />
                   </div>
 
                   {/* Right: Service Name & Description */}
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-display text-lg font-normal leading-snug text-[#3F3930] sm:text-xl md:text-2xl lg:text-3xl">
+                    <h3 className="font-display text-xl sm:text-2xl md:text-[28px] lg:text-[32px] font-normal leading-snug text-[#3F3930]">
                       {item.title}
                     </h3>
-                    <p className="mt-1 sm:mt-1.5 font-body text-xs font-light leading-relaxed text-[#55503F] sm:text-sm md:text-base lg:text-lg">
+                    <p className="mt-1 sm:mt-1.5 font-body text-sm sm:text-base md:text-[17px] font-light leading-relaxed text-[#55503F]">
                       {item.description}
                     </p>
                   </div>
@@ -120,9 +118,9 @@ export function D2WhatWeDo() {
             delay: reduceMotion ? 0 : 0.3,
             ease,
           }}
-          className="mt-10 flex justify-center sm:mt-12 md:mt-16 lg:mt-20"
+          className="mt-12 flex justify-center sm:mt-16 md:mt-20"
         >
-          <PrimaryButton href="/services">
+          <PrimaryButton href="/services/">
             EXPLORE OUR SERVICES
           </PrimaryButton>
         </motion.div>

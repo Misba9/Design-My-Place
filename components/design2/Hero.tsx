@@ -167,7 +167,8 @@ export function D2Hero() {
                 alt={slides[slide].alt}
                 fill
                 priority={slide === 0}
-                quality={90}
+                fetchPriority={slide === 0 ? 'high' : 'auto'}
+                quality={85}
                 sizes="100vw"
                 className="object-cover object-center"
               />
@@ -199,41 +200,24 @@ export function D2Hero() {
 
             <h1 className="font-display font-normal leading-[0.95] tracking-[0.02em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.45)]">
               <span className="block text-[clamp(2.15rem,9.5vw,3.75rem)] sm:text-[clamp(3.25rem,9vw,5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
-                <LetterReveal text="DESIGN" delay={0.55} />
+                DESIGN
               </span>
               <span className="block text-[clamp(2.15rem,9.5vw,3.75rem)] sm:text-[clamp(3.25rem,9vw,5rem)] lg:text-[clamp(3.5rem,6.5vw,5.75rem)]">
-                <LetterReveal text="MY" delay={0.85} />
-                <span className="inline-block w-[0.35em]" aria-hidden />
-                <LetterReveal text="PLACE" delay={1.0} />
+                MY PLACE
               </span>
             </h1>
 
-            <motion.p
-              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 1.45, ease: d2Ease }}
-              className="mt-3.5 max-w-[320px] font-display text-[clamp(13px,3.8vw,15px)] font-normal leading-[1.5] text-white/90 sm:mt-8 sm:max-w-md sm:text-base sm:leading-[1.8]"
-            >
+            <p className="mt-3.5 max-w-[320px] font-display text-[clamp(13px,3.8vw,15px)] font-normal leading-[1.5] text-white/90 sm:mt-8 sm:max-w-md sm:text-base sm:leading-[1.8]">
               We create timeless, personalised interiors shaped by your experiences — translated through our expertise into highly functional, refined homes.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.65, ease: d2Ease }}
-              className="mt-5 flex w-full max-w-[320px] flex-col items-center gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 lg:justify-start"
-            >
-              <PrimaryButton href="/contact">Start Your Project</PrimaryButton>
-              <PrimaryButton href="/projects">View Portfolio</PrimaryButton>
-            </motion.div>
+            <div className="mt-5 flex w-full max-w-[320px] flex-col items-center gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 lg:justify-start">
+              <PrimaryButton href="/contact/">Get In Touch</PrimaryButton>
+              <PrimaryButton href="/projects/">View Portfolio</PrimaryButton>
+            </div>
 
             {/* Trust indicators */}
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 1.9, ease: d2Ease }}
-              className="mt-6 w-full max-w-[320px] border-t border-white/20 pt-4 sm:mt-12 sm:max-w-lg sm:pt-8 lg:max-w-none"
-            >
+            <div className="mt-6 w-full max-w-[320px] border-t border-white/20 pt-4 sm:mt-12 sm:max-w-lg sm:pt-8 lg:max-w-none">
               <dl className="grid grid-cols-3 gap-0">
                 {trustStats.map((stat, i) => (
                   <div
@@ -247,7 +231,7 @@ export function D2Hero() {
                       <HeroCountUp
                         value={stat.value}
                         suffix={stat.suffix}
-                        delay={reduceMotion ? 0 : 2 + i * 0.08}
+                        delay={reduceMotion ? 0 : 0.4 + i * 0.08}
                       />
                     </dd>
                     <p className="mt-1.5 font-display text-[8px] xs:text-[9px] font-medium uppercase tracking-[0.12em] sm:tracking-[0.22em] text-white/60">
@@ -256,7 +240,7 @@ export function D2Hero() {
                   </div>
                 ))}
               </dl>
-            </motion.div>
+            </div>
 
             {/* Slide caption + indicators */}
             <motion.div

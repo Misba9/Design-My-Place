@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Facebook, Instagram, Menu, X } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { BrandMark } from '@/components/BrandMark';
-import { navLinks } from '@/lib/navigation';
+import { navLinks, allServices } from '@/lib/navigation';
 import { BUSINESS } from '@/lib/site';
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
@@ -27,12 +27,14 @@ function VimeoIcon({ size = 14 }: { size?: number }) {
 const socialLinks = [
   { href: BUSINESS.social.facebook, label: 'Facebook', icon: 'facebook' as const },
   { href: BUSINESS.social.instagram, label: 'Instagram', icon: 'instagram' as const },
+  { href: BUSINESS.social.linkedin, label: 'LinkedIn', icon: 'linkedin' as const },
   { href: BUSINESS.social.vimeo, label: 'Vimeo', icon: 'vimeo' as const },
 ];
 
 function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]['icon'] }) {
   if (icon === 'facebook') return <Facebook size={14} strokeWidth={1.5} />;
   if (icon === 'instagram') return <Instagram size={14} strokeWidth={1.5} />;
+  if (icon === 'linkedin') return <Linkedin size={14} strokeWidth={1.5} />;
   return <VimeoIcon size={14} />;
 }
 
@@ -62,30 +64,17 @@ export function Navigation({
   variant?: 'overlay' | 'solid';
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  // variant kept for API compatibility with layouts; surface is always solid black
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [mobileServicesExpanded, setMobileServicesExpanded] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
   void variant;
 
   useEffect(() => {
-    let lastY = window.scrollY;
-
-    // If the page loads already scrolled (e.g. reload restores position),
-    // start hidden so the header doesn't cover content.
-    if (lastY > 60) {
-      setIsHidden(true);
-    }
-
     const handleScroll = () => {
-      const y = window.scrollY;
-      // Hide as soon as content would slide under the header; reveal on scroll up
-      if (y > lastY && y > 60) {
-        setIsHidden(true);
-      } else if (y < lastY || y <= 60) {
-        setIsHidden(false);
-      }
-      lastY = y;
+      setIsScrolled(window.scrollY > 20);
     };
-
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -97,147 +86,309 @@ export function Navigation({
     };
   }, [isMobileMenuOpen]);
 
-  const closeMenu = () => setIsMobileMenuOpen(false);
+  // Handle click outside services dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        servicesDropdownRef.current &&
+        !servicesDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsServicesOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
-  const headerSurface = 'is-solid';
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+  };
 
   return (
     <>
-      <motion.header
-        initial={{ y: -24, opacity: 0 }}
-        animate={{ y: isHidden && !isMobileMenuOpen ? '-100%' : 0, opacity: 1 }}
-        transition={{ duration: 0.45, ease }}
-        className={`header-luxury fixed top-0 left-0 right-0 z-50 ${headerSurface}`}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0a0a0a] border-b border-white/10 ${
+          isScrolled
+            ? 'shadow-xl shadow-black/80 py-2.5 sm:py-3'
+            : 'py-3.5 sm:py-4 lg:py-5'
+        }`}
       >
-        <nav className="container-site">
-          <div className="flex items-center justify-between py-3.5 sm:py-4 lg:py-5 gap-3 sm:gap-6 lg:gap-10">
+        <nav className="container-site" aria-label="Main Navigation">
+          <div className="flex items-center justify-between gap-3 sm:gap-6 lg:gap-8">
             {/* Brand */}
-            <motion.div
-              initial={{ opacity: 0, x: -28 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.1, ease }}
-              className="shrink-0"
-            >
+            <div className="shrink-0">
               <Link
                 href="/"
                 className="block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/60"
                 aria-label="Design My Place — Home"
+                onClick={closeMenu}
               >
                 <BrandMark variant="header" />
               </Link>
-            </motion.div>
+            </div>
 
             {/* Desktop navigation */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.35, ease }}
-              className="hidden lg:flex items-center justify-center flex-1 gap-10 xl:gap-14"
-            >
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.06, ease }}
-                >
-                  <Link href={link.href} className="nav-link-luxury">
+            <div className="hidden lg:flex items-center justify-center flex-1 gap-8 xl:gap-11">
+              {navLinks.map((link) => {
+                if ('hasDropdown' in link && link.hasDropdown) {
+                  return (
+                    <div
+                      key={link.href}
+                      ref={servicesDropdownRef}
+                      className="relative"
+                      onMouseEnter={() => setIsServicesOpen(true)}
+                      onMouseLeave={() => setIsServicesOpen(false)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Escape') {
+                          setIsServicesOpen(false);
+                        }
+                      }}
+                    >
+                      <button
+                        type="button"
+                        className={`nav-link-luxury inline-flex items-center gap-1.5 py-2 cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold-400 rounded-sm ${
+                          isServicesOpen ? 'text-gold-300' : ''
+                        }`}
+                        aria-expanded={isServicesOpen}
+                        aria-haspopup="menu"
+                        aria-controls="services-dropdown"
+                        onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      >
+                        <span>{link.label}</span>
+                        <ChevronDown
+                          size={13}
+                          className={`transition-transform duration-300 text-gold-400/75 ${
+                            isServicesOpen ? 'rotate-180 text-gold-300' : ''
+                          }`}
+                        />
+                      </button>
+
+                      {/* Compact Luxury Dropdown */}
+                      <AnimatePresence>
+                        {isServicesOpen && (
+                          <motion.div
+                            id="services-dropdown"
+                            role="menu"
+                            aria-label="Services Submenu"
+                            initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                            transition={{ duration: 0.2, ease }}
+                            className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[480px] max-w-[90vw] pointer-events-auto z-50"
+                          >
+                            {/* Invisible bridge to prevent cursor gap drop */}
+                            <div className="absolute top-0 left-0 right-0 h-3" aria-hidden="true" />
+
+                            <div className="relative rounded-2xl border border-[#9C6F4E]/35 bg-[#161412] p-4 sm:p-5 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.95)]">
+                              {/* Header */}
+                              <div className="mb-3 flex items-center justify-between px-1">
+                                <p className="font-display text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C4A07A]">
+                                  Our Services
+                                </p>
+                                <span className="font-body text-[10px] font-medium text-[#C4A07A]/70 uppercase tracking-wider">
+                                  Bespoke · ₹25L+
+                                </span>
+                              </div>
+
+                              {/* 4 Service Cards */}
+                              <div className="space-y-1.5" role="none">
+                                {allServices.flatMap((cat) => cat.items).map((service) => (
+                                  <Link
+                                    key={service.href}
+                                    href={service.href}
+                                    role="menuitem"
+                                    onClick={() => setIsServicesOpen(false)}
+                                    className="group flex items-center justify-between rounded-xl border border-white/[0.06] bg-[#201D1A] px-3.5 py-2.5 transition-all duration-200 hover:border-[#9C6F4E]/45 hover:bg-[#2A2520] hover:translate-x-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold-400"
+                                  >
+                                    <div className="min-w-0 flex-1 pr-3">
+                                      <p className="font-display text-[13.5px] sm:text-[14px] font-medium leading-snug text-white group-hover:text-gold-300 transition-colors">
+                                        {service.label}
+                                      </p>
+                                      <p className="mt-0.5 font-body text-[11px] text-white/60 group-hover:text-white/80 transition-colors line-clamp-1">
+                                        {service.description}
+                                      </p>
+                                    </div>
+                                    <ArrowRight
+                                      size={13}
+                                      className="shrink-0 text-[#C4A07A]/40 transition-all duration-200 group-hover:text-gold-300 group-hover:translate-x-0.5"
+                                      aria-hidden="true"
+                                    />
+                                  </Link>
+                                ))}
+                              </div>
+
+                              {/* Footer */}
+                              <div className="mt-3.5 pt-2.5 border-t border-white/[0.08] flex items-center justify-between px-1">
+                                <Link
+                                  href="/services/"
+                                  role="menuitem"
+                                  onClick={() => setIsServicesOpen(false)}
+                                  className="inline-flex items-center gap-1.5 font-display text-[11px] sm:text-xs font-medium text-gold-400 hover:text-gold-300 transition-colors group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold-400 rounded-sm"
+                                >
+                                  <span>View All Services & Process</span>
+                                  <ArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+                                </Link>
+                                <span className="font-body text-[10px] text-white/40">
+                                  Bangalore & NCR
+                                </span>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link key={link.href} href={link.href} className="nav-link-luxury">
                     {link.label}
                   </Link>
-                </motion.div>
-              ))}
-            </motion.div>
+                );
+              })}
+            </div>
 
             {/* Desktop CTA + social */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.55, ease }}
-              className="hidden lg:flex shrink-0 items-center gap-5"
-            >
-              <Link href="/contact" className="btn-header-cta">
-                Book a Consultation
+            <div className="hidden lg:flex shrink-0 items-center gap-5">
+              <Link href="/contact/" className="btn-header-cta">
+                Get in Touch
               </Link>
               <SocialLinks />
-            </motion.div>
+            </div>
 
-            {/* Mobile: social + menu toggle */}
-            <div className="lg:hidden flex items-center gap-3">
-              <SocialLinks className="hidden xs:flex" />
+            {/* Mobile / Tablet Header Controls */}
+            <div className="lg:hidden flex items-center gap-2.5 sm:gap-3">
+              {/* Visible Get in Touch button on mobile/tablet */}
+              <Link
+                href="/contact/"
+                className="btn-header-cta text-[10px] sm:text-xs py-2 px-3 sm:px-4 shrink-0"
+                aria-label="Get in Touch"
+              >
+                Get in Touch
+              </Link>
+
               <button
+                type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="relative z-10 touch-target flex flex-col items-center justify-center border border-white/10 hover:border-gold-400/40 transition-colors duration-500"
+                className="relative z-10 touch-target flex h-10 w-10 items-center justify-center rounded-sm border border-white/15 hover:border-gold-400/40 transition-colors duration-300"
                 aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? (
-                  <X size={22} strokeWidth={1.25} className="text-gold-400" />
+                  <X size={20} strokeWidth={1.5} className="text-gold-400" />
                 ) : (
-                  <Menu size={22} strokeWidth={1.25} className="text-gold-400" />
+                  <Menu size={20} strokeWidth={1.5} className="text-gold-400" />
                 )}
               </button>
             </div>
           </div>
         </nav>
-      </motion.header>
+      </header>
 
-      {/* Full-screen mobile menu */}
+      {/* Full-screen mobile menu drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.45, ease }}
-            className="fixed inset-0 z-[60] lg:hidden header-luxury is-solid"          >
-            <div className="container-site flex flex-col h-full">
-              <div className="flex items-center justify-between py-4 sm:py-6 border-b border-white/[0.08]">
+            transition={{ duration: 0.35, ease }}
+            className="fixed inset-0 z-[60] lg:hidden bg-[#0e0e0e]/98 backdrop-blur-2xl flex flex-col"
+          >
+            <div className="container-site flex flex-col h-full overflow-hidden">
+              <div className="flex items-center justify-between py-4 border-b border-white/[0.08]">
                 <Link href="/" onClick={closeMenu}>
                   <BrandMark variant="mobile" />
                 </Link>
                 <button
+                  type="button"
                   onClick={closeMenu}
-                  className="touch-target flex items-center justify-center border border-white/10 text-gold-400 hover:border-gold-400/40 transition-colors"
+                  className="touch-target flex h-10 w-10 items-center justify-center rounded-sm border border-white/15 text-gold-400 hover:border-gold-400/40 transition-colors"
                   aria-label="Close menu"
                 >
-                  <X size={22} strokeWidth={1.25} />
+                  <X size={20} strokeWidth={1.5} />
                 </button>
               </div>
 
-              <nav className="flex-1 flex flex-col justify-center py-8 sm:py-12 gap-1 overflow-y-auto">
-                {navLinks.map((link, index) => (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, x: 32 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.45, delay: 0.1 + index * 0.08, ease }}
-                  >
+              <nav className="flex-1 overflow-y-auto py-6 space-y-1">
+                {navLinks.map((link) => {
+                  if ('hasDropdown' in link && link.hasDropdown) {
+                    return (
+                      <div key={link.href} className="border-b border-white/[0.06] py-2">
+                        <div className="flex items-center justify-between">
+                          <Link
+                            href={link.href}
+                            onClick={closeMenu}
+                            className="nav-link-mobile block py-2"
+                          >
+                            {link.label}
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={() => setMobileServicesExpanded(!mobileServicesExpanded)}
+                            className="p-2 text-gold-400 touch-target flex items-center justify-center"
+                            aria-expanded={mobileServicesExpanded}
+                            aria-label="Toggle Services List"
+                          >
+                            <ChevronDown
+                              size={18}
+                              className={`transition-transform duration-300 ${
+                                mobileServicesExpanded ? 'rotate-180' : ''
+                              }`}
+                            />
+                          </button>
+                        </div>
+
+                        {mobileServicesExpanded && (
+                          <div className="mx-1 mb-2 mt-1.5 rounded-xl border border-[#9C6F4E]/30 bg-[#1a1816] p-2.5 space-y-1.5 shadow-lg">
+                            {allServices.flatMap((cat) => cat.items).map((srv) => (
+                              <Link
+                                key={srv.href}
+                                href={srv.href}
+                                onClick={closeMenu}
+                                className="block rounded-lg px-3 py-2.5 font-display text-xs text-white/90 hover:bg-white/10 hover:text-gold-300 transition-colors"
+                              >
+                                <p className="font-medium text-white">{srv.label}</p>
+                                <p className="font-body text-[10px] text-white/60 line-clamp-1">{srv.description}</p>
+                              </Link>
+                            ))}
+                            <Link
+                              href="/services/"
+                              onClick={closeMenu}
+                              className="mt-1.5 block border-t border-white/10 pt-2 px-3 font-display text-[11px] text-gold-400 hover:text-gold-300"
+                            >
+                              View All Services & Process →
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+
+                  return (
                     <Link
+                      key={link.href}
                       href={link.href}
                       onClick={closeMenu}
-                      className="nav-link-mobile block py-4 sm:py-5 border-b border-white/[0.06]"
+                      className="nav-link-mobile block py-3.5 border-b border-white/[0.06]"
                     >
                       {link.label}
                     </Link>
-                  </motion.div>
-                ))}
+                  );
+                })}
               </nav>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.45, ease }}
-                className="py-8 border-t border-white/[0.08] space-y-6"
-              >
+              <div className="py-6 border-t border-white/[0.08] space-y-5">
                 <SocialLinks className="justify-center" />
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   onClick={closeMenu}
-                  className="btn-header-cta w-full justify-center"
+                  className="btn-header-cta w-full justify-center text-center py-3.5 text-xs uppercase tracking-[0.14em]"
                 >
-                  Book a Consultation
+                  Get in Touch · Book Consultation
                 </Link>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         )}

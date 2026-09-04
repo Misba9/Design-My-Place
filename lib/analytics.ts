@@ -2,9 +2,13 @@ type AnalyticsEvent =
   | 'phone_click'
   | 'whatsapp_click'
   | 'consultation_click'
+  | 'get_in_touch_click'
   | 'project_view'
   | 'scroll_depth'
-  | 'form_submit';
+  | 'form_submit'
+  | 'contact_form_submit'
+  | 'lead_form_submit'
+  | 'cta_click';
 
 declare global {
   interface Window {
@@ -24,7 +28,14 @@ export function trackEvent(event: AnalyticsEvent, params?: Record<string, string
 
   window.gtag?.('event', event, params);
 
-  if (event === 'phone_click' || event === 'whatsapp_click' || event === 'consultation_click') {
+  if (
+    event === 'phone_click' ||
+    event === 'whatsapp_click' ||
+    event === 'consultation_click' ||
+    event === 'get_in_touch_click' ||
+    event === 'contact_form_submit' ||
+    event === 'lead_form_submit'
+  ) {
     window.fbq?.('trackCustom', event, params);
   }
 }
@@ -47,4 +58,18 @@ export function trackWhatsAppClick(source: string) {
 
 export function trackConsultationClick(source: string) {
   trackEvent('consultation_click', { source });
+}
+
+export function trackContactFormSubmit(source: string) {
+  trackEvent('contact_form_submit', { source });
+  trackEvent('form_submit', { source, form_name: 'contact_form' });
+}
+
+export function trackLeadFormSubmit(source: string) {
+  trackEvent('lead_form_submit', { source });
+  trackEvent('form_submit', { source, form_name: 'lead_form' });
+}
+
+export function trackGetInTouchClick(source: string) {
+  trackEvent('get_in_touch_click', { source });
 }

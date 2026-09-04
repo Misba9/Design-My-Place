@@ -11,14 +11,14 @@ export const metadata: Metadata = createPageMetadata({
   title: 'Luxury Interior Design Projects',
   description:
     'Explore luxury interior design projects — bespoke villas, penthouses & residences in Bangalore, Delhi NCR & India by Design My Place.',
-  path: '/projects',
+  path: '/projects/',
 });
 
 export default function ProjectsPage() {
   const schema = buildSchemaGraph(
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: 'Projects', path: '/projects' },
+      { name: 'Projects', path: '/projects/' },
     ]),
   );
 
@@ -29,7 +29,7 @@ export default function ProjectsPage() {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Projects', path: '/projects' },
+          { name: 'Projects', path: '/projects/' },
         ]}
       />
 

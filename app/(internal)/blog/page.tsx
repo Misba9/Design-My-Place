@@ -21,7 +21,7 @@ export const metadata: Metadata = createPageMetadata({
   title: 'Interior Design Insights & Guides',
   description:
     'Expert guides on luxury interior design, budgets, villa design, and choosing the right designer in Bangalore & Delhi NCR.',
-  path: '/blog',
+  path: '/blog/',
 });
 
 const formatDate = (iso: string) =>
@@ -56,7 +56,7 @@ export default function BlogIndexPage() {
   const schema = buildSchemaGraph(
     breadcrumbSchema([
       { name: 'Home', path: '/' },
-      { name: 'Blog', path: '/blog' },
+      { name: 'Blog', path: '/blog/' },
     ]),
   );
 
@@ -73,7 +73,7 @@ export default function BlogIndexPage() {
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Blog', path: '/blog' },
+          { name: 'Blog', path: '/blog/' },
         ]}
       />
 
@@ -97,7 +97,7 @@ export default function BlogIndexPage() {
             </D2Reveal>
 
             <Link
-              href={`/blog/${featured.slug}`}
+              href={`/blog/${featured.slug}/`}
               className="group grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16 xl:gap-20"
             >
               <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.08)] shadow-[0_28px_60px_-20px_rgba(63,57,48,0.32)] md:rounded-3xl">
@@ -163,7 +163,7 @@ export default function BlogIndexPage() {
             {rest.map((post, i) => (
               <D2Reveal key={post.slug} delay={Math.min(i * 0.05, 0.3)}>
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}/`}
                   className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[rgba(63,57,48,0.1)] bg-white/40 shadow-[0_1px_0_rgba(63,57,48,0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-[rgba(63,57,48,0.18)] hover:shadow-[0_18px_40px_-20px_rgba(63,57,48,0.28)]"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden">

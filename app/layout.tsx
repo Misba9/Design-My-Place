@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import { Footer } from '@/components/Footer';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { FloatingCTA } from '@/components/FloatingCTA';
 import { CustomCursor } from '@/components/CustomCursor';
 import { Analytics } from '@/components/Analytics';
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://designmyplace.in',
+    url: 'https://designmyplace.in/',
     title: 'Luxury Interior Designer Bangalore | Design My Place',
     description:
       'Bespoke luxury interior design for homes & villas in Bangalore, Delhi NCR & India.',
@@ -96,12 +97,23 @@ export default function RootLayout({
         <Analytics />
       </head>
       <body className="bg-luxury-black text-ivory-100 font-body antialiased overflow-x-hidden">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TW9S54FW"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         <JsonLd data={globalSchemas()} />
         <ScrollTracker />
         <CustomCursor />
         <main>{children}</main>
         <Footer />
         <FloatingCTA />
+        <WhatsAppButton />
       </body>
     </html>
   );

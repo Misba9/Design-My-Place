@@ -23,11 +23,119 @@ const defaultProcess = serviceProcessSteps;
 
 export const servicePages: ServicePage[] = [
   {
-    slug: 'luxury-interior-design',
-    title: 'Luxury Interior Design Services in Bangalore',
+    slug: 'residential-interiors',
+    title: 'Residential Interior Designers in Bangalore | Design MyPlace',
     metaDescription:
-      'Bespoke luxury interior design for homes above ₹25L in Bangalore & Delhi NCR. Research-led, emotionally grounded spaces by Design My Place.',
-    keywords: 'luxury interior design, luxury home interiors, bespoke interior design Bangalore, high end interior design',
+      'Bespoke residential interior designers in Bangalore. Space planning, custom cabinetry, lighting & turnkey execution for luxury homes & villas. Book a consultation.',
+    keywords:
+      'residential interior designers in Bangalore, residential interior design Bangalore, home interior designers Bangalore, home interior design company Bangalore, luxury residential interior designers Bangalore, premium home interiors Bangalore',
+    heroLabel: 'Residential Excellence',
+    heroTitle: 'Residential Interior',
+    heroAccent: 'Designers in Bangalore',
+    heroDescription:
+      'Bespoke residential interiors for luxury homes, penthouses, and villas crafted with architectural precision, spatial clarity, and warm materiality.',
+    summary:
+      'Design My Place creates residential interiors that reflect how you live, host, rest, and evolve. Every home begins with understanding your personal routines, translating into thoughtfully planned layouts, curated materials, custom joinery, and disciplined turnkey execution for projects typically above ₹25 Lakhs.',
+    benefits: [
+      { title: 'Tailored Space Planning', description: 'Intelligent spatial layouts, natural light optimization, and generous circulation tailored to your lifestyle.' },
+      { title: 'Bespoke Joinery & Finishes', description: 'Custom wardrobes, cabinetry, wall treatments, and materiality selected for beauty and longevity.' },
+      { title: 'Architectural Lighting & Styling', description: 'Layered lighting design, curated textiles, art advisory, and complete interior styling.' },
+      { title: 'Turnkey Project Management', description: 'Single-point accountability from 3D conceptual design to procurement, site supervision, and handover.' },
+    ],
+    process: defaultProcess,
+    gallery: [IMG.living, IMG.villa, IMG.apartment],
+    faqs: [
+      { question: 'What types of residential properties do you design in Bangalore?', answer: 'We design complete interiors for luxury apartments, penthouses, duplexes, independent houses, and villas across Bangalore and Delhi NCR.' },
+      { question: 'What is the typical budget for residential interior design?', answer: 'Our complete residential projects typically start at ₹25 Lakhs, covering bespoke design, curated materials, modular joinery, civil modifications, and turnkey handover.' },
+    ],
+  },
+  {
+    slug: 'commercial-spaces',
+    title: 'Commercial Interior Designers in Bangalore | Design MyPlace',
+    metaDescription:
+      'Specialised commercial interior designers in Bangalore. Modern corporate offices, creative studios & experience centres built for productivity. Discuss your workspace.',
+    keywords:
+      'commercial interior designers in Bangalore, commercial interior design Bangalore, office interior designers Bangalore, office interior design Bangalore, commercial interior design company Bangalore, workspace interior designers Bangalore',
+    heroLabel: 'Commercial & Workplace',
+    heroTitle: 'Commercial Interior',
+    heroAccent: 'Designers in Bangalore',
+    heroDescription:
+      'Workspaces, corporate offices, executive suites, and experience centres designed to foster innovation, employee well-being, and distinct brand identity.',
+    summary:
+      'Our commercial practice creates functional, inspiring environments for businesses that value design as a strategic asset. From modern corporate headquarters to bespoke retail experience centres, we blend ergonomic planning with high-impact aesthetics and turnkey project delivery.',
+    benefits: [
+      { title: 'Ergonomic & Agile Planning', description: 'Workstation zoning, acoustic insulation, collaborative breakout hubs, and executive suites.' },
+      { title: 'Brand Expression', description: 'Architectural details, material choices, and environmental branding that embody your corporate culture.' },
+      { title: 'Compliant & Fast-Track Execution', description: 'Strict adherence to commercial fire safety, MEP standards, building bylaws, and fast-track schedules.' },
+      { title: 'Turnkey Fit-Out Delivery', description: 'Complete procurement of commercial-grade fixtures, HVAC coordination, network infrastructure, and styling.' },
+    ],
+    process: defaultProcess,
+    gallery: [IMG.apartment, IMG.living, IMG.villa],
+    faqs: [
+      { question: 'What types of commercial projects do you undertake?', answer: 'We design corporate offices, tech workplaces, executive boardrooms, boutique retail showrooms, and luxury experience centres.' },
+      { question: 'Do you provide turnkey execution for commercial interiors?', answer: 'Yes. We handle end-to-end civil work, MEP, partition systems, acoustic ceilings, commercial lighting, custom furniture, and handover.' },
+    ],
+  },
+  {
+    slug: 'renovations-makeovers',
+    title: 'Home Renovation Company in Bangalore | Design MyPlace',
+    metaDescription:
+      'Complete luxury home renovation in Bangalore. Structural alterations, spatial redesigns, and premium interior transformations for homes above ₹25L. Get in touch.',
+    keywords:
+      'home renovation company in Bangalore, home renovation Bangalore, house renovation Bangalore, home makeover Bangalore, interior renovation Bangalore, residential renovation Bangalore',
+    heroLabel: 'Renewal & Transformation',
+    heroTitle: 'Home Renovation',
+    heroAccent: 'Company in Bangalore',
+    heroDescription:
+      'Breathing new life into existing residences through structural replanning, modern finishes, and comprehensive turnkey transformations.',
+    summary:
+      'Not every project requires a newly built shell. Our renovation and makeover practice transforms dated layouts into modern, luminous homes. We respect existing structural merits while overhauling flooring, plumbing, electrical, modular cabinetry, and aesthetic finishes with minimal disruption.',
+    benefits: [
+      { title: 'Structural & Spatial Reconfiguration', description: 'Knocking down non-load-bearing walls, expanding windows, and creating open-plan living areas.' },
+      { title: 'Complete MEP & Service Overhaul', description: 'Upgrading aged electrical wiring, plumbing lines, waterproofing, and HVAC systems.' },
+      { title: 'Modern Material Transformation', description: 'Replacing dated surfaces with Italian marble, engineered timber, bespoke veneers, and designer sanitaryware.' },
+      { title: 'Disciplined Phased Execution', description: 'Clear project milestones, strict snagging checks, and dedicated on-site supervision for on-time delivery.' },
+    ],
+    process: defaultProcess,
+    gallery: [IMG.renovation, IMG.living, IMG.bedroom],
+    faqs: [
+      { question: 'What is the scope of your home renovation services in Bangalore?', answer: 'We undertake comprehensive residential renovations above ₹25 Lakhs, including civil modifications, kitchen & bathroom overhauls, flooring replacement, false ceilings, and complete interior fit-outs.' },
+      { question: 'Can you renovate a 10-20 year old villa or apartment?', answer: 'Yes. We specialize in modernizing older bungalows, gated community villas, and large resale apartments to modern luxury standards.' },
+    ],
+  },
+  {
+    slug: 'custom-furniture-styling',
+    title: 'Custom Furniture Designers in Bangalore | Design MyPlace',
+    metaDescription:
+      'Bespoke custom furniture designers in Bangalore. Handcrafted joinery, tailored wardrobes, statement seating & curated interior styling. Explore our craft.',
+    keywords:
+      'custom furniture designers in Bangalore, custom furniture Bangalore, bespoke furniture Bangalore, custom interior furniture Bangalore, bespoke furniture designers Bangalore, furniture styling Bangalore',
+    heroLabel: 'Bespoke Craft & Styling',
+    heroTitle: 'Custom Furniture',
+    heroAccent: 'Designers in Bangalore',
+    heroDescription:
+      'Handcrafted bespoke furniture pieces, tailored wardrobes, statement dining suites, and curated interior styling designed to elevate your living spaces.',
+    summary:
+      'Off-the-shelf furniture rarely fits the exact proportions or soul of a bespoke home. Our custom furniture and styling practice designs one-of-a-kind millwork, artisanal seating, sculptural dining tables, and seamlessly integrated wardrobe systems tailored to your exact aesthetic and dimensions.',
+    benefits: [
+      { title: 'Bespoke Furniture Design', description: 'Unique sofas, dining tables, consoles, beds, and accent chairs built to custom specifications.' },
+      { title: 'Tailored Wardrobes & Joinery', description: 'Walk-in closets, fluted panelling, bar units, and entertainment consoles crafted to the millimetre.' },
+      { title: 'Premium Material Palette', description: 'Solid hardwoods, exotic veneers, brushed brass accents, genuine leathers, and high-performance textiles.' },
+      { title: 'Art & Decor Styling Advisory', description: 'Curating statement artwork, lighting sculptures, rugs, and accessories that bring harmony to the entire home.' },
+    ],
+    process: defaultProcess,
+    gallery: [IMG.living, IMG.bedroom, IMG.apartment],
+    faqs: [
+      { question: 'Do you design custom furniture as a standalone service?', answer: 'Custom furniture and styling are integrated into our residential and commercial projects above ₹25 Lakhs to ensure cohesive craftsmanship across every room.' },
+      { question: 'What materials and hardware do you use for custom joinery?', answer: 'We utilize marine-grade ply, natural veneers, PU lacquer finishes, and premium European hardware (Blum, Hettich, Hafele) for lifelong durability.' },
+    ],
+  },
+  {
+    slug: 'luxury-interior-design',
+    title: 'Residential Interior Designers in Bangalore | Luxury Home Interiors',
+    metaDescription:
+      'Bespoke residential interior designers in Bangalore for luxury villas, apartments and penthouses above ₹25L. Research-led design by Design My Place.',
+    keywords: 'residential interior designers in Bangalore, luxury interior design, bespoke interior design Bangalore',
     heroLabel: 'Residential Excellence',
     heroTitle: 'Luxury Interior',
     heroAccent: 'Design',

@@ -57,12 +57,7 @@ export function PageHero({
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-14 pt-10 sm:px-10 sm:pb-16 sm:pt-12 lg:px-20 lg:pb-20 lg:pt-14">
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: d2Ease }}
-          className="mb-5 flex items-center gap-4 sm:mb-6"
-        >
+        <div className="mb-5 flex items-center gap-4 sm:mb-6">
           <span
             aria-hidden
             className="h-px w-8 shrink-0 bg-[#9C6F4E] sm:w-10"
@@ -70,14 +65,9 @@ export function PageHero({
           <p className="font-body text-[10px] font-medium uppercase tracking-[0.35em] text-white/85 sm:text-[11px] sm:tracking-[0.4em]">
             {label}
           </p>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, delay: reduceMotion ? 0 : 0.08, ease: d2Ease }}
-          className="max-w-4xl font-body text-[clamp(2.5rem,7vw,4.75rem)] font-light leading-[1.02] tracking-[-0.02em] text-white text-balance"
-        >
+        <h1 className="max-w-4xl font-body text-[clamp(2.5rem,7vw,4.75rem)] font-light leading-[1.02] tracking-[-0.02em] text-white text-balance">
           {title}
           {titleAccent ? (
             <>
@@ -87,17 +77,12 @@ export function PageHero({
               </span>
             </>
           ) : null}
-        </motion.h1>
+        </h1>
 
         {description ? (
-          <motion.p
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: reduceMotion ? 0 : 0.18, ease: d2Ease }}
-            className="mt-5 max-w-2xl font-body text-[15px] font-normal leading-[1.85] text-white/80 sm:mt-6 sm:text-[15.5px]"
-          >
+          <p className="mt-5 max-w-2xl font-body text-[15px] font-normal leading-[1.85] text-white/80 sm:mt-6 sm:text-[15.5px]">
             {description}
-          </motion.p>
+          </p>
         ) : null}
       </div>
     </section>

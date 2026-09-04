@@ -18,16 +18,26 @@ const nextConfig = {
   compress: true,
   async redirects() {
     return [
-      // {
-      //   source: '/design-1',
-      //   destination: '/',
-      //   permanent: true,
-      // },
-      // {
-      //   source: '/design-2',
-      //   destination: '/',
-      //   permanent: true,
-      // },
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index.html',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/default.html',
+        destination: '/',
+        permanent: true,
+      },
       {
         source: '/locations/delhi-ncr',
         destination: '/locations/delhi',
